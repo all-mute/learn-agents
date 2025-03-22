@@ -25,10 +25,6 @@ const sidebars: SidebarsConfig = {
       },
       items: [
         'foundations/what-are-ai-agents',
-        // Other pages will be added later
-        // 'foundations/history-of-ai-agents',
-        // 'foundations/types-of-ai-agents',
-        // 'foundations/tools-and-frameworks',
       ],
     },
     

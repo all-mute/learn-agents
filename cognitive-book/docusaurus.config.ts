@@ -20,7 +20,7 @@ const config: Config = {
   organizationName: 'all-mute', // Usually your GitHub org/user name.
   projectName: 'learn-agents', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -50,7 +50,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/merkulov.courses/cognitive-book/edit/main/',
+            'https://github.com/all-mute/learn-agents/edit/main/',
           routeBasePath: '/', // Docs will be served at the root
         },
         blog: false, // Blog is disabled as it's not needed for the handbook
@@ -96,7 +96,7 @@ const config: Config = {
           items: [
             {
               label: 'Introduction',
-              to: '/introduction',
+              to: '/',
             },
             {
               label: 'Foundations',

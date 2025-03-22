@@ -13,9 +13,3 @@ In this section, we will explore fundamental concepts related to artificial inte
 
 ## Section Contents
 
-- [What are AI Agents](./what-are-ai-agents.md) - Definition, key characteristics, and basic principles of AI agents
-- [History of AI Agents](./history-of-ai-agents.md) - Evolution of concepts and technologies, from early expert systems to modern LLM-based agents
-- [Types of AI Agents](./types-of-ai-agents.md) - Classification of agents according to various criteria and their features
-- [Tools and Frameworks](./tools-and-frameworks.md) - Overview of the technology stack for creating agents
-
-Start by studying the [definition and key characteristics of AI Agents](./what-are-ai-agents.md) to build a foundation for further understanding of this fascinating field. 
