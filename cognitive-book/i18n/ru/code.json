@@ -1,0 +1,220 @@
+{
+  "theme.ErrorPageContent.title": {
+    "message": "Эта страница выдала ошибку.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Попробовать снова",
+    "description": "The label of the button to try again when the page crashed"
+  },
+  "theme.NotFound.title": {
+    "message": "Страница не найдена",
+    "description": "The title of the 404 page"
+  },
+  "theme.NotFound.p1": {
+    "message": "К сожалению, мы не смогли найти страницу, которую вы запрашивали.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Пожалуйста, свяжитесь с владельцем сайта, с которого вы перешли по ссылке, и сообщите ему, что ссылка не работает.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Закрыть",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Прокрутить наверх",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.archive.title": {
+    "message": "Архив",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "Архив",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Навигация по странице списка блога",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Более новые записи",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Более старые записи",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} помечено тегом \"{tagName}\"",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.common.editThisPage": {
+    "message": "Редактировать эту страницу",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Прямая ссылка на {heading}",
+    "description": "Title for link to heading"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Назад в главное меню",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Версии",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "На этой странице",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Главная страница",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Свернуть боковую панель",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Свернуть боковую панель",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Закрыть панель навигации",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Переключить панель навигации",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Боковая панель документации",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Развернуть боковую панель",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Развернуть боковую панель",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "Ничего не найдено",
+    "description": "The paragraph for empty search result"
+  },
+  "theme.SearchPage.fetchingNewResults": {
+    "message": "Получение новых результатов...",
+    "description": "The paragraph for fetching new search results"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "Посмотреть все {count} результатов",
+    "description": "The all search result number text"
+  },
+  "theme.SearchBar.label": {
+    "message": "Поиск",
+    "description": "The ARIA label and placeholder for search button"
+  },
+  "theme.docs.DocCard.categoryDescription": {
+    "message": "{count} элементов",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Переключение между темным и светлым режимами (сейчас используется {mode})",
+    "description": "The ARIA label for the navbar color mode toggle"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "темный режим",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "светлый режим",
+    "description": "The name for the light color mode"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Версия: {versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "Это неопубликованная документация для версии {versionLabel}.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "Это документация для {versionLabel}, которая больше не поддерживается.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "navbar.title": {
+    "message": "Руководство по AI Agents",
+    "description": "The title in the navbar"
+  },
+  "navbar.item.label.tutorial": {
+    "message": "Учебник",
+    "description": "Navbar item with label Tutorial"
+  },
+  "navbar.item.label.github": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "footer.link.label.introduction": {
+    "message": "Введение",
+    "description": "The label of footer link with label=Introduction linking to /introduction"
+  },
+  "footer.link.label.foundations": {
+    "message": "Основы",
+    "description": "The label of footer link with label=Foundations linking to /foundations"
+  },
+  "footer.link.label.components": {
+    "message": "Компоненты",
+    "description": "The label of footer link with label=Components linking to /components"
+  },
+  "footer.link.label.architectures": {
+    "message": "Архитектуры",
+    "description": "The label of footer link with label=Architectures linking to /architectures"
+  },
+  "footer.link.label.github": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to GitHub"
+  },
+  "footer.link.label.telegram": {
+    "message": "Telegram",
+    "description": "The label of footer link with label=Telegram linking to Telegram"
+  },
+  "footer.link.label.roadmap": {
+    "message": "Roadmap.sh",
+    "description": "The label of footer link with label=Roadmap.sh linking to Roadmap"
+  },
+  "footer.title.tutorial": {
+    "message": "Учебник",
+    "description": "The title of the footer tutorial links"
+  },
+  "footer.title.community": {
+    "message": "Сообщество",
+    "description": "The title of the footer community links"
+  },
+  "footer.title.resources": {
+    "message": "Ресурсы",
+    "description": "The title of the footer resources links"
+  },
+  "footer.copyright": {
+    "message": "Copyright © {currentYear} Руководство по AI Agents. Создано с помощью Docusaurus.",
+    "description": "The footer copyright"
+  },
+  "Guide to Creating and Using AI Agents": {
+    "message": "Руководство по созданию и использованию AI Agents"
+  },
+  "Introduction to AI Agents": {
+    "message": "Введение в AI Agents"
+  },
+  "Foundations": {
+    "message": "Основы"
+  },
+  "Components": {
+    "message": "Компоненты"
+  },
+  "Architectures": {
+    "message": "Архитектуры"
+  }
+} 
