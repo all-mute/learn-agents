@@ -12,22 +12,120 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 
  Create as many sidebars as you want.
  */
+
+// Start Here section
+const startHereSection = [
+  {
+    type: 'category' as const,
+    label: 'Start Here',
+    collapsed: true,
+    collapsible: true,
+    items: [
+      'start-here/index', // about roadmap
+      'start-here/prerequisites',
+      'start-here/motivation',
+      'start-here/history',
+    ],
+  },
+];
+
+// Basics section
+const basicsSection = [
+  {
+    type: 'category' as const,
+    label: 'Fundamentals',
+    collapsed: true,
+    collapsible: true,
+    items: [
+      'basics/index',
+      'basics/what-is-llm',
+      'basics/prompt-eng',
+      'basics/llm-usecases',
+      'basics/openai-api',
+      'basics/metalearning',
+      'basics/1st-project',
+    ],
+  },
+];
+
+// Not Agents section
+const notAgentsSection = [
+  {
+    type: 'category' as const,
+    label: 'Beyond AI Agents',
+    collapsed: true,
+    collapsible: true,
+    items: [
+      'not-agents/index',
+      'not-agents/metalearning',
+      'not-agents/vibecoding',
+      {
+        type: 'category' as const,
+        label: 'Backend Basics',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'not-agents/backend-0/index',
+          'not-agents/backend-0/internet',
+          'not-agents/backend-0/linux',
+          'not-agents/backend-0/databases',
+          'not-agents/backend-0/microservices',
+          'not-agents/backend-0/chunks',
+          'not-agents/backend-0/sustainability',
+        ],
+      },
+    ],
+  },
+];
+
+// Junior Developer section
+const juniorSection = [
+  {
+    type: 'category' as const,
+    label: 'Junior Developer',
+    collapsed: true,
+    collapsible: true,
+    items: [
+      'junior/index',
+      {
+        type: 'category' as const,
+        label: 'Part 1',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'junior/part1/index',
+        ],
+      },
+      {
+        type: 'category' as const,
+        label: 'Part 2',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'junior/part2/index',
+        ],
+      },
+      {
+        type: 'category' as const,
+        label: 'Part 3',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'junior/part3/index',
+        ],
+      },
+    ],
+  },
+];
+
 const sidebars: SidebarsConfig = {
   // Define the structure of the AI Agents handbook
   tutorialSidebar: [
     'about', // Introduction
-    // {
-    //   type: 'category',
-    //   label: 'Foundations',
-    //   link: {
-    //     type: 'doc',
-    //     id: 'foundations/index',
-    //   },
-    //   items: [
-    //     'foundations/what-are-ai-agents',
-    //   ],
-    // },
-    
+    ...startHereSection,
+    ...basicsSection,
+    ...juniorSection,
+    ...notAgentsSection,
   ],
 };
 

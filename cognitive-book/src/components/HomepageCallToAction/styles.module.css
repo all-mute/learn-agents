@@ -1,0 +1,50 @@
+.callToAction {
+  padding: 5rem 0;
+  background-color: #40e0d0; /* Бирюзовый цвет, который похож на цвет верхнего хедера */
+  text-align: center;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--ifm-color-white);
+}
+
+.description {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: var(--ifm-color-white);
+  opacity: 0.9;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+  
+  .description {
+    font-size: 1.1rem;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .buttons a {
+    width: 80%;
+  }
+} 

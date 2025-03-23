@@ -1,0 +1,41 @@
+.aiAgents {
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+  width: 100%;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+}
+
+.description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.buttons {
+  margin-top: 2rem;
+}
+
+.aiAgentsImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  max-width: 90%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Адаптивность для мобильных устройств */
+@media screen and (max-width: 996px) {
+  .aiAgentsContent {
+    padding-bottom: 2rem;
+  }
+} 

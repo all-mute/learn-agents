@@ -1,0 +1,107 @@
+.modules {
+  padding: 4rem 0;
+  width: 100%;
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.carouselButton {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--ifm-color-primary);
+  padding: 0 1rem;
+  transition: all 0.3s ease;
+}
+
+.carouselButton:hover {
+  color: var(--ifm-color-primary-dark);
+  transform: scale(1.2);
+}
+
+.moduleContainer {
+  display: flex;
+  max-width: 900px;
+  background: var(--ifm-background-color);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.moduleImage {
+  flex: 0 0 50%;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.moduleContent {
+  flex: 0 0 50%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.moduleTitle {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.moduleDescription {
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.moduleButton {
+  margin-top: auto;
+}
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--ifm-color-emphasis-300);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background-color: var(--ifm-color-primary);
+  transform: scale(1.2);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .moduleContainer {
+    flex-direction: column;
+    max-width: 90%;
+  }
+  
+  .moduleImage, .moduleContent {
+    flex: auto;
+  }
+  
+  .moduleImage {
+    max-height: 250px;
+    overflow: hidden;
+  }
+} 

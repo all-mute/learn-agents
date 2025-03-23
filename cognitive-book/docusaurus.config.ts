@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Learn AI Agents book',
-  tagline: 'Zero2Hero Guide on building AI Agents',
+  title: 'Learn AI Agents',
+  tagline: 'Vastest zero to hero handbook on building AI Agents',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -31,6 +31,35 @@ const config: Config = {
         name: 'algolia-site-verification',
         content: '7B48E67DF480B0BB',
       },
+    },
+    // Скрипт Яндекс.Метрики
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'text/javascript',
+      },
+      innerHTML: `
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(100536947, "init", {
+          clickmap:true,
+          trackLinks:true,
+          accurateTrackBounce:true,
+          webvisor:true
+        });
+      `,
+    },
+    // NoScript тег для Яндекс.Метрики
+    {
+      tagName: 'noscript',
+      attributes: {},
+      innerHTML: `
+        <div><img src="https://mc.yandex.ru/watch/100536947" style="position:absolute; left:-9999px;" alt="" /></div>
+      `,
     },
   ],
 
@@ -100,13 +129,20 @@ const config: Config = {
           label: 'Handbook',
         },
         {
+          type: 'doc',
+          position: 'left',
+          docId: 'handbook/contributing',
+          label: 'Cooperation',
+        },
+        {
           type: 'localeDropdown',
           position: 'right',
         },
         {
-          href: 'https://github.com/merkulov.courses/cognitive-book',
-          label: 'GitHub',
+          href: 'https://github.com/all-mute/learn-agents',
           position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
@@ -140,12 +176,16 @@ const config: Config = {
           title: 'Handbook',
           items: [
             {
-              label: 'Introduction',
-              to: '/',
+              label: 'START HERE',
+              to: '/intro',
             },
             {
-              label: 'Foundations',
-              to: '/foundations',
+              label: 'Basics',
+              to: '/basics/index',
+            },
+            {
+              label: 'Junior',
+              to: '/junior/index',
             },
           ],
         },
@@ -157,12 +197,8 @@ const config: Config = {
               href: 'https://discord.gg/3JBx5HUR9n',
             },
             {
-              label: 'GitHub Discussions',
-              href: 'https://github.com/merkulov.courses/cognitive-book/discussions',
-            },
-            {
-              label: 'Telegram (ru)',
-              href: 'https://t.me/merkulov_ai',
+              label: 'Telegram group',
+              href: 'https://t.me/learnagents',
             },
           ],
         },
@@ -175,7 +211,15 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/merkulov.courses/cognitive-book',
+              href: 'https://github.com/all-mute/learn-agents',
+            },
+            {
+              label: 'DM Author',
+              href: 'https://t.me/nongilgameshj',
+            },
+            {
+              label: 'Handbook comments',
+              href: 'https://github.com/all-mute/learn-agents-comments',
             },
           ],
         },

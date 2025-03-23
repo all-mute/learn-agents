@@ -1,0 +1,90 @@
+.communities {
+  padding: 4rem 0;
+  width: 100%;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.communityCard {
+  display: flex;
+  background-color: var(--ifm-color-white);
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  height: 100%;
+}
+
+.communityIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  font-size: 2.5rem;
+  color: white;
+}
+
+.communityIconImage {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.communityContent {
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.communityTitle {
+  margin-bottom: 0.75rem;
+  font-size: 1.5rem;
+}
+
+.communityDescription {
+  margin-bottom: 1.5rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+}
+
+.communityButton {
+  display: inline-block;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 24px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.communityButton:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: white;
+}
+
+/* Dark mode styles */
+html[data-theme='dark'] .communityCard {
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+html[data-theme='dark'] .communityDescription {
+  color: var(--ifm-color-emphasis-500);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .communityCard {
+    flex-direction: column;
+  }
+  
+  .communityIcon {
+    width: 100%;
+    padding: 1rem;
+  }
+} 

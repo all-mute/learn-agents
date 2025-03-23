@@ -1,0 +1,36 @@
+.githubStarsContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.githubStarsLink {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.githubStarsLink:hover {
+  opacity: 0.8;
+}
+
+.starIcon {
+  margin-right: 6px;
+  fill: #ffb400;
+}
+
+.starText {
+  color: white;
+}
+
+:global(html[data-theme='dark']) .starText {
+  color: black;
+}
+
+.githubText {
+  color: #1e88e5;
+  margin-left: 4px;
+} 

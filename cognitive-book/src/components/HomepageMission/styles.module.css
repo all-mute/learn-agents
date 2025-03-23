@@ -1,0 +1,61 @@
+.mission {
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+  width: 100%;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.missionIntro {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.missionDescription {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.standard {
+  margin-bottom: 2rem;
+}
+
+.standardHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.standardIcon {
+  font-size: 2rem;
+  margin-right: 1rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.standardTitle {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.standardDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Адаптивность для мобильных устройств */
+@media screen and (max-width: 768px) {
+  .missionDescription {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+} 

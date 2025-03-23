@@ -1,0 +1,17 @@
+# Список авторов проекта
+authors:
+  - name: "David Merkulov"
+    imageUrl: "https://github.com/all-mute.png"
+    website: "https://merkulov.ai"
+    description:
+      en: "Main Author. CTO at AI-automated VC fund, MSU, Ex-Yandex"
+      ru: "Основной автор. CTO в AI-автоматизированном венчурном фонде, МГУ, Экс-Яндекс"
+    translationId: "homepage.authors.merkulov.description"
+    
+  - name: "Your Name"
+    imageUrl: "/img/placeholder-author.png"
+    website: "/handbook/contributing"
+    description:
+      en: "Anyone who is interested in collaboration"
+      ru: "Любой желающий, кто заинтересован в сотрудничестве"
+    translationId: "homepage.authors.your.description" 

@@ -1,56 +1,61 @@
-import type {ReactNode} from 'react';
+import React, {type ReactNode} from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
+import Translate from '@docusaurus/Translate';
 import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: ReactNode;
+  titleId: string;
+  description: string;
+  descriptionId: string;
+  icon: string;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
+    title: 'Practical Examples',
+    titleId: 'homepage.features.practical.title',
+    description: 'Learn how to create AI agents with real-world examples. Step-by-step from simple chatbots to complex autonomous systems.',
+    descriptionId: 'homepage.features.practical.description',
+    icon: '🛠️',
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
+    title: 'Foundational Knowledge',
+    titleId: 'homepage.features.foundational.title',
+    description: 'Deep understanding of AI agent fundamentals. From NLP basics to complex multi-agent interaction architectures.',
+    descriptionId: 'homepage.features.foundational.description',
+    icon: '📚',
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
+    title: 'Developer Community',
+    titleId: 'homepage.features.community.title',
+    description: 'Join a community of enthusiasts and professionals studying and developing AI agent technologies.',
+    descriptionId: 'homepage.features.community.description',
+    icon: '👥',
+  },
+  {
+    title: 'Free LLM API Keys',
+    titleId: 'homepage.features.freekeys.title',
+    description: 'Get free access to powerful language models. Practice with real LLM APIs without spending a dime.',
+    descriptionId: 'homepage.features.freekeys.description',
+    icon: '🔑',
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, titleId, description, descriptionId, icon}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+    <div className={clsx('col col--3')}>
+      <div className={styles.featureCard}>
+        <div className={styles.featureIcon}>{icon}</div>
+        <div className={styles.featureContent}>
+          <Heading as="h3">
+            <Translate id={titleId}>{title}</Translate>
+          </Heading>
+          <p>
+            <Translate id={descriptionId}>{description}</Translate>
+          </p>
+        </div>
       </div>
     </div>
   );
@@ -60,6 +65,13 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
+        <div className="text--center margin-bottom--lg">
+          <Heading as="h2">
+            <Translate id="homepage.features.section.title">
+              What Our Handbook Offers
+            </Translate>
+          </Heading>
+        </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

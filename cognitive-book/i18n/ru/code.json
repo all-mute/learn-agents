@@ -216,5 +216,161 @@
   },
   "Architectures": {
     "message": "Архитектуры"
+  },
+  "homepage.aiAgents.title": {
+    "message": "Что такое AI Агенты?"
+  },
+  "homepage.aiAgents.description1": {
+    "message": "AI Агенты — это программные системы, способные автономно воспринимать окружающую среду, принимать решения и выполнять действия для достижения поставленных целей без постоянного вмешательства человека."
+  },
+  "homepage.aiAgents.description2": {
+    "message": "Современные AI агенты работают на основе продвинутых языковых моделей (LLM), имеют доступ к инструментам и внешним API, а также используют память для хранения контекста взаимодействия."
+  },
+  "homepage.aiAgents.learnButton": {
+    "message": "Изучить основы"
+  },
+  "homepage.aiAgents.roadmapButton": {
+    "message": "Дорожная карта"
+  },
+  "homepage.features.section.title": {
+    "message": "Что предлагает наш учебник"
+  },
+  "homepage.features.practical.title": {
+    "message": "Практические примеры"
+  },
+  "homepage.features.practical.description": {
+    "message": "Научитесь создавать AI агенты на реальных примерах. Пошагово от простых чат-ботов до сложных автономных систем."
+  },
+  "homepage.features.foundational.title": {
+    "message": "Фундаментальные знания"
+  },
+  "homepage.features.foundational.description": {
+    "message": "Глубокое понимание основ AI агентов. От основ NLP до сложных архитектур взаимодействия мульти-агентов."
+  },
+  "homepage.features.community.title": {
+    "message": "Сообщество разработчиков"
+  },
+  "homepage.features.community.description": {
+    "message": "Присоединяйтесь к сообществу энтузиастов и профессионалов, изучающих и разрабатывающих технологии AI агентов."
+  },
+  "homepage.features.freekeys.title": {
+    "message": "Бесплатные ключи LLM API"
+  },
+  "homepage.features.freekeys.description": {
+    "message": "Получите бесплатный доступ к мощным языковым моделям. Практикуйтесь с реальными LLM API без затрат."
+  },
+  "homepage.modules.title": {
+    "message": "Учебные модули"
+  },
+  "homepage.modules.basics.title": {
+    "message": "Основы"
+  },
+  "homepage.modules.basics.description": {
+    "message": "Начните с основ AI агентов. Изучите ключевые концепции, архитектуру и создайте своего первого AI агента."
+  },
+  "homepage.modules.junior.title": {
+    "message": "Junior"
+  },
+  "homepage.modules.junior.description": {
+    "message": "Развивайте навыки работы с AI агентами. Научитесь внедрять память, инструменты и создавать более сложные автономные системы."
+  },
+  "homepage.modules.future.title": {
+    "message": "Будущие модули"
+  },
+  "homepage.modules.future.description": {
+    "message": "Следите за обновлениями - скоро появятся новые модули по продвинутым темам, включая автономных агентов, рои агентов и многое другое."
+  },
+  "homepage.modules.learnMore": {
+    "message": "Подробнее"
+  },
+  "homepage.communities.title": {
+    "message": "Присоединяйтесь к нашему сообществу"
+  },
+  "homepage.communities.subtitle": {
+    "message": "Общайтесь с другими разработчиками и энтузиастами AI агентов"
+  },
+  "homepage.communities.discord.title": {
+    "message": "Discord сообщество"
+  },
+  "homepage.communities.discord.description": {
+    "message": "Присоединяйтесь к нашему серверу Discord, чтобы участвовать в обсуждениях, делиться своими проектами и получать поддержку от участников сообщества."
+  },
+  "homepage.communities.discord.button": {
+    "message": "Присоединиться к Discord"
+  },
+  "homepage.communities.telegram.title": {
+    "message": "Telegram канал"
+  },
+  "homepage.communities.telegram.description": {
+    "message": "Подпишитесь на наш Telegram канал для получения обновлений, новостей и ресурсов о AI агентах и связанных технологиях."
+  },
+  "homepage.communities.telegram.button": {
+    "message": "Присоединиться к Telegram"
+  },
+  "homepage.cta.title": {
+    "message": "Готовы начать своё путешествие с AI агентами?"
+  },
+  "homepage.cta.description": {
+    "message": "Погрузитесь в наши всеобъемлющие ресурсы и присоединяйтесь к сообществу разработчиков AI агентов"
+  },
+  "homepage.cta.textbook": {
+    "message": "Начать обучение"
+  },
+  "homepage.cta.roadmap": {
+    "message": "Дорожная карта"
+  },
+  "homepage.cta.telegram": {
+    "message": "Telegram"
+  },
+  "homepage.cta.discord": {
+    "message": "Discord"
+  },
+  "homepage.header.button": {
+    "message": "Начать изучение AI агентов"
+  },
+  "homepage.header.githubText": {
+    "message": "Если вам нравится проект, поставьте звезду на GitHub"
+  },
+  "homepage.header.dynamicStarText": {
+    "message": "Если вам нравится проект, поставьте {nextStar}-ю звезду на GitHub"
+  },
+  "homepage.meta.title": {
+    "message": "{siteConfig.title} - Интерактивный учебник по созданию AI агентов"
+  },
+  "homepage.meta.description": {
+    "message": "Интерактивный учебник по созданию и использованию AI агентов с примерами кода и практическими руководствами"
+  },
+  "homepage.authors.title": {
+    "message": "Авторы проекта"
+  },
+  "homepage.authors.description": {
+    "message": "Наша команда экспертов в области искусственного интеллекта и машинного обучения"
+  },
+  "homepage.authors.viewProfile": {
+    "message": "Профиль"
+  },
+  "homepage.authors.main.name": {
+    "message": "Дмитрий Меркулов"
+  },
+  "homepage.authors.main.title": {
+    "message": "Основатель проекта"
+  },
+  "homepage.authors.main.description": {
+    "message": "Эксперт в области искусственного интеллекта и машинного обучения. Основатель образовательных проектов по AI."
+  },
+  "homepage.authors.merkulov.role": {
+    "message": "Основатель проекта"
+  },
+  "homepage.authors.merkulov.description": {
+    "message": "Основной автор. CTO в AI-автоматизированном венчурном фонде, МГУ, Экс-Яндекс"
+  },
+  "homepage.authors.your.description": {
+    "message": "Любой желающий, кто заинтересован в сотрудничестве"
+  },
+  "homepage.mission.title": {
+    "message": "Наша миссия"
+  },
+  "homepage.mission.description": {
+    "message": "Мы стремимся сделать технологии AI агентов доступными для всех разработчиков, предоставляя качественные учебные материалы, практические примеры и поддерживая активное сообщество."
   }
 } 
