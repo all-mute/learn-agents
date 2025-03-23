@@ -22,7 +22,7 @@ export default function FooterWrapper(props: Props): React.ReactElement {
         <div className={styles.commentsWrapper}>
           <h3 className={styles.commentsTitle}>
             <Translate id="theme.DocItem.comments.title" description="Title of the comments section">
-              Comments
+              Комментарии
             </Translate>
           </h3>
           <GitalkComponent 
@@ -32,12 +32,7 @@ export default function FooterWrapper(props: Props): React.ReactElement {
               repo: gitalkConfig.repo,
               owner: gitalkConfig.owner,
               admin: gitalkConfig.admin,
-              // Дополнительные опции
-              distractionFreeMode: true,
-              createIssueManually: false,
-              labels: ['comment'],
-              pagerDirection: 'last',
-              language: 'en',
+              // Не переопределяем дополнительные опции, используем стандартные из компонента
             }} 
           />
         </div>

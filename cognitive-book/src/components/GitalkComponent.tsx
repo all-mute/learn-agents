@@ -12,7 +12,6 @@ interface GitalkComponentProps {
     repo?: string;
     owner?: string;
     admin?: string[];
-    theme?: string;
     [key: string]: any;
   };
 }
@@ -28,16 +27,13 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
     // Clean up previous instance
     containerRef.current.innerHTML = '';
     
-    // Используем весь путь после домена как идентификатор
-    // Удаляем начальные и конечные слэши, заменяем недопустимые символы
-    const path = location.pathname;
-    // Удаляем первый слэш (если есть)
-    const pathWithoutLeadingSlash = path.startsWith('/') ? path.substring(1) : path;
-    // Используем весь путь как идентификатор
-    const issueId = pathWithoutLeadingSlash.replace(/[^\w\-\/]/g, '-').slice(0, 50);
+    // Используем pathname как основу для идентификатора
+    // По умолчанию Gitalk использует location.href
+    // Но нам нужен более короткий ID (до 50 символов)
+    const id = location.pathname.replace(/\/+/g, '-').slice(0, 49);
     
-    // Параметры для заголовка issue
-    const title = document.title || 'Comments';
+    // Формируем URL страницы для использования в body issue
+    const pageUrl = window.location.origin + location.pathname;
     
     const gitalkInstance = new Gitalk({
       clientID: options.clientID || 'YOUR_CLIENT_ID',
@@ -45,13 +41,15 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
       repo: options.repo || 'YOUR_REPO_NAME',
       owner: options.owner || 'YOUR_GITHUB_ID',
       admin: options.admin || ['YOUR_GITHUB_ID'],
-      id: issueId,
-      title: title,
-      distractionFreeMode: options.distractionFreeMode ?? false,
-      labels: options.labels || ['comment'],
-      pagerDirection: options.pagerDirection || 'last',
-      createIssueManually: options.createIssueManually ?? false,
-      language: 'ru',
+      id: id,                                // Уникальный ID страницы (до 50 символов)
+      title: document.title,                 // Заголовок issue
+      body: `${pageUrl}\n\n${document.title}`, // Тело issue
+      labels: ['gitalk', 'comment'],         // Метки
+      perPage: 20,                           // Количество комментариев на странице
+      pagerDirection: 'last',                // Сортировка (последние сверху)
+      createIssueManually: false,            // Автоматическое создание issue
+      distractionFreeMode: true,             // Режим без отвлечения
+      language: 'ru',                        // Язык (русский)
       ...options,
     });
     
@@ -65,7 +63,7 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
     <div 
       className={clsx('gitalk-container', `gitalk-${colorMode}`)} 
       ref={containerRef} 
-      aria-label="Comments"
+      aria-label="Комментарии"
     />
   );
 } 
