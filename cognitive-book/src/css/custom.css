@@ -4,6 +4,9 @@
  * work well for content-centric websites.
  */
 
+/* Импортируем стили для Gitalk */
+@import './gitalk-custom.css';
+
 /* You can override the default Infima variables here. */
 :root {
   --ifm-color-primary: #2e8555;

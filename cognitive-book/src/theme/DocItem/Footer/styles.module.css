@@ -1,0 +1,49 @@
+.commentsSection {
+  margin-top: 3rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.commentsWrapper {
+  margin: 0 auto;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.commentsTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.commentsTitle:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background-color: var(--ifm-color-primary);
+  border-radius: 3px;
+}
+
+/* Специальные стили для темного режима */
+html[data-theme='dark'] .commentsSection {
+  border-top-color: var(--ifm-color-emphasis-300);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 996px) {
+  .commentsSection {
+    margin-top: 2rem;
+    padding-top: 0.5rem;
+  }
+  
+  .commentsTitle {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+} 

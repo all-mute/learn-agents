@@ -1,0 +1,135 @@
+/* Основные стили для контейнера комментариев */
+.gt-container {
+  margin-top: 2rem !important;
+  padding: 20px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+html[data-theme='dark'] .gt-container {
+  background-color: var(--ifm-card-background-color) !important;
+  color: var(--ifm-font-color-base) !important;
+}
+
+/* Заголовок */
+.gt-header-textarea {
+  background-color: var(--ifm-background-color) !important;
+  color: var(--ifm-font-color-base) !important;
+  border: 1px solid var(--ifm-color-emphasis-300) !important;
+  border-radius: 6px !important;
+  transition: all 0.3s ease !important;
+}
+
+.gt-header-textarea:hover,
+.gt-header-textarea:focus {
+  box-shadow: 0 0 0 2px var(--ifm-color-primary-lighter) !important;
+  border-color: var(--ifm-color-primary) !important;
+}
+
+/* Кнопки */
+.gt-btn {
+  border-radius: 4px !important;
+  font-weight: 500 !important;
+  transition: all 0.2s ease !important;
+}
+
+.gt-btn-preview {
+  background-color: var(--ifm-color-emphasis-200) !important;
+  color: var(--ifm-font-color-base) !important;
+  border: 1px solid var(--ifm-color-emphasis-300) !important;
+}
+
+.gt-btn-preview:hover {
+  background-color: var(--ifm-color-emphasis-300) !important;
+}
+
+.gt-btn-login,
+.gt-btn-public {
+  background-color: var(--ifm-color-primary) !important;
+  color: white !important;
+  border: none !important;
+}
+
+.gt-btn-login:hover,
+.gt-btn-public:hover {
+  background-color: var(--ifm-color-primary-darker) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Аватары */
+.gt-avatar {
+  border-radius: 50% !important;
+  border: 2px solid var(--ifm-color-primary-lighter) !important;
+}
+
+.gt-avatar-github {
+  opacity: 0.9 !important;
+}
+
+.gt-avatar-github:hover {
+  opacity: 1 !important;
+}
+
+/* Комментарии */
+.gt-comment-content {
+  background-color: var(--ifm-card-background-color) !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--ifm-color-emphasis-300) !important;
+  transition: all 0.3s ease !important;
+  padding: 12px !important;
+}
+
+.gt-comment-content:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Имя пользователя */
+.gt-comment-username {
+  color: var(--ifm-color-primary) !important;
+  font-weight: bold !important;
+}
+
+/* Текст комментария */
+.gt-comment-body {
+  color: var(--ifm-font-color-base) !important;
+}
+
+/* Дата */
+.gt-comment-date {
+  color: var(--ifm-color-emphasis-600) !important;
+}
+
+/* Превью комментария */
+.gt-comment-preview {
+  background-color: var(--ifm-background-color) !important;
+  border: 1px solid var(--ifm-color-emphasis-300) !important;
+  border-radius: 6px !important;
+  color: var(--ifm-font-color-base) !important;
+}
+
+/* Ссылки в комментариях */
+.gt-comment-body a {
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none !important;
+}
+
+.gt-comment-body a:hover {
+  text-decoration: underline !important;
+}
+
+/* Адаптация под мобильные устройства */
+@media (max-width: 768px) {
+  .gt-container {
+    padding: 15px !important;
+  }
+  
+  .gt-header-textarea {
+    height: 120px !important;
+  }
+  
+  .gt-comment-content {
+    padding: 10px !important;
+  }
+} 
