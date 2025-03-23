@@ -3,26 +3,30 @@
   margin-top: 2rem !important;
   padding: 20px !important;
   border-radius: 8px !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
+  background-color: transparent !important;
 }
 
 html[data-theme='dark'] .gt-container {
-  background-color: var(--ifm-card-background-color) !important;
   color: var(--ifm-font-color-base) !important;
+  border: 1px solid var(--ifm-color-emphasis-300) !important;
 }
 
 /* Заголовок */
 .gt-header-textarea {
-  background-color: var(--ifm-background-color) !important;
+  background-color: var(--ifm-background-surface-color) !important;
   color: var(--ifm-font-color-base) !important;
   border: 1px solid var(--ifm-color-emphasis-300) !important;
   border-radius: 6px !important;
   transition: all 0.3s ease !important;
+  padding: 12px !important;
+  font-family: var(--ifm-font-family-base) !important;
+  font-size: var(--ifm-font-size-base) !important;
 }
 
 .gt-header-textarea:hover,
 .gt-header-textarea:focus {
-  box-shadow: 0 0 0 2px var(--ifm-color-primary-lighter) !important;
+  box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest) !important;
   border-color: var(--ifm-color-primary) !important;
 }
 
@@ -31,11 +35,14 @@ html[data-theme='dark'] .gt-container {
   border-radius: 4px !important;
   font-weight: 500 !important;
   transition: all 0.2s ease !important;
+  font-family: var(--ifm-font-family-base) !important;
+  padding: 6px 16px !important;
+  cursor: pointer !important;
 }
 
 .gt-btn-preview {
   background-color: var(--ifm-color-emphasis-200) !important;
-  color: var(--ifm-font-color-base) !important;
+  color: var(--ifm-color-emphasis-800) !important;
   border: 1px solid var(--ifm-color-emphasis-300) !important;
 }
 
@@ -53,8 +60,8 @@ html[data-theme='dark'] .gt-container {
 .gt-btn-login:hover,
 .gt-btn-public:hover {
   background-color: var(--ifm-color-primary-darker) !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Аватары */
@@ -73,40 +80,51 @@ html[data-theme='dark'] .gt-container {
 
 /* Комментарии */
 .gt-comment-content {
-  background-color: var(--ifm-card-background-color) !important;
+  background-color: var(--ifm-background-surface-color) !important;
   border-radius: 8px !important;
   border: 1px solid var(--ifm-color-emphasis-300) !important;
   transition: all 0.3s ease !important;
-  padding: 12px !important;
+  padding: 14px !important;
+  margin: 6px 0 !important;
 }
 
 .gt-comment-content:hover {
   transform: translateY(-2px) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1) !important;
 }
 
 /* Имя пользователя */
 .gt-comment-username {
   color: var(--ifm-color-primary) !important;
   font-weight: bold !important;
+  font-family: var(--ifm-font-family-base) !important;
 }
 
 /* Текст комментария */
 .gt-comment-body {
   color: var(--ifm-font-color-base) !important;
+  font-family: var(--ifm-font-family-base) !important;
+  font-size: var(--ifm-font-size-base) !important;
+  line-height: 1.6 !important;
+}
+
+.gt-comment-body p {
+  margin: 0.7em 0 !important;
 }
 
 /* Дата */
 .gt-comment-date {
   color: var(--ifm-color-emphasis-600) !important;
+  font-size: 0.85em !important;
 }
 
 /* Превью комментария */
 .gt-comment-preview {
-  background-color: var(--ifm-background-color) !important;
+  background-color: var(--ifm-background-surface-color) !important;
   border: 1px solid var(--ifm-color-emphasis-300) !important;
   border-radius: 6px !important;
   color: var(--ifm-font-color-base) !important;
+  padding: 16px !important;
 }
 
 /* Ссылки в комментариях */
@@ -117,6 +135,105 @@ html[data-theme='dark'] .gt-container {
 
 .gt-comment-body a:hover {
   text-decoration: underline !important;
+}
+
+/* Метки под полем комментария */
+.gt-header-controls-tip {
+  color: var(--ifm-color-emphasis-600) !important;
+  font-size: 0.85em !important;
+}
+
+/* Исправляем счетчик комментариев */
+.gt-counts {
+  color: var(--ifm-color-emphasis-700) !important;
+  font-size: 0.95em !important;
+  margin-bottom: 16px !important;
+}
+
+/* Исправляем проблему с темной темой */
+html[data-theme='dark'] .gt-svg svg {
+  fill: var(--ifm-font-color-base) !important;
+}
+
+html[data-theme='dark'] .gt-ico-github svg {
+  fill: white !important;
+}
+
+/* Meta информация в комментариях */
+.gt-comment-admin .gt-comment-content {
+  border-left: 3px solid var(--ifm-color-primary) !important;
+}
+
+/* Улучшаем стиль для инпутов */
+.gt-header-controls input {
+  background-color: var(--ifm-background-surface-color) !important;
+  border: 1px solid var(--ifm-color-emphasis-300) !important;
+  color: var(--ifm-font-color-base) !important;
+  border-radius: 4px !important;
+  padding: 6px 10px !important;
+}
+
+/* Фиксы для темной темы */
+html[data-theme='dark'] .gt-comment-text,
+html[data-theme='dark'] .gt-header-textarea::placeholder,
+html[data-theme='dark'] .gt-header-controls input::placeholder {
+  color: var(--ifm-color-emphasis-600) !important;
+}
+
+html[data-theme='dark'] .gt-header-controls {
+  color: var(--ifm-color-emphasis-800) !important;
+}
+
+html[data-theme='dark'] .gt-ico-code svg,
+html[data-theme='dark'] .gt-ico-github svg {
+  fill: var(--ifm-color-emphasis-900) !important;
+}
+
+html[data-theme='dark'] .gt-comment-like svg {
+  fill: var(--ifm-color-emphasis-600) !important;
+}
+
+html[data-theme='dark'] .gt-comment-like:hover svg {
+  fill: var(--ifm-color-primary) !important;
+}
+
+/* Улучшаем плавность анимаций */
+.gt-header-textarea,
+.gt-header-controls input,
+.gt-btn,
+.gt-comment-content,
+.gt-avatar {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Добавляем фокусные состояния для доступности */
+.gt-header-textarea:focus,
+.gt-header-controls input:focus,
+.gt-btn:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px var(--ifm-color-primary-lighter) !important;
+}
+
+/* Исправляем отступы в форме комментария */
+.gt-header-controls {
+  margin: 16px 0 !important;
+}
+
+/* Улучшаем оформление счетчика комментариев */
+.gt-header-controls-tip,
+.gt-counts {
+  opacity: 0.8 !important;
+}
+
+/* Стили для пустого состояния */
+.gt-no-init {
+  padding: 1.5rem !important;
+  text-align: center !important;
+  color: var(--ifm-color-emphasis-600) !important;
+  background-color: var(--ifm-background-surface-color) !important;
+  border-radius: 8px !important;
+  border: 1px dashed var(--ifm-color-emphasis-300) !important;
+  margin: 1rem 0 !important;
 }
 
 /* Адаптация под мобильные устройства */

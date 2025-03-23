@@ -4,12 +4,15 @@ import type FooterType from '@theme/DocItem/Footer';
 import type { WrapperProps } from '@docusaurus/types';
 import GitalkComponent from '@site/src/components/GitalkComponent';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useColorMode } from '@docusaurus/theme-common';
+import Translate from '@docusaurus/Translate';
 import styles from './styles.module.css';
 
 type Props = WrapperProps<typeof FooterType>;
 
 export default function FooterWrapper(props: Props): React.ReactElement {
   const { siteConfig } = useDocusaurusContext();
+  const { colorMode } = useColorMode();
   const gitalkConfig = siteConfig.customFields?.gitalk as Record<string, any> || {};
 
   return (
@@ -17,7 +20,11 @@ export default function FooterWrapper(props: Props): React.ReactElement {
       <Footer {...props} />
       <div className={styles.commentsSection}>
         <div className={styles.commentsWrapper}>
-          <h3 className={styles.commentsTitle}>Комментарии</h3>
+          <h3 className={styles.commentsTitle}>
+            <Translate id="theme.DocItem.comments.title" description="Title of the comments section">
+              Комментарии
+            </Translate>
+          </h3>
           <GitalkComponent 
             options={{
               clientID: gitalkConfig.clientID,
@@ -30,6 +37,7 @@ export default function FooterWrapper(props: Props): React.ReactElement {
               createIssueManually: false,
               labels: ['comment'],
               pagerDirection: 'last',
+              theme: colorMode,
             }} 
           />
         </div>

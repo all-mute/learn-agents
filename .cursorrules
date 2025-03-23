@@ -1,43 +1,46 @@
-Сайт будет по адресу learn-agents.diy
-Автор - github.com/all-mute, merkulov.courses, merkulov.ai
-Карта - https://roadmap.sh/r/ai-agents-2025-roadmap
-Телеграм - https://t.me/learnagents
-Дискорд - https://discord.gg/3JBx5HUR9n
+The website will be available at learn-agents.diy
+Author - github.com/all-mute, merkulov.courses, merkulov.ai
+Roadmap - https://roadmap.sh/r/ai-agents-2025-roadmap
+Telegram - https://t.me/learnagents
+Discord - https://discord.gg/3JBx5HUR9n
+Repositories:
+- https://github.com/all-mute/learn-agents
+- https://github.com/all-mute/learn-agents-comments
 
-## Описание проекта
-- Интерактивная книга про AI Agents
-- Основная цель: обучение разработчиков созданию и использованию AI Agents с нуля
-- Целевая аудитория: разработчики, исследователи AI, студенты
+## Project Description
+- Interactive book about AI Agents
+- Main goal: teaching developers how to create and use AI Agents from scratch
+- Target audience: developers, AI researchers, students
 
-## Технологический стек
-- Docusaurus 3.x для документации и образовательного портала
-- React для интерактивных компонентов
-- TypeScript для типизации
-- Markdown/MDX для контента
-- i18n для локализации (основной язык: английский)
+## Technology Stack
+- Docusaurus 3.x for documentation and educational portal
+- React for interactive components
+- TypeScript for type safety
+- Markdown/MDX for content
+- i18n for localization (primary language: English)
 
-## Структура проекта:
+## Project Structure:
 cognitive-book/
-├── docs/ - основной контент, markdown/mdx файлы
-├── src/ - компоненты React и настройки темы
-├── i18n/ - локализация
-├── docusaurus.config.ts - главный конфигурационный файл
-├── package.json - зависимости и скрипты
-├── sidebars.ts - конфигурация боковой навигации
-└── i18n/ru/ - русская локализация
+├── docs/ - main content, markdown/mdx files
+├── src/ - React components and theme settings
+├── i18n/ - localization
+├── docusaurus.config.ts - main configuration file
+├── package.json - dependencies and scripts
+├── sidebars.ts - sidebar navigation configuration
+└── i18n/ru/ - Russian localization
 
-## Правила форматирования контента
-- Писать на русском языке в /i18n/ru/
-- Писать на английском языке в /docs/
-- Использовать Markdown для базового форматирования
-- Для сложных компонентов использовать MDX
-- Изображения хранить в `/static/img/`
-- Код оформлять в блоках ````
+## Content Formatting Rules
+- Write in Russian in /i18n/ru/
+- Write in English in /docs/
+- Use Markdown for basic formatting
+- Use MDX for complex components
+- Store images in `/static/img/`
+- Format code in ```` blocks
 
-Рабочине моменты:
-- В PowerShell на Windows нельзя использовать оператор &&. Давайте выполнять команды по отдельности.
-- Для запуска нужна команда `npx docusaurus start --locale ru`
-- Везде кроме /i18n/ru/ использовать английский язык. Во всех react компонентах использовать английский язык.
+Working notes:
+- In PowerShell on Windows, you cannot use the && operator. Let's execute commands separately.
+- To start the server, use the command `npx docusaurus start --locale ru`
+- Use English everywhere except /i18n/ru/. Use English in all React components.
 
 
 

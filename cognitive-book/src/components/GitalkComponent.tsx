@@ -3,6 +3,7 @@ import 'gitalk/dist/gitalk.css';
 import Gitalk from 'gitalk';
 import { useLocation } from '@docusaurus/router';
 import { useColorMode } from '@docusaurus/theme-common';
+import clsx from 'clsx';
 
 interface GitalkComponentProps {
   options?: {
@@ -11,6 +12,7 @@ interface GitalkComponentProps {
     repo?: string;
     owner?: string;
     admin?: string[];
+    theme?: string;
     [key: string]: any;
   };
 }
@@ -48,9 +50,18 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
       ...options,
     });
     
-    // Добавляем атрибут data-theme для поддержки темной темы
+    // Устанавливаем атрибут тема для контейнера
     if (colorMode === 'dark') {
       containerRef.current.setAttribute('data-theme', 'dark');
+      
+      // Попытка исправить проблему с иконками в темной теме
+      const style = document.createElement('style');
+      style.textContent = `
+        .gt-ico-edit svg, .gt-ico-text svg, .gt-ico-tip svg {
+          fill: var(--ifm-font-color-base) !important;
+        }
+      `;
+      containerRef.current.appendChild(style);
     } else {
       containerRef.current.setAttribute('data-theme', 'light');
     }
@@ -59,6 +70,9 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
   }, [location.pathname, options, colorMode]); // Re-render when pathname or color mode changes
   
   return (
-    <div className="gitalk-container" ref={containerRef} />
+    <div 
+      className={clsx('gitalk-container', colorMode === 'dark' ? 'gitalk-dark' : 'gitalk-light')} 
+      ref={containerRef} 
+    />
   );
 } 
