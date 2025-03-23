@@ -1,7 +1,7 @@
 /* Основные стили для контейнера комментариев */
 .gt-container {
-  margin-top: 1rem !important;
-  padding: 30px !important;
+  margin-top: 0.5rem !important;
+  padding: 15px !important;
   border-radius: 8px !important;
   background-color: transparent !important;
   box-sizing: border-box !important;
@@ -99,8 +99,8 @@ html[data-theme='dark'] .gt-container {
   border-radius: 8px !important;
   border: 1px solid var(--ifm-color-emphasis-300) !important;
   transition: all 0.3s ease !important;
-  padding: 20px !important;
-  margin: 12px 0 !important;
+  padding: 10px !important;
+  margin: 6px 0 !important;
 }
 
 .gt-comment-content:hover {
@@ -191,7 +191,7 @@ html[data-theme='dark'] .gt-ico-github svg {
 /* Счетчик комментариев */
 .gt-counts {
   color: var(--ifm-color-emphasis-700) !important;
-  margin-bottom: 18px !important;
+  margin-bottom: 10px !important;
   font-size: 1rem !important;
 }
 
@@ -202,13 +202,13 @@ html[data-theme='dark'] .gt-counts {
 
 /* Стили для пустого состояния */
 .gt-no-init {
-  padding: 2rem !important;
+  padding: 1rem !important;
   text-align: center !important;
   color: var(--ifm-color-emphasis-700) !important;
   background-color: transparent !important;
   border-radius: 8px !important;
   border: 1px dashed var(--ifm-color-emphasis-300) !important;
-  margin: 1rem 0 !important;
+  margin: 0.5rem 0 !important;
 }
 
 /* Улучшаем отображение иконок в темной теме */
@@ -227,7 +227,7 @@ html[data-theme='dark'] .gt-link-project {
 /* Адаптация под мобильные устройства */
 @media (max-width: 768px) {
   .gt-container {
-    padding: 20px !important;
+    padding: 10px !important;
   }
   
   .gt-header-textarea {
@@ -235,7 +235,7 @@ html[data-theme='dark'] .gt-link-project {
   }
   
   .gt-comment-content {
-    padding: 15px !important;
+    padding: 8px !important;
   }
   
   .gt-header-avatar img,

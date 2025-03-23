@@ -4,6 +4,7 @@ import type FooterType from '@theme/DocItem/Footer';
 import type { WrapperProps } from '@docusaurus/types';
 import GitalkComponent from '@site/src/components/GitalkComponent';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { useColorMode } from '@docusaurus/theme-common';
 import Translate from '@docusaurus/Translate';
 import styles from './styles.module.css';
 
@@ -11,6 +12,7 @@ type Props = WrapperProps<typeof FooterType>;
 
 export default function FooterWrapper(props: Props): React.ReactElement {
   const { siteConfig } = useDocusaurusContext();
+  const { colorMode } = useColorMode();
   const gitalkConfig = siteConfig.customFields?.gitalk as Record<string, any> || {};
 
   return (
@@ -30,9 +32,12 @@ export default function FooterWrapper(props: Props): React.ReactElement {
               repo: gitalkConfig.repo,
               owner: gitalkConfig.owner,
               admin: gitalkConfig.admin,
-              // Базовые опции для Gitalk
+              // Дополнительные опции
               distractionFreeMode: true,
-              language: 'ru',
+              createIssueManually: false,
+              labels: ['comment'],
+              pagerDirection: 'last',
+              language: 'en',
             }} 
           />
         </div>
