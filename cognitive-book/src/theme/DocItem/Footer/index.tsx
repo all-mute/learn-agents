@@ -22,7 +22,7 @@ export default function FooterWrapper(props: Props): React.ReactElement {
         <div className={styles.commentsWrapper}>
           <h3 className={styles.commentsTitle}>
             <Translate id="theme.DocItem.comments.title" description="Title of the comments section">
-              Комментарии
+              Comments
             </Translate>
           </h3>
           <GitalkComponent 
