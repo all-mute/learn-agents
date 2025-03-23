@@ -27,14 +27,10 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
     // Clean up previous instance
     containerRef.current.innerHTML = '';
     
-    // Удаляем префикс локализации /ru/ если он есть
-    let path = location.pathname;
-    if (path.startsWith('/ru/')) {
-      path = path.replace('/ru/', '/');
-    }
-    
-    // Используем pathname без префикса локализации как основу для идентификатора
-    const id = path.replace(/\/+/g, '-').slice(0, 49);
+    // Используем pathname как основу для идентификатора
+    // По умолчанию Gitalk использует location.href
+    // Но нам нужен более короткий ID (до 50 символов)
+    const id = location.pathname.replace(/\/+/g, '-').slice(0, 49);
     
     // Формируем URL страницы для использования в body issue
     const pageUrl = window.location.origin + location.pathname;
@@ -67,7 +63,7 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
     <div 
       className={clsx('gitalk-container', `gitalk-${colorMode}`)} 
       ref={containerRef} 
-      aria-label="Комментарии"
+      aria-label="Comments"
     />
   );
 } 
