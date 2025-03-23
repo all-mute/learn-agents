@@ -1,15 +1,16 @@
 /* Основные стили для контейнера комментариев */
 .gt-container {
-  margin-top: 2rem !important;
-  padding: 20px !important;
+  margin-top: 1rem !important;
+  padding: 30px !important;
   border-radius: 8px !important;
   background-color: transparent !important;
-  margin: 0 auto;
-  font-family: var(--ifm-font-family-base);
+  box-sizing: border-box !important;
+  width: 100% !important;
 }
 
+/* Улучшаем яркость текста в темной теме */
 html[data-theme='dark'] .gt-container {
-  color: var(--ifm-font-color-base) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Заголовок */
@@ -36,7 +37,7 @@ html[data-theme='dark'] .gt-container {
   font-weight: 500 !important;
   transition: all 0.2s ease !important;
   font-family: var(--ifm-font-family-base) !important;
-  padding: 6px 16px !important;
+  padding: 8px 16px !important;
   cursor: pointer !important;
 }
 
@@ -63,13 +64,10 @@ html[data-theme='dark'] .gt-container {
   transform: translateY(-1px) !important;
 }
 
-/* Аватары - исправляем проблему с круглыми аватарками и увеличиваем размер */
+/* Аватары - увеличиваем размер */
 .gt-avatar img {
   border-radius: 50% !important;
   border: 2px solid var(--ifm-color-primary-lighter) !important;
-  width: 50px !important;
-  height: 50px !important;
-  object-fit: cover !important;
 }
 
 .gt-header-avatar {
@@ -89,7 +87,6 @@ html[data-theme='dark'] .gt-container {
 .gt-comment-avatar {
   border-radius: 50% !important;
   overflow: hidden !important;
-  margin-right: 12px !important;
 }
 
 .gt-avatar-github {
@@ -102,8 +99,8 @@ html[data-theme='dark'] .gt-container {
   border-radius: 8px !important;
   border: 1px solid var(--ifm-color-emphasis-300) !important;
   transition: all 0.3s ease !important;
-  padding: 16px !important;
-  margin: 8px 0 !important;
+  padding: 20px !important;
+  margin: 12px 0 !important;
 }
 
 .gt-comment-content:hover {
@@ -116,7 +113,7 @@ html[data-theme='dark'] .gt-container {
   color: var(--ifm-color-primary) !important;
   font-weight: bold !important;
   font-family: var(--ifm-font-family-base) !important;
-  font-size: 1.05em !important;
+  font-size: 1.05rem !important;
 }
 
 /* Текст комментария */
@@ -127,22 +124,14 @@ html[data-theme='dark'] .gt-container {
   line-height: 1.6 !important;
 }
 
-html[data-theme='dark'] .gt-comment-body {
-  color: rgba(255, 255, 255, 0.92) !important; /* Более контрастный цвет для темной темы */
-}
-
 .gt-comment-body p {
-  margin: 0.7em 0 !important;
+  margin: 0.8em 0 !important;
 }
 
 /* Дата */
 .gt-comment-date {
-  color: var(--ifm-color-emphasis-600) !important;
+  color: var(--ifm-color-emphasis-700) !important;
   font-size: 0.85em !important;
-}
-
-html[data-theme='dark'] .gt-comment-date {
-  color: rgba(255, 255, 255, 0.7) !important; /* Более контрастный цвет для даты */
 }
 
 /* Превью комментария */
@@ -151,7 +140,7 @@ html[data-theme='dark'] .gt-comment-date {
   border: 1px solid var(--ifm-color-emphasis-300) !important;
   border-radius: 6px !important;
   color: var(--ifm-font-color-base) !important;
-  padding: 16px !important;
+  padding: 18px !important;
 }
 
 /* Исправляем проблему с темной темой */
@@ -159,24 +148,25 @@ html[data-theme='dark'] .gt-container {
   background-color: transparent !important;
 }
 
-html[data-theme='dark'] .gt-header,
 html[data-theme='dark'] .gt-comments,
 html[data-theme='dark'] .gt-header-textarea,
 html[data-theme='dark'] .gt-comment-content {
-  background-color: var(--ifm-background-surface-color) !important;
+  background-color: var(--ifm-background-color) !important;
   border-color: var(--ifm-color-emphasis-300) !important;
 }
 
-/* Улучшаем контраст текста в темной теме */
+/* Улучшаем яркость текста в темной теме */
+html[data-theme='dark'] .gt-comment-body,
+html[data-theme='dark'] .gt-comment-text,
 html[data-theme='dark'] .gt-header-textarea,
-html[data-theme='dark'] .gt-comment-text {
-  color: rgba(255, 255, 255, 0.92) !important;
+html[data-theme='dark'] .gt-comment-admin {
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Исправляем проблему с иконками в темной теме */
 html[data-theme='dark'] .gt-svg svg,
 html[data-theme='dark'] .gt-comment-like svg {
-  fill: rgba(255, 255, 255, 0.8) !important;
+  fill: rgba(255, 255, 255, 0.95) !important;
 }
 
 html[data-theme='dark'] .gt-ico-github svg {
@@ -189,52 +179,55 @@ html[data-theme='dark'] .gt-ico-github svg {
   border: 1px solid var(--ifm-color-emphasis-300) !important;
   color: var(--ifm-font-color-base) !important;
   border-radius: 4px !important;
-  padding: 6px 10px !important;
-}
-
-html[data-theme='dark'] .gt-header-controls input {
-  color: rgba(255, 255, 255, 0.92) !important;
+  padding: 8px 12px !important;
 }
 
 /* Метки под полем комментария */
 .gt-header-controls-tip {
-  color: var(--ifm-color-emphasis-600) !important;
+  color: var(--ifm-color-emphasis-700) !important;
   font-size: 0.85em !important;
-}
-
-html[data-theme='dark'] .gt-header-controls-tip {
-  color: rgba(255, 255, 255, 0.7) !important;
 }
 
 /* Счетчик комментариев */
 .gt-counts {
   color: var(--ifm-color-emphasis-700) !important;
-  margin-bottom: 16px !important;
+  margin-bottom: 18px !important;
+  font-size: 1rem !important;
 }
 
+/* Улучшаем яркость счетчика комментариев в темной теме */
 html[data-theme='dark'] .gt-counts {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Стили для пустого состояния */
 .gt-no-init {
-  padding: 1.5rem !important;
+  padding: 2rem !important;
   text-align: center !important;
-  color: var(--ifm-color-emphasis-600) !important;
+  color: var(--ifm-color-emphasis-700) !important;
   background-color: transparent !important;
   border-radius: 8px !important;
   border: 1px dashed var(--ifm-color-emphasis-300) !important;
   margin: 1rem 0 !important;
 }
 
-html[data-theme='dark'] .gt-no-init {
-  color: rgba(255, 255, 255, 0.8) !important;
+/* Улучшаем отображение иконок в темной теме */
+html[data-theme='dark'] .gt-ico-text svg,
+html[data-theme='dark'] .gt-ico-edit svg {
+  fill: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Улучшаем отображение текста в темной теме */
+html[data-theme='dark'] .gt-header-controls-tip,
+html[data-theme='dark'] .gt-link-counts,
+html[data-theme='dark'] .gt-link-project {
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 
 /* Адаптация под мобильные устройства */
 @media (max-width: 768px) {
   .gt-container {
-    padding: 15px !important;
+    padding: 20px !important;
   }
   
   .gt-header-textarea {
@@ -242,115 +235,12 @@ html[data-theme='dark'] .gt-no-init {
   }
   
   .gt-comment-content {
-    padding: 12px !important;
+    padding: 15px !important;
   }
   
   .gt-header-avatar img,
   .gt-comment-avatar img {
-    width: 45px !important;
-    height: 45px !important;
+    width: 40px !important;
+    height: 40px !important;
   }
-}
-
-/* Общие стили для Gitalk */
-.gt-container {
-  margin: 0 auto;
-  font-family: var(--ifm-font-family-base);
-}
-
-/* Кнопки */
-.gt-container .gt-btn {
-  border: 1px solid var(--ifm-color-primary);
-  background-color: var(--ifm-color-primary);
-  color: white;
-  transition: all 0.3s ease;
-}
-
-.gt-container .gt-btn:hover {
-  background-color: transparent;
-  color: var(--ifm-color-primary);
-}
-
-.gt-container .gt-btn-preview {
-  background-color: transparent;
-  color: var(--ifm-color-primary);
-}
-
-.gt-container .gt-btn-preview:hover {
-  background-color: var(--ifm-color-primary);
-  color: white;
-}
-
-/* Круглые аватарки */
-.gt-container .gt-avatar img {
-  border-radius: 50%;
-  width: 50px !important;  /* Увеличиваем размер аватаров */
-  height: 50px !important; /* Увеличиваем размер аватаров */
-}
-
-.gt-container .gt-avatar {
-  margin-right: 16px; /* Увеличиваем отступ от аватарки до контента */
-}
-
-/* Заголовки и текст */
-.gt-container .gt-header-textarea,
-.gt-container .gt-comment-content {
-  background-color: transparent;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  font-family: var(--ifm-font-family-base);
-  transition: all 0.3s ease;
-}
-
-.gt-container .gt-comment-content {
-  font-size: 15px;
-  background-color: transparent !important;
-}
-
-/* Стили для темной темы */
-html[data-theme='dark'] .gt-container {
-  color: rgba(255, 255, 255, 0.92) !important; /* Улучшаем контраст текста */
-}
-
-html[data-theme='dark'] .gt-container .gt-comment-content {
-  color: rgba(255, 255, 255, 0.92) !important; /* Улучшаем контраст текста */
-}
-
-html[data-theme='dark'] .gt-container .gt-comment-date {
-  color: rgba(255, 255, 255, 0.7) !important; /* Улучшаем контраст даты */
-}
-
-html[data-theme='dark'] .gt-container .gt-header-textarea {
-  background-color: transparent;
-  border-color: var(--ifm-color-emphasis-300);
-  color: var(--ifm-font-color-base);
-}
-
-html[data-theme='dark'] .gt-container .gt-header-preview {
-  background-color: rgba(255, 255, 255, 0.05);
-  color: var(--ifm-font-color-base);
-}
-
-/* Переписываем стили для эмодзи-меню в темной теме */
-html[data-theme='dark'] .gt-container .gt-emoji-picker {
-  background-color: var(--ifm-background-surface-color);
-  border-color: var(--ifm-color-emphasis-300);
-}
-
-html[data-theme='dark'] .gt-container .gt-ico {
-  fill: var(--ifm-color-primary);
-}
-
-/* Улучшаем контраст для текста в комментариях */
-html[data-theme='dark'] .gt-container .gt-comment-username {
-  color: var(--ifm-color-primary) !important;
-}
-
-html[data-theme='dark'] .gt-container .gt-comment-text {
-  color: rgba(255, 255, 255, 0.92) !important;
-}
-
-/* Добавляем отступы для блока комментариев */
-.gitalk-container {
-  padding: 20px;
-  margin-top: 30px;
 } 

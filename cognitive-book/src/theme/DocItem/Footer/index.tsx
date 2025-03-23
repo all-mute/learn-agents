@@ -37,7 +37,7 @@ export default function FooterWrapper(props: Props): React.ReactElement {
               createIssueManually: false,
               labels: ['comment'],
               pagerDirection: 'last',
-              theme: colorMode,
+              language: 'en',
             }} 
           />
         </div>

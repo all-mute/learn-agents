@@ -87,7 +87,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      title: 'AI Agents Handbook',
+      title: 'Learn AI Agents book',
       logo: {
         alt: 'AI Agents Handbook Logo',
         src: 'img/logo.svg',

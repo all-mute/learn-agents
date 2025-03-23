@@ -29,7 +29,10 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
     containerRef.current.innerHTML = '';
     
     // Создаем уникальный ID на основе пути страницы
-    const issueId = location.pathname.replace(/[^\w\-]/g, '-').slice(0, 50);
+    // Используем только последнюю часть пути для более удобных ID
+    const pathSegments = location.pathname.split('/').filter(Boolean);
+    const lastSegment = pathSegments.length > 0 ? pathSegments[pathSegments.length - 1] : '';
+    const issueId = (lastSegment || 'home').replace(/[^\w\-]/g, '-').slice(0, 50);
     
     // Параметры для заголовка issue
     const title = document.title || 'Comments';
@@ -47,42 +50,20 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
       pagerDirection: options.pagerDirection || 'last',
       createIssueManually: options.createIssueManually ?? false,
       language: 'ru',
-      // Улучшаем контраст
-      flipMoveOptions: {
-        staggerDelayBy: 150,
-        appearAnimation: 'fade',
-        enterAnimation: 'fade',
-        leaveAnimation: 'fade',
-      },
       ...options,
     });
     
     // Устанавливаем атрибут тема для контейнера
-    if (colorMode === 'dark') {
-      containerRef.current.setAttribute('data-theme', 'dark');
-    } else {
-      containerRef.current.setAttribute('data-theme', 'light');
-    }
+    containerRef.current.setAttribute('data-theme', colorMode);
     
     gitalkInstance.render(containerRef.current);
-    
-    // Дополнительное улучшение контраста текста в темной теме
-    if (colorMode === 'dark') {
-      setTimeout(() => {
-        const commentTexts = containerRef.current?.querySelectorAll('.gt-comment-content');
-        if (commentTexts) {
-          commentTexts.forEach((element) => {
-            (element as HTMLElement).style.color = 'rgba(255, 255, 255, 0.92)';
-          });
-        }
-      }, 500);
-    }
   }, [location.pathname, options, colorMode]); // Re-render when pathname or color mode changes
   
   return (
     <div 
-      className={clsx('gitalk-container', colorMode === 'dark' ? 'gitalk-dark' : 'gitalk-light')} 
+      className={clsx('gitalk-container', `gitalk-${colorMode}`)} 
       ref={containerRef} 
+      aria-label="Comments"
     />
   );
 } 

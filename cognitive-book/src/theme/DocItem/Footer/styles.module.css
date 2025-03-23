@@ -1,39 +1,37 @@
 .commentsSection {
   margin-top: 3rem;
-  padding: 2rem 2rem 1rem;
-  border-radius: var(--ifm-global-radius);
-  background-color: var(--ifm-background-surface-color);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  background-color: var(--ifm-background-color);
 }
 
 .commentsWrapper {
+  margin: 0 auto;
   max-width: 100%;
   overflow: hidden;
+  padding: 0 1rem;
 }
 
 .commentsTitle {
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   margin-bottom: 1.5rem;
-  color: var(--ifm-color-primary);
+  color: var(--ifm-heading-color);
+  font-weight: 600;
   position: relative;
   display: inline-block;
+  padding-bottom: 0.5rem;
 }
 
-.commentsTitle::after {
+.commentsTitle:after {
   content: '';
   position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: -4px;
+  bottom: 0;
   left: 0;
-  background-color: var(--ifm-color-primary-lighter);
-  transition: transform 0.3s ease-in-out;
-  transform: scaleX(0.7);
-  transform-origin: 0 50%;
-}
-
-.commentsTitle:hover::after {
-  transform: scaleX(1);
+  width: 60px;
+  height: 2px;
+  background-color: var(--ifm-color-primary);
+  border-radius: 2px;
+  opacity: 0.8;
 }
 
 /* Добавляем красивую анимацию подчеркивания заголовка */
@@ -58,25 +56,36 @@ html[data-theme='light'] .commentsSection {
 }
 
 html[data-theme='dark'] .commentsSection {
-  border-top-color: var(--ifm-color-emphasis-300);
+  border-top-color: rgba(255, 255, 255, 0.1);
   background-color: var(--ifm-background-color);
+}
+
+/* Стили для блока с комментариями в темной теме */
+html[data-theme='dark'] .commentsWrapper :global(.gt-container) {
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 
 /* Стили для Gitalk контейнера в разных темах */
 :global(.gitalk-container) {
   max-width: 100%;
   overflow: hidden;
+  margin-top: 1rem;
+}
+
+/* Более яркий акцент в темной теме */
+html[data-theme='dark'] .commentsTitle {
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* Адаптивность для мобильных устройств */
-@media (max-width: 768px) {
+@media (max-width: 996px) {
   .commentsSection {
-    padding: 1.5rem 1rem 0.5rem;
     margin-top: 2rem;
+    padding: 1rem 0;
   }
   
   .commentsTitle {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
   }
 } 
