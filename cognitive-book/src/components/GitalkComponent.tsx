@@ -49,7 +49,7 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
       pagerDirection: 'last',                // Сортировка (последние сверху)
       createIssueManually: false,            // Автоматическое создание issue
       distractionFreeMode: true,             // Режим без отвлечения
-      language: 'ru',                        // Язык (русский)
+      language: 'en',                        // Язык (русский)
       ...options,
     });
     
