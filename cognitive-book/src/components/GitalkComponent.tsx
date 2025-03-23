@@ -53,15 +53,6 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
     // Устанавливаем атрибут тема для контейнера
     if (colorMode === 'dark') {
       containerRef.current.setAttribute('data-theme', 'dark');
-      
-      // Попытка исправить проблему с иконками в темной теме
-      const style = document.createElement('style');
-      style.textContent = `
-        .gt-ico-edit svg, .gt-ico-text svg, .gt-ico-tip svg {
-          fill: var(--ifm-font-color-base) !important;
-        }
-      `;
-      containerRef.current.appendChild(style);
     } else {
       containerRef.current.setAttribute('data-theme', 'light');
     }

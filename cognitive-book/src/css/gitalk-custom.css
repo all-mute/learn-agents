@@ -3,13 +3,11 @@
   margin-top: 2rem !important;
   padding: 20px !important;
   border-radius: 8px !important;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1) !important;
   background-color: transparent !important;
 }
 
 html[data-theme='dark'] .gt-container {
   color: var(--ifm-font-color-base) !important;
-  border: 1px solid var(--ifm-color-emphasis-300) !important;
 }
 
 /* Заголовок */
@@ -61,21 +59,35 @@ html[data-theme='dark'] .gt-container {
 .gt-btn-public:hover {
   background-color: var(--ifm-color-primary-darker) !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1) !important;
 }
 
-/* Аватары */
-.gt-avatar {
+/* Аватары - исправляем проблему с круглыми аватарками */
+.gt-avatar img {
   border-radius: 50% !important;
   border: 2px solid var(--ifm-color-primary-lighter) !important;
 }
 
-.gt-avatar-github {
-  opacity: 0.9 !important;
+.gt-header-avatar {
+  display: inline-block;
+  margin-right: 10px;
 }
 
-.gt-avatar-github:hover {
-  opacity: 1 !important;
+.gt-header-avatar img,
+.gt-comment-avatar img {
+  border-radius: 50% !important;
+  border: 2px solid var(--ifm-color-primary-lighter) !important;
+  width: 44px !important;
+  height: 44px !important;
+  object-fit: cover !important;
+}
+
+.gt-comment-avatar {
+  border-radius: 50% !important;
+  overflow: hidden !important;
+}
+
+.gt-avatar-github {
+  border-radius: 50% !important;
 }
 
 /* Комментарии */
@@ -127,41 +139,27 @@ html[data-theme='dark'] .gt-container {
   padding: 16px !important;
 }
 
-/* Ссылки в комментариях */
-.gt-comment-body a {
-  color: var(--ifm-color-primary) !important;
-  text-decoration: none !important;
-}
-
-.gt-comment-body a:hover {
-  text-decoration: underline !important;
-}
-
-/* Метки под полем комментария */
-.gt-header-controls-tip {
-  color: var(--ifm-color-emphasis-600) !important;
-  font-size: 0.85em !important;
-}
-
-/* Исправляем счетчик комментариев */
-.gt-counts {
-  color: var(--ifm-color-emphasis-700) !important;
-  font-size: 0.95em !important;
-  margin-bottom: 16px !important;
-}
-
 /* Исправляем проблему с темной темой */
-html[data-theme='dark'] .gt-svg svg {
+html[data-theme='dark'] .gt-container {
+  background-color: transparent !important;
+}
+
+html[data-theme='dark'] .gt-header,
+html[data-theme='dark'] .gt-comments,
+html[data-theme='dark'] .gt-header-textarea,
+html[data-theme='dark'] .gt-comment-content {
+  background-color: var(--ifm-background-surface-color) !important;
+  border-color: var(--ifm-color-emphasis-300) !important;
+}
+
+/* Исправляем проблему с иконками в темной теме */
+html[data-theme='dark'] .gt-svg svg,
+html[data-theme='dark'] .gt-comment-like svg {
   fill: var(--ifm-font-color-base) !important;
 }
 
 html[data-theme='dark'] .gt-ico-github svg {
   fill: white !important;
-}
-
-/* Meta информация в комментариях */
-.gt-comment-admin .gt-comment-content {
-  border-left: 3px solid var(--ifm-color-primary) !important;
 }
 
 /* Улучшаем стиль для инпутов */
@@ -173,56 +171,16 @@ html[data-theme='dark'] .gt-ico-github svg {
   padding: 6px 10px !important;
 }
 
-/* Фиксы для темной темы */
-html[data-theme='dark'] .gt-comment-text,
-html[data-theme='dark'] .gt-header-textarea::placeholder,
-html[data-theme='dark'] .gt-header-controls input::placeholder {
+/* Метки под полем комментария */
+.gt-header-controls-tip {
   color: var(--ifm-color-emphasis-600) !important;
+  font-size: 0.85em !important;
 }
 
-html[data-theme='dark'] .gt-header-controls {
-  color: var(--ifm-color-emphasis-800) !important;
-}
-
-html[data-theme='dark'] .gt-ico-code svg,
-html[data-theme='dark'] .gt-ico-github svg {
-  fill: var(--ifm-color-emphasis-900) !important;
-}
-
-html[data-theme='dark'] .gt-comment-like svg {
-  fill: var(--ifm-color-emphasis-600) !important;
-}
-
-html[data-theme='dark'] .gt-comment-like:hover svg {
-  fill: var(--ifm-color-primary) !important;
-}
-
-/* Улучшаем плавность анимаций */
-.gt-header-textarea,
-.gt-header-controls input,
-.gt-btn,
-.gt-comment-content,
-.gt-avatar {
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-/* Добавляем фокусные состояния для доступности */
-.gt-header-textarea:focus,
-.gt-header-controls input:focus,
-.gt-btn:focus {
-  outline: none !important;
-  box-shadow: 0 0 0 2px var(--ifm-color-primary-lighter) !important;
-}
-
-/* Исправляем отступы в форме комментария */
-.gt-header-controls {
-  margin: 16px 0 !important;
-}
-
-/* Улучшаем оформление счетчика комментариев */
-.gt-header-controls-tip,
+/* Счетчик комментариев */
 .gt-counts {
-  opacity: 0.8 !important;
+  color: var(--ifm-color-emphasis-700) !important;
+  margin-bottom: 16px !important;
 }
 
 /* Стили для пустого состояния */
@@ -230,7 +188,7 @@ html[data-theme='dark'] .gt-comment-like:hover svg {
   padding: 1.5rem !important;
   text-align: center !important;
   color: var(--ifm-color-emphasis-600) !important;
-  background-color: var(--ifm-background-surface-color) !important;
+  background-color: transparent !important;
   border-radius: 8px !important;
   border: 1px dashed var(--ifm-color-emphasis-300) !important;
   margin: 1rem 0 !important;

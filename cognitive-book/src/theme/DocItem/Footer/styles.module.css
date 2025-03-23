@@ -12,7 +12,7 @@
 
 .commentsTitle {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   color: var(--ifm-heading-color);
   font-weight: 600;
   position: relative;
@@ -25,24 +25,22 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 60px;
   height: 2px;
   background-color: var(--ifm-color-primary);
   border-radius: 2px;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 /* Добавляем красивую анимацию подчеркивания заголовка */
 @keyframes underlineExpand {
   from {
     width: 0;
-    left: 50%;
     opacity: 0;
   }
   to {
-    width: 100%;
-    left: 0;
-    opacity: 0.7;
+    width: 60px;
+    opacity: 0.8;
   }
 }
 
@@ -50,9 +48,20 @@
   animation: underlineExpand 0.6s ease-out forwards;
 }
 
-/* Специальные стили для темного режима */
+/* Стили для секции комментариев в разных темах */
+html[data-theme='light'] .commentsSection {
+  background-color: var(--ifm-background-color);
+}
+
 html[data-theme='dark'] .commentsSection {
   border-top-color: var(--ifm-color-emphasis-300);
+  background-color: var(--ifm-background-color);
+}
+
+/* Стили для Gitalk контейнера в разных темах */
+:global(.gitalk-container) {
+  max-width: 100%;
+  overflow: hidden;
 }
 
 /* Адаптивность для мобильных устройств */
