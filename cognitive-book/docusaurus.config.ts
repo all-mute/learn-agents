@@ -34,6 +34,17 @@ const config: Config = {
     },
   ],
 
+  // Custom fields for GitalkComponent
+  customFields: {
+    gitalk: {
+      clientID: process.env.GITALK_CLIENT_ID,
+      clientSecret: process.env.GITALK_CLIENT_SECRET,
+      repo: 'learn-agents-comments',
+      owner: 'all-mute',
+      admin: ['all-mute'],
+    },
+  },
+
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
@@ -100,11 +111,27 @@ const config: Config = {
       ],
     },
     algolia: {
-      appId: 'YOUR_APP_ID',
-      apiKey: 'YOUR_SEARCH_API_KEY',
-      indexName: 'YOUR_INDEX_NAME',
+      // The application ID provided by Algolia
+      appId: 'PM4FOH456Y',
+
+      // Public API key: it is safe to commit it
+      apiKey: '0cf52c656bb547faf8b5004db40c407d',
+
+      indexName: 'Learn Agents',
+
+      // Optional: see doc section below
       contextualSearch: true,
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
       searchPagePath: 'search',
+
+      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      insights: false,
+
+      //... other Algolia params
     },
     footer: {
       style: 'dark',
