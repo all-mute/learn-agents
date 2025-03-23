@@ -15,18 +15,18 @@ import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   // Define the structure of the AI Agents handbook
   tutorialSidebar: [
-    'introduction', // Introduction
-    {
-      type: 'category',
-      label: 'Foundations',
-      link: {
-        type: 'doc',
-        id: 'foundations/index',
-      },
-      items: [
-        'foundations/what-are-ai-agents',
-      ],
-    },
+    'about', // Introduction
+    // {
+    //   type: 'category',
+    //   label: 'Foundations',
+    //   link: {
+    //     type: 'doc',
+    //     id: 'foundations/index',
+    //   },
+    //   items: [
+    //     'foundations/what-are-ai-agents',
+    //   ],
+    // },
     
   ],
 };

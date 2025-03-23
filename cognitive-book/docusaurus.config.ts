@@ -23,6 +23,17 @@ const config: Config = {
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
+  // Добавляем мета-тег для верификации Algolia
+  headTags: [
+    {
+      tagName: 'meta',
+      attributes: {
+        name: 'algolia-site-verification',
+        content: '7B48E67DF480B0BB',
+      },
+    },
+  ],
+
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
@@ -88,6 +99,13 @@ const config: Config = {
         },
       ],
     },
+    algolia: {
+      appId: 'YOUR_APP_ID',
+      apiKey: 'YOUR_SEARCH_API_KEY',
+      indexName: 'YOUR_INDEX_NAME',
+      contextualSearch: true,
+      searchPagePath: 'search',
+    },
     footer: {
       style: 'dark',
       links: [
@@ -108,11 +126,15 @@ const config: Config = {
           title: 'Community',
           items: [
             {
+              label: 'Discord',
+              href: 'https://discord.gg/3JBx5HUR9n',
+            },
+            {
               label: 'GitHub Discussions',
               href: 'https://github.com/merkulov.courses/cognitive-book/discussions',
             },
             {
-              label: 'Telegram',
+              label: 'Telegram (ru)',
               href: 'https://t.me/merkulov_ai',
             },
           ],
