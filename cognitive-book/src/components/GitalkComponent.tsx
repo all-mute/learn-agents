@@ -47,6 +47,13 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
       pagerDirection: options.pagerDirection || 'last',
       createIssueManually: options.createIssueManually ?? false,
       language: 'ru',
+      // Улучшаем контраст
+      flipMoveOptions: {
+        staggerDelayBy: 150,
+        appearAnimation: 'fade',
+        enterAnimation: 'fade',
+        leaveAnimation: 'fade',
+      },
       ...options,
     });
     
@@ -58,6 +65,18 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
     }
     
     gitalkInstance.render(containerRef.current);
+    
+    // Дополнительное улучшение контраста текста в темной теме
+    if (colorMode === 'dark') {
+      setTimeout(() => {
+        const commentTexts = containerRef.current?.querySelectorAll('.gt-comment-content');
+        if (commentTexts) {
+          commentTexts.forEach((element) => {
+            (element as HTMLElement).style.color = 'rgba(255, 255, 255, 0.92)';
+          });
+        }
+      }, 500);
+    }
   }, [location.pathname, options, colorMode]); // Re-render when pathname or color mode changes
   
   return (
