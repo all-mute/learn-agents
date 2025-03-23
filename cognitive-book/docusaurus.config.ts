@@ -151,7 +151,7 @@ const config: Config = {
       appId: 'PM4FOH456Y',
 
       // Public API key: it is safe to commit it
-      apiKey: 'e325bfe930f7ffc60495c0799ccd5c56',
+      apiKey: process.env.ALGOLIA_API_KEY,
 
       indexName: 'Learn Agents 2',
 
