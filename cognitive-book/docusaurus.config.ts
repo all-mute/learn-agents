@@ -153,7 +153,7 @@ const config: Config = {
       // Public API key: it is safe to commit it
       apiKey: process.env.ALGOLIA_API_KEY,
 
-      indexName: 'Learn Agents 2',
+      indexName: 'Learn Agents AAA',
 
       // Optional: see doc section below
       contextualSearch: true,
