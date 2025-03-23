@@ -151,9 +151,9 @@ const config: Config = {
       appId: 'PM4FOH456Y',
 
       // Public API key: it is safe to commit it
-      apiKey: '0cf52c656bb547faf8b5004db40c407d',
+      apiKey: 'e325bfe930f7ffc60495c0799ccd5c56',
 
-      indexName: 'Learn Agents',
+      indexName: 'Learn Agents 2',
 
       // Optional: see doc section below
       contextualSearch: true,
