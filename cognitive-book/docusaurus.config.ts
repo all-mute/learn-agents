@@ -2,6 +2,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+const ALGOLIA_API_KEY = process.env.ALGOLIA_API_KEY;
+
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
@@ -151,7 +153,7 @@ const config: Config = {
       appId: 'PM4FOH456Y',
 
       // Public API key: it is safe to commit it
-      apiKey: process.env.ALGOLIA_API_KEY,
+      apiKey: ALGOLIA_API_KEY,
 
       indexName: 'Learn Agents AAA',
 
