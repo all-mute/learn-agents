@@ -42,6 +42,9 @@ Working notes:
 - To start the server, use the command `npx docusaurus start --locale ru`
 - Use English everywhere except /i18n/ru/. Use English in all React components.
 
+При написании текста на русском языке используйте следующие правила:
+- агентов пиши как AI Агенты
+
 
 
 

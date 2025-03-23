@@ -43,7 +43,6 @@ const basicsSection = [
       'basics/openai-api',
       'basics/prompt-eng',
       'basics/llm-usecases',
-      'basics/1st-project',
     ],
   },
 ];
@@ -134,11 +133,17 @@ const sidebars: SidebarsConfig = {
   // Define the structure of the AI Agents handbook
   tutorialSidebar: [
     'about', // Introduction
+    //'agents', // Storytelling
     ...startHereSection,
     ...basicsSection,
     ...juniorSection,
     ...extraSection,
     ...notAgentsSection,
+  {
+    type: 'link',
+    label: 'View roadmap',
+    href: 'https://roadmap.sh/r/ai-agents-2025-roadmap',
+  },
   ],
 };
 
