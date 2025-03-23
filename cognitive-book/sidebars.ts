@@ -33,16 +33,16 @@ const startHereSection = [
 const basicsSection = [
   {
     type: 'category' as const,
-    label: 'Fundamentals',
+    label: 'Basics',
     collapsed: true,
     collapsible: true,
     items: [
-      'basics/index',
+      'basics/index', // what is inside
+      'basics/1st-project', // api keys, project
       'basics/what-is-llm',
+      'basics/openai-api',
       'basics/prompt-eng',
       'basics/llm-usecases',
-      'basics/openai-api',
-      'basics/metalearning',
       'basics/1st-project',
     ],
   },
@@ -52,7 +52,7 @@ const basicsSection = [
 const notAgentsSection = [
   {
     type: 'category' as const,
-    label: 'Beyond AI Agents',
+    label: 'Not AI Agents',
     collapsed: true,
     collapsible: true,
     items: [
@@ -82,7 +82,7 @@ const notAgentsSection = [
 const juniorSection = [
   {
     type: 'category' as const,
-    label: 'Junior Developer',
+    label: 'Junior',
     collapsed: true,
     collapsible: true,
     items: [
