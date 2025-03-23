@@ -3,56 +3,22 @@ slug: /intro
 sidebar_position: 1
 ---
 
-# Introduction to AI Agents
+# О учебнике
 
 **AI Agents Handbook** is a comprehensive guide to creating and using intelligent AI-based agents. This handbook aims to be a reliable and open source of knowledge in the rapidly evolving field of artificial intelligence agents.
 
-## What are AI Agents?
 
-**AI Agents** are autonomous or semi-autonomous systems that can perceive their environment, make decisions, and act to achieve specific goals. Unlike traditional AI systems that perform specific tasks in response to direct requests, agents can demonstrate:
+Время вычисляется в стади-поинтах, где 1 стади-поинт равен примерно 3 часам (1.5ч теории/ресерча/впитывания/чтения доки + 1.5 практического задания, не строго)
 
-- **Autonomy** - the ability to act without constant human intervention
-- **Proactivity** - the ability to set goals and work towards achieving them
-- **Reactivity** - the ability to respond to changes in the environment
-- **Sociability** - the ability to interact with other agents or humans
+КРАТКИЙ ОБЗОР ПРОГРАММЫ С ОПИСАНИЕМ ЧТО ВНУТРИ КАЖДОГО МОДУЛЯ
 
-## Who is this handbook for?
+ТУТ СДЕЛАТЬ МОДУЛИ (МОДУЛЬ, ЧТО ИЗУЧАТЬ/ДЕЛАТЬ + СОЗВОН ПОСЛЕ)
 
-This handbook is designed for:
+Гант
 
-- **Developers** who want to create their own AI agents
-- **Researchers** interested in theoretical foundations and advanced methods in this field
-- **Entrepreneurs** exploring applications of AI agent technologies
-- **Students** who want to learn modern AI techniques
 
-## Handbook Structure
+КАК УСТРОЕН КАЖДЫЙ МОДУЛЬ
+(чад модуль + гигачад модуль)
 
-The handbook is organized into the following sections:
-
-1. **Foundations** - Fundamental concepts, history, and types of AI Agents
-2. **Components** - Key technological components needed to create agents
-3. **Architectures** - Various architectural approaches to agent system development
-4. **Case Studies** - Real-world examples of AI Agents in use
-5. **Advanced Topics** - Ethical issues, evaluation methods, optimization, future directions
-
-## How to use this handbook
-
-Each section contains theoretical material, practical examples, and links to additional resources. You can study the handbook sequentially or jump to topics that interest you.
-
-The handbook is available in two languages - English and Russian. You can switch between them using the language selector at the top of the page.
-
-## How to contribute
-
-This handbook is an open project. If you want to contribute, you can:
-
-1. Propose changes through a Pull Request on GitHub
-2. Report issues or suggest improvements through the Issues system
-3. Help with content translation
-
-## Integration with Roadmap.sh
-
-For a more visual representation of AI Agent technology learning paths, we've integrated this handbook with [Roadmap.sh](https://roadmap.sh). The learning map helps visualize logical connections between various concepts and technologies.
-
----
-
-Let's begin our journey into the world of AI Agents! 
+КАК УЧИТЬСЯ
+МЕТАОБУЧЕНИЕ

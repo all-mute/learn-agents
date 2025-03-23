@@ -118,6 +118,18 @@ const juniorSection = [
   },
 ];
 
+const extraSection = [
+  {
+    type: 'category' as const,
+    label: 'Extra',
+    collapsed: true,
+    collapsible: true,
+    items: [
+      'extra/index',
+    ],
+  },
+];
+
 const sidebars: SidebarsConfig = {
   // Define the structure of the AI Agents handbook
   tutorialSidebar: [
@@ -125,6 +137,7 @@ const sidebars: SidebarsConfig = {
     ...startHereSection,
     ...basicsSection,
     ...juniorSection,
+    ...extraSection,
     ...notAgentsSection,
   ],
 };

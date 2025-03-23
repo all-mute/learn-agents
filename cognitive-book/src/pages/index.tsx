@@ -61,12 +61,13 @@ export default function Home(): ReactNode {
       <HomepageHeader />
       <main>
         <HomepageAIAgents />
-        
         <HomepageFeatures />
         <HomepageModules />
+
         <HomepageMission />
         <HomepageAuthors />
         <HomepageCommunities />
+        
       </main>
     </Layout>
   );

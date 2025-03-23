@@ -2,7 +2,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
-const ALGOLIA_API_KEY = process.env.ALGOLIA_API_KEY;
+const ALGOLIA_API_KEY = process.env.ALGOLIA_API_KEY || 'e325bfe930f7ffc60495c0799ccd5c56';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
