@@ -12,7 +12,6 @@ interface GitalkComponentProps {
     repo?: string;
     owner?: string;
     admin?: string[];
-    theme?: string;
     [key: string]: any;
   };
 }
@@ -28,27 +27,14 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
     // Clean up previous instance
     containerRef.current.innerHTML = '';
     
-    // Создаем уникальный ID на основе пути страницы
-    // Используем только последнюю часть пути для более удобных ID
-    const pathSegments = location.pathname.split('/').filter(Boolean);
-    const lastSegment = pathSegments.length > 0 ? pathSegments[pathSegments.length - 1] : '';
-    const issueId = (lastSegment || 'home').replace(/[^\w\-]/g, '-').slice(0, 50);
-    
-    // Параметры для заголовка issue
-    const title = document.title || 'Comments';
-    
     const gitalkInstance = new Gitalk({
       clientID: options.clientID || 'YOUR_CLIENT_ID',
       clientSecret: options.clientSecret || 'YOUR_CLIENT_SECRET',
       repo: options.repo || 'YOUR_REPO_NAME',
       owner: options.owner || 'YOUR_GITHUB_ID',
       admin: options.admin || ['YOUR_GITHUB_ID'],
-      id: issueId,
-      title: title,
+      // Используем стандартную логику Gitalk для определения ID
       distractionFreeMode: options.distractionFreeMode ?? false,
-      labels: options.labels || ['comment'],
-      pagerDirection: options.pagerDirection || 'last',
-      createIssueManually: options.createIssueManually ?? false,
       language: 'ru',
       ...options,
     });
@@ -63,7 +49,7 @@ export default function GitalkComponent({ options = {} }: GitalkComponentProps):
     <div 
       className={clsx('gitalk-container', `gitalk-${colorMode}`)} 
       ref={containerRef} 
-      aria-label="Comments"
+      aria-label="Комментарии"
     />
   );
 } 
