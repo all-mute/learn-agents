@@ -7,7 +7,7 @@ const ALGOLIA_API_KEY = process.env.ALGOLIA_API_KEY || 'e325bfe930f7ffc60495c079
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Learn AI Agents',
+  title: 'Learn AI Agents Handbook',
   tagline: 'Vastest zero to hero handbook on building AI Agents',
   favicon: 'img/favicon.ico',
 
@@ -116,7 +116,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/roadmap-junior.png',
     navbar: {
       title: 'Learn AI Agents book',
       logo: {
