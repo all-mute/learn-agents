@@ -150,12 +150,12 @@ const config: Config = {
     },
     algolia: {
       // The application ID provided by Algolia
-      appId: 'PM4FOH456Y',
+      appId: 'M7DOMM6YPS',
 
       // Public API key: it is safe to commit it
-      apiKey: ALGOLIA_API_KEY,
+      apiKey: 'c66ecd5613cfa67332c141661d3f5e55',
 
-      indexName: 'Learn Agents AAA',
+      indexName: 'learn-agents',
 
       // Optional: see doc section below
       contextualSearch: true,
@@ -166,8 +166,8 @@ const config: Config = {
       // Optional: path for search page that enabled by default (`false` to disable it)
       searchPagePath: 'search',
 
-      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
-      insights: false,
+      // Optional: whether the insights feature is enabled or not on Docsearch (`true` by default)
+      insights: true,
 
       //... other Algolia params
     },
