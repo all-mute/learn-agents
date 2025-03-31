@@ -14,6 +14,13 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
+    title: 'Free LLM API Keys',
+    titleId: 'homepage.features.freekeys.title',
+    description: 'Get free access to powerful language models. Practice with real LLM APIs without spending a dime.',
+    descriptionId: 'homepage.features.freekeys.description',
+    icon: '🔑',
+  },
+  {
     title: 'Practical Examples',
     titleId: 'homepage.features.practical.title',
     description: 'Learn how to create AI agents with real-world examples. Step-by-step from simple chatbots to complex autonomous systems.',
@@ -33,13 +40,6 @@ const FeatureList: FeatureItem[] = [
     description: 'Join a community of enthusiasts and professionals studying and developing AI agent technologies.',
     descriptionId: 'homepage.features.community.description',
     icon: '👥',
-  },
-  {
-    title: 'Free LLM API Keys',
-    titleId: 'homepage.features.freekeys.title',
-    description: 'Get free access to powerful language models. Practice with real LLM APIs without spending a dime.',
-    descriptionId: 'homepage.features.freekeys.description',
-    icon: '🔑',
   },
 ];
 

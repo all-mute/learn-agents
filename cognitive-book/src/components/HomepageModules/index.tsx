@@ -22,7 +22,7 @@ const ModulesList: ModuleItem[] = [
     description: 'Get started with AI agents fundamentals. Learn core concepts, architecture, and build your first AI agent.',
     descriptionId: 'homepage.modules.basics.description',
     image: '/img/roadmap-basics.png',
-    link: '/docs/foundations',
+    link: '/basics/intro',
   },
   {
     title: 'Junior',
@@ -30,7 +30,7 @@ const ModulesList: ModuleItem[] = [
     description: 'Advance your AI agent skills. Learn how to implement memory, tools, and create more complex autonomous systems.',
     descriptionId: 'homepage.modules.junior.description',
     image: '/img/roadmap-junior.png',
-    link: '/docs/junior',
+    link: '/junior/intro',
   },
   {
     title: 'Future Modules',
@@ -38,7 +38,7 @@ const ModulesList: ModuleItem[] = [
     description: 'Stay tuned for upcoming modules covering advanced topics including autonomous agents, agent swarms, and more.',
     descriptionId: 'homepage.modules.future.description',
     image: '/img/roadmap-senior.png',
-    link: '/docs/roadmap',
+    link: '/intro',
   },
 ];
 

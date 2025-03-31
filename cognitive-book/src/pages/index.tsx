@@ -34,7 +34,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
+            to="/start-here">
             <Translate id="homepage.header.button">
               Start Learning AI Agents
             </Translate> 🚀

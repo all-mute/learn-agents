@@ -32,7 +32,7 @@ export default function HomepageAIAgents(): ReactNode {
             <div className={styles.buttons}>
               <Link
                 className="button button--primary button--lg"
-                to="/foundations">
+                to="/start-here">
                 <Translate id="homepage.aiAgents.learnButton">
                   Learn the basics
                 </Translate>

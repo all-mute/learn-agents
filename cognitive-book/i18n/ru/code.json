@@ -335,7 +335,7 @@
     "message": "Если вам нравится проект, поставьте {nextStar}-ю звезду на GitHub"
   },
   "homepage.meta.title": {
-    "message": "{siteConfig.title} - Интерактивный учебник по созданию AI агентов"
+    "message": "AI Agents Handbook - Интерактивный учебник по созданию AI агентов"
   },
   "homepage.meta.description": {
     "message": "Интерактивный учебник по созданию и использованию AI агентов с примерами кода и практическими руководствами"
