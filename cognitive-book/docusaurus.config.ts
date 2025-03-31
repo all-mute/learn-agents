@@ -232,6 +232,13 @@ const config: Config = {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
     },
+    announcementBar: {
+      id: 'language_notice',
+      content: 'Сайт временно доступен только на русском языке | The website is currently available only in Russian',
+      backgroundColor: '#4CAF50',
+      textColor: '#000000',
+      isCloseable: true,
+    },
   } satisfies Preset.ThemeConfig,
   markdown: {
     mermaid: true,
