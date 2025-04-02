@@ -1,21 +1,39 @@
 ---
-sidebar_position: 1
+
 ---
 
 # Понимание LLM
 
-
+В этом модуле мы проведем всесторонний обзор больших языковых моделей, таких как ChatGPT. Мы изучим, как эти модели работают, какая архитектура стоит за ними, и рассмотрим процесс их обучения.
+*Для Applied AI инженера знать как работает LLM - всё равно что для электрика знать как работает электричество.*
 
 ## Steps
 
-### 1. Смотрим видео легендарного ученого и лектора по LLM
+### 1. Смотрим видео легендарного ученого и лектора по LLM (LLM: The Movie)
+
+Вопросы, к 1 лекции:
+- Что такое большие языковые модели (LLM) и как они работают?
+- Как с помощбю всех текстов интернета и кучи GPU мы получаем ChatGPT?
+- Какую задачу решают LLM, подобные ChatGPT, на одном шаге? Что такое токен?
+- Какие существуют примеры задач, которые LLM могут выполнять лучше всего?
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/zjkBMFhNj_g?si=Kxz5RkVUm9Wk1LJQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+### E1. Более плотное кино, также без coding/math от февраля 2025 (LLM: The returning of the Jedi)
+
+Вопросы, к 2 лекции:
+- Как происходит процесс предобучения (pre-training) языковых моделей?
+- Чем отличается этап предобучения от этапа тонкой настройки (fine-tuning)?
+- Что такое обучение с подкреплением и как оно применимо к LLM?
+- Какие методы используются для уменьшения галлюцинаций и улучшения точности ответов LLM?
+- Как "умные" модели отличаются от традиционных LLM?
+- Что такое "галлюцинации" и как их избежать?
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7xTGNNLPyMI?si=8kshyVoS22ZCY9Na" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Перенес сиквел сюда из-за хороших отзывов студентов.
 
 ## Extra Steps
-
-### E1. Более плотное видео, также без coding/math от февраля 2025
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7xTGNNLPyMI?si=8kshyVoS22ZCY9Na" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### E2. Andrej Karpathy: How I use LLMs
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EWvNQjAaOHw?si=hqjJsvfhscJrDo3Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -30,6 +48,25 @@ sidebar_position: 1
 
 Длительность четырех видео: 1.5 часа, но скорее всего они займут у вас больше времени.
 
-## Саммари
 
-## Упражнения
+## Now we know...
+
+В данном модуле мы глубоко исследовали принципы работы крупных языковых моделей и их тренировки, включая этапы предобучения, обучения с учителем и обучения с подкреплением. Мы увидели, как эти модели становятся инструментами, способными не только генерировать текст, но и решать сложные задачи, используя различные стратегии мышления. Важно помнить, что, хотя технологии впечатляют, их использование требует внимательного подхода и критического мышления для достижения наилучших результатов.
+
+Зная как LLM устроена под капотом, в следущем модуле мы изучим, как выглядит LLm с другой стороны - со стороны разработчика.
+
+## Exercises
+
+- Из каких трех этапов обычно состоит процесс обучения LLM?
+- Почему на один и тот же входной текст LLM может давать разные ответы?
+- Может ли LLM отвечать на вопросы о вчерашних новостях?
+- Что нужно для RLHF (Reinforcement Learning from Human Feedback)?
+- Почему моделям тяжело считать количество букв "а" в слове?
+
+Сложные:
+- Что такое специальные токены?
+- Почему мы затрудняемся сразу после pre-training делать RL? И что нам с этим помогает?
+- Каково преимущество RLHF перед SFT?
+- Что будет, если мы установим температуру равной 10?
+
+Вы можете посмотреть другие фильмы Андрея про GPT-2 и токенизатор, если хотите обладать неверотно глубоким пониманием LLM. Для дизайна AI агентов это не обязательно.
