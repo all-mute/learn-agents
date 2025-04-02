@@ -4,33 +4,33 @@ sidebar_label: OpenAI API
 
 # Изучаем OpenAI API
 
+Понимание работы с API OpenAI позволит вам без проблем понимать трудоустройство фреймворков, которые мы будем проходить в блоке Junior, а также пригодится при отладке проблем и работы со всеми OpenAI-совместимыми провайдерами.
+
+## Questions
+
+- Как выглядит тело API запроса в OpenAI API?
+- Какие параметры можно настраивать кроме temperature, max_tokens?
+- Как работает потоковая передача данных в OpenAI API?
+- Как использовать функциональные вызовы (function calling) в чат-моделях?
+- Что такое структурированный вывод и как его применять?
+
 ## Steps
 
-### 1. Читаем документацию OpenAI API
+### 1. Читаем документацию [OpenAI API](https://platform.openai.com/docs/api-reference)
 
-1. https://platform.openai.com/docs/api-reference/chat/create
-
-2. Читаем всё про ручку `chat/completions`, ничего не пропускаем. Весь будущий материал будет строиться на этой ручке и вам важно в деталях понимать, как она работает, иначе вы будете путаться.
-
-3. По функциям, читаем https://www.ai-cookbook.ru/docs/guides/tools_yc/FC_why целиком, 3 главы. *Не обращайте внимание на то, что там написано про Yandex Cloud, код работает с API формата OpenAI.*
-
+Читаем всё про ручку `chat/completions`, ничего не пропускаем. Весь будущий материал будет строиться на этой ручке и вам важно в деталях понимать, как она работает, иначе вы будете путаться.
 
 ### 2. Читаем странички из Cookbook
 
-1. Как считать токены в тексте?
-https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken
+1. [Как считать токены в тексте?](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
 
-2. Как выглядят чанки в потоковом ответе опенаи? Какая информация передается в первом, промежуточных и последнем чанке?
-https://cookbook.openai.com/examples/how_to_stream_completions
+2. [Как выглядят чанки в потоковом ответе опенаи? Какая информация передается в первом, промежуточных и последнем чанке?](https://cookbook.openai.com/examples/how_to_stream_completions)
 
-3. По функциям, читаем https://www.ai-cookbook.ru/docs/guides/tools_yc/FC_why целиком, 3 главы. *Не обращайте внимание на то, что там написано про YandexGPT, код работает с API формата OpenAI.*
-Аналог - https://cookbook.openai.com/examples/how_to_call_functions_with_chat_models
+3. [По функциям, читаем целиком (ru)](https://www.ai-cookbook.ru/docs/guides/tools_yc/FC_why), 3 главы. *Не обращайте внимание на то, что там написано про YandexGPT, код работает с API формата OpenAI.*
 
-4. https://cookbook.openai.com/examples/how_to_use_structured_outputs
+Аналог - [how_to_call_functions_with_chat_models](https://cookbook.openai.com/examples/how_to_call_functions_with_chat_models)
 
-### 3.
-
-### 4.
+4. [Как использовать structured outputs?](https://cookbook.openai.com/examples/how_to_use_structured_outputs)
 
 ## Extra Steps
 
@@ -38,9 +38,29 @@ https://cookbook.openai.com/examples/how_to_stream_completions
 
 https://cookbook.openai.com/examples/entity_extraction_for_long_documents
 
-## Саммари
+## Now we know...
 
-## Упражнения
+Мы изучили основные компоненты OpenAI API и научились:
+- Подсчитывать токены в текстах с помощью tiktoken для оптимизации запросов
+- Работать с потоковыми ответами для создания более отзывчивых интерфейсов
+- Использовать функциональные вызовы (function calling) для структурированного взаимодействия с внешними инструментами
+- Получать структурированные ответы в JSON формате для удобной обработки
+- Применять принцип "разделяй и властвуй" для обработки длинных документов
 
+Эти навыки являются фундаментальными при создании AI Агентов, поскольку позволяют эффективно управлять коммуникацией между агентом и AI моделью, а также обеспечивают возможность интеграции с внешними системами.
 
+## Exercises
 
+1. Какие есть роли у сообщений?
+
+2. Вы хотите отправить в LLM два запроса с сохранением контекста:
+    1. "Привет! Меня зовут Иван."
+    2. "Как меня зовут?"
+
+    Как будет выглядеть тело второго запроса в модель?
+
+3. Придумайте три примера использования функциональных вызовов, которые могли бы существенно улучшить возможности AI Агента.
+
+4. **Практическое задание:**
+
+Создайте простой скрипт на Python, который будет выводить в консоль только первый, второй, предпоследний и последний чанки ответа от модели.
