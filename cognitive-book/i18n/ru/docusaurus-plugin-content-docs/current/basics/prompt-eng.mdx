@@ -4,47 +4,72 @@ sidebar_label: Prompt engineering
 
 # Изучаем OpenAI API
 
+Сегодня мы замастерим промпт-инжиниринг - навык быть "психологом для LLM". 
+
+Обычно как только у нас что-то не работает в чат-боте или агенте, мы:
+
+1. в первую очередь стараемся решить проблему промпт-инжинирингом
+2. меняем архитектуру
+3. улучшаем саму LLM
+
+Как видите, промпт-инжиниринг находится наверху. Это из-за того, что улучшить промпт очень легко (по сравнению с перерабатыванием системы или LLM), а прирост в хужшем случае будет нулевой, в лучшем слуаче в разы. **Поэтому мы осваиваем промпт-инжиниринг**
+
+## Questions
+
+Вопросы, которые мы будем обсуждать:
+- Что такое System Prompt?
+- Что такое User Prompt?
+- В чем отличие zero-shot от few-shot запросов?
+- Что такое Chain of Thought?
+
+
 ## Steps
 
-### 1. База промпт-инжиниринга
-
-1. Идем сюда https://www.promptingguide.ai/ru или (en) https://www.promptingguide.ai/ и читаем все главы до Chain of Thought включительно с самой первой.
-
-АЛьтернатива:
-
-https://www.coursera.org/learn/google-prompting-essentials ($60) - 9 часовй курс от Гугла
+### 0. Смотрим на х2
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/p09yRj47kNM?si=ZAq3fh1Lk6gIFXPp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-### 2.
+### 1А. База промпт-инжиниринга
 
-https://platform.openai.com/docs/guides/prompt-engineering
-https://github.com/anthropics/prompt-eng-interactive-tutorial + use base url 
-https://www.linkedin.com/posts/eordax_ai-machinelearning-deeplearning-activity-7309354988802088960-5J-1?utm_source=share&utm_medium=member_desktop&rcm=ACoAADy_1xUBqbt-ozuOBwDHfrfLLtCAXEVGJ4c
-https://github.com/maxfahl/cursor-agent-master-prompt
-### 3.
+1. Идем сюда https://www.promptingguide.ai/ru или (en, чуть шире) https://www.promptingguide.ai/ и читаем все главы до Chain of Thought включительно с самой первой.
 
-### 4.
+### 1Б. Курс от Гугла (альтернатива)
 
-https://x.com/ilyasutsk/status/1832211266129293618
+https://www.coursera.org/learn/google-prompting-essentials ($60) - 9 часовй курс от Гугла
+
+### 1В. Интерактивный курс (альтернатива)
+
+https://github.com/anthropics/prompt-eng-interactive-tutorial + use base_url 
+
 
 ## Extra Steps
 
-### 1E. 
+### E1. [Читаем оффициальные советы](https://platform.openai.com/docs/guides/prompt-engineering)
 
-### 2E.
+### E2. [Читаем системный промпт Cursor AI](https://github.com/maxfahl/cursor-agent-master-prompt)
 
+### E3. [Читаем пост Суцкевера](https://x.com/ilyasutsk/status/1832211266129293618)
 
+### E4. Сервисы для сравнения промптов и прогона промптов на бэнчмарках
 
-### 3E.
+- https://www.promptlayer.com/?ref=latitude-blog.ghost.io
+- https://github.com/Agenta-AI/agenta?ref=latitude-blog.ghost.io
+
+### E5.
 
 Если вы пока не чувствуете себя уверенно и у вас не сложилась полная картина того, чем мы тут вообще занимаемся - данное видео еще раз объясняет всё с самого начала, другим языком.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/LWiMwhDZ9as?si=_PE-sxOD7d_VoL1K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Саммари
+## Now we know...
+Мы изучили основы промпт-инжиниринга, включая различия между системными и пользовательскими промптами, подходы zero-shot и few-shot, а также методику Chain of Thought. Теперь мы понимаем, почему промпт-инжиниринг является первым и самым доступным способом улучшения работы LLM-систем, требующим минимальных затрат при потенциально значительном улучшении результатов. Эти знания позволят нам эффективнее взаимодействовать с AI Агентами, точнее формулировать запросы и получать более качественные ответы от моделей.
 
-## Упражнения
+## Exercises
+
+- что будет, если вовсе не писать системное сообщение?
+- почему мы указываем в промпте роль? "Ты - профессональный юрист,..."
+- можем ли мы few-shot'ить правильное использование toolCall?
+- для каких задач Chain of Thought не даст никакого эффекта?
 
 
 
