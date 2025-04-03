@@ -43,7 +43,7 @@ const basicsSection = [
       'basics/openai-api',
       'basics/prompt-eng',
       'basics/llm-usecases',
-      'basics/llm-choosing',
+      'basics/llm-eval',
     ],
   },
 ];
