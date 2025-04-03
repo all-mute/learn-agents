@@ -65,16 +65,6 @@ const config: Config = {
     },
   ],
 
-  // Custom fields for GitalkComponent
-  customFields: {
-    gitalk: {
-      clientID: process.env.GITALK_CLIENT_ID,
-      clientSecret: process.env.GITALK_CLIENT_SECRET,
-      repo: 'learn-agents-comments',
-      owner: 'all-mute',
-      admin: ['all-mute'],
-    },
-  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -218,10 +208,6 @@ const config: Config = {
             {
               label: 'DM Author',
               href: 'https://t.me/nongilgameshj',
-            },
-            {
-              label: 'Handbook comments',
-              href: 'https://github.com/all-mute/learn-agents-comments',
             },
           ],
         },

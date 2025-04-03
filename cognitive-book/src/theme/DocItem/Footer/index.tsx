@@ -1,20 +1,20 @@
 import React from "react";
-import BlogPostItem from "@theme-original/BlogPostItem";
-import type BlogPostItemType from "@theme/BlogPostItem";
+import DocItemFooter from "@theme-original/DocItem/Footer";
+import type DocItemFooterType from "@theme/DocItem/Footer";
 import type { WrapperProps } from "@docusaurus/types";
-import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
+import { useDoc } from "@docusaurus/plugin-content-docs/client";
 import Comments from "@site/src/components/Comments";
 
-type Props = WrapperProps<typeof BlogPostItemType>;
+type Props = WrapperProps<typeof DocItemFooterType>;
 
-export default function BlogPostItemWrapper(props: Props): JSX.Element {
-  const { metadata, isBlogPostPage } = useBlogPost();
+export default function DocItemFooterWrapper(props: Props): JSX.Element {
+  const { metadata } = useDoc();
   const { comments = true } = metadata.frontMatter;
 
   return (
     <>
-      <BlogPostItem {...props} />
-      {comments && isBlogPostPage && <Comments />}
+      <DocItemFooter {...props} />
+      {comments && <Comments />}
     </>
   );
 }
