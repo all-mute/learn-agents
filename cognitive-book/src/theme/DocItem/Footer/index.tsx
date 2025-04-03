@@ -1,42 +1,20 @@
-import React from 'react';
-import Footer from '@theme-original/DocItem/Footer';
-import type FooterType from '@theme/DocItem/Footer';
-import type { WrapperProps } from '@docusaurus/types';
-import GitalkComponent from '@site/src/components/GitalkComponent';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import { useColorMode } from '@docusaurus/theme-common';
-import Translate from '@docusaurus/Translate';
-import styles from './styles.module.css';
+import React from "react";
+import BlogPostItem from "@theme-original/BlogPostItem";
+import type BlogPostItemType from "@theme/BlogPostItem";
+import type { WrapperProps } from "@docusaurus/types";
+import { useBlogPost } from "@docusaurus/plugin-content-blog/client";
+import Comments from "@site/src/components/Comments";
 
-type Props = WrapperProps<typeof FooterType>;
+type Props = WrapperProps<typeof BlogPostItemType>;
 
-export default function FooterWrapper(props: Props): React.ReactElement {
-  const { siteConfig } = useDocusaurusContext();
-  const { colorMode } = useColorMode();
-  const gitalkConfig = siteConfig.customFields?.gitalk as Record<string, any> || {};
+export default function BlogPostItemWrapper(props: Props): JSX.Element {
+  const { metadata, isBlogPostPage } = useBlogPost();
+  const { comments = true } = metadata.frontMatter;
 
   return (
     <>
-      <Footer {...props} />
-      <div className={styles.commentsSection}>
-        <div className={styles.commentsWrapper}>
-          <h3 className={styles.commentsTitle}>
-            <Translate id="theme.DocItem.comments.title" description="Title of the comments section">
-              Comments
-            </Translate>
-          </h3>
-          <GitalkComponent 
-            options={{
-              clientID: gitalkConfig.clientID,
-              clientSecret: gitalkConfig.clientSecret,
-              repo: gitalkConfig.repo,
-              owner: gitalkConfig.owner,
-              admin: gitalkConfig.admin,
-              // Не переопределяем дополнительные опции, используем стандартные из компонента
-            }} 
-          />
-        </div>
-      </div>
+      <BlogPostItem {...props} />
+      {comments && isBlogPostPage && <Comments />}
     </>
   );
-} 
+}
