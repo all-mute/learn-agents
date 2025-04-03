@@ -1,0 +1,37 @@
+# LLM Tool Use Benchmarks
+
+from https://www.perplexity.ai/page/understanding-llm-benchmarks-e-VZmXIq_FQgCIS.3QSVo6EA
+
+As LLMs transition from pure language generators to active agents capable of interacting with external systems, tool use benchmarks represent a critical frontier in evaluation methodologies.
+
+### ToolBench
+
+ToolBench specifically evaluates an LLM's ability to use external tools based on natural language instructions.
+
+**Structure**: Presents tasks requiring the use of tools from a provided API, assessing the model's ability to select appropriate tools and use them correctly.
+
+**Evaluation Method**: Performance is measured by task completion success rate and the correctness of tool usage, including tool selection, parameter specification, and result interpretation.
+
+**Significance**: ToolBench addresses the growing importance of tool use in AI agents, a capability that extends LLMs beyond pure language generation.
+
+### API-Bank
+
+API-Bank evaluates how effectively LLMs can interact with various APIs to accomplish tasks.
+
+**Structure**: Collection of API specifications and tasks requiring their use.
+
+**Evaluation Method**: Measures the model's ability to correctly interpret API documentation, construct valid calls, and appropriately handle responses.
+
+**Significance**: Critical for evaluating LLMs as components in software ecosystems where API interaction is essential.
+
+### ReAct Benchmark
+
+ReAct evaluates the model's ability to alternate between reasoning and acting in environment-based tasks.
+
+**Structure**: Tasks requiring multi-step reasoning and tool use to gather information and accomplish goals.
+
+**Evaluation Method**: Assesses both the reasoning process (demonstrated through step-by-step thinking) and action accuracy (correct tool selection and use).
+
+**Significance**: Particularly relevant for agent systems that must plan sequences of actions and adapt based on intermediate results.
+
+Tool use benchmarks represent an evolution beyond pure language generation evaluation, addressing the growing role of LLMs as active agents in complex environments. As models continue to advance in their ability to interact with external systems, these benchmarks will become increasingly important for comprehensive evaluation.

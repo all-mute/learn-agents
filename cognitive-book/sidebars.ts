@@ -126,6 +126,7 @@ const extraSection = [
     collapsible: true,
     items: [
       'extra/index',
+      'extra/benchmarks',
     ],
   },
 ];
