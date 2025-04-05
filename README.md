@@ -1,6 +1,6 @@
 # 🧠 AI Agents Handbook [![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/all-mute/learn-agents/blob/main/LICENSE) [![Docusaurus](https://img.shields.io/badge/Docusaurus-3.x-brightgreen)](https://docusaurus.io)
 
-> The most comprehensive tutorial on building AI Agents from scratch to professional level
+> The most comprehensive tutorial on building AI Agents from zero to professional level
 
 ## [Visit Roadmap](https://roadmap.sh/r/ai-agents-2025-roadmap)
 ## [Visit Handbook](https://learn-agents.diy)
