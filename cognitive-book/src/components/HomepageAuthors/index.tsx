@@ -16,6 +16,24 @@ const authorsList = {
       translationId: "homepage.authors.merkulov.description"
     },
     {
+      name: "Dmitry Zhechkov",
+      imageUrl: "https://storage.yandexcloud.net/david-images/authors/szechkov.jpg",
+      website: "https://t.me/llm_notes",
+      translationId: "homepage.authors.zhechkov.description"
+    },
+    {
+      name: "Dmitry Savelko",
+      imageUrl: "https://storage.yandexcloud.net/david-images/authors/savelko.jpg",
+      website: "https://t.me/eboutdatascience",
+      translationId: "homepage.authors.savelko.description"
+    },
+    {
+      name: "Andrey Karpathy (материалы)",
+      imageUrl: "https://storage.yandexcloud.net/david-images/authors/karpathy.jpg",
+      website: "https://x.com/karpathy",
+      translationId: "homepage.authors.karpathy.description"
+    },
+    {
       name: "Your Name",
       imageUrl: "/img/placeholder-author.jpg",
       website: "/handbook/contributing",

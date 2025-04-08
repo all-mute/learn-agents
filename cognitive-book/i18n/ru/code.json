@@ -341,7 +341,7 @@
     "message": "Интерактивный учебник по созданию и использованию AI агентов с примерами кода и практическими руководствами"
   },
   "homepage.authors.title": {
-    "message": "Авторы проекта"
+    "message": "Авторы"
   },
   "homepage.authors.description": {
     "message": "Наша команда экспертов в области искусственного интеллекта и машинного обучения"
@@ -362,7 +362,16 @@
     "message": "Основатель проекта"
   },
   "homepage.authors.merkulov.description": {
-    "message": "Основной автор. CTO в AI-автоматизированном венчурном фонде, МГУ, Экс-Яндекс. Жду оффер от MAANG."
+    "message": "CTO @ AI VC, МГУ, Ex-Yandex. Жду оффер от OpenAI"
+  },
+  "homepage.authors.zhechkov.description": {
+    "message": "AI Архитектор @ Yandex Cloud, Ex-VMware"
+  },
+  "homepage.authors.savelko.description": {
+    "message": "LLM Engineer @ Точка Банк, Ex-Sber"
+  },
+  "homepage.authors.karpathy.description": {
+    "message": "Ex OpenAI, Tesla, Stanford"
   },
   "homepage.authors.your.description": {
     "message": "Любой желающий, кто заинтересован в сотрудничестве"
