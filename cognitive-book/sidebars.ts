@@ -146,6 +146,10 @@ const sidebars: SidebarsConfig = {
     label: 'View roadmap',
     href: 'https://roadmap.sh/r/ai-agents-2025-roadmap',
   },
+  {
+    type: 'doc',
+    id: 'release-dates',
+  },
   ],
 };
 
