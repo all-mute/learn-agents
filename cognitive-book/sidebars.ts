@@ -57,7 +57,6 @@ const liteBackendItems = [
   'not-agents/backend/databases',
   'not-agents/backend/practice-2',
   'not-agents/backend/cloud',
-  'not-agents/backend/docker',
   'not-agents/backend/microservices',
   'not-agents/backend/serverless',
   'not-agents/backend/practice-3',
