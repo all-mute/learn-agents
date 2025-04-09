@@ -63,7 +63,7 @@ const notAgentsSection = [
       'not-agents/optimization',
       {
         type: 'category' as const,
-        label: 'Backend Basics',
+        label: 'Lite Backend Development',
         collapsed: true,
         collapsible: true,
         items: [
@@ -125,7 +125,7 @@ const juniorSection = [
 const seniorSection = [
   {
     type: 'category' as const,
-    label: 'Senior',
+    label: 'Senior [TBD]',
     collapsed: true,
     collapsible: true,
     items: [
