@@ -48,6 +48,22 @@ const basicsSection = [
   },
 ];
 
+// Выносим элементы бэкенд разработки в отдельную переменную
+const liteBackendItems = [
+  'not-agents/backend/index',
+  'not-agents/backend/basics',
+  'not-agents/backend/practice-1',
+  'not-agents/backend/fastapi',
+  'not-agents/backend/databases',
+  'not-agents/backend/practice-2',
+  'not-agents/backend/cloud',
+  'not-agents/backend/docker',
+  'not-agents/backend/microservices',
+  'not-agents/backend/serverless',
+  'not-agents/backend/practice-3',
+  'not-agents/backend/extra',
+];
+
 // Not Agents section
 const notAgentsSection = [
   {
@@ -60,22 +76,14 @@ const notAgentsSection = [
       'not-agents/metalearning',
       'not-agents/vibecoding',
       'not-agents/algorithms',
-      'not-agents/optimization',
       {
         type: 'category' as const,
         label: 'Lite Backend Development',
         collapsed: true,
         collapsible: true,
-        items: [
-          'not-agents/backend-0/index',
-          'not-agents/backend-0/internet',
-          'not-agents/backend-0/linux',
-          'not-agents/backend-0/databases',
-          'not-agents/backend-0/microservices',
-          'not-agents/backend-0/chunks',
-          'not-agents/backend-0/sustainability',
-        ],
+        items: liteBackendItems, // Используем вынесенный массив
       },
+      'not-agents/optimization',
     ],
   },
 ];
