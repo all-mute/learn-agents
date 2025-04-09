@@ -87,13 +87,15 @@ const juniorSection = [
     collapsible: true,
     items: [
       'junior/index',
+      'junior/hf-agents',
+      'junior/algorithms',
       {
         type: 'category' as const,
         label: 'Part 1',
         collapsed: true,
         collapsible: true,
         items: [
-          'junior/part1/index',
+          'junior/rag/index',
         ],
       },
       {
@@ -102,7 +104,7 @@ const juniorSection = [
         collapsed: true,
         collapsible: true,
         items: [
-          'junior/part2/index',
+          'junior/frameworks/index',
         ],
       },
       {
@@ -111,7 +113,7 @@ const juniorSection = [
         collapsed: true,
         collapsible: true,
         items: [
-          'junior/part3/index',
+          'junior/infra/index',
         ],
       },
     ],
