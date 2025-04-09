@@ -59,6 +59,8 @@ const notAgentsSection = [
       'not-agents/index',
       'not-agents/metalearning',
       'not-agents/vibecoding',
+      'not-agents/algorithms',
+      'not-agents/optimization',
       {
         type: 'category' as const,
         label: 'Backend Basics',
@@ -88,10 +90,9 @@ const juniorSection = [
     items: [
       'junior/index',
       'junior/hf-agents',
-      'junior/algorithms',
       {
         type: 'category' as const,
-        label: 'Part 1',
+        label: 'RAG',
         collapsed: true,
         collapsible: true,
         items: [
@@ -100,7 +101,7 @@ const juniorSection = [
       },
       {
         type: 'category' as const,
-        label: 'Part 2',
+        label: 'Frameworks',
         collapsed: true,
         collapsible: true,
         items: [
@@ -109,7 +110,7 @@ const juniorSection = [
       },
       {
         type: 'category' as const,
-        label: 'Part 3',
+        label: 'Infrastructure',
         collapsed: true,
         collapsible: true,
         items: [
@@ -120,6 +121,21 @@ const juniorSection = [
   },
 ];
 
+// Senior Developer section
+const seniorSection = [
+  {
+    type: 'category' as const,
+    label: 'Senior',
+    collapsed: true,
+    collapsible: true,
+    items: [
+      'senior/index',
+    ],
+  },
+];
+
+
+
 const extraSection = [
   {
     type: 'category' as const,
@@ -128,7 +144,7 @@ const extraSection = [
     collapsible: true,
     items: [
       'extra/index',
-      'extra/benchmarks',
+      'extra/tool-use-benchmarks',
     ],
   },
 ];
@@ -141,6 +157,7 @@ const sidebars: SidebarsConfig = {
     ...startHereSection,
     ...basicsSection,
     ...juniorSection,
+    ...seniorSection,
     ...extraSection,
     ...notAgentsSection,
   {
