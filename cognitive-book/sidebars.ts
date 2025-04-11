@@ -57,6 +57,7 @@ const liteBackendItems = [
   'not-agents/backend/databases',
   'not-agents/backend/practice-2',
   'not-agents/backend/cloud',
+  'not-agents/backend/docker',
   'not-agents/backend/microservices',
   'not-agents/backend/serverless',
   'not-agents/backend/practice-3',
@@ -124,6 +125,7 @@ const juniorSection = [
           'junior/infra/index',
         ],
       },
+      'junior/what-to-develop',
     ],
   },
 ];
@@ -152,6 +154,7 @@ const extraSection = [
     items: [
       'extra/index',
       'extra/tool-use-benchmarks',
+      'extra/for-robotics',
     ],
   },
 ];

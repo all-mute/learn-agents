@@ -1,52 +1,141 @@
 ---
-sidebar_label: Микросервисы и докер
+sidebar_label: Микросервисы
 ---
 
-# NAME
+# Микросервисы и системная архитектура для Applied AI
 
-На этом этапе мы изучим... + щепотка мотивации к изучению
+Представьте, что микросервисы - это модульные космические корабли, а Docker - ваш личный космодром для их сборки. Здесь вы научитесь проектировать "орбитальные станции" для AI Агентов: разбивать монолитные системы на автономные сервисы-спутники, настраивать их взаимодействие через межзвёздные протоколы (REST/gRPC) и автоматизировать развёртывание с помощью CI/CD-ракетоносителей. Эти навыки позволят вашим нейросетям масштабироваться как галактическая империя, обновляться без простоев и переживать сбои отдельных компонентов без коллапса всей системы.
 
-## Questions
+<details>
+<summary>Инструкция к Ask AI</summary>
 
-Вопросы, которые мы будем обсуждать:
-- ...? - вопросы желательно короткие
-- ...
-- ...
+:::tip инструкция
+Так как данные темы не меняются со временем, лучше всего вам изучать их с персональным преподавателем - ChatGPT.
 
-## Steps
+Процесс изучения должен быть следующим:
+- вы составляете системный промпт для ChatGPT ([шаблоны](../metalearning#chatgpt-prompts)), где описываете свой бэкграунд, предпочтения, уровень подробности объяснений и т.д.
+- копируете тему из списка (тройной клик), и просите ChatGPT объяснить вам эту тему
+- при желании углубиться, задаете уточняющие вопросы 
 
-### 1. 
+На данный момент это самый удобный способ изучения основ. **Кроме концептов, вы можете изучать дополнительные материалы в секциях Gold, Silver, Extra.** 
+1. Gold - стоит обязательно изучить до общения с ChatGPT
+2. Ask AI - задавайте вопросы по каждой малознакомой теме
+3. Silver - второстепенные материалы
+4. Extra - углубленные темы
+:::
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/aZTL2zRmOnA?si=ExyRssNH0tSo0Otz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</details>
+
+## Golden
+
+### 1. Videos
+
+<details>
+<summary>Merion</summary>
+
+Kuber
 <iframe width="560" height="315" src="https://www.youtube.com/embed/klmpiHLSuXA?si=5h581G2da3DWwfh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/23Zec3ORJOY?si=iV4AVitbDg0KmQgh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ph4iNA0Uuko?si=4pvpWqvqj22P5hjj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+CICD
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Y-hYifHkjMs?si=bacJsaZNgOdJQgMp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+микросервисы
 <iframe width="560" height="315" src="https://www.youtube.com/embed/rCbdQc42eCw?si=s3QrWX_O-Fjiw2nT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+gh actions
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QMATr0vCsYg?si=Xp0B-nRC4UZ-EOw0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
+</details>
+
+<details>
+<summary>sys des: docker</summary>
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QEzbZKtLi-g?si=-AWdHrv8kphS7k4F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</details>
 
-### 2.
+### 2. Архитектуры для GenAI
 
-### 3.
+#### Стандартная архитектура для AI Агента
 
-### 4.
+- прокси к LLM нам нужна для соблюдения rate-limiting
+- прокси к внешнему API нам нужна для соблюдения rate-limiting и кэширования результатов
+- гейтвей перед бэкендом нам нужен для классификации запросов, определения ролей пользователя (paid tier, free tier), установки ограничений на размер контекста и др., установка rate-limiting и др.
 
-## Extra Steps
+```mermaid
+graph LR
+    Clients@{ shape: processes, label: "Clients browsers" }
 
-### E1.
+    subgraph serverless_web_servers
+        WebS@{ shape: processes, label: "NodeJS servers" }
+    end
 
-## Now we know...
+    subgraph serverless_backend
+        BackS@{ shape: processes, label: "FastAPI servers" }
+    end
 
-Мы изучили...
+    subgraph serverless_database
+        DB@{ shape: lin-cyl, label: "PostgreSQL instances" }
+    end
 
-## Exercises
+    APIProxy@{ shape: das, label: "External API Proxy" }
+    API@{ shape: manual-input, label: "External API"}
 
-Вопросы на размышление, чтобы в голове студента задвигались нейроны.
+    LLMProxy@{ shape: das, label: "LLM Proxy" }
+    LLM@{ shape: manual-input, label: "LLM Provider"}
+    
+    Queue@{ shape: diamond, label: "API Gateway" }
 
-Практика, если есть.
+    Clients <--> serverless_web_servers
+    
+    WebS --- Queue
+
+    Queue --> serverless_backend
+
+    BackS --> serverless_database
+
+    BackS --> APIProxy
+    APIProxy --> API
+
+    BackS --> LLMProxy
+    LLMProxy --> LLM
+```
+
+## Ask AI
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
+
+45. **Основные концепции микросервисной архитектуры (Стартовый гайд)**  
+46. Микросервисы vs Монолит: полное сравнение архитектур  
+47. Domain-Driven Design: базовые принципы для микросервисов  
+48. API Gateway: паттерны для начинающих (Обзорно)  
+49. Docker для AI-сервисов: минимально необходимые практики  
+50. Kubernetes: основы оркестрации для AI-разработчиков  
+51. Балансировка нагрузки GPU-задач: базовые подходы  
+52. Версионирование AI-моделей: семантическое версионирование  
+53. A/B тестирование моделей: production-кейсы (Краткий обзор)  
+54. Безопасность AI-сервисов: OAuth2/JWT на практике  
+55. Rate limiting для AI-операций: основы для начинающих  
+56. CI/CD для AI: минимальный рабочий пайплайн  
+57. GRPC vs REST: сравнение для AI API (Концепт)  
+58. Кэширование результатов ML-моделей: базовые стратегии  
+59. Circuit Breaker: принцип работы и реализация  
+60. Мониторинг нейросетевых сервисов: ключевые метрики  
+61. **Кэширование: TTL vs инвалидация (Сравнительный анализ)**
+    <details>
+    <summary>Кэширование: стратегии и инвалидация кэша</summary>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/a4yX7RUgTxI?si=fZJZ2tg9YYM_Gmvz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    </details>
+
+62. Message Queue: базовые концепции и use-cases (Обзорно)
+
+## Silver
+
+## Extra
+
+
+
 
 
 

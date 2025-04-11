@@ -1,23 +1,39 @@
 ---
-sidebar_label: Теория по БД
+sidebar_label: Базы данных
 ---
 
-# NAME
+# Теория по Базам данных
 
-На этом этапе мы изучим... + щепотка мотивации к изучению
+Представьте, что базы данных - это фундамент дома для ваших AI Агентов. Здесь мы разберём, как проектировать "хранилища памяти" для нейросетей, чтобы ваши системы могли быстро находить нужные данные, как библиотекарь в гигантской книжной вселенной. Вы научитесь выбирать между SQL и NoSQL (словно подбирать ключи к разным сейфам), оптимизировать запросы (как прокладывать скоростные магистрали для данных) и обеспечивать надёжность транзакций - именно эти навыки превратят вас из новичка в архитектора промышленных AI систем.
 
-## Questions
 
-Вопросы, которые мы будем обсуждать:
-- ...? - вопросы желательно короткие
-- ...
-- ...
+<details>
+<summary>Инструкция к Ask AI</summary>
+
+:::tip инструкция
+Так как данные темы не меняются со временем, лучше всего вам изучать их с персональным преподавателем - ChatGPT.
+
+Процесс изучения должен быть следующим:
+- вы составляете системный промпт для ChatGPT ([шаблоны](../metalearning#chatgpt-prompts)), где описываете свой бэкграунд, предпочтения, уровень подробности объяснений и т.д.
+- копируете тему из списка (тройной клик), и просите ChatGPT объяснить вам эту тему
+- при желании углубиться, задаете уточняющие вопросы 
+
+На данный момент это самый удобный способ изучения основ. **Кроме концептов, вы можете изучать дополнительные материалы в секциях Gold, Silver, Extra.** 
+1. Gold - стоит обязательно изучить до общения с ChatGPT
+2. Ask AI - задавайте вопросы по каждой малознакомой теме
+3. Silver - второстепенные материалы
+4. Extra - углубленные темы
+:::
+
+</details>
 
 ## Ask ai
 
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
+
 ### Базы данных и хранение данных
-35. **SQL vs NoSQL: сравнение моделей данных**
-36. **ACID свойства: транзакции в базах данных**
+1. **SQL vs NoSQL: сравнительный анализ для выбора технологии (Обзорно)**
+2. **ACID свойства: основы транзакций для проектирования систем**
     <details>
     <summary>ACID свойства: транзакции в базах данных</summary>
 
@@ -25,11 +41,11 @@ sidebar_label: Теория по БД
 
     </details>
 
-37. CAP теорема: основные компромиссы в распределенных системах
-38. **Индексы в базах данных: принципы работы и оптимизация**
-39. **ORM: преимущества и недостатки**
-40. Транзакции: уровни изоляции
-42. **Пагинация: offset vs cursor-based подходы**
+3. CAP теорема: ключевые компромиссы распределенных систем (Концепт)
+4. **Индексы в базах данных: принципы работы и базовые стратегии оптимизации**
+5. **ORM: основные принципы и типичные кейсы использования**
+6. Уровни изоляции транзакций: краткое руководство
+7. **Пагинация: сравнительный анализ подходов (Практикум)**
     <details>
     <summary>Пагинация: offset vs cursor-based подходы</summary>
 
@@ -37,36 +53,137 @@ sidebar_label: Теория по БД
 
     </details>
 
-- **AI Chat with database:** взгляд на базы данных из новой перспективы
+8. **Chat with database: концепция и практическое применение MindsDB**
+9. Хранилища данных: сравнительная таблица (Data Lake vs Warehouse vs Mart)
+45. Шардирование: концепт горизонтального масштабирования
+46. Репликация данных: базовые схемы обеспечения доступности
 
-## Steps
-
-### 1. 
+## Golden
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IBzTDkYNB7I?si=a3m9SyAbnsAJvc2h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bv5UqdWm-5k?si=2kx8UUc982RSZK5T" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 bytebyte db playlist - https://youtube.com/playlist?list=PLCRMIe5FDPsdnSszazqVIQFh99t1ExH19&si=3tVd_dGWxmtQ2pQo
 
-### 2.
+<details>
+<summary>Fireship</summary>
 
-### 3.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W2Z7fbCLSTw?si=60eK-dsMnFWZOINM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/n2Fluyr3lbc?si=lltEIffEkETV4n5l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-bt_y4Loofg?si=xOpa80XW4nFo7T2b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T6L9EoBy8Zk?si=ng0sMPs4NdrShnoT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-### 4.
 
-## Extra Steps
 
-### E1.
+</details>
 
-## Now we know...
+## Ask AI
 
-Мы изучили...
+### Основные концепции баз данных
+1. **Архитектура баз данных: основные компоненты и термины (Фундамент)**
+2. **Реляционные БД: от нормализации до связей между таблицами**
+3. **Ключи в БД: проектирование связей и целостности данных**
+4. **CRUD-операции: паттерны работы с данными (Практикум)**
+
+### SQL и работа с данными
+5. **SQL: синтаксис для повседневных задач (Шпаргалка)**
+6. **SELECT-запросы: продвинутые техники фильтрации**
+7. **JOIN-операции: визуализация связей между таблицами**
+8. **Транзакции: написание атомарных операций**
+
+### NoSQL и современные подходы к хранению данных
+9. **SQL vs NoSQL: сравнение моделей данных**
+    <details>
+    <summary>SQL vs NoSQL: сравнение моделей данных</summary>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GAe5oB742dw?si=76fujMvzHJJjua25" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    </details>
+
+10. **Документоориентированные БД: MongoDB и работа с JSON-данными**
+11. **ACID свойства: транзакции в базах данных**
+    <details>
+    <summary>ACID свойства: транзакции в базах данных</summary>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GAe5oB742dw?si=76fujMvzHJJjua25" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    </details>
+
+### Оптимизация и практические аспекты
+12. **Индексы в базах данных: принципы работы и оптимизация**
+13. **ORM: преимущества и недостатки**
+14. **Связи в базах данных: один-к-одному, один-ко-многим, многие-ко-многим**
+15. **Пагинация: offset vs cursor-based подходы**
+    <details>
+    <summary>Пагинация: offset vs cursor-based подходы</summary>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/14K_a2kKTxU?si=GeKkgP09fzgkF5hv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    </details>
+16. **Ключ-значение хранилища: Redis и кеширование (Обзорно)**
+17. **Графовые БД: основы работы с Neo4j (Концепт)**
+
+## Silver
+
+<details>
+<summary>I replaced my entire tech stack with Postgres...</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3JW732GrMdg?si=hkUA-ILoshFCS5DE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
 
 ## Exercises
 
-Вопросы на размышление, чтобы в голове студента задвигались нейроны.
+<details>
+<summary>Упражнение: Оптимизация медленных запросов в PostgreSQL</summary>
 
-Практика, если есть.
+**Ситуация:**
+У нас есть таблица `user_actions` в PostgreSQL с 10 млн записей:
+```sql
+CREATE TABLE user_actions (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    action_type VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB
+);
+```
+
+**Проблема:**
+Следующий запрос выполняется 2.8 секунды:
+```sql
+SELECT * FROM user_actions 
+WHERE user_id = 123 
+  AND action_type = 'search'
+ORDER BY created_at DESC 
+LIMIT 100;
+```
+
+**Задание:**
+1. Объясните, почему запрос стал медленным
+2. Предложите решение через индексы
+3. Напишите SQL для создания индекса
+4. Объясните trade-offs вашего решения
+
+<details>
+<summary>Ответ</summary>
+
+1. **Причина медленной работы:** Отсутствие подходящего индекса для условий WHERE и ORDER BY
+2. **Решение:** Создать составной индекс, покрыващий фильтрацию и сортировку
+3. **SQL:**
+```sql
+CREATE INDEX idx_user_actions_composite ON user_actions 
+  (user_id, action_type, created_at DESC);
+```
+4. **Trade-offs:**
+- Увеличение размера БД на ~15-20%
+- Незначительное замедление операций INSERT/UPDATE
+- Рекомендуется использовать CONCURRENTLY для создания в продакшене:
+```sql
+CREATE INDEX CONCURRENTLY idx_user_actions_composite ...;
+```
+</details>
+</details>
 
 
 

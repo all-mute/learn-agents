@@ -4,7 +4,17 @@ sidebar_label: Та самая IT-база
 
 # IT База
 
-В этом модуле мы должны закрыть все пробелы по основным темам бэкенд разработки.
+#### В этом модуле мы должны закрыть все пробелы по основам Software Engineering и по основным темам бэкенд разработки.
+
+:::danger про Lite backend development блок
+IMFO: Applied AI engineer не должен быть специалистом по бэкенд разработке, но вы сами должны углубиться с уровнем погружения + пропускайте знакомые темы.
+- **Хотите быстрее перейти к разработке Агентов?** - изучите данные темы поверхностно - возвращаясь к погружению в SWE по ходу промышленной разработки.
+    - Для Full-time learners: тратьте 0.5-1 дня на модуль
+    - Для Part-time learners: тратьте 1-2 дня на модуль
+- **Хотите углубленные знания?** - будет полезно будущим архитекторам
+    - Для Full-time learners: тратьте 1-2 дня на модуль, поверхностно проходите Extra/Silver секции
+    - Для Part-time learners: тратьте 2-4 дня на модуль, поверхностно проходите Extra/Silver секции
+:::
 
 :::tip инструкция
 Так как данные темы не меняются со временем, лучше всего вам изучать их с персональным преподавателем - ChatGPT.
@@ -20,6 +30,7 @@ sidebar_label: Та самая IT-база
 3. Silver - второстепенные материалы
 4. Extra - углубленные темы
 :::
+
 
 ## Gold
 
@@ -84,43 +95,49 @@ sidebar_label: Та самая IT-база
 Темы для последовательного изучения с ChatGPT (сгруппированы по категориям):
 
 ### Сетевые основы и протоколы
+
+<details>
+<summary>How the internet works</summary>
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sMHzfigUxz4?si=d68it1_Lbn1R8qVQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-1. **HTTP vs HTTPS: основные различия**
-2. **TCP/IP: принципы работы и базовые концепции, кратко**
-3. **HTTP коды состояния: классификация и использование (2xx, 4xx, 5xx), кратко**
+</details>
+
+
+1. **HTTP vs HTTPS: ключевые различия и влияние на безопасность**
+2. **TCP/IP: базовые принципы работы (кратко)**
+3. **HTTP коды состояния: практическое применение (2xx, 4xx, 5xx)**
     <details>
     <summary>HTTP коды состояния: классификация и использование (2xx, 4xx, 5xx), кратко</summary>
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/qmpUfWN7hh4?si=s-dryQZ-WwqiY3Kw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
     </details>
-4. WebSockets vs HTTP Long Polling: реальное время в вебе
-5. CORS: настройка и политики безопасности
+4. **WebSockets vs HTTP Long Polling: сравнение подходов (концепт)**
+5. **CORS: настройка безопасности для кросс-доменных запросов**
 
 ### Архитектура API и веб-сервисов
-6. REST vs SOAP: сравнение архитектур
-7. **Stateless vs Stateful сервисы: преимущества и недостатки**
-8. **CRUD операции: создание, чтение, обновление, удаление**
-9. **RESTful API: архитектурные ограничения**
-10. **API версионирование: стратегии и лучшие практики**
-11. OpenAPI/Swagger: документирование API
-12. GraphQL vs REST: когда использовать
+6. **REST vs SOAP: сравнение для начинающих**
+7. **Stateless vs Stateful: преимущества для масштабирования**
+8. **CRUD операции: базовые паттерны работы с данными**
+9. **RESTful API: 6 ключевых принципов проектирования**
+10. **API версионирование: стратегии для backward compatibility**
+11. **OpenAPI/Swagger: автоматизация документации (обзорно)**
+12. **GraphQL vs REST: критерии выбора технологии**
     <details>
     <summary>GraphQL vs REST: когда использовать</summary>
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/yWzKJPw_VzM?si=KgFnWyyXFnlKI39F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
     </details>
-
-13. Webhooks: механизмы работы и применение
+13. **Webhooks: реализация асинхронных уведомлений**
     <details>
     <summary>Webhooks: механизмы работы и применение</summary>
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/x_jjhcDrISk?si=FuIdQkqTXHklXcB8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
     </details>
-14. API Gateway: роль в микросервисной архитектуре
+14. **API Gateway: архитектурные паттерны (обзорно)**
     <details>
     <summary>API Gateway: роль в микросервисной архитектуре</summary>
 
@@ -128,8 +145,8 @@ sidebar_label: Та самая IT-база
     <iframe width="560" height="315" src="https://www.youtube.com/embed/RqfaTIWc3LQ?si=0WUD_KE4fuIwO6SW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
     </details>
-15. **API rate limiting: реализация и защита от атак**
-16. Микросервисы vs Монолит: когда что использовать
+15. **API rate limiting: защита от DDoS и злоупотреблений**
+16. **Микросервисы vs Монолит: анализ trade-off**
     <details>
     <summary>Микросервисы vs Монолит: когда что использовать</summary>
 
@@ -149,9 +166,9 @@ sidebar_label: Та самая IT-база
 
 
 ### Принципы разработки и тестирование
-17. **SOLID принципы: примеры для каждого принципа**
-18. **DRY, KISS, YAGNI: принципы чистого кода**
-19. **Юнит-тесты vs Интеграционные тесты: отличия и применение**
+17. **SOLID: практическое применение в бэкенде**
+18. **DRY/KISS/YAGNI: антипаттерны и решения**
+19. **Тестирование в бэкенде: пирамида тестов (сравнение)**
     <details>
     <summary>Top 9 Most Popular Types of API Testing</summary>
 
@@ -162,22 +179,22 @@ sidebar_label: Та самая IT-база
     </details>
 
 
-20. TDD: подход "сначала тесты"
-21. A/B тестирование: реализация на бэкенде
-22. Feature flags: управление функциональностью приложения
-23. Semantic Versioning: правила нумерации версий
-24. **Логирование: структурированные логи и уровни логирования**
-25. **Мониторинг: основные метрики и SLA**
+20. **TDD: workflow для начинающих**
+21. **A/B тестирование: архитектурные подходы**
+22. **Feature flags: управление релизами (кратко)**
+23. **SemVer: семантическое версионирование на практике**
+24. **Структурированные логи: best practices**
+25. **Мониторинг: ключевые метрики SLA**
 
 - **Обработка ошибок и логирование:** стандартные подходы, middleware
 - **Прокси-серверы**
 
 ### Git и CI/CD
-26. **Git: основы ветвления и стратегии слияния**
-27. **CI/CD: основные этапы и преимущества**
+26. **Git-flow: стратегии ветвления в команде**
+27. **CI/CD: пайплайн от коммита до продакшена**
 
 ### Безопасность и аутентификация
-28. **JWT токены: структура и способы использования**
+28. **JWT: реализация токенов в микросервисах**
     <details>
     <summary>JWT токены: структура и способы использования</summary>
 
@@ -186,21 +203,21 @@ sidebar_label: Та самая IT-база
     https://youtu.be/fyTxwIa-1U0?si=TKRWttBerXodhlA-
 
     </details>
-29. **OAuth2: принципы авторизации**
+29. **OAuth2: флоу авторизации для API**
     <details>
     <summary>OAuth2: принципы авторизации</summary>
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/ZV5yTm4pT8g?si=wxHYNBWNpzKcHCPv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
     </details>
-30. **Хеширование паролей: безопасное хранение учетных данных**
+30. **Хеширование паролей: современные стандарты безопасности**
     <details>
     <summary>Хеширование паролей: безопасное хранение учетных данных</summary>
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/zt8Cocdy15c?si=017K7zJhNwZxLHe6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
     </details>
-34. Secret management: безопасное хранение секретов
+34. **Secret management: Vault и аналоги (обзорно)**
 
 <details>
 <summary>12 tips for API security</summary>
@@ -209,25 +226,12 @@ sidebar_label: Та самая IT-база
 
 </details>
 
-### Производительность и масштабирование
-43. **Кэширование: стратегии и инвалидация кэша**
-    <details>
-    <summary>Кэширование: стратегии и инвалидация кэша</summary>
-
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/a4yX7RUgTxI?si=fZJZ2tg9YYM_Gmvz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-    </details>
-
-44. Message Queue: основные концепции и применение
-45. Шардирование: горизонтальное масштабирование данных
-46. Репликация данных: обеспечение доступности
-
 ### Асинхронность и параллелизм
-47. **Асинхронное программирование: event loop и callbacks**
-48. **Многопоточность vs Мультипроцессинг: Python специфика**
-49. Python GIL: ограничения и решения
-50. **asyncio: основы работы с корутинами**
-51. Фоновые задачи: очереди и планирование
+47. **Асинхронное программирование: event loop и callbacks (концепт и сравнение с синхронным кодом)**
+48. **Многопоточность vs Мультипроцессинг: Python специфика (концепт и ключевые отличия)**
+49. Python GIL: обзор проблемы и подходы к обходу
+50. **asyncio: основы работы с корутинами (практические примеры использования)**
+51. Фоновые задачи: очереди и планирование (реализация через Celery/Redis)
 
 ### Архитектурные паттерны
 <details>
@@ -237,16 +241,18 @@ sidebar_label: Та самая IT-база
 
 </details>
 
-52. Dependency injection: инверсия контроля
-53. Фабричный паттерн: создание объектов
-54. Singleton: использование глобальных ресурсов
-55. **Валидация данных: подходы и библиотеки**
-56. **Сериализация: преобразование объектов для передачи**
-57. Идемпотентность: безопасное повторение операций
+52. Dependency Injection: Практическое внедрение зависимостей (инверсия контроля)
+53. Фабричный паттерн: Создание объектов через фабрики (концепт и сравнение с другими паттернами)
+54. Singleton: Глобальные ресурсы и антипаттерны (Обзорно для начинающих)
+55. **Валидация данных: Pydantic/Schema модели (ключевые библиотеки и подходы)**
+56. **Сериализация объектов: JSON/Protobuf/MessagePack (форматы и оптимизация передачи)**
+57. Идемпотентность API: Гарантия однократного выполнения операций
 
 ### Дополнительные темы
-- **Agile, Scrum, Kanban:** базовые методологии разработки 
-- **Software Development Life Cycle (SDLC):** стадии разработки, планирование, ревью кода
+- **Agile, Scrum, Kanban:** базовые методологии разработки (концепт и сравнение)
+- **Software Development Life Cycle (SDLC):** стадии разработки, планирование, ревью кода (Обзорно для начинающих)
+- **DevOps:** основные принципы и инструменты (Обзор ключевых аспектов)
+- **Load Balancing:** базовые принципы и инструменты (концепт и сравнение подходов)
 
 ## Silver
 
@@ -255,11 +261,13 @@ sidebar_label: Та самая IT-база
 <details>
 <summary>Silver videos</summary>
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4vLxWqE94l4?si=DNpeWVb2oB2JxcUI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/zvWKqUiovAM?si=6ou0tfQh9fgWrgO4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0chZFIZLR_0?si=ADyuQtl7yf8MoibA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HZklgPkboro?si=e5YskYrmefNYAsZF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 </details>
+
 ## Extra Steps
 
 <details>
