@@ -1,19 +1,30 @@
 ---
-title: Оптимизация гиперпараметров
+sidebar_label: Оптимизация гиперпараметров
 ---
 
-### Optimization Algorithms ✦✦✦
+# Оптимизация гиперпараметров для AI Агентов ✦
 
-#### Виды гиперпараметров
+Изучим искусство тонкой настройки AI систем: от ручной корректировки промптов до создания самооптимизирующихся агентов. Узнаем, как превратить "работает" в "работает безупречно" через системный подход к параметризации.
 
 Стратегии для самооптимизации: автоматически улучшаем промпты, настраиваем гиперпараметры агентов/workflow, создаем адаптивные диалоговые сценарии. Позволяет ботам находить оптимальные решения через поколения улучшений — ваш секрет создания самообучающихся систем!
 
+
+## Questions
+
+- Что такое гиперпараметры?
+- Какие гиперпараметры есть у LLM, workflow, агентов?
+- Как автоматизировать поиск оптимальных конфигураций?
+- Всегда ли мы можем позволить себе автоматическую оптимизацию?
+
 <details>
 <summary>Что такое параметры и гиперпараметры?</summary>
+
 *Параметры* - обычно это веса нейронной сети - математические величины, которые мы подбираем в процессе обучения.
 
 *Гиперпараметры* - это параметры, которые мы настраиваем для оптимизации работы модели. Например,для нейронной сети это может быть количество нейронов в скрытом слое, определенная функция активации (их существует много) и т.д. **Для LLM** это может быть температура, max_tokens, top_p и т.д.
 </details>
+
+## Виды гиперпараметров
 
 В материалах ниже речь будет идти о гиперпараметрах для нейронных сетей - **но я прошу вас думать о них в контексте workflows и агентов.** Параметры бывают:
 1. целочисленные - можем двигать значение на +1 или -100
@@ -22,19 +33,19 @@ title: Оптимизация гиперпараметров
 4. строковые - можем менять текст
 5. списковые - можем выбирать из списка значений
 
-Для агетнов это может быть:
+##### Для агетнов это может быть:
 - длинна истории сообщений в токенах, после достижения которой мы суммаризируем историю
 - температура
 - включение/выключение определенных режимов вашего агента
 - промпты для каждого агента
 - список инструментов или под-агентов для агента
 
-В контексте LLM-based сервисов гиперпараметры - это параметры, которые мы настраиваем для оптимизации работы всей системы. Например: 
-- для простого чат-бота это может быть:
+##### В контексте LLM-based сервисов гиперпараметры - это параметры, которые мы настраиваем для оптимизации работы всей системы. Например: 
+- для **простого чат-бота** это может быть:
   - системный промпт
   - температура
   - (значит, мы будем выбирать из нескольких промптов и температур, для генерации наиболее качественных ответов)
-- для RAG это могут быть:
+- для **RAG** это могут быть:
   - k (количество чанков "контекста", которые будут использоваться для аугментации ответа)
   - chunk_size (размер чанка)
   - chunk_overlap (перекрытие чанков)
@@ -42,12 +53,12 @@ title: Оптимизация гиперпараметров
   - различные эмбеддинг-модели
   - методы предобработки текста
   - и т.д. + у более сложных RAG еще больше гиперпараметров
-- для workflow это могут быть:
+- для **workflow** это могут быть:
   - промпты для каждого шага
   - типы структур для структурных ответов
   - различные способы классификаций для routing
   - и т.д.
-- для агентов это могут быть:
+- для **агентов** это могут быть:
   - промпты для каждого агента
   - max_iterations
   - подагенты
@@ -63,51 +74,44 @@ title: Оптимизация гиперпараметров
 - Оптимизация системы для достижения наилучшего качества/цены/скорости/эффективности и т.д.
 
 
-#### Core Algorithms
+## Core Algorithms
 
 Text materials:
 [Wikipedia](https://en.wikipedia.org/wiki/Hyperparameter_optimization)
+ & 
 [Иллюстрации](https://www.nb-data.com/p/6-common-hyperparameter-optimization)
 
 Videos:
 - [Hyperparameter Optimization](https://youtu.be/ttE0F7fghfk?si=w9Cz3egxsw6aV1xv)
 - [Hyperparameter Optimization small lecture](https://youtu.be/IqQT8se9ofQ?si=6YQBlsW5ry8Xzh_2)
 
-1. Grid Search & Random Search
-- Grid Search: Evaluates all combinations in a predefined set. Best for small, discrete spaces but scales poorly.
-- Random Search: Randomly samples hyperparameters, often outperforming grid search in high-dimensional spaces by exploring more values efficiently.
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
 
-2. Bayesian Optimization
-Mechanism: Uses probabilistic models (e.g., Gaussian Processes) to predict promising configurations, balancing exploration and exploitation.
+#### 1. Grid Search & Random Search
+    - Grid Search: Оценивает все комбинации в предопределенном наборе. Лучше всего подходит для небольших, дискретных пространств, но плохо масштабируется.
+    - Random Search: Случайным образом выбирает гиперпараметры, часто превосходя grid search в высокоразмерных пространствах, эффективно исследуя больше значений.
 
-Strengths: Efficient for low-dimensional problems but struggles with high dimensionality.
+#### 2. Bayesian Optimization
+    - Механизм: Использует вероятностные модели (например, Gaussian Processes) для предсказания перспективных конфигураций, балансируя исследование и эксплуатацию.
+    - Преимущества: Эффективен для низкоразмерных задач, но испытывает трудности с высокой размерностью.
 
-3. Evolutionary Algorithms
-Process: Mimics natural selection by iteratively evolving populations of hyperparameter sets via mutation and crossover.
+#### 3. Evolutionary Algorithms
+    - Процесс: Имитирует естественный отбор, итеративно развивая популяции наборов гиперпараметров через мутацию и кроссовер.
+    - Применение: Эффективен для сложных, недифференцируемых пространств поиска (например, neural architecture search).
 
-Use Case: Effective for complex, non-differentiable search spaces (e.g., neural architecture search).
+#### 4. Hyperband & Successive Halving
+    - Hyperband: Комбинирует random search с ранней остановкой, динамически распределяя ресурсы на перспективные конфигурации.
+    - Successive Halving: Агрессивно отсекает неэффективные модели на ранних этапах обучения.
 
-4. Hyperband & Successive Halving
-Hyperband: Combines random search with early stopping, dynamically allocating resources to promising configurations.
+#### 5. Population-Based Training (PBT)
+    - Адаптивная настройка: Одновременно оптимизирует гиперпараметры и веса модели во время обучения, идеально подходит для динамических задач, таких как reinforcement learning.
 
-Successive Halving: Aggressively prunes underperforming models early in training.
-
-5. Population-Based Training (PBT)
-Adaptive Tuning: Simultaneously optimizes hyperparameters and model weights during training, ideal for dynamic tasks like reinforcement learning.
-
-#### Genetic Algorithms
+## Genetic Algorithms
 
 **Видео ресурсы:**
 - [Genetic Algorithm with Solved Example](https://www.youtube.com/watch?v=uQj5UNhCPuo)
-- [Genetic Algorithms Explained By Example](https://www.youtube.com/watch?v=uCXm6avugCo)
-- [Introduction to Genetic Algorithms — Including Example Code](https://www.youtube.com/watch?v=9zfeTw-uFCw)
 
-**LeetCode задачи:**
-- [Traveling Salesman Problem](https://leetcode.com/discuss/interview-question/2449410/google-oa-traveling-salesman-problem)
-- [N-Queens](https://leetcode.com/problems/n-queens/)[5]
-- [Maximize Score After N Operations](https://leetcode.com/problems/maximize-score-after-n-operations/)
-
-#### Ручная Оптимизация
+## Ручная Оптимизация
 
 :::info
 Оптимизация гиперпараметров зачастую выполняется в три шага:
@@ -115,13 +119,23 @@ Adaptive Tuning: Simultaneously optimizes hyperparameters and model weights duri
 2. Эксперимент
 3. Оценка результатов
 
-- где эксперимент может быть большим датасетом вопросов/ответов или сложной автоматической средой,
-- а оценка результатов может проводиться людьми-ассесорами (чаще всего эти ассессоры - вы :) ) или более дорогими LLM
+    - где эксперимент может быть большим датасетом вопросов/ответов или сложной автоматической средой,
+    - а оценка результатов может проводиться людьми-ассесорами (чаще всего эти ассессоры - вы :) ) или более дорогими LLM
 
 **Если общая стоимость данного цикла семплинг-эксперимент-оценка слишком высокая (например, 1000$), то мы не сможем строить систему для автоматической оптимизации и будем делать это вручную.**
 
-Тогда вы можете выбрать любой алгоритм из изученных ранее, и использовать его для ручной оптимизации. Также при ручной оптимизации вам сильно помогут интуиция и дедуктивные рассуждения.
+Тогда вы можете выбрать любой алгоритм из изученных ранее, и следовать его инструкциям мануально. Также при ручной оптимизации вам сильно помогут интуиция и дедуктивные рассуждения.
 :::
 
+## Now we know...
 
+Мы изучили, что такое гиперпараметры, как они влияют на работу GenAI apps, и какие методы оптимизации можно использовать для их настройки. Теперь вы можете применять эти знания для улучшения своих AI систем.
+
+## Exercises
+
+Вспомните один из ваших последних проектов:
+- Как вы думаете, какие гиперпараметры наиболее критичны для вашего проекта?
+- Какие методы оптимизации вы бы выбрали для своей задачи и почему?
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
 

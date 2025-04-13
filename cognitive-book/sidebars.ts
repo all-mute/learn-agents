@@ -84,6 +84,7 @@ const notAgentsSection = [
         items: liteBackendItems, // Используем вынесенный массив
       },
       'not-agents/optimization',
+      'not-agents/rapid-ui',
     ],
   },
 ];
@@ -97,6 +98,7 @@ const juniorSection = [
     collapsible: true,
     items: [
       'junior/index',
+      'junior/workflows',
       'junior/hf-agents',
       {
         type: 'category' as const,
@@ -107,6 +109,7 @@ const juniorSection = [
           'junior/rag/index',
         ],
       },
+      'junior/architectures-101',
       {
         type: 'category' as const,
         label: 'Frameworks',
@@ -134,15 +137,90 @@ const juniorSection = [
 const seniorSection = [
   {
     type: 'category' as const,
-    label: 'Senior [TBD]',
+    label: 'Senior',
     collapsed: true,
     collapsible: true,
     items: [
       'senior/index',
+      'senior/adlc',
+      'senior/advanced-backend',
+      'senior/llms',
+      'senior/prompting',
+      'senior/voice-robots',
+      {
+        type: 'category' as const,
+        label: 'Агенты',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'senior/agents/index',
+        ],
+      },
+      {
+        type: 'category' as const,
+        label: 'Оценка AI Агентов',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'senior/evaluation/index',
+        ],
+      },
+      {
+        type: 'category' as const,
+        label: 'Инфраструктура',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'senior/infra/index',
+        ],
+      },
+      {
+        type: 'category' as const,
+        label: 'Разработка моделей',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'senior/model-dev/index',
+        ],
+      },
+      {
+        type: 'category' as const,
+        label: 'RAG',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'senior/rag/index',
+        ],
+      },
+      {
+        type: 'category' as const,
+        label: 'Рабочие процессы',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'senior/workflows/index',
+        ],
+      },
     ],
   },
 ];
 
+const frontierSection = [
+  {
+    type: 'category' as const,
+    label: 'Frontier [TBD]',
+    collapsed: true,
+    collapsible: true,
+    items: [
+      'frontier/index',
+      'frontier/guide',
+      'frontier/a2a',
+      'frontier/mcp',
+      'frontier/papers',
+      'frontier/onthological-papers'
+    ],
+  },
+];
 
 
 const extraSection = [
@@ -168,6 +246,7 @@ const sidebars: SidebarsConfig = {
     ...basicsSection,
     ...juniorSection,
     ...seniorSection,
+    ...frontierSection,
     ...extraSection,
     ...notAgentsSection,
   {
