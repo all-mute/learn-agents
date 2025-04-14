@@ -112,7 +112,7 @@ const juniorSection = [
       'junior/hf-agents',
       {
         type: 'category' as const,
-        label: 'RAG',
+        label: 'RAG [TBD]',
         collapsed: true,
         collapsible: true,
         items: [
@@ -122,7 +122,7 @@ const juniorSection = [
       'junior/architectures-101',
       {
         type: 'category' as const,
-        label: 'Frameworks',
+        label: 'Frameworks [TBD]',
         collapsed: true,
         collapsible: true,
         items: [
@@ -131,7 +131,7 @@ const juniorSection = [
       },
       {
         type: 'category' as const,
-        label: 'Infrastructure',
+        label: 'Infrastructure [TBD]',
         collapsed: true,
         collapsible: true,
         items: [
@@ -147,7 +147,7 @@ const juniorSection = [
 const seniorSection = [
   {
     type: 'category' as const,
-    label: 'Senior',
+    label: 'Senior [TBD]',
     collapsed: true,
     collapsible: true,
     items: [
@@ -182,6 +182,7 @@ const seniorSection = [
         collapsible: true,
         items: [
           'senior/infra/index',
+          'senior/infra/costs-reduction',
         ],
       },
       {
