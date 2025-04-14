@@ -74,7 +74,17 @@ const notAgentsSection = [
     items: [
       'not-agents/index',
       'not-agents/metalearning',
-      'not-agents/vibecoding',
+      {
+        type: 'category' as const,
+        label: 'VibeCoding',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'not-agents/vibecoding/index',
+          'not-agents/vibecoding/tools-comparison',
+        ],
+      },
+
       'not-agents/algorithms',
       {
         type: 'category' as const,
