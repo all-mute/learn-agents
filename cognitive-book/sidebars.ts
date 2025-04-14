@@ -74,7 +74,17 @@ const notAgentsSection = [
     items: [
       'not-agents/index',
       'not-agents/metalearning',
-      'not-agents/vibecoding',
+      {
+        type: 'category' as const,
+        label: 'VibeCoding',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'not-agents/vibecoding/index',
+          'not-agents/vibecoding/tools-comparison',
+        ],
+      },
+
       'not-agents/algorithms',
       {
         type: 'category' as const,
@@ -84,6 +94,7 @@ const notAgentsSection = [
         items: liteBackendItems, // Используем вынесенный массив
       },
       'not-agents/optimization',
+      'not-agents/rapid-ui',
     ],
   },
 ];
@@ -97,19 +108,21 @@ const juniorSection = [
     collapsible: true,
     items: [
       'junior/index',
+      'junior/workflows',
       'junior/hf-agents',
       {
         type: 'category' as const,
-        label: 'RAG',
+        label: 'RAG [TBD]',
         collapsed: true,
         collapsible: true,
         items: [
           'junior/rag/index',
         ],
       },
+      'junior/architectures-101',
       {
         type: 'category' as const,
-        label: 'Frameworks',
+        label: 'Frameworks [TBD]',
         collapsed: true,
         collapsible: true,
         items: [
@@ -118,7 +131,7 @@ const juniorSection = [
       },
       {
         type: 'category' as const,
-        label: 'Infrastructure',
+        label: 'Infrastructure [TBD]',
         collapsed: true,
         collapsible: true,
         items: [
@@ -139,10 +152,86 @@ const seniorSection = [
     collapsible: true,
     items: [
       'senior/index',
+      'senior/adlc',
+      'senior/advanced-backend',
+      'senior/llms',
+      'senior/prompting',
+      'senior/voice-robots',
+      {
+        type: 'category' as const,
+        label: 'Агенты',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'senior/agents/index',
+        ],
+      },
+      {
+        type: 'category' as const,
+        label: 'Оценка AI Агентов',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'senior/evaluation/index',
+        ],
+      },
+      {
+        type: 'category' as const,
+        label: 'Инфраструктура',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'senior/infra/index',
+          'senior/infra/costs-reduction',
+        ],
+      },
+      {
+        type: 'category' as const,
+        label: 'Разработка моделей',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'senior/model-dev/index',
+        ],
+      },
+      {
+        type: 'category' as const,
+        label: 'RAG',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'senior/rag/index',
+        ],
+      },
+      {
+        type: 'category' as const,
+        label: 'Рабочие процессы',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'senior/workflows/index',
+        ],
+      },
     ],
   },
 ];
 
+const frontierSection = [
+  {
+    type: 'category' as const,
+    label: 'Frontier [TBD]',
+    collapsed: true,
+    collapsible: true,
+    items: [
+      'frontier/index',
+      'frontier/guide',
+      'frontier/a2a',
+      'frontier/mcp',
+      'frontier/papers',
+      'frontier/onthological-papers'
+    ],
+  },
+];
 
 
 const extraSection = [
@@ -168,6 +257,7 @@ const sidebars: SidebarsConfig = {
     ...basicsSection,
     ...juniorSection,
     ...seniorSection,
+    ...frontierSection,
     ...extraSection,
     ...notAgentsSection,
   {

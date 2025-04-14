@@ -6,16 +6,16 @@
 ## [Visit Handbook](https://learn-agents.diy)
 
 ## 🚀 Key Features
-- 📚 Complete guide to AI Agent development
-- 🧩 Interactive examples and sandboxes
-- 🌍 Multilingual support (Russian/English)
-- 📈 Up-to-date architectural approaches 2024-2025
-- 🛠️ Practical cases from real projects
+- 🎓 For both newbies & experienced
+- 🆓 Free LLMs
+- 🔥 Up-to-date with trends
+- 👥 Community-Driven
+- 🌐 Vast topic coverage
+- ❌🧮 Math-less
 
 ## 🤝 Community
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram)](https://t.me/learnagents)
 [![Discord](https://img.shields.io/badge/Discord-5865F2?logo=discord)](https://discord.gg/3JBx5HUR9n)
-[![GitHub Discussions](https://img.shields.io/badge/GitHub-Discussions-181717?logo=github)](https://github.com/all-mute/learn-agents/discussions)
 
 ## 📄 License
 This project is licensed under the [MIT License](https://github.com/all-mute/learn-agents/blob/main/LICENSE).
