@@ -108,7 +108,7 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/roadmap-junior.png',
     navbar: {
-      title: 'Learn AI Agents book',
+      title: 'AI Agents Handbook',
       logo: {
         alt: 'AI Agents Handbook Logo',
         src: 'img/logo.svg',
@@ -125,6 +125,11 @@ const config: Config = {
           position: 'left',
           docId: 'handbook/contributing',
           label: 'Cooperation',
+        },
+        {
+          href: 'https://discord.gg/3JBx5HUR9n',
+          position: 'left',
+          label: 'Community',
         },
         {
           type: 'localeDropdown',
