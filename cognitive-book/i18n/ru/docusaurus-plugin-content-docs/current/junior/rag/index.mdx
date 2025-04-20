@@ -1,20 +1,64 @@
 ---
-sidebar_position: 1
+sidebar_label: RAG, Быстрый старт
 ---
 
-# Часть 1: Введение в разработку агентов
+# Retrieval Augmented Generation (RAG), Быстрый старт
 
-Первая часть обучения для начинающих разработчиков когнитивных агентов.
+В современном мире объём доступной информации растёт в геометрической прогрессии, и зачастую важные детали теряются в потоке данных. RAG — это инновационный подход, который сочетает в себе силу векторного поиска и языковых моделей, позволяя получать релевантные ответы из огромных баз знаний за считанные секунды. Освойте RAG, чтобы ваш чат-бот стал не просто источником случайных фактов, а настоящим экспертом, способным отвечать точно, быстро и убедительно.
 
-## Содержание раздела
+*В 2025 году знание RAG требуют в 90% GenAI вакансий*
 
-- Основы разработки агентов
-- Инструменты и фреймворки
-- Первый простой агент 
+## Questions
 
-https://ragplay.vercel.app/
-https://medium.com/@abonia/eda-visualize-embeddings-of-rag-cf3e0070ccc0
-https://python.langchain.com/docs/tutorials/rag/
-https://youtu.be/MlhZPTfOJBo?si=n5W8NSlbGpYBHRf-
-https://youtu.be/kRHRHNiep0U?si=PNos6fQ2cZsAgeM7
-https://www.anthropic.com/news/contextual-retrieval
+- На какие шаги разбит RAG?
+- Зачем нужна **A** (Augmentation)?
+- Как работает **R** (Retrieve)?
+- Что нужно сделать с данными, чтобы делать их Retrieve?
+
+## Steps
+
+### 1. Watch 2 videos
+
+У меня есть инструкция к кофемашине длиной 30 мегатокенов... но я не хочу каждый раз передавать ее в запросе - что мне делать? Посмотретие первое видео - и узнаете!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HREbdmOSQ18?si=Hp4LSDNpoBQRJwD9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+*This is David's most beloved channel on YouTube.* ⬆️
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MlhZPTfOJBo?si=I9N8GNFkZEU1bj2I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### 2. [Play with RAG!](https://ragplay.vercel.app/)
+
+<img src="https://miro.medium.com/v2/resize:fit:700/0*AJ4H1E-SdY4oXwxC" alt="RAG Playground" />
+
+### 3. How to work with ipynb?
+
+Ipynb (Interactive Python Notebook) - это интерактивный блокнот, который позволяет вам писать код, текст, математику и результаты в одном документе. 
+
+Есть два пути работать с ipynb:
+
+1. [Google Colab](https://youtu.be/i-HnvsehuSw?si=JnNnvxB0OAalHo7M) - в любом браузере
+2. [VS Code](https://youtu.be/suAkMeWJ1yE?si=5itcyfI0VjSTuZdl) - локально
+
+### 4. Now let's create our own RAG!
+
+Replicate the following ipynb, play with the code:
+
+1. https://python.langchain.com/docs/tutorials/rag/
+2. ✦ https://python.langchain.com/docs/tutorials/qa_chat_history/
+
+## Extra Steps
+
+## Now we know...
+
+Теперь вы знаете, как работает RAG, и что означает каждая буква. Давайте двигаться дальше!
+
+## Exercises
+
+## In next modules...
+
+1. **Зачем нужен RAG?** - узнаем, когда нам нужен RAG-подход, а когда другие методы
+2. **Эмбеддинги и векторные базы данных** - узнаем, как тексты превращаются в векторы и как их хранить
+3. **✦ Предобработка данных** - узнаем, как подготовить данные для RAG
+4. **✦ Гибридный RAG** - не только векторами едины!
+5. **✦ Работа с структурированными данными** - узнаем, как, сделать RAG с огромными таблицами
+6. **✦ Работа с другими (кроме только текста) неструктурированными данными** - узнаем, как сделать RAG с изображениями, аудио и видео

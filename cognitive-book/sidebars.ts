@@ -112,11 +112,17 @@ const juniorSection = [
       'junior/hf-agents',
       {
         type: 'category' as const,
-        label: 'RAG [TBD]',
+        label: 'RAG',
         collapsed: true,
         collapsible: true,
         items: [
           'junior/rag/index',
+          'junior/rag/why-rag',
+          'junior/rag/embeddings-and-vdb',
+          'junior/rag/data-preprocessing',
+          'junior/rag/hybrid-rag',
+          'junior/rag/structured-data',
+          'junior/rag/multimodal-rag',
         ],
       },
       'junior/architectures-101',
@@ -192,6 +198,7 @@ const seniorSection = [
         collapsible: true,
         items: [
           'senior/model-dev/index',
+          'senior/model-dev/lora-usecases',
         ],
       },
       {

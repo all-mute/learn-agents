@@ -1,0 +1,306 @@
+---
+sidebar_label: Embeddings and Vector DBs
+---
+
+# Embeddings and Vector Databases
+
+Погрузитесь в волшебный мир эмбеддингов, где слова облекаются в числа и обретают осмысленные «координаты». В этом модуле вы узнаете, как генерируются эти векторы, как надежно хранить их в векторных базах данных и эффективно использовать для поиска и рекомендаций. Готовьтесь дать мощный импульс своим AI‑приложениям и преобразить работу с неструктурированными данными!
+
+## Questions
+
+Вопросы, которые мы будем обсуждать:
+- Что значит "расстояние" между векторами? 
+- Почему между похожими словами расстояние близкое, а между непохожими - большое?
+- Что такое векторные базы данных, какие использовать?
+- Как защитить данные в векторных базах?
+- Как возвращать пользователю "источники"?
+
+## Steps
+
+### 1. Okay. What are **word embeddings**? I have only 7 minutes!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8kJStTRuMcs?si=dZuh-W1RkQDaPYRF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aWFllV6WsAs?si=1-SR-qCQhpieZXkC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[Colorful vectors at 2:58.](https://youtu.be/NEreO2zlXDk?si=b8j7Njn5HDGAo6Zw&t=178)
+
+:::danger
+
+**Внимание!** Нельзя использовать разные text-to-embedding модели при индексации и при ретриве — их векторы несовместимы.
+
+Если вы перейдёте на новую «модную» модель и забудете переиндексировать все данные, ретривер начнёт возвращать нерелевантные или «мусорные» результаты, и ваш RAG‑пайплайн полностью сломается!
+
+
+:::
+
+### 2. VDBs
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/klTvEwg3oJ4?si=hEyQBG9mFvxoMHfw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TPYBYSyDRH4?si=Fr0VNwFdl73_ThXd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dN0lsF2cvm4?si=3pMQ34TdJljzW6RX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### 3. Which VDB to choose?
+
+**In 2025, VDBs are everywhere! Inside python, in SQLite, in PostGres, in Redis, in MongoDB - everywhere!**
+
+#### For educational purposes
+
+- In-script: faiss
+- Local: SQLite or [Weaviate](https://weaviate.io/developers/weaviate/quickstart/local)
+
+#### Специально под AI:
+
+- Self-hosted: Weaviate or Chroma
+- Cloud: Managed OpenSearch or Managed Elasticsearch
+- Serverless: Pinecone Cloud, Weaviate Cloud
+
+#### Based on your business case
+
+- Redis с модулем RediSearch Vector: подходит для real‑time поиска по embedding, чат‑ботов с низкой задержкой и рекомендательных систем на «горячих» данных
+- PostgreSQL с расширением pgvector: идеально, когда нужны ACID‑транзакции, сложные SQL‑запросы и гибридный поиск по реляционным и векторным данным
+- MongoDB с Atlas Vector Search (или аналогичные плагины): оптимально для полу‑структурированных JSON‑документов, динамических схем и масштабируемого распределённого векторного поиска
+- SQLite с FTS5+vector или собственными векторными расширениями: выбор для мобильных приложений и офлайн‑режимов, когда необходима лёгковесная встроенная БД без дополнительных сервисов
+
+#### For best performance and giant scale
+
+- Managed OpenSearch or Managed Elasticsearch
+
+#### For rapid development
+
+- Supabase with pgvector: Row-level security, good dev experience (documentation and tutorials)
+- Pinecone or Weaviate Cloud: easy to use, good dev experience (documentation and tutorials)
+- Firebase with Firestore: good dev experience (documentation and tutorials)
+
+### 4. Security
+
+#### Представим ситуацию: у вас есть база знаний компании
+
+1. в которой хранится информация о продуктах, нужная всем клиентам (например, информация с веб-сайта компании)
+2. личная информация каждого клиена
+3. внутренние документы компании, которые мы не показываем клиентам
+4. секретные юридические документы, доступ к которым должен быть только у CEO и юристов
+
+И вы сделали чат-бота на вашем сайте (ассистента в правом нижнем углу).
+
+#### Как можно защитить информацию на разных уровнях?
+
+1. **Всё вперемешку:**
+
+    Мы собрали все данные в один векторный индекс. Ужас! :skull:  Теперь любой сможет получить доступ к личным данным любого клиента. Ыы нарушили закон. (GDPR, HIPAA, ...)
+
+2. **Вы указали чат-боту на вашем сайте, что он не должен отвечать на вопросы про личные данные клиентов и т.д.**
+
+    :skull: Но кто-то сделал промпт-инжект и чат-бот ответил на вопрос про личные данные клиента. Вы нарушили закон. (GDPR, HIPAA, ...)
+
+3. **Вы сделали классификатор промпт-инъекций в запросах и запретили промпт-инъекции.**
+
+    :skull: Но кто-то сделал промпт-инжект 100 разными вариантами, и чат-бот ответил на вопрос про личные данные клиента. Вы нарушили закон. (GDPR, HIPAA, ...)
+
+4. **Вы сделали 4 разных векторных индекса:**
+
+    - для общедоступных данных
+    - для личных данных клиентов
+    - для внутренних документов компании
+    - для секретных юридических документов
+
+    И вы сделали 4 разных роли пользователей:
+
+    - anonymous user
+    - authenticated user
+    - employee
+    - admin
+
+    И настроили уровни доступа: более высокая роль включает в себя доступ к индексам более низких уровней.
+
+    :dart: Победа! Теперь никто не может получить доступ к данным, которые не предназначены для него.
+
+5. **Вы сделали 1 векторный индекс, но с Row-Level Security (RLS)**
+
+    То есть теперь у каждого вектора есть метка, которая указывает, какие роли могут его видеть.
+
+    Например:
+
+    | id | text | vector | role |
+    | --- | --- | --- | --- |
+    | 1 | "Public data" | [0.1, 0.2, 0.3] | anonymous |
+    | 2 | "Private data" | [0.1, 0.2, 0.3] | authenticated |
+    | 3 | "Internal data" | [0.1, 0.2, 0.3] | employee |
+    | 4 | "Super secret data" | [0.1, 0.2, 0.3] | admin, legal-team |
+
+    :dart: Победа! Теперь никто не может получить доступ к данным, которые не предназначены для него.
+
+### 5. Как возвращать пользователю в ответе системы "ответ" и "источники"?
+
+1. **(Offline) Шаг векторизации документов**
+
+    Сделайте так, чтобы каждому вектору соответствовала ссылка на документ.
+
+    | id | source | text | vector |
+    | --- | --- | --- | --- |
+    | 1 | "Full text of the document" | "of the document" | [0.1, 0.2, 0.3] |
+    | 2 | id_in_other_table | "some text" | [0.1, 0.2, 0.3] |
+    | 3 | "https://example.com/1" | "some text" | [0.1, 0.2, 0.3] |
+    | 4 | "user_docs:12345" | "пример фрагмента пользовательского документа"    | [0.2, 0.1, 0.4] |
+    | 5 | "file://reports/report_2023.pdf?page=10" | "отчет за 2023 год (страница 10)" | [0.15, 0.22, 0.35] |
+    | 6 | "db://employees/emp_id=789" | "профиль сотрудника №789"                | [0.05, 0.25, 0.45] |
+    | 7 | "s3://company-bucket/legal/contracts/contract_456.docx" | "договор с клиентом №456" | [0.3, 0.4, 0.2] |
+
+
+2. **(Online) Шаг ретрива**
+
+    Когда пользователь отправляет запрос, система выполняет следующие шаги:
+
+    - Получаем роль(и) пользователя (например, `anonymous`, `authenticated`, `employee`, `admin`).
+    - Преобразуем текст запроса в эмбеддинг с помощью выбранной модели.
+    - Делаем поиск по векторной базе данных, передавая:  
+    - вектор запроса,  
+    - параметр `top_k` (количество возвращаемых фрагментов),  
+    - фильтр по метаданным RLS:  
+        ```python
+        {
+        "role": { "$in": user_roles }
+        }
+        ```
+    - Получаем список документов/фрагментов, каждый из которых содержит:
+    - текст (`page_content`),
+    - метаданные с полем `source`.
+    - Собираем из найденных фрагментов контекст для LLM.
+    - Формируем промпт: сначала раздел «Контекст», затем «Вопрос».
+    - Отправляем промпт в LLM и получаем ответ.
+    - Возвращаем пользователю объект с двумя полями:
+    - `answer` — текст, сгенерированный LLM,
+    - `sources` — список строк из метаданных, указывающих на реальные источники.
+
+    Пример псевдокода на Python:
+
+    ```python
+    # 1. Получаем роли пользователя
+    user_roles = get_user_roles(user_id)
+
+    # 2. Эмбеддинг запроса
+    query_embedding = embed_model.embed_query(query)
+
+    # 3. Поиск в векторной БД с фильтром RLS
+    results = vdb.similarity_search(
+        vector=query_embedding,
+        top_k=5,
+        filter={"role": {"$in": user_roles}}
+    )
+
+    # 4. Извлечение текста и источников
+    contexts = [doc.page_content for doc in results]
+    sources  = [doc.metadata["source"]   for doc in results]
+
+    # 5. Формирование промпта для LLM
+    prompt = (
+        "Контекст:\n" +
+        "\n\n".join(contexts) +
+        f"\n\nВопрос: {query}"
+    )
+
+    # 6. Генерация ответа
+    answer = llm.generate(prompt)
+
+    # 7. Возврат пользователю
+    return {
+        "answer":  answer,
+        "sources": sources
+    }
+    ```
+
+    Теперь пользователь получает развёрнутый ответ и чёткий список источников, подтверждающих информацию.
+
+### 6. Про другие модальности
+
+<details>
+<summary>Что такое струкурированные и неструктурированные данные?</summary>
+
+**Структурированные данные**  
+Данные, представленные в заранее определённой и жёстко заданной форме — таблицы, записи с полями и типами, схема которых известна заранее. Примеры: реляционные базы данных, CSV-файлы, JSON с фиксированной структурой. Лёгко фильтруются, сортируются и обрабатываются через SQL-запросы.
+
+**Неструктурированные данные**  
+Данные без явной схемы или формальной структуры: свободный текст, изображения, аудио, видео, 3D‑модели и т.д. Их хранение, поиск и анализ требуют использования методов NLP, компьютерного зрения или embeddings, поскольку традиционные реляционные запросы здесь неприменимы.  
+
+
+</details>
+
+:::warning
+Помните, что видов неструктурированных данных много!
+
+- текст
+- изображения
+- аудио
+- видео
+- 3D-модели
+- ...
+
+Каждый из них может быть представлен в виде вектора и храниться в векторной базе данных - а благодаря мультимодальным text-to-embedding моделям, мы можем хранить и использовать их в одном векторном индексе.
+
+:::
+
+## Extra Steps
+
+### E1. Choosing an Embedding Model
+
+Алгоритм выбора такой же как и с LLM:
+    1. Идем на популярный Massive Text Embedding Benchmark, смотрим на лучшие модельки
+        - [leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
+        - [статья](https://arxiv.org/abs/2210.07316)
+    2. Смотрим на их доступность нам по критериям:
+        - контур, в рамках которого мы работаем
+        - модель опенсурсная (а какая лицензия?) или проприетарная
+        - цена
+        - размер вектора (важно, если мы собираемся хранить миллионы векторов)
+        - Поддержка нужных языков и адаптация под специфичную доменную область
+        - Возможность тонкой настройки и дообучения эмбеддингов на собственном датасете
+        - *скорость работы модели и необходимые вычислительные мощности (хотя сейчас все text-to-embedding модели очень быстрые и легкие)*
+    3. (в идеале) Offline evals: прогоняем на собственном датасете, далаем замеры через GPT-eval или асессорами
+        - возможно, делаем замеры с end-to-end RAG пайплайном (об этом позже)
+    4. (в идеале-идеале) Online evals: делаем онлайн-замеры, AB-тесты, и т.д.
+
+[The Best Embedding Models for Information Retrieval in 2025](https://www.datastax.com/blog/best-embedding-models-information-retrieval-2025)
+
+### E2. [Every Distance in Data Science explained](https://youtu.be/eutzTEGgLpE?si=xBJ_IRhGY4G33oSu)
+
+### E3. Deep VDB understanding -> [Playlist on Faiss](https://youtube.com/playlist?list=PLIUOU7oqGTLhlWpTz4NnuT3FekouIVlqc&si=cBh7QQmRZMddweLZ) (Facebook AI Similarity Search Engine)
+
+### E4. [The Biggest Misconception about Embeddings](https://youtu.be/ulD7IsecPbU?si=HUSjzsYsmA200vTQ)
+
+### E5. Text Embeddings visualization
+
+- https://github.com/uber-research/parallax
+- https://www.reddit.com/r/LanguageTechnology/comments/16qyhwr/text_embedding_visualization/
+
+### E6. For deep understanding of embeddings
+
+1. https://youtu.be/f7o8aDNxf7k?si=Su3I0s55lKB9DU_b
+2. https://youtu.be/d2E-pU4H2gc?si=2Wn4gYH5PPA-LkoA (coding practice)
+
+## Now we know...
+
+Мы увидели, как эмбеддинги превращают слова и любые неструктурированные данные в числовые векторы для эффективного поиска и анализа. Вы освоили принципы выбора модели эмбеддингов с учётом качества, скорости и бюджета, а также познакомились с основами работы векторных баз данных. Теперь вы готовы интегрировать эти инструменты в RAG‑пайплайны и создавать высокопроизводительные решения.
+
+## Exercises
+
+- У вас есть готовый RAG по сайту из 5000 страниц сайта. Менеджер изменил одну страницу.
+    - И что теперь, запускать индексацию заново? Как это можно оптимизировать?
+- Что будет, если мы возмем pdf файл (текст, картинки, графики) -> распознаем весь текст -> сделаем по этому тексту RAG:
+    - сможет ли наш чат-бот ответить на вопрос про картинки?
+    - сможет ли наш чат-бот ответить на вопрос про графики?
+    - сможет ли наш чат-бот ответить на вопрос про текст?
+- При выборе text-to-embedding модели, какие критерии будут важнее для вас в каждом кейсе:
+    - простой чат-бот по информации на сайте
+    - чат-бот по инструкции к самолету (примерно 1 000 000 000 слов)
+    - чат-бот по секретным правительтвенным документам
+    - чат-бот по данным с несколькими модальностями (текст, картинки)
+- Какую VDB вы выберете для следущих задач:
+    - RAG по информации на сайте, у вас 1 час на разработку
+    - RAG по книге, on-device
+    - RAG для голосового робота (важна скорость)
+    - RAG по всем кадрам всех видео на youtube
+- Даже если мы сделали безопасный RAG: какие минусы могут быть у хранении в одном индексе данных пользователей (100млн) и данных внутренних сотрудников (30тыс)?
+- Можно ли возвращать в источниках ссылки на разные источники источников: ссылку на публичный сайт, ссылку на документ внутри приватного диска?
+- **Что произойдет, если мы построим векторный индекс одной text-to-embedding моделью, а запросы будем проводить другой?**
