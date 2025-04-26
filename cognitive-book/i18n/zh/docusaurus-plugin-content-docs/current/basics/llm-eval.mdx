@@ -1,0 +1,158 @@
+---
+sidebar_label: LLM的选择与评估 ✦
+---
+
+import GSM8K from './assets/gsm8k.png';
+
+# 选择和评估 LLM
+
+所以：你开始编写 LLM 驱动的服务。下载依赖项，创建 .py 文件，导入你的框架。你面临一个问题 - 选择哪个 `model_name`？
+
+## 问题
+
+- 哪种模型现在最适合我的用例？
+- 不同的模型之间如何比较？
+- 除了答案的准确性之外，对**业务**来说什么更重要？
+- 如何通过经验来确定模型的选择？
+
+## 步骤
+
+### 1. tl;dr;
+
+最简单的选择是访问 [artificalanalysis.ai/models](https://artificialanalysis.ai/models) 并选择最好的。这是一个在线更新的公正 LLM 排名。
+
+该网站上按用例划分的模型排名只是不同基准测试结果的汇总。
+
+### 2. 评估 LLM 的所有方法。
+
+让我们阅读 *Confident AI* 联合创始人 Jeffrey Ip 撰写的精彩指南：
+    - [LLM Evaluation Metrics: The Ultimate LLM Evaluation Guide](https://www.confident-ai.com/blog/llm-evaluation-metrics-everything-you-need-for-llm-evaluation)
+    
+
+### 3. 流行的基准测试
+
+基准测试是一种评估模型的方法。例如，我们可以输入模型一个解决数学问题的指令及其描述。给出 100 个这样的问题，并根据正确答案的数量比较模型。
+
+以下是来自流行的 GSM8K 基准测试的任务示例：
+
+<img src={GSM8K} alt="gsm8k" width="1000" />
+
+<details>
+<summary>7 Popular LLM Benchmarks Explained [OpenLLM Leaderboard & Chatbot Arena]</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aOjgPJ94-aM?si=qRhXDnZpMrf0bvLv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+#### [基准测试研究](https://www.perplexity.ai/page/understanding-llm-benchmarks-e-VZmXIq_FQgCIS.3QSVo6EA)
+- 基准测试的类别
+- 详细的流行基准测试
+- 关键评估指标
+- LLM 基准测试评估的局限性
+- 基准测试的未来
+
+#### [LLM 工具使用基准测试](../extra/benchmarks)
+
+### 4. 企业如何为生产环境选择模型？
+
+#### 在生产环境中，选择通常非常简单：
+1) 在线研究，例如查看同事使用的内容以及 [artificalanalysis.ai/models](https://artificialanalysis.ai/models)
+2) 有离线和在线指标。首先，在离线形成的基准测试中进行测量。然后，为了更加确信，可以将几个模型部署到生产环境中的不同用户子组（AB 测试），并在那里测量在线指标。整个过程就是验证管道。
+3) 除了工作质量之外，我们可能还对许多参数感兴趣 - 每个令牌的成本、每秒令牌数 (TPS)、保密性（模型在谁的范围内工作 = 我们将数据放在哪里）、生态系统的功能（轻松地根据自己的需求微调模型的能力、无服务器功能（如互联网搜索、OpenAI Assistants 中的线程））
+4) 特定用例中可能形成的私人想法（例如，对客户的 10 个超级重要问题（例如“某一年在中国发生了什么”）的回答策略）
+
+就像购买笔记本电脑或汽车一样，你试图找到考虑到许多不同参数的最佳方案。
+
+#### 对于企业来说，最重要的参数（越高 = 越重要）：
+1. 合法性和保密性（许可证、自己的范围或符合 Федеральный закон-152/GDPR/SOC）
+2. 最小可接受的质量
+3. 价格或生态系统
+4. 生态系统或价格
+5. 最大质量（是的，模型最大质量不如根据自己的任务微调模型的能力重要）
+
+当然，这并非全部，但总的来说是最重要的。他们还可以考虑：使用模型时的功能数量（是否可以动态控制温度？）、DevX、LLM 的伦理和安全性（或相反），对于本地推理 - 模型是否在我们的 GPU 上运行。
+
+#### 质量是指：
+- 模型在特定用例或用例中的质量
+- 模型的全球视野和其他任务的质量 - 因为在生产环境中，用户可以使用 LLM 做任何事情
+- 推理速度 (TPS) 或端到端响应时间（推理模型较高）
+- 首个令牌时间 (TTFT)
+- 模型的模态（处理图像、**图表、语音**、音频、视频、3D 等**输入和输出**）
+
+其他指标：
+- 困惑度 - 模型预测给定文本片段的程度
+- 编写具有低困惑度的“人性化”文本的能力 :)
+- 模型的各种偏差（例如，在回答有关政治或种族的问题时）
+- 流畅性、连贯性和内容相关性
+- 伦理和安全性（包括毒性）
+
+我还想添加一个指标 **可持续性** - 模型在多大程度上能够遵循指令，这取决于我们离基准测试有多远。
+例如，我们在两个模型 X 和 Y 之间进行选择，它们在我们的基准测试中的准确度分别为 94 和 95。似乎应该选择第二个。但是，一旦我们开始在指令、上下文等方面稍微偏离基准测试的用例，第一个模型就会继续工作良好 - 而第二个模型根本停止工作。
+
+---
+*所有这些都是静态和动态的 - 也就是说，考虑到 LLM 供应商的发展速度*
+
+如果公司有 NLP 工程师 - 那么他们将负责这项任务。
+
+### 5. 如何通过经验来确定模型的选择？
+
+**无论你在互联网上查看多少研究和基准测试 - 对于生产环境，我们都希望拥有自己的 LLM 评估数据。**
+- 或一组输入-正确输出示例 + 评估者（人工评估员或 LLM）
+- 或具有自动评估的环境（例如，代码是否编译）
+
+如何在 Junior 模块末尾讨论创建自己的基准测试。在 Senior 模块中，我们将讨论工作流程和代理的评估。
+
+## 额外步骤
+
+### E1. 总的来说，我建议你阅读罗曼关于评估的其他文章 - 他写了一个很棒的系列：
+1. [LLM 系统评估：主要指标、基准测试和最佳实践](https://www.confident-ai.com/blog/evaluating-llm-systems-metrics-benchmarks-and-best-practices)
+2. [LLM 聊天机器人评估：主要指标和测试方法](https://www.confident-ai.com/blog/llm-chatbot-evaluation-explained-top-chatbot-evaluation-metrics-and-testing-techniques)
+3. [大型语言模型 (LLM) 系统评估：指标、挑战和最佳实践](https://medium.com/data-science-at-microsoft/evaluating-llm-systems-metrics-challenges-and-best-practices-664ac25be7e5)
+4. [AI 代理基准测试：评估实际任务中的性能](https://www.galileo.ai/blog/evaluating-ai-agent-performance-benchmarks-real-world-tasks)
+5. [2025 年大型语言模型评估：五种方法](https://research.aimultiple.com/large-language-model-evaluation/)
+
+*有关系统和代理评估的更多信息将在 Junior、Sinior、Research 模块中介绍。*
+
+## 现在我们知道了...
+
+我们研究了选择和评估用于开发 AI 代理的语言模型的方法，包括使用评级服务、理解基准测试和关键业务因素。我们弄清楚了“质量”的概念包括什么，以及为什么自己的生产评估很重要。这些知识使我们能够为特定任务做出合理的 LLM 选择。
+
+## 练习
+
+### 思考题
+
+1. 你正在创建一个助手：
+    - 用于医疗咨询
+    - 用于信息搜索（阅读大量文档）
+    - 用于客户支持
+    - 用于客户支持的语音机器人
+    - 用于编写创意文本
+    - 用于编写代码
+    - 用于编写论文（目的是降低检测到它是 GPT 生成文本的可能性）
+    - 用于在公司封闭环境中工作
+    - 用于在生产中使用时声誉风险较低的政府机构
+    - 使用大量工具的代理
+
+    **1. 仔细考虑一下，在每种情况下，你会根据哪些标准选择 LLM。**
+
+    **2. 考虑一下，你会关注哪些基准测试**
+
+    **3. 考虑一下，你会使用哪些指标来评估生产环境中的 LLM？例如，对于 AB 测试**
+
+2. 分析使用其他 LLM 作为模型的评估者 (evaluators) 的优缺点。在哪些情况下这样做是合理的？
+
+3. 考虑一下，为什么即使使用评估员（人）也可能导致 LLM 评估中的错误。
+
+4. 为什么模型的最大质量通常不是企业最重要的因素？
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
+
+### 实践任务
+
+1. 在 [cloud.agenta.ai](https://cloud.agenta.ai) 上注册
+2. 创建一个 completion 任务，在右上角的“Load test set”中加载 completion_testset 中的问题，并尝试一些 LLM。
+3. 现在尝试为一些更复杂的任务创建自己的基准测试，并比较几个模型。
+
+研究 cloud.agenta.ai 中还有哪些功能。
+
+https://youtu.be/lX1oLcgkZXg?si=CTEch5uGImDq0aOj - 另一种使用 GPT-eval 评估 LLM 的方法。现在不要深入研究这个 LLMOps 工具 - 未来我们将在关于 AgentOps 的模块中一起选择它们。

@@ -1,0 +1,191 @@
+---
+sidebar_label: Metaaprendizaje
+---
+
+# Metaaprendizaje
+
+El metaaprendizaje es el proceso de aprender a aprender eficazmente. Es una estrategia que permite:
+
+1. Optimizar el tiempo de aprendizaje mediante herramientas de IA
+2. Construir un sistema individual de adquisición de conocimientos
+3. Automatizar las tareas rutinarias de aprendizaje
+4. Apoyar los recursos cognitivos del organismo
+
+### Lectura del manual
+
+1. La **introducción de la página y las preguntas** son necesarias para formar un "esqueleto" sobre el que se "colgará" la teoría/práctica posterior.
+2. No siempre es obligatorio leer las **secciones extra**.
+3. La **conclusión** es necesaria para recordar rápidamente el material recién estudiado, realizando así la primera repetición.
+4. Los **ejercicios** suelen ser una lista de preguntas complejas. Durante la reflexión difícil, el cerebro genera activamente conexiones neuronales que se fijan en la memoria a largo plazo.
+5. En los **comentarios** se pueden encontrar recursos adicionales y consejos de otros estudiantes.
+
+### Metodología
+
+#### Realiza actividad física, duerme lo suficiente (-20% del tiempo de aprendizaje)
+
+#### Puedes ver vídeos a una velocidad de x1.5-2
+
+#### NO ampliar el programa
+
+No recomiendo usar Perplexity y otros agentes de investigación, ralentizarás el progreso del curso. El curso ya está formado por decenas de horas de investigación y está constantemente probado por los estudiantes que lo realizan.
+
+### Herramientas
+
+#### [Chat with youtube, mindmaps, etc](https://notegpt.io/)
+
+#### Aprende en el navegador con IA (-10% del tiempo de aprendizaje) - haz preguntas sobre el contenido de la página
+
+https://clickup.com/blog/best-ai-browsers/
+
+Haz preguntas sobre cualquier término desconocido
+
+En el navegador Brave puedes conectar tu propia LLM al asistente
+
+**¡En la parte inferior de la página puedes encontrar prompts para usar ChatGPT en el aprendizaje!**
+
+#### [Cursor](https://cursor.ai/) - programa en Cursor AI
+
+Cursor tiene una versión de prueba muy amplia, acceso sin tarjeta.
+
+Análogo - Cline/RooCode. https://openrouter.ai/openrouter/quasar-alpha - LLM gratuita para Cline.
+
+#### Si quieres llevar un registro - crea un proyecto vacío en Cursor y llévalo allí.
+
+Cursor es tanto un agente, como un autocompletador de texto, como un investigador de internet. Durante las investigaciones con TDAH, será genial guardar cosas interesantes en tu carpeta.
+
+Al conectar servidores MCP a Cursor, potencias tu registro con funcionalidad.
+
+### Técnicas cognitivas
+
+#### Utiliza el interleaving (-15% del tiempo de aprendizaje)
+- Alterna diferentes tipos de tareas (lectura ↔ práctica ↔ toma de notas)
+- Combina el estudio de la teoría con casos reales de tu trabajo
+- Utiliza la técnica de "repetición espaciada" para consolidar el material
+
+#### Practica el recuerdo activo
+- Después de cada sección, cierra el material e intenta reproducir las ideas clave
+- Utiliza tarjetas de memoria con preguntas sobre el material cubierto
+- Explica los conceptos en voz alta o por escrito como si los estuvieras enseñando a un principiante
+
+#### Optimiza el contexto de aprendizaje
+- Crea mapas mentales de conexiones entre conceptos con la ayuda de herramientas de IA
+- Agrupa la información en bloques semánticos (chunking)
+- Utiliza la técnica Pomodoro (25/5 minutos) para mantener la concentración
+
+#### Adáptate a tus biorritmos
+- Determina los picos de productividad (mañana/tarde/noche)
+- Planifica las tareas complejas para los periodos de máxima concentración
+- Utiliza "ventanas de atención": bloques de 90-120 minutos con descansos
+
+### ChatGPT Prompts
+
+#### Plantilla de prompt socrático
+````
+Eres Sócrates 2.0. Ayúdame a entender [TEMA/PROBLEMA] a través del diálogo. Ten en cuenta:
+- Mi experiencia: [DESCRIBE TU EXPERIENCIA Y NIVEL]
+- Estilo preferido: [ANALÍTICO/PRÁCTICO/VISUAL]
+- Área de ejemplos: [PROGRAMACIÓN/MATEMÁTICAS/DISEÑO, etc.]
+
+Reglas:
+1. Haz no más de 1 pregunta a la vez
+2. Alterna los tipos de preguntas (aclaratorias, provocativas, alternativas)
+3. Ofrece "mini-experimentos" para probar hipótesis
+4. Utiliza analogías de [INDICA EL ÁMBITO]
+5. Si la respuesta es incorrecta, pide que se argumente la posición
+
+Empieza con: "¿Qué es lo que te resulta más confuso de este tema? ¿Por dónde quieres empezar el análisis?"
+````
+
+<details>
+<summary>Prompt socrático (versión corta)</summary>
+````
+Eres Sócrates en el mundo de la TI. Ayúdame a entender el problema a través de preguntas:
+1. Haz una pregunta aclaratoria a la vez
+2. Ofrece realizar un experimento mental
+3. Pide que se argumente cada suposición
+4. Evita las respuestas preparadas
+
+Empieza con: "¿Por qué parte del problema empezamos el análisis?"
+````
+</details>
+
+<details>
+<summary>Prompt socrático (ejemplo de relleno)</summary>
+````
+Eres Sócrates 2.0. Ayúdame a entender la POO a través del diálogo. Ten en cuenta:
+- Mi experiencia: 1 mes de estudio de Python, estoy confundido con los términos
+- Estilo preferido: ejemplos prácticos con gatitos y coches
+- Área de ejemplos: videojuegos
+
+Reglas:
+1. Haz preguntas sobre herencia y encapsulación utilizando personajes de videojuegos como ejemplo
+2. Después de mi respuesta, ofrece "probarla" a través de un mini-ejemplo de código
+3. Si hay un error, pide que se explique por qué no funciona así
+
+Empieza con: "Imagina que tenemos una clase GameCharacter. ¿Qué debería haber en sus métodos?"
+````
+</details>
+
+#### Plantillas de explicación de conceptos
+
+````
+Explica [TEMA/PREGUNTA] como [EXPERTO/PRINCIPIANTE/EXTRATERRESTRE]. Ten en cuenta:
+- Mi nivel: [PRINCIPIANTE/INTERMEDIO/AVANZADO]
+- Formato favorito: [PASOS/METÁFORAS/VISUALIZACIONES]
+- Profundidad: [SUPERFICIAL/DETALLADO CON EJEMPLOS]
+
+Estructura:
+1. 1-2 frases: la esencia del concepto
+2. Analogía de [ÁMBITO: COCINA/CONSTRUCCIÓN/JUEGOS, etc.]
+3. Análisis paso a paso como una instrucción de IKEA
+4. Imagen visual para recordar (descripción)
+5. Ejemplo práctico de [ÁMBITO DE APLICACIÓN]
+
+Añade 3 preguntas de control para la autoevaluación al final.
+````
+
+<details>
+<summary>Explicación del concepto (versión corta)</summary>
+````
+Explica el tema como un mentor para un principiante. Incluye:
+1. Una analogía sencilla de la vida cotidiana
+2. Una metáfora visual para recordar
+3. Un ejemplo de "cómo dar el primer paso"
+4. 2 errores típicos de los principiantes
+
+Formato: máximo 5 frases + esquema-dibujo con palabras
+````
+</details>
+
+<details>
+<summary>Explicación del concepto (ejemplo de relleno)</summary>
+````
+Explica el polimorfismo como un diseñador de juegos. Ten en cuenta:
+- Mi nivel: acabo de empezar a estudiar clases en Python
+- Formato favorito: analogías de juegos RPG
+- Profundidad: detallado con un ejemplo de código
+
+Estructura:
+1. Compara con la mecánica de los hechizos en D&D
+2. Muestra cómo una interfaz puede tener diferentes implementaciones
+3. Ejemplo: clase Spell con el método cast() para diferentes tipos de magia
+4. Visualización: árbol de habilidades del personaje
+
+Añade 3 preguntas sobre la relación entre herencia y polimorfismo.
+````
+</details>
+
+#### Ayuda para resolver problemas de leetcode
+<details>
+<summary>Ayuda para resolver problemas de leetcode</summary>
+```
+Eres un mentor que ayuda a un estudiante a resolver un problema de LeetCode. Utiliza el método socrático: no des respuestas preparadas, sino que guía al estudiante hacia la solución a través de preguntas. Ayuda a entender las condiciones del problema, a sugerir la estrategia correcta, a analizar los casos extremos, a elegir las estructuras de datos y a avanzar paso a paso hacia la solución. Proporciona ejemplos mínimos, pide al estudiante que explique su razonamiento y comprueba su validez. El objetivo es desarrollar el pensamiento, no sólo resolver el problema.
+
+Empieza con la frase: "Cuéntame cómo has entendido el problema y qué primeras ideas tienes?"
+```
+
+#### Prompt para explicar la condición de un problema o un algoritmo:
+```
+Explica el TEMA como si tuviera 5 años. Utiliza palabras sencillas, metáforas, analogías de la vida cotidiana (juguetes, caramelos, cajas, dibujos animados). Evita los términos técnicos, a menos que los expliques de forma muy sencilla. Imagina que estás contando un cuento o jugando conmigo a un juego, y quieres que entienda lo que está pasando.
+```
+</details>

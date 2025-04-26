@@ -1,0 +1,199 @@
+---
+title: LLM multimodal para la automatización de tareas en PC
+authors: D. Zhechkov
+---
+
+# LLM Multimodales para la automatización de tareas en PC
+
+En los últimos años, ha habido un rápido desarrollo de herramientas de automatización de PC basadas en modelos de IA multimodales. Ofrecen un enfoque fundamentalmente nuevo para interactuar con una computadora: en lugar de las herramientas de automatización tradicionales que requieren programación o grabación de macros, pueden "leer" visualmente las interfaces y reaccionar a ellas como un humano.
+
+## Principios generales de funcionamiento de las LLM multimodales para la automatización
+
+Las LLM multimodales para la automatización de tareas en PC combinan varias tecnologías clave:
+
+1. **Visión artificial**: análisis de la pantalla y reconocimiento de elementos de la interfaz
+2. **Procesamiento del lenguaje natural**: comprensión de instrucciones y generación de respuestas
+3. **Toma de decisiones**: selección de las acciones correctas en función del contexto
+4. **Gestión de la interfaz**: emulación de las acciones del usuario (clics, entrada de texto)
+
+## Herramientas principales para la automatización de PC
+
+### 1. Automatización mediante herramientas del navegador
+
+#### Browser-use
+
+**Qué es**: Una biblioteca para automatizar acciones en un navegador mediante agentes de IA.
+
+**Características**:
+- Identifica elementos interactivos en una página web y transmite la información a la LLM
+- Permite a la LLM tomar decisiones sobre dónde hacer clic y qué escribir
+- Se integra con varias LLM, incluidas GPT-4, Claude y otras
+- Se basa en Playwright para la interacción directa con el navegador
+
+**Aplicación**: Automatización del llenado de formularios, búsqueda de información, navegación por interfaces web complejas.
+
+[Browser-use](https://github.com/browser-use/browser-use) ha ganado una tracción significativa debido a su alta precisión en la interacción con los elementos de la página web.
+
+#### Skyvern
+
+**Qué es**: Una herramienta para automatizar flujos de trabajo del navegador utilizando LLM y visión artificial.
+
+**Características**:
+- Utiliza un "enjambre de agentes" para comprender el sitio, planificar y ejecutar acciones
+- Incluye agentes especializados para diferentes tareas (navegación, extracción de datos, etc.)
+- Funciona con Playwright para la interacción con el navegador
+- Analiza el contenido de la página en tiempo real
+
+**Aplicación**: Automatización de procesos complejos de varios pasos en un navegador, resistente a los cambios de interfaz.
+
+#### GPT-4V-Act
+
+**Qué es**: Un agente de IA que utiliza GPT-4V(ision) para interactuar con interfaces web.
+
+**Características**:
+- Combina las capacidades de GPT-4V y un navegador
+- Utiliza la tecnología Set-of-Mark Prompting y el etiquetado automático de elementos
+- Asigna identificadores numéricos únicos a cada elemento interactivo de la UI
+- Comprende las capturas de pantalla y toma decisiones sobre los siguientes pasos
+
+**Aplicación**: Automatización de pruebas de UI, mejora de la accesibilidad de las interfaces, flujos de trabajo basados en IA.
+
+### 2. Automatización de aplicaciones de escritorio
+
+#### Claude Computer Use (Anthropic)
+
+**Qué es**: Una función experimental del modelo Claude que permite la interacción con interfaces de computadora.
+
+**Características**:
+- Permite que el modelo vea la pantalla y controle las interfaces
+- Funciona como un humano: mueve el cursor, hace clic, rellena formularios
+- Se basa en el aprendizaje de habilidades informáticas generales, no en herramientas especializadas
+- Disponible en la API de Claude 3.5 Sonnet
+
+**Aplicación**: Automatización del desarrollo, pruebas de software, procesos de varios pasos y tareas repetitivas.
+
+**Limitaciones**: La tecnología es experimental, algunas acciones (desplazamiento, arrastrar y soltar, zoom) causan dificultades.
+
+#### Computer Use Tool (OpenAI)
+
+**Qué es**: Una herramienta para controlar una computadora, integrada con los modelos de OpenAI.
+
+**Características**:
+- Permite a los modelos GPT controlar la interfaz de la computadora
+- Disponible para los usuarios de ChatGPT Pro en los Estados Unidos
+- Interactúa con las aplicaciones a través del análisis visual de la interfaz
+
+**Aplicación**: Automatización de tareas rutinarias, control de aplicaciones por voz o texto.
+
+#### OmniParser V2 (Microsoft)
+
+**Qué es**: Una herramienta que convierte cualquier LLM en un agente de control de computadora.
+
+**Características**:
+- "Tokeniza" las capturas de pantalla de la UI, transformando las imágenes de píxeles en elementos estructurados
+- Entrenado en un gran conjunto de datos para reconocer elementos interactivos
+- Reduce la latencia en un 60% en comparación con la versión anterior
+- Se integra con varias LLM: OpenAI, DeepSeek, Qwen, Anthropic
+
+**Aplicación**: Convertir cualquier modelo de lenguaje en un agente de automatización de GUI eficaz.
+
+**Logros**: En el benchmark ScreenSpot Pro, la combinación OmniParser+GPT-4o alcanza una precisión del 39.6%, mientras que GPT-4o puro muestra un resultado de solo el 0.8%.
+
+#### Magma (Microsoft)
+
+**Qué es**: Un modelo de base de IA multimodal para procesar información y acciones en entornos digitales y físicos.
+
+**Características**:
+- Sintetiza datos visuales y textuales para generar acciones
+- Utiliza un innovador sistema de anotaciones: Set-of-Mark (SoM) y Trace-of-Mark (ToM)
+- Funciona tanto con interfaces digitales como con manipuladores robóticos
+- Se puede reentrenar con un número mínimo de ejemplos
+
+**Aplicación**: Automatización de PC, control de robots, asistentes virtuales.
+
+#### UI Vision RPA
+
+**Qué es**: Una herramienta para la automatización de escritorio multiplataforma con integración de IA.
+
+**Características**:
+- Utiliza visión artificial, OCR y automatización de UI sin código
+- Funciona en Windows, MacOS y Linux
+- Proporciona una API para la integración con otros programas
+- Se integra con Anthropic Claude a través de los comandos aiPrompt, aiScreenXY y Computer Use
+
+**Aplicación**: Pruebas de aplicaciones, automatización de SAP, Citrix, screen scraping.
+
+**Limitaciones**: El modo de grabación solo está disponible para la automatización del navegador, la automatización de escritorio requiere la creación manual de macros.
+
+### 3. Herramientas complementarias
+
+#### Anything-LLM
+
+**Qué es**: Una aplicación de IA universal para crear contexto a partir de documentos.
+
+**Características**:
+- Permite utilizar cualquier documento como contexto para la LLM
+- Se integra con varias LLM y bases de datos vectoriales
+- Permite crear agentes de IA personalizados sin código
+- Admite modelos locales compatibles con llama.cpp
+
+**Aplicación**: Creación de agentes especializados para trabajar con documentos y automatizar tareas relacionadas.
+
+## Comparación de herramientas para la automatización de PC
+
+| Herramienta | Desarrollador | Tipo de automatización | Disponibilidad | Integración con IA |
+|------------|-------------|-------------------|-------------|-----------------|
+| Browser-use | Open-source | Navegador | Código abierto | GPT, Claude, LLM locales |
+| Skyvern | Skyvern-AI | Navegador | Código abierto | Varias LLM |
+| GPT-4V-Act | Open-source | Navegador | Código abierto | GPT-4V |
+| Claude Computer Use | Anthropic | Escritorio/Navegador | API (de pago) | Claude 3.5 Sonnet |
+| Computer Use Tool | OpenAI | Escritorio/Navegador | Suscripción ChatGPT Pro | GPT-4o |
+| OmniParser V2 | Microsoft | Escritorio/Navegador | Código abierto | Varias LLM |
+| Magma | Microsoft | Escritorio/Robots | Investigación | Modelo multimodal propio |
+| UI Vision RPA | UI.Vision | Escritorio/Navegador | Software gratuito + API para Anthropic | Anthropic Claude |
+
+## Características y diferencias
+
+### Herramientas del navegador
+- **Browser-use** se centra en la identificación precisa de elementos interactivos en páginas web
+- **Skyvern** utiliza una arquitectura multiagente para la automatización integral
+- **GPT-4V-Act** hace hincapié en el reconocimiento visual y el etiquetado numérico de elementos
+
+### Herramientas de escritorio
+- **Claude Computer Use** y **Computer Use Tool** funcionan como usuarios virtuales que "ven" la pantalla
+- **OmniParser V2** permite convertir cualquier LLM en un agente que comprenda la UI mediante la tokenización de capturas de pantalla
+- **Magma** amplía las capacidades al mundo físico a través de robots
+- **UI Vision RPA** combina métodos RPA tradicionales con la integración de IA
+
+## Recomendaciones para la selección de herramientas
+
+### Para la automatización de procesos web:
+- **Browser-use**: si necesita un trabajo preciso y fiable con los elementos de las páginas web
+- **Skyvern**: para procesos complejos de varios pasos con interfaces cambiantes
+
+### Para la automatización de aplicaciones de escritorio:
+- **Claude Computer Use** o **Computer Use Tool**: para el trabajo interactivo con la GUI sin programación
+- **OmniParser V2**: si tiene acceso a varias LLM y desea la máxima flexibilidad
+- **UI Vision RPA**: cuando se necesita automatización multiplataforma con elementos de IA
+
+### Para tareas de investigación:
+- **Magma**: si está interesado en capacidades avanzadas para trabajar con interfaces tanto digitales como físicas
+
+## Conclusión
+
+Las LLM multimodales para la automatización de PC ofrecen un enfoque revolucionario para realizar tareas en una computadora. A diferencia de las herramientas RPA tradicionales, "ven" y comprenden la interfaz como un humano, lo que las hace flexibles y resistentes a los cambios.
+
+Las tendencias actuales indican que el desarrollo avanza hacia la creación de agentes universales capaces de automatizar una amplia gama de tareas tanto en el navegador como en las aplicaciones de escritorio. Los gigantes tecnológicos (Microsoft, OpenAI, Anthropic) están desarrollando activamente esta área, y es probable que en los próximos años veamos herramientas aún más potentes y accesibles.
+
+Para la aplicación práctica, ya está disponible una rica selección de herramientas con diferentes niveles de complejidad y capacidades, desde bibliotecas abiertas hasta soluciones integradas con LLM comerciales.
+
+## Fuentes
+
+- [Browser-use GitHub](https://github.com/browser-use/browser-use)
+- [Anthropic Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use)
+- [Skyvern](https://github.com/Skyvern-AI/skyvern)
+- [GPT-4V-Act GitHub](https://github.com/ddupont808/GPT-4V-Act)
+- [OmniParser V2](https://www.microsoft.com/en-us/research/articles/omniparser-v2-turning-any-llm-into-a-computer-use-agent/)
+- [Microsoft Magma](https://www.microsoft.com/en-us/research/blog/magma-a-foundation-model-for-multimodal-ai-agents-across-digital-and-physical-worlds/)
+- [UI Vision RPA](https://ui.vision/)
+- [Anything-LLM](https://github.com/Mintplex-Labs/anything-llm)

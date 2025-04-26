@@ -1,0 +1,303 @@
+---
+sidebar_label: Incrustaciones y bases de datos vectoriales
+---
+
+# Embeddings y bases de datos vectoriales
+
+Sumérgete en el mágico mundo de los embeddings, donde las palabras se visten de números y adquieren "coordenadas" significativas. En este módulo, aprenderás cómo se generan estos vectores, cómo almacenarlos de forma segura en bases de datos vectoriales y cómo utilizarlos eficazmente para la búsqueda y las recomendaciones. ¡Prepárate para dar un poderoso impulso a tus aplicaciones de IA y transformar la forma en que trabajas con datos no estructurados!
+
+## Questions
+
+Preguntas que vamos a discutir:
+- ¿Qué significa "distancia" entre vectores?
+- ¿Por qué la distancia entre palabras similares es pequeña, y entre palabras diferentes es grande?
+- ¿Qué son las bases de datos vectoriales y cuáles usar?
+- ¿Cómo proteger los datos en las bases de datos vectoriales?
+- ¿Cómo devolver al usuario las "fuentes"?
+
+## Steps
+
+### 1. Okay. What are **word embeddings**? I have only 7 minutes!
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8kJStTRuMcs?si=dZuh-W1RkQDaPYRF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aWFllV6WsAs?si=1-SR-qCQhpieZXkC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[Colorful vectors at 2:58.](https://youtu.be/NEreO2zlXDk?si=b8j7Njn5HDGAo6Zw&t=178)
+
+:::danger
+
+**¡Atención!** No se pueden utilizar diferentes modelos text-to-embedding al indexar y al recuperar, sus vectores son incompatibles.
+
+Si cambias a un nuevo modelo "de moda" y olvidas reindexar todos los datos, el recuperador comenzará a devolver resultados irrelevantes o "basura", ¡y tu pipeline RAG se romperá por completo!
+
+:::
+
+### 2. VDBs
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/klTvEwg3oJ4?si=hEyQBG9mFvxoMHfw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TPYBYSyDRH4?si=Fr0VNwFdl73_ThXd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dN0lsF2cvm4?si=3pMQ34TdJljzW6RX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### 3. Which VDB to choose?
+
+**In 2025, VDBs are everywhere! Inside python, in SQLite, in PostGres, in Redis, in MongoDB - everywhere!**
+
+#### For educational purposes
+
+- In-script: faiss
+- Local: SQLite or [Weaviate](https://weaviate.io/developers/weaviate/quickstart/local)
+
+#### Especialmente para IA:
+
+- Self-hosted: Weaviate or Chroma
+- Cloud: Managed OpenSearch or Managed Elasticsearch
+- Serverless: Pinecone Cloud, Weaviate Cloud
+
+#### Based on your business case
+
+- Redis con el módulo RediSearch Vector: adecuado para la búsqueda en tiempo real por embedding, chatbots con baja latencia y sistemas de recomendación en datos "calientes".
+- PostgreSQL con la extensión pgvector: ideal cuando se necesitan transacciones ACID, consultas SQL complejas y búsqueda híbrida en datos relacionales y vectoriales.
+- MongoDB con Atlas Vector Search (o plugins similares): óptimo para documentos JSON semiestructurados, esquemas dinámicos y búsqueda vectorial distribuida escalable.
+- SQLite con FTS5+vector o extensiones vectoriales propias: elección para aplicaciones móviles y modos offline, cuando se necesita una base de datos integrada ligera sin servicios adicionales.
+
+#### For best performance and giant scale
+
+- Managed OpenSearch or Managed Elasticsearch
+
+#### For rapid development
+
+- Supabase with pgvector: Row-level security, good dev experience (documentation and tutorials)
+- Pinecone or Weaviate Cloud: easy to use, good dev experience (documentation and tutorials)
+- Firebase with Firestore: good dev experience (documentation and tutorials)
+
+### 4. Security
+
+#### Imaginemos una situación: tienes una base de conocimientos de la empresa
+
+1. que almacena información sobre productos, necesaria para todos los clientes (por ejemplo, información del sitio web de la empresa)
+2. información personal de cada cliente
+3. documentos internos de la empresa que no mostramos a los clientes
+4. documentos legales secretos, cuyo acceso debe ser solo para el CEO y los abogados
+
+Y has creado un chatbot en tu sitio web (un asistente en la esquina inferior derecha).
+
+#### ¿Cómo se puede proteger la información en diferentes niveles?
+
+1. **Todo mezclado:**
+
+    Hemos recopilado todos los datos en un solo índice vectorial. ¡Horror! :skull: Ahora cualquiera puede acceder a los datos personales de cualquier cliente. Hemos violado la ley. (GDPR, HIPAA, ...)
+
+2. **Le has indicado al chatbot en tu sitio web que no debe responder preguntas sobre los datos personales de los clientes, etc.**
+
+    :skull: Pero alguien hizo una ingeniería de prompts y el chatbot respondió a una pregunta sobre los datos personales de un cliente. Has violado la ley. (GDPR, HIPAA, ...)
+
+3. **Has creado un clasificador de ingeniería de prompts en las consultas y has prohibido la ingeniería de prompts.**
+
+    :skull: Pero alguien hizo una ingeniería de prompts con 100 variantes diferentes, y el chatbot respondió a una pregunta sobre los datos personales de un cliente. Has violado la ley. (GDPR, HIPAA, ...)
+
+4. **Has creado 4 índices vectoriales diferentes:**
+
+    - para datos de acceso público
+    - para datos personales de clientes
+    - para documentos internos de la empresa
+    - para documentos legales secretos
+
+    Y has creado 4 roles de usuario diferentes:
+
+    - anonymous user
+    - authenticated user
+    - employee
+    - admin
+
+    Y has configurado los niveles de acceso: un rol superior incluye el acceso a los índices de niveles inferiores.
+
+    :dart: ¡Victoria! Ahora nadie puede acceder a los datos que no están destinados a él.
+
+5. **Has creado 1 índice vectorial, pero con Row-Level Security (RLS)**
+
+    Es decir, ahora cada vector tiene una etiqueta que indica qué roles pueden verlo.
+
+    Por ejemplo:
+
+    | id | text | vector | role |
+    | --- | --- | --- | --- |
+    | 1 | "Public data" | [0.1, 0.2, 0.3] | anonymous |
+    | 2 | "Private data" | [0.1, 0.2, 0.3] | authenticated |
+    | 3 | "Internal data" | [0.1, 0.2, 0.3] | employee |
+    | 4 | "Super secret data" | [0.1, 0.2, 0.3] | admin, legal-team |
+
+    :dart: ¡Victoria! Ahora nadie puede acceder a los datos que no están destinados a él.
+
+### 5. ¿Cómo devolver al usuario en la respuesta del sistema la "respuesta" y las "fuentes"?
+
+1. **(Offline) Paso de vectorización de documentos**
+
+    Haz que cada vector corresponda a un enlace al documento.
+
+    | id | source | text | vector |
+    | --- | --- | --- | --- |
+    | 1 | "Full text of the document" | "of the document" | [0.1, 0.2, 0.3] |
+    | 2 | id_in_other_table | "some text" | [0.1, 0.2, 0.3] |
+    | 3 | "https://example.com/1" | "some text" | [0.1, 0.2, 0.3] |
+    | 4 | "user_docs:12345" | "ejemplo de fragmento de documento de usuario" | [0.2, 0.1, 0.4] |
+    | 5 | "file://reports/report_2023.pdf?page=10" | "informe de 2023 (página 10)" | [0.15, 0.22, 0.35] |
+    | 6 | "db://employees/emp_id=789" | "perfil del empleado nº 789" | [0.05, 0.25, 0.45] |
+    | 7 | "s3://company-bucket/legal/contracts/contract_456.docx" | "contrato con el cliente nº 456" | [0.3, 0.4, 0.2] |
+
+2. **(Online) Paso de recuperación**
+
+    Cuando un usuario envía una solicitud, el sistema realiza los siguientes pasos:
+
+    - Obtenemos el/los rol(es) del usuario (por ejemplo, `anonymous`, `authenticated`, `employee`, `admin`).
+    - Transformamos el texto de la solicitud en un embedding utilizando el modelo seleccionado.
+    - Realizamos una búsqueda en la base de datos vectorial, pasando:
+        - el vector de la solicitud,
+        - el parámetro `top_k` (número de fragmentos devueltos),
+        - un filtro por metadatos RLS:
+        ```python
+        {
+        "role": { "$in": user_roles }
+        }
+        ```
+    - Obtenemos una lista de documentos/fragmentos, cada uno de los cuales contiene:
+        - texto (`page_content`),
+        - metadatos con el campo `source`.
+    - Recopilamos el contexto para el LLM a partir de los fragmentos encontrados.
+    - Formamos un prompt: primero la sección "Contexto", luego "Pregunta".
+    - Enviamos el prompt al LLM y obtenemos una respuesta.
+    - Devolvemos al usuario un objeto con dos campos:
+        - `answer` — texto generado por el LLM,
+        - `sources` — una lista de cadenas de los metadatos, que apuntan a las fuentes reales.
+
+    Ejemplo de pseudocódigo en Python:
+
+    ```python
+    # 1. Obtenemos los roles del usuario
+    user_roles = get_user_roles(user_id)
+
+    # 2. Embedding de la solicitud
+    query_embedding = embed_model.embed_query(query)
+
+    # 3. Búsqueda en la base de datos vectorial con filtro RLS
+    results = vdb.similarity_search(
+        vector=query_embedding,
+        top_k=5,
+        filter={"role": {"$in": user_roles}}
+    )
+
+    # 4. Extracción de texto y fuentes
+    contexts = [doc.page_content for doc in results]
+    sources  = [doc.metadata["source"]   for doc in results]
+
+    # 5. Formación del prompt para el LLM
+    prompt = (
+        "Contexto:\n" +
+        "\n\n".join(contexts) +
+        f"\n\nPregunta: {query}"
+    )
+
+    # 6. Generación de la respuesta
+    answer = llm.generate(prompt)
+
+    # 7. Devolución al usuario
+    return {
+        "answer":  answer,
+        "sources": sources
+    }
+    ```
+
+    Ahora el usuario recibe una respuesta detallada y una lista clara de fuentes que confirman la información.
+
+### 6. Sobre otras modalidades
+
+<details>
+<summary>¿Qué son los datos estructurados y no estructurados?</summary>
+
+**Datos estructurados**
+Datos representados en una forma predefinida y rígidamente establecida: tablas, registros con campos y tipos, cuyo esquema se conoce de antemano. Ejemplos: bases de datos relacionales, archivos CSV, JSON con una estructura fija. Se pueden filtrar, ordenar y procesar fácilmente a través de consultas SQL.
+
+**Datos no estructurados**
+Datos sin un esquema explícito o una estructura formal: texto libre, imágenes, audio, vídeo, modelos 3D, etc. Su almacenamiento, búsqueda y análisis requieren el uso de métodos de PNL, visión artificial o embeddings, ya que las consultas relacionales tradicionales no son aplicables aquí.
+
+</details>
+
+:::warning
+¡Recuerda que hay muchos tipos de datos no estructurados!
+
+- texto
+- imágenes
+- audio
+- vídeo
+- Modelos 3D
+- ...
+
+Cada uno de ellos puede representarse como un vector y almacenarse en una base de datos vectorial, y gracias a los modelos multimodales text-to-embedding, podemos almacenarlos y utilizarlos en un solo índice vectorial.
+
+:::
+
+## Extra Steps
+
+### E1. Choosing an Embedding Model
+
+El algoritmo de selección es el mismo que con LLM:
+    1. Vamos al popular Massive Text Embedding Benchmark, miramos los mejores modelos
+        - [leaderboard](https://huggingface.co/spaces/mteb/leaderboard)
+        - [artículo](https://arxiv.org/abs/2210.07316)
+    2. Miramos su disponibilidad para nosotros según los criterios:
+        - contorno, en el que trabajamos
+        - modelo de código abierto (¿y qué licencia?) o propietario
+        - precio
+        - tamaño del vector (importante si vamos a almacenar millones de vectores)
+        - Soporte de los idiomas necesarios y adaptación al dominio específico
+        - Posibilidad de ajuste fino y reentrenamiento de los embeddings en su propio conjunto de datos
+        - *velocidad de funcionamiento del modelo y potencia de cálculo necesaria (aunque ahora todos los modelos text-to-embedding son muy rápidos y ligeros)*
+    3. (idealmente) Evaluaciones offline: ejecutamos en nuestro propio conjunto de datos, hacemos mediciones a través de GPT-eval o asesores
+        - posiblemente, hacemos mediciones con un pipeline RAG end-to-end (más sobre esto más adelante)
+    4. (en el caso ideal) Evaluaciones online: hacemos mediciones online, pruebas AB, etc.
+
+[The Best Embedding Models for Information Retrieval in 2025](https://www.datastax.com/blog/best-embedding-models-information-retrieval-2025)
+
+### E2. [Every Distance in Data Science explained](https://youtu.be/eutzTEGgLpE?si=xBJ_IRhGY4G33oSu)
+
+### E3. Deep VDB understanding -> [Playlist on Faiss](https://youtube.com/playlist?list=PLIUOU7oqGTLhlWpTz4NnuT3FekouIVlqc&si=cBh7QQmRZMddweLZ) (Facebook AI Similarity Search Engine)
+
+### E4. [The Biggest Misconception about Embeddings](https://youtu.be/ulD7IsecPbU?si=HUSjzsYsmA200vTQ)
+
+### E5. Text Embeddings visualization
+
+- https://github.com/uber-research/parallax
+- https://www.reddit.com/r/LanguageTechnology/comments/16qyhwr/text_embedding_visualization/
+
+### E6. For deep understanding of embeddings
+
+1. https://youtu.be/f7o8aDNxf7k?si=Su3I0s55lKB9DU_b
+2. https://youtu.be/d2E-pU4H2gc?si=2Wn4gYH5PPA-LkoA (coding practice)
+
+## Now we know...
+
+Hemos visto cómo los embeddings transforman las palabras y cualquier dato no estructurado en vectores numéricos para una búsqueda y un análisis eficaces. Has dominado los principios de la selección de un modelo de embeddings teniendo en cuenta la calidad, la velocidad y el presupuesto, y también te has familiarizado con los fundamentos del funcionamiento de las bases de datos vectoriales. Ahora estás preparado para integrar estas herramientas en los pipelines RAG y crear soluciones de alto rendimiento.
+
+## Exercises
+
+- Tienes un RAG listo para usar en un sitio web de 5000 páginas. El gestor ha cambiado una página.
+    - ¿Y ahora qué, volver a ejecutar la indexación? ¿Cómo se puede optimizar esto?
+- ¿Qué ocurrirá si tomamos un archivo pdf (texto, imágenes, gráficos) -> reconocemos todo el texto -> hacemos un RAG con este texto:
+    - ¿podrá nuestro chatbot responder a preguntas sobre las imágenes?
+    - ¿podrá nuestro chatbot responder a preguntas sobre los gráficos?
+    - ¿podrá nuestro chatbot responder a preguntas sobre el texto?
+- Al elegir un modelo text-to-embedding, ¿qué criterios serán más importantes para ti en cada caso:
+    - un simple chatbot para la información del sitio web
+    - un chatbot para el manual de un avión (aproximadamente 1.000.000.000 de palabras)
+    - un chatbot para documentos gubernamentales secretos
+    - un chatbot para datos con varias modalidades (texto, imágenes)
+- ¿Qué VDB elegirías para las siguientes tareas:
+    - RAG para la información del sitio web, tienes 1 hora para el desarrollo
+    - RAG para un libro, on-device
+    - RAG para un robot de voz (la velocidad es importante)
+    - RAG para todos los fotogramas de todos los vídeos de youtube
+- Incluso si hemos creado un RAG seguro: ¿qué desventajas puede tener el almacenamiento en un mismo índice de datos de usuarios (100 millones) y datos de empleados internos (30 mil)?
+- ¿Es posible devolver en las fuentes enlaces a diferentes fuentes de fuentes: un enlace a un sitio público, un enlace a un documento dentro de un disco privado?
+- **¿Qué ocurre si construimos un índice vectorial con un modelo text-to-embedding y realizamos las consultas con otro?**

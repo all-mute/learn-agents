@@ -1,0 +1,84 @@
+---
+sidebar_label: 提示词工程
+---
+
+import PromptingMeme from './assets/prompting_meme.png';
+
+# 提示词工程
+
+<img src={PromptingMeme} alt="prompting meme" style={{ width: '50%', display: 'block', margin: '0 auto 20px' }} />
+
+
+今天我们将掌握提示词工程——成为“LLM的心理学家”的技能。
+
+通常，一旦我们的聊天机器人或代理出现问题，我们会：
+
+1. 首先尝试通过提示词工程解决问题
+2. 更改架构
+3. 改进LLM本身
+
+如你所见，提示词工程位于首位。这是因为改进提示词非常容易（与重做系统或LLM相比），而且最坏的情况是零增长，最好的情况是成倍增长。**因此，我们掌握提示词工程**
+
+## Questions
+
+我们将讨论的问题：
+- 什么是系统提示词？
+- 什么是用户提示词？
+- zero-shot 和 few-shot 请求有什么区别？
+- 什么是思维链 (Chain of Thought)？
+
+
+## Steps
+
+### 0. 观看 x2 倍速
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p09yRj47kNM?si=ZAq3fh1Lk6gIFXPp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+接下来，我提供以下选择：简单地阅读关于技术的文章并继续前进；在 jupyter notebook 中以交互方式掌握它们；或者支付谷歌的课程费用，并在 AI Studio 中观看漫长而轻松的讲座并进行实践。
+
+### 1A. 提示词工程基础
+
+1. 前往 https://www.promptingguide.ai/ 并阅读所有章节，包括从第一个开始到思维链 (Chain of Thought) 为止的所有章节。
+
+    
+
+### 1B. 交互式课程（替代方案）
+
+https://github.com/anthropics/prompt-eng-interactive-tutorial + use base_url 
+
+同样，仅学习到包括思维链 (Chain of Thought) 在内的内容，再往后就过头了。
+
+### 1Б. 谷歌课程（替代方案）
+
+https://www.coursera.org/learn/google-prompting-essentials ($60) - 谷歌提供的 9 小时课程
+
+## Extra Steps
+
+### E1. [阅读官方建议](https://platform.openai.com/docs/guides/prompt-engineering)
+
+### E2. [阅读 Cursor AI 的系统提示词](https://github.com/maxfahl/cursor-agent-master-prompt)
+
+### E3. [阅读 Sutskever 的帖子](https://x.com/ilyasutsk/status/1832211266129293618)
+
+### E4. 用于比较提示词并在基准测试中运行提示词的服务
+
+- https://www.promptlayer.com/?ref=latitude-blog.ghost.io
+- https://github.com/Agenta-AI/agenta?ref=latitude-blog.ghost.io
+
+### E5.
+
+如果您仍然感到不自信，并且对我们在这里所做的事情没有一个完整的概念，那么此视频将再次从头开始用另一种语言解释所有内容。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LWiMwhDZ9as?si=_PE-sxOD7d_VoL1K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Now we know...
+我们学习了提示词工程的基础知识，包括系统提示词和用户提示词之间的区别、zero-shot 和 few-shot 方法，以及思维链 (Chain of Thought) 方法。现在我们理解了为什么提示词工程是改进 LLM 系统工作方式的第一个也是最容易获得的方法，它只需要最小的成本，同时有可能显着提高结果。这些知识将使我们能够更有效地与 AI 代理交互，更准确地表达请求，并从模型中获得更高质量的响应。
+
+## Exercises
+
+- 如果根本不写系统消息会怎样？
+- 为什么我们在提示词中指定角色？“你是一位专业的律师……”
+- 我们能否对 toolCall 的正确使用进行 few-shot 示例？
+- 对于哪些任务，思维链 (Chain of Thought) 不会产生任何效果？
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)

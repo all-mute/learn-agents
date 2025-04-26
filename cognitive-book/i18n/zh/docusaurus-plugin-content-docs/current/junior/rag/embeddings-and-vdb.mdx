@@ -1,0 +1,303 @@
+---
+sidebar_label: 嵌入和向量数据库
+---
+
+# 嵌入和向量数据库
+
+沉浸在嵌入的神奇世界中，在这里，文字被赋予数字，并获得有意义的“坐标”。在本模块中，您将学习如何生成这些向量，如何将它们安全地存储在向量数据库中，以及如何有效地利用它们进行搜索和推荐。准备好为您的 AI 应用程序提供强大的动力，并改变非结构化数据的处理方式！
+
+## Questions
+
+我们将讨论的问题：
+- 向量之间的“距离”意味着什么？
+- 为什么相似词之间的距离很近，而不相似词之间的距离很远？
+- 什么是向量数据库，应该使用哪些？
+- 如何保护向量数据库中的数据？
+- 如何将“来源”返回给用户？
+
+## Steps
+
+### 1. 好的。什么是 **词嵌入**？我只有 7 分钟！
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8kJStTRuMcs?si=dZuh-W1RkQDaPYRF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aWFllV6WsAs?si=1-SR-qCQhpieZXkC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+[2:58 的彩色向量。](https://youtu.be/NEreO2zlXDk?si=b8j7Njn5HDGAo6Zw&t=178)
+
+:::danger
+
+**注意！** 在索引和检索时，不能使用不同的 text-to-embedding 模型——它们的向量不兼容。
+
+如果您切换到新的“流行”模型，并且忘记重新索引所有数据，检索器将开始返回不相关或“垃圾”结果，并且您的 RAG 管道将完全崩溃！
+
+:::
+
+### 2. VDBs
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/klTvEwg3oJ4?si=hEyQBG9mFvxoMHfw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TPYBYSyDRH4?si=Fr0VNwFdl73_ThXd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dN0lsF2cvm4?si=3pMQ34TdJljzW6RX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### 3. 选择哪个 VDB？
+
+**在 2025 年，VDB 无处不在！在 python 中，在 SQLite 中，在 PostGres 中，在 Redis 中，在 MongoDB 中 - 无处不在！**
+
+#### 用于教育目的
+
+- 脚本内：faiss
+- 本地：SQLite 或 [Weaviate](https://weaviate.io/developers/weaviate/quickstart/local)
+
+#### 专门用于 AI：
+
+- 自托管：Weaviate 或 Chroma
+- 云：托管 OpenSearch 或托管 Elasticsearch
+- 无服务器：Pinecone Cloud, Weaviate Cloud
+
+#### 基于您的业务案例
+
+- 带有 RediSearch Vector 模块的 Redis：适用于基于嵌入的实时搜索、低延迟聊天机器人和“热”数据上的推荐系统
+- 带有 pgvector 扩展的 PostgreSQL：当需要 ACID 事务、复杂的 SQL 查询以及关系和向量数据的混合搜索时，是理想选择
+- 带有 Atlas Vector Search 的 MongoDB（或类似的插件）：对于半结构化的 JSON 文档、动态模式和可扩展的分布式向量搜索来说，是最佳选择
+- 带有 FTS5+vector 或自定义向量扩展的 SQLite：当需要轻量级嵌入式数据库而无需额外服务时，是移动应用程序和离线模式的选择
+
+#### 为了获得最佳性能和巨大的规模
+
+- 托管 OpenSearch 或托管 Elasticsearch
+
+#### 为了快速开发
+
+- Supabase with pgvector：行级安全性，良好的开发体验（文档和教程）
+- Pinecone 或 Weaviate Cloud：易于使用，良好的开发体验（文档和教程）
+- Firebase with Firestore：良好的开发体验（文档和教程）
+
+### 4. 安全
+
+#### 让我们想象一下这种情况：您有一个公司知识库
+
+1. 其中存储着所有客户需要的产品信息（例如，来自公司网站的信息）
+2. 每个客户的个人信息
+3. 我们不向客户展示的公司内部文件
+4. 只有 CEO 和律师才能访问的机密法律文件
+
+并且您在您的网站上制作了一个聊天机器人（右下角的助手）。
+
+#### 如何在不同级别保护信息？
+
+1. **全部混在一起：**
+
+    我们将所有数据收集到一个向量索引中。太可怕了！ :skull: 现在任何人都可以访问任何客户的个人数据。我们违反了法律。（GDPR、HIPAA、...）
+
+2. **您指示您网站上的聊天机器人，它不应该回答有关客户个人数据等的问题。**
+
+    :skull: 但是有人进行了提示词注入，聊天机器人回答了有关客户个人数据的问题。您违反了法律。（GDPR、HIPAA、...）
+
+3. **您在请求中制作了一个提示词注入分类器，并禁止了提示词注入。**
+
+    :skull: 但是有人用 100 种不同的变体进行了提示词注入，聊天机器人回答了有关客户个人数据的问题。您违反了法律。（GDPR、HIPAA、...）
+
+4. **您制作了 4 个不同的向量索引：**
+
+    - 用于公共数据
+    - 用于客户的个人数据
+    - 用于公司内部文件
+    - 用于机密法律文件
+
+    并且您制作了 4 个不同的用户角色：
+
+    - anonymous user
+    - authenticated user
+    - employee
+    - admin
+
+    并配置了访问级别：更高的角色包括对较低级别索引的访问权限。
+
+    :dart: 胜利！现在没有人可以访问不适合他的数据。
+
+5. **您制作了 1 个向量索引，但具有行级安全性 (RLS)**
+
+    也就是说，现在每个向量都有一个标签，指示哪些角色可以看到它。
+
+    例如：
+
+    | id | text | vector | role |
+    | --- | --- | --- | --- |
+    | 1 | "Public data" | [0.1, 0.2, 0.3] | anonymous |
+    | 2 | "Private data" | [0.1, 0.2, 0.3] | authenticated |
+    | 3 | "Internal data" | [0.1, 0.2, 0.3] | employee |
+    | 4 | "Super secret data" | [0.1, 0.2, 0.3] | admin, legal-team |
+
+    :dart: 胜利！现在没有人可以访问不适合他的数据。
+
+### 5. 如何在系统响应中将“答案”和“来源”返回给用户？
+
+1. **（离线）向量化文档步骤**
+
+    确保每个向量都对应一个文档链接。
+
+    | id | source | text | vector |
+    | --- | --- | --- | --- |
+    | 1 | "Full text of the document" | "of the document" | [0.1, 0.2, 0.3] |
+    | 2 | id_in_other_table | "some text" | [0.1, 0.2, 0.3] |
+    | 3 | "https://example.com/1" | "some text" | [0.1, 0.2, 0.3] |
+    | 4 | "user_docs:12345" | "示例用户文档片段"    | [0.2, 0.1, 0.4] |
+    | 5 | "file://reports/report_2023.pdf?page=10" | "2023 年报告（第 10 页）" | [0.15, 0.22, 0.35] |
+    | 6 | "db://employees/emp_id=789" | "员工资料 №789"                | [0.05, 0.25, 0.45] |
+    | 7 | "s3://company-bucket/legal/contracts/contract_456.docx" | "与客户 №456 的合同" | [0.3, 0.4, 0.2] |
+
+2. **（在线）检索步骤**
+
+    当用户发送请求时，系统执行以下步骤：
+
+    - 获取用户的角色（例如，`anonymous`、`authenticated`、`employee`、`admin`）。
+    - 使用所选模型将请求文本转换为嵌入。
+    - 在向量数据库中进行搜索，传递：
+    - 请求向量，
+    - 参数 `top_k`（返回的片段数量），
+    - RLS 元数据的过滤器：
+        ```python
+        {
+        "role": { "$in": user_roles }
+        }
+        ```
+    - 获取文档/片段列表，每个文档/片段包含：
+    - 文本 (`page_content`)，
+    - 带有 `source` 字段的元数据。
+    - 从找到的片段中收集 LLM 的上下文。
+    - 形成提示词：首先是“上下文”部分，然后是“问题”。
+    - 将提示词发送到 LLM 并获得答案。
+    - 将带有两个字段的对象返回给用户：
+    - `answer` — LLM 生成的文本，
+    - `sources` — 元数据中的字符串列表，指示实际来源。
+
+    Python 中的伪代码示例：
+
+    ```python
+    # 1. 获取用户角色
+    user_roles = get_user_roles(user_id)
+
+    # 2. 请求嵌入
+    query_embedding = embed_model.embed_query(query)
+
+    # 3. 在带有 RLS 过滤器的向量数据库中搜索
+    results = vdb.similarity_search(
+        vector=query_embedding,
+        top_k=5,
+        filter={"role": {"$in": user_roles}}
+    )
+
+    # 4. 提取文本和来源
+    contexts = [doc.page_content for doc in results]
+    sources  = [doc.metadata["source"]   for doc in results]
+
+    # 5. 为 LLM 形成提示词
+    prompt = (
+        "上下文:\n" +
+        "\n\n".join(contexts) +
+        f"\n\n问题: {query}"
+    )
+
+    # 6. 生成答案
+    answer = llm.generate(prompt)
+
+    # 7. 返回给用户
+    return {
+        "answer":  answer,
+        "sources": sources
+    }
+    ```
+
+    现在，用户会收到详细的答案和清晰的来源列表，以确认信息。
+
+### 6. 关于其他模态
+
+<details>
+<summary>什么是结构化和非结构化数据？</summary>
+
+**结构化数据**
+以预先定义和严格指定的形式呈现的数据——表格、带有字段和类型的记录，其模式是预先已知的。示例：关系数据库、CSV 文件、具有固定结构的 JSON。可以通过 SQL 查询轻松地过滤、排序和处理。
+
+**非结构化数据**
+没有明确模式或正式结构的数据：自由文本、图像、音频、视频、3D 模型等。它们的存储、搜索和分析需要使用 NLP、计算机视觉或嵌入方法，因为传统的关联查询在这里不适用。
+
+</details>
+
+:::warning
+请记住，非结构化数据的种类很多！
+
+- 文本
+- 图像
+- 音频
+- 视频
+- 3D 模型
+- ...
+
+它们中的每一个都可以表示为向量并存储在向量数据库中 - 并且由于多模态 text-to-embedding 模型，我们可以将它们存储并在一个向量索引中使用。
+
+:::
+
+## Extra Steps
+
+### E1. 选择嵌入模型
+
+选择算法与 LLM 相同：
+    1. 转到流行的 Massive Text Embedding Benchmark，查看最佳模型
+        - [排行榜](https://huggingface.co/spaces/mteb/leaderboard)
+        - [文章](https://arxiv.org/abs/2210.07316)
+    2. 根据以下标准查看它们对我们的可用性：
+        - 我们工作的范围
+        - 模型是开源的（许可证是什么？）还是专有的
+        - 价格
+        - 向量大小（如果我们打算存储数百万个向量，这一点很重要）
+        - 支持所需的语言并适应特定的领域
+        - 在您自己的数据集上微调和重新训练嵌入的能力
+        - *模型的工作速度和所需的计算能力（尽管现在所有 text-to-embedding 模型都非常快速和轻量级）*
+    3. （理想情况下）离线评估：在您自己的数据集上运行，通过 GPT-eval 或评估员进行测量
+        - 也许，使用端到端 RAG 管道进行测量（稍后会详细介绍）
+    4. （理想情况下）在线评估：进行在线测量、AB 测试等。
+
+[2025 年信息检索的最佳嵌入模型](https://www.datastax.com/blog/best-embedding-models-information-retrieval-2025)
+
+### E2. [数据科学中解释的每个距离](https://youtu.be/eutzTEGgLpE?si=xBJ_IRhGY4G33oSu)
+
+### E3. 深入了解 VDB -> [Faiss 上的播放列表](https://youtube.com/playlist?list=PLIUOU7oqGTLhlWpTz4NnuT3FekouIVlqc&si=cBh7QQmRZMddweLZ) (Facebook AI 相似性搜索引擎)
+
+### E4. [关于嵌入的最大误解](https://youtu.be/ulD7IsecPbU?si=HUSjzsYsmA200vTQ)
+
+### E5. 文本嵌入可视化
+
+- https://github.com/uber-research/parallax
+- https://www.reddit.com/r/LanguageTechnology/comments/16qyhwr/text_embedding_visualization/
+
+### E6. 为了深入理解嵌入
+
+1. https://youtu.be/f7o8aDNxf7k?si=Su3I0s55lKB9DU_b
+2. https://youtu.be/d2E-pU4H2gc?si=2Wn4gYH5PPA-LkoA (编码实践)
+
+## Now we know...
+
+我们已经看到，嵌入如何将单词和任何非结构化数据转换为数字向量，以进行有效的搜索和分析。您已经掌握了根据质量、速度和预算选择嵌入模型的原则，并且熟悉了向量数据库的基础知识。现在，您已准备好将这些工具集成到 RAG 管道中，并创建高性能的解决方案。
+
+## Exercises
+
+- 您有一个现成的 RAG，用于包含 5000 个页面的网站。经理更改了一个页面。
+    - 现在呢，重新开始索引？如何优化它？
+- 如果我们获取 pdf 文件（文本、图片、图形）-> 识别所有文本 -> 根据此文本制作 RAG 会发生什么：
+    - 我们的聊天机器人能否回答有关图片的问题？
+    - 我们的聊天机器人能否回答有关图形的问题？
+    - 我们的聊天机器人能否回答有关文本的问题？
+- 在选择 text-to-embedding 模型时，在每种情况下，哪些标准对您来说更重要：
+    - 关于网站信息的简单聊天机器人
+    - 关于飞机说明的聊天机器人（大约 1,000,000,000 个单词）
+    - 关于机密政府文件的聊天机器人
+    - 关于具有多种模态（文本、图片）数据的聊天机器人
+- 您将为以下任务选择哪个 VDB：
+    - 关于网站信息的 RAG，您有 1 小时的时间进行开发
+    - 关于书籍的 RAG，在设备上
+    - 用于语音机器人的 RAG（速度很重要）
+    - 用于 youtube 上所有视频的所有帧的 RAG
+- 即使我们制作了安全的 RAG：在一个索引中存储用户数据（1 亿）和内部员工数据（3 万）可能有哪些缺点？
+- 是否可以在来源中返回指向不同来源的链接：指向公共网站的链接、指向私有磁盘内文档的链接？
+- **如果我们使用一个 text-to-embedding 模型构建向量索引，而使用另一个模型进行查询，会发生什么？**

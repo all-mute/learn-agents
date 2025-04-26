@@ -1,0 +1,207 @@
+---
+sidebar_position: 8
+title: Otras tareas
+---
+
+### Extremos en el prompt
+
+**Prompt del sistema**
+
+```text
+Eres un asistente que ayuda a los usuarios a encontrar información. Si no hay respuesta a la pregunta en el texto, simplemente responde: "Lo siento, no puedo ayudar con esta pregunta".
+```
+
+**Prompt del usuario**
+
+```text
+{user_question}
+```
+
+**Respuesta del LLM**
+
+```text
+Lo siento, no puedo ayudar con esta pregunta.
+```
+
+### Respuesta en formato JSON
+
+**Prompt del sistema**
+
+```text
+Eres un asistente que responde a las solicitudes en formato JSON. Asegúrate de que la respuesta coincida con la estructura dada.
+```
+
+**Prompt del usuario**
+
+```text
+{user_request}
+```
+
+**Respuesta del LLM**
+
+```json
+{
+  "status": "success",
+  "data": {
+    "message": "Su solicitud ha sido procesada",
+    "details": null
+  }
+}
+```
+
+### Generación de texto en esquema
+
+**Prompt del sistema**
+
+```text
+Eres un generador de texto que crea texto en un esquema dado. Sigue el formato que se da en el ejemplo.
+```
+
+**Prompt del usuario**
+
+```text
+Crea un texto para un anuncio publicitario, siguiendo el esquema: Título - Descripción - Llamada a la acción.
+```
+
+**Respuesta del LLM**
+
+```text
+Título: ¡Oportunidad única!
+Descripción: Solo hoy puedes comprar nuestro producto con un 50% de descuento. ¡No pierdas la oportunidad de mejorar tu vida!
+Llamada a la acción: ¡Haz tu pedido ahora y obtén envío gratis!
+```
+
+### Razonamiento en esquema para mejorar los resultados
+
+**Prompt del sistema**
+
+```text
+Eres un analista que primero justifica sus conclusiones y luego da una calificación. Sigue el formato: Justificación - Calificación.
+```
+
+**Prompt del usuario**
+
+```text
+Evalúa la calidad del artículo según los siguientes criterios: contenido, estructura, estilo.
+```
+
+**Respuesta del LLM**
+
+```text
+Justificación: El artículo está bien estructurado, con una presentación clara de las ideas. Sin embargo, el estilo de presentación es a veces seco, lo que puede reducir el interés de los lectores.
+Calificación: 7 de 10
+```
+
+### Llamada a funciones
+
+**Descripción del enfoque**
+
+La llamada a funciones es la capacidad de integrar LLM (Large Language Model) con APIs o funciones externas para realizar tareas específicas. Esto permite que el modelo solicite datos o realice acciones que están fuera de sus capacidades de texto. Por ejemplo, el modelo puede usar una función para obtener el clima actual, realizar cálculos matemáticos o interactuar con bases de datos.
+
+**Prompt del sistema**
+
+```text
+Eres un asistente que ayuda con la llamada a funciones basada en la solicitud del usuario. Determina la función necesaria y pasa los parámetros.
+```
+
+**Prompt del usuario**
+
+```text
+Convierte 100 dólares a euros al tipo de cambio actual.
+```
+
+**Respuesta del LLM**
+
+```text
+Llamada a la función: convert_currency(amount=100, from_currency="USD", to_currency="EUR")
+```
+
+**Casos de uso**
+
+- Obtención de datos meteorológicos.
+- Búsqueda de ubicaciones cercanas (restaurantes, tiendas).
+- Verificación del estado de un pedido.
+- Gestión del calendario (adición de reuniones, recordatorios).
+
+### Llamada paralela a funciones
+
+**Descripción del enfoque**
+
+La llamada paralela a funciones permite realizar varias tareas simultáneamente, lo que puede ser útil para aumentar la eficiencia y la velocidad de procesamiento de las solicitudes. Esto es especialmente importante en escenarios donde se requiere la interacción con múltiples fuentes de datos o la realización de múltiples acciones independientes.
+
+**Prompt del sistema**
+
+```text
+Eres un asistente que puede realizar varias tareas simultáneamente. Determina las funciones que se pueden llamar en paralelo.
+```
+
+**Prompt del usuario**
+
+```text
+Envía un informe por correo electrónico y verifica si hay mensajes nuevos.
+```
+
+**Respuesta del LLM**
+
+```text
+Llamada a funciones en paralelo:
+1. send_email(report="informe.pdf", recipient="ejemplo@ejemplo.com")
+2. check_new_messages()
+```
+
+**Casos de uso**
+
+- Actualización de datos de múltiples fuentes.
+- Realización de diversas operaciones con bases de datos.
+- Envío simultáneo de notificaciones y actualización de estados.
+
+El uso de la llamada a funciones hace que la interacción con LLM sea más dinámica y funcional, lo que permite integrar el modelo en flujos de trabajo y sistemas complejos.
+
+### 
+
+¡Claro! Aquí está el tema actualizado sobre la clasificación de texto con dos enfoques:
+
+### Clasificación de texto utilizando una lista de etiquetas
+
+**Prompt del sistema**
+
+```text
+Eres un experto en clasificación de textos. Tienes una lista de categorías: Política, Deportes, Tecnología, Entretenimiento. Determina la categoría del texto y responde solo con una etiqueta de la lista.
+```
+
+**Prompt del usuario**
+
+```text
+{news_article}
+```
+
+**Respuesta del LLM**
+
+```text
+Tecnología
+```
+
+### Clasificación de texto utilizando etiquetas numéricas
+
+**Prompt del sistema**
+
+```text
+Eres un experto en clasificación de textos. Tienes categorías marcadas con números: 1 - Política, 2 - Deportes, 3 - Tecnología, 4 - Entretenimiento. Determina la categoría del texto y responde solo con un número.
+```
+
+**Prompt del usuario**
+
+```text
+{news_article}
+```
+
+**Respuesta del LLM**
+
+```text
+
+3
+```
+
+**Parámetros**
+
+- Establece `max_tokens=1` para limitar la longitud de la respuesta.

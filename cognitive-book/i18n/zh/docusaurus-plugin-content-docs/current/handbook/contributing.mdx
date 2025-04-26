@@ -1,0 +1,264 @@
+---
+sidebar_label: 贡献
+---
+
+# 如何为项目做贡献
+
+我们很高兴欢迎新的贡献者加入我们的项目！本文档将帮助您了解如何为 Learn Agents 项目的发展做出贡献 - 一本关于 AI 代理的互动书籍。
+
+## 什么是贡献？
+
+贡献是指为开源项目做出贡献的过程。贡献可以是不同的：
+- 创建新的模块或块
+- 更新过时的信息
+- 翻译成其他语言
+- 修复内容中的小错误
+- 改进 UI/UX
+
+:::tip
+要进行快速更改，您可以单击每页底部的“编辑此页面”按钮。
+:::
+
+## 为什么要这样做？
+
+- 专业知识交流中心：您可以与他人分享您的经验和知识并获得反馈
+- 志愿服务：为了发展个人品牌，提升简历
+- 学习如何使用您的产品
+
+## [哪些页面需要尽快完成？](orders)
+
+## 我有一些见解，但没有时间写材料
+
+- 让我们通个电话。
+   - [telegram](https://t.me/nongilgamesj)
+   - [cal.com](https://cal.com/merkulov)
+
+## 如何开始
+
+:::danger 为你所做的事情感到自豪
+想象一下，成千上万的学生正在阅读您的材料。尊重他们的才华，尊重他们的时间。我们希望他们只把时间花在对创造未来有用的事情上。
+:::
+
+### 理念
+
+1. 阅读 `/intro` 页面“关于教科书”：价值观、原则
+2. 在编写模块之前，建议与教师委员会协商主题。如何操作？ [tg](https://t.me/nongilgamesj)
+
+### 如何从头开始编写模块
+
+[模块模板](https://github.com/all-mute/learn-agents/blob/main/template-ru.mdx)
+
+<details>
+<summary>每个模块 - 本网站上的一个页面 - 由以下部分组成：</summary>
+
+#### 介绍
+首先进行简短的介绍，说明本页将学习的内容。添加动机以引起读者的兴趣。好的动机是解决生活问题、工业案例、失败的故事。
+
+学习目标：确定读者在学习完材料后应该能够做什么。这将有助于将注意力集中在关键方面。
+
+#### 问题
+列出将要讨论的主要问题。这将帮助读者了解要注意什么。
+
+#### 学习步骤
+将材料分成逻辑步骤或阶段。这可以是需要学习的一系列操作或概念。
+
+主要步骤应包含尽可能少的材料 - 但足以掌握后续模块并找到 Applied AI 工作（作为参考）
+
+附加步骤：如果需要，包括附加步骤以更深入地学习主题。
+
+#### 模块总结
+
+阅读它很有用，以便大脑再次浏览材料
+
+#### Exercises
+难题。在思考它们时，您会感到困难，但这是正常的。正是在这个时候，大脑积极地形成新的神经连接。
+
+### 讲述您的产品或与代理间接相关的主题
+
+销售就是帮助 - 但您的产品只能间接出现在课程中。您还必须谈论竞争对手。
+
+- 如果直接与代理相关，并且是工作所需的关键知识，则会进入路线图
+
+- 如果与代理相关，但对于工作来说不是必需的知识，则会进入路线图，并带有奖励/专业材料的标记（地图上的绿色/紫色复选框）
+
+- 如果与代理无关，则放置在额外的块中，并链接到主程序中的页面
+或者在主程序的页面上，但在额外的步骤中
+
+</details>
+
+### 如何将材料贡献到存储库
+
+<details>
+<summary>如何将材料贡献到教科书</summary>
+
+1. **Fork 存储库**
+   创建我们主存储库的 fork：
+   - [github.com/all-mute/learn-agents](https://github.com/all-mute/learn-agents)
+
+2. 将您的 fork 克隆到本地计算机
+
+3. 输入命令：
+   ```bash
+   # 安装依赖项
+   npm install
+
+   # 启动本地版本
+   npx docusaurus start --locale ru
+   ```
+
+4. 对文件进行更改
+
+5. 创建 Pull Request
+
+视频（和 chatgpt）可能会有所帮助：
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CML6vfKjQss?si=ILGJemXDu8jAF0gH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+## 内容创建
+
+<details>
+<summary>内容创建技巧</summary>
+
+### [Docusaurus 文档](https://docusaurus.io/docs)
+
+### [Markdown 功能](https://docusaurus.io/docs/2.x/markdown-features)
+
+### 项目结构
+
+内容位于以下目录中：
+- 英文版本：`/docs/`
+- 俄文版本：`/i18n/ru/docusaurus-plugin-content-docs/current/`
+
+### 格式化
+
+- 使用 Markdown 进行基本格式化
+- 对于更复杂的组件，请使用 MDX
+- 将图像存储在 `/static/img/` 中
+
+### 添加新材料的示例
+
+1. 在相应的目录中创建一个新的 `.mdx` 文件
+2. 将元数据添加到文件的开头：
+   ```mdx
+   ---
+   sidebar_label: 侧边栏的名称
+   ---
+
+   # 页面标题
+   ```
+3. 编写和格式化您的内容
+
+### 将页面添加到导航
+
+要使您的新页面显示在侧边栏导航中，您需要将其添加到项目根目录中的 `sidebars.ts` 文件中：
+
+1. 打开 `sidebars.ts` 文件
+2. 找到您页面的相应类别
+3. 将您的文件的路径添加到相应的部分：
+
+```typescript
+// 在 Handbook 类别中添加新页面的示例
+{
+  type: 'category',
+  label: 'Handbook',
+  items: [
+    'handbook/introduction',
+    'handbook/contributing', // 现有页面
+    'handbook/ваша-новая-страница', // 您的新页面
+  ],
+},
+```
+
+请注意，路径的指定不带 `.mdx` 扩展名，并且相对于 `docs/` 或 `i18n/ru/docusaurus-plugin-content-docs/current/` 目录。
+
+</details>
+
+## 审查流程
+
+创建 Pull Request 后，您的更改将由项目团队进行审查。
+我们可能会要求您进行一些调整。成功审查后，您的更改将被接受到项目中。
+
+建议与团队互动：[tg](https://t.me/nongilgamesj)
+
+## 感谢
+
+非常感谢您对项目的贡献！我们一起让关于 AI 代理的知识更容易被所有人获取。
+
+## 如何将自己指定为材料的作者
+
+<details>
+<summary>如何将自己指定为材料的作者</summary>
+
+要将自己指定为页面的作者，您需要执行两个步骤：
+
+### 1. 将您的信息添加到作者文件
+
+有关作者的数据存储在 `blog/authors.json` 文件中。以 JSON 格式添加您的信息：
+
+```json
+{
+  "您的_密钥": {
+    "name": "您的姓名",
+    "title": "您的职位或角色",
+    "url": "https://github.com/您的-帐户",
+    "image_url": "https://github.com/您的-帐户.png",
+    "socials": {
+      "github": "您的-帐户",
+      "linkedin": "您的-linkedin-个人资料",
+      "email": "您的-邮件@example.com",
+      "x": "您的-twitter-帐户"
+    },
+    "description": "关于您的简短描述（可选）"
+  }
+}
+```
+
+除了 `name` 之外的所有字段都是可选的，但建议至少指定一个社交网络。
+
+### 2. 在您的页面的前置元数据中将自己指定为作者
+
+在您的 `.mdx` 文件的开头，将 `authors` 字段添加到前置元数据部分：
+
+```mdx
+---
+sidebar_label: 侧边栏的名称
+authors: 您的_密钥
+---
+
+# 页面标题
+```
+
+您还可以通过数组指定多个作者：
+
+```mdx
+---
+sidebar_label: 侧边栏的名称
+authors:
+  - 您的_密钥
+  - 另一个_作者
+---
+```
+
+或者直接指定有关作者的信息：
+
+```mdx
+---
+sidebar_label: 侧边栏的名称
+authors:
+  - name: 您的姓名
+    title: 您的职位或角色
+    url: https://github.com/您的-帐户
+    image_url: https://github.com/您的-帐户.png
+    socials:
+      github: 您的-帐户
+---
+```
+
+进行这些更改后，您的作者信息将显示在页面标题下方，包括头像和指向社交网络的链接。
+
+:::note
+确保 `authors` 中的作者密钥与 `blog/authors.json` 文件中的密钥完全匹配，否则作者信息将不会显示。
+:::
+
+</details>

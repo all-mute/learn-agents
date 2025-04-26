@@ -1,0 +1,122 @@
+---
+sidebar_position: 2
+title: Tareas de análisis de texto
+---
+
+### Crítica de la idea
+
+**Prompt del sistema**
+
+```text
+Eres un experto en el análisis crítico de ideas. Tu tarea es identificar las debilidades de la idea propuesta y sugerir formas de mejorarla. Utiliza un enfoque constructivo.
+```
+
+
+**Prompt del usuario**
+
+```text
+Idea: Crear un café donde los visitantes puedan pagar por el tiempo que pasan, en lugar de por la comida.
+```
+
+
+**Respuesta del LLM**
+
+```text
+
+1. Dificultades en la gestión del tiempo de estancia de los clientes, lo que puede dificultar el control del pago.
+2. Problemas potenciales con clientes que se quedan más tiempo del previsto.
+3. Necesidad de crear una atmósfera única para atraer y retener a los clientes.
+4. Posibles mejoras: introducción de un sistema de bonificaciones para clientes habituales, desarrollo de programas de fidelización.
+```
+
+
+### Crítica de la respuesta del LLM
+
+**Prompt del sistema**
+
+```text
+Eres un revisor experimentado que analiza las respuestas del LLM en cuanto a precisión, integridad y estilo. Tu tarea es identificar las deficiencias en la respuesta y sugerir mejoras.
+```
+
+o
+
+**Prompt del usuario en medio de una interacción con el LLM**
+
+```text
+Vuelve a leer tu última respuesta, analízala y piensa si hay algún error en ella. Si algo se puede mejorar, reescribe tu respuesta con los cambios.
+```
+
+
+### Análisis del diálogo de un vendedor con un cliente
+
+**Prompt del sistema**
+
+```text
+Eres un experto en análisis de ventas. Tu tarea es evaluar el diálogo entre el vendedor y el cliente, identificar los puntos de crecimiento y evaluar la cortesía y el tono de la comunicación.
+```
+
+
+**Prompt del usuario**
+
+```text
+{sales_dialog}
+```
+
+
+**Respuesta del LLM**
+
+```text
+
+1. Puntos de crecimiento: el vendedor no especificó las necesidades del cliente, lo que podría haber ayudado a una propuesta de producto más precisa.
+2. Cortesía: El vendedor utilizó un tono cortés y amistoso, sin embargo, se debe evitar un lenguaje demasiado formal.
+3. Recomendaciones: hacer más preguntas abiertas para comprender mejor al cliente.
+```
+
+
+### Moderación por parámetros
+
+**Prompt del sistema**
+
+```text
+Eres un moderador de contenido. Evalúa el texto según los criterios dados: fiabilidad, neutralidad, claridad. Asigna puntuaciones del 1 al 5 para cada criterio.
+```
+
+
+**Prompt del usuario**
+
+```text
+{content_text}
+```
+
+
+**Respuesta del LLM**
+
+```text
+Fiabilidad: 4 - la información es generalmente veraz, pero requiere verificación de las fuentes.
+Neutralidad: 3 - hay cierta parcialidad.
+Claridad: 5 - el texto es claro y fácil de leer.
+```
+
+
+### Rellenar las puntuaciones del cuestionario
+
+**Prompt del sistema**
+
+```text
+Eres un analista de datos. Basándote en la respuesta del encuestado, evalúalo en una escala del 1 al 10 según los siguientes criterios: satisfacción, compromiso, lealtad.
+```
+
+
+**Prompt del usuario**
+
+```text
+Respuesta del encuestado: "Me gusta el producto, pero no estoy seguro de si lo recomendaría. Lo uso con poca frecuencia."
+```
+
+
+**Respuesta del LLM**
+
+```text
+Satisfacción: 7 - actitud generalmente positiva hacia el producto.
+Compromiso: 4 - el producto se utiliza con poca frecuencia.
+Lealtad: 5 - incertidumbre en la recomendación del producto.

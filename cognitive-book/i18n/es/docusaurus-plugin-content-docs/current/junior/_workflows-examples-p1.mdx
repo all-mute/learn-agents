@@ -1,0 +1,672 @@
+<details>
+<summary>Comunicación y soporte</summary>
+
+<details>
+<summary>Clasificador de correo electrónico</summary>
+
+```mermaid
+flowchart LR
+    A["Correo electrónico recibido"] --> B["Clasificador de correos"]
+    B -->|No es spam| C["Validador: ¿puede la LLM responder?"]
+    B -->|Spam| D["Mover a la papelera"]
+    C -->|Respuesta compleja| E["Asistencia humana"]
+    C -->|Respuesta simple| F["Generación de respuesta"]
+    F --> G["Enviar correo electrónico"]
+    E --> G
+```
+
+<details>
+<summary>Ejemplos de solicitudes de entrada</summary>
+
+```text
+Correo electrónico 1:
+De: client@example.com
+Asunto: Problema con el pago
+Mensaje: "Hola, pagué el pedido hace unos días, pero el estado no ha cambiado. Por favor, ayúdenme."
+
+Correo electrónico 2:
+De: user2@example.com
+Asunto: Pregunta sobre el producto
+Mensaje: "Buenos días, por favor, cuénteme sobre las características de su aplicación."
+```
+</details>
+
+<details>
+<summary>Prompt del sistema: Clasificador de correos electrónicos</summary>
+
+```text
+Eres un modelo que clasifica los correos electrónicos entrantes como 'spam' o 'not_spam'.
+Recibes como entrada el encabezado y el cuerpo del correo electrónico.
+La salida es una sola palabra: 'spam' o 'not_spam'.
+```
+</details>
+
+<details>
+<summary>Prompt del sistema: Validador (¿puede la LLM responder?)</summary>
+
+```text
+Eres un modelo que comprueba si la LLM puede responder a una solicitud de forma autónoma.
+Recibes el cuerpo del correo electrónico.
+Si la respuesta es simple, muestra 'simple_answer', de lo contrario 'complex_answer'.
+```
+</details>
+
+<details>
+<summary>Prompt del sistema: Generación de respuesta</summary>
+
+```text
+Eres un asistente de atención al cliente. Redacta una respuesta cortés y concisa al cliente basándote en el texto del correo electrónico:
+\"\"\"{email_body}\"\"\"
+```
+</details>
+
+</details>
+
+<details>
+<summary>Triaje de solicitudes al servicio de soporte</summary>
+
+```mermaid
+flowchart LR
+    Request[Mensaje del cliente] --> Intent[Clasificación del intent]
+    Intent -->|FAQ| FAQSearch[Búsqueda en la base de datos de FAQ]
+    Intent -->|Soporte técnico| Human[Al operador]
+    FAQSearch --> Answer[LLM: generación de respuesta]
+    Answer --> Send[Envío de respuesta al cliente]
+    Human --> Send
+```
+
+<details>
+<summary>Ejemplos de solicitudes de entrada</summary>
+
+```text
+Solicitud 1: "¿Cómo restablezco la contraseña de mi cuenta?"
+Solicitud 2: "Tengo un error al pagar la suscripción, número de pedido #12345."
+```
+</details>
+
+<details>
+<summary>Prompt del sistema: Clasificación del intent</summary>
+
+```text
+Eres un modelo que, basándose en el mensaje del cliente, determina el intent: 'FAQ' o 'technical_support'.
+La salida es 'FAQ' o 'technical_support'.
+```
+</details>
+
+<details>
+<summary>Prompt del sistema: LLM generación de respuesta por FAQ</summary>
+
+```text
+Eres un asistente que genera una respuesta basada en las FAQ encontradas.
+Entrada: consulta del cliente y contenido de las FAQ:
+\"\"\"Pregunta: {faq_question}
+Respuesta: {faq_answer}\"\"\"
+Salida: respuesta completa al cliente.
+```
+</details>
+
+</details>
+
+</details>
+<details>
+<summary>Sumarización de documentos</summary>
+
+<details>
+<summary>Pipeline de sumarización de documentos</summary>
+
+```mermaid
+flowchart LR
+    Doc[Documento cargado] --> Split[División en partes]
+    Split --> PartSummary[LLM: sumarización de partes]
+    PartSummary --> Merge[Agregación de resultados]
+    Merge --> Final[ReturnFinalAnswer]
+```
+
+<details>
+<summary>Ejemplos de documentos de entrada</summary>
+
+```text
+Documento 1: Artículo sobre JavaScript (≈ 5.000 tokens)
+Documento 2: Informe de ventas trimestral (≈ 8.000 tokens)
+```
+
+</details>
+
+<details>
+<summary>Prompt del sistema: LLM — sumarización de partes</summary>
+
+```text
+Eres un modelo para la sumarización de fragmentos de texto.
+Tu tarea es, basándote en el fragmento de entrada (≤ 6000 tokens), formar un resumen breve e informativo (≤ 500 tokens).
+Entrada: fragmento de texto del documento.
+Salida: resumen del fragmento.
+```
+
+</details>
+
+</details>
+
+<details>
+<summary>Sumarización de texto infinito</summary>
+
+Supongamos que solo puedes usar una LLM que quepa un máximo de 8000 tokens en sus capas de Atención. Como máximo, la LLM puede generar hasta 2000 tokens. (Total: 6000 tokens de input, 2000 de output)
+
+```mermaid
+flowchart LR
+    Doc[Documento original de unos 400.000 tokens] --> Split[División por 6000 tokens]
+    Split --> Summarize[LLM: resume cada parte hasta 2000 tokens]
+    Summarize --> Merge[Combinación de resúmenes intermedios]
+    Merge --> Decision{¿La longitud del resumen > 2000 tokens?}
+    Decision -->|Sí| Split
+    Decision -->|No| Final[Resumen final ≤ 2000 tokens]
+```
+
+Por ejemplo, para un texto de 18 megatokens, el algoritmo funcionará en 2 ciclos de sumarización:
+    1. 1 ciclo: 18 000 tokens -> 6 000 tokens
+        1.1. 18 000 tokens -> 3 fragmentos de 6 000 tokens
+        1.2. 3 fragmentos de 6 000 tokens -> 3 resúmenes de 2 000 tokens
+        1.3. 3 resúmenes de 2 000 tokens -> concatenación en 1 resumen de 6 000 tokens
+    2. 2 ciclo: 6 000 tokens -> 2 000 tokens
+        2.1. 6 000 tokens -> 1 fragmento de 6 000 tokens
+        2.2. 1 fragmento de 6 000 tokens -> 1 resumen de 2 000 tokens
+        2.3. 1 resumen de 2 000 tokens -> resumen final
+
+<details>
+<summary>Ejemplos de documento de entrada</summary>
+
+```text
+Documento: Especificación técnica del producto (≈ 400.000 tokens)
+```
+
+</details>
+
+<details>
+<summary>Prompt del sistema: LLM — resume cada parte hasta 2000 tokens</summary>
+
+```text
+Resume el texto en 2000 tokens.
+```
+
+</details>
+
+</details>
+
+<details>
+<summary>Análisis y procesamiento de texto grande con lógica de administrador</summary>
+
+```mermaid
+flowchart LR
+    U[Lógica de procesamiento del usuario] --> Process
+    Doc[Texto grande] --> Split[División en fragmentos]
+    Split --> Process[LLM: procesamiento de cada fragmento]
+    Process --> Merge[Agregación de resultados]
+    Merge --> Final[ReturnFinalAnswer]
+```
+
+<details>
+<summary>Ejemplos de datos de entrada</summary>
+
+```text
+Lógica de procesamiento: "Encuentra todas las menciones de las palabras 'error' y 'excepción', cuenta su frecuencia."
+Texto: Logs de la aplicación (≈ 100.000 tokens)
+```
+
+</details>
+
+<details>
+<summary>Prompt del sistema: LLM — procesamiento de fragmento de texto</summary>
+
+```text
+Eres un modelo analítico. Tu tarea es, basándote en la lógica dada por el usuario y el fragmento de texto de entrada, formar un informe parcial.
+Entrada:
+- Lógica de procesamiento: {lógica}
+- Texto del fragmento: {texto}
+Salida:
+- Informe parcial.
+```
+
+</details>
+
+</details>
+
+</details>
+
+<details>
+<summary>Monitorización social y recomendaciones</summary>
+
+<details>
+<summary>Monitorización de redes sociales</summary>
+
+```mermaid
+flowchart LR
+    Fetch[Recopilación de publicaciones] --> Sentiment[LLM: análisis de sentimiento]
+    Sentiment -->|Negativo| Alert[Notificación al equipo]
+    Sentiment -->|Neutral/Positivo| Schedule[Plan de publicación]
+    Schedule --> Publish[Publicación de la publicación]
+```
+
+<details>
+<summary>Ejemplos de solicitudes de entrada</summary>
+
+```text
+Solicitud 1: "Recopilar los últimos 100 tuits con el hashtag #nuestroProducto"
+Solicitud 2: "Obtener publicaciones de Instagram de las últimas 24 horas con mención de la marca"
+```
+</details>
+
+<details>
+<summary>Ejemplo de prompt del sistema para el paso "análisis de sentimiento"</summary>
+
+```text
+Eres un modelo de análisis de sentimiento de redes sociales. Tu tarea es clasificar cada publicación como "Negativa", "Neutral" o "Positiva".
+Datos de entrada:
+- Texto de la publicación: {texto}
+Datos de salida:
+- Tonalidad: {Negativa|Neutral|Positiva}
+- Breve justificación de la clasificación.
+```
+</details>
+
+</details>
+
+<details>
+<summary>Sistema de recomendación</summary>
+
+```mermaid
+flowchart LR
+    Profile[Perfil del usuario] --> Embed[Generación de embeddings]
+    Embed --> Retrieve[Búsqueda de productos similares]
+    Retrieve --> Recommend[LLM: generación de recomendaciones]
+    Recommend --> Display[Visualización de recomendaciones]
+```
+
+<details>
+<summary>Ejemplos de datos de entrada</summary>
+
+```text
+Perfil del usuario:
+- ID: 12345
+- Historial de visualizaciones: ["Teléfono", "Auriculares", "Fundas"]
+- Edad: 29
+- Intereses: tecnología, música
+```
+
+</details>
+
+<details>
+<summary>Ejemplo de prompt del sistema para el paso "generación de recomendaciones"</summary>
+
+```text
+Eres un sistema de recomendaciones basado en LLM. Tu tarea es, basándote en los embeddings del usuario y la lista de productos similares, formar cinco recomendaciones relevantes.
+Datos de entrada:
+- Embeddings del usuario: {vector}
+- Lista de productos similares: [{id, nombre, embedding}, ...]
+Datos de salida:
+- Matriz JSON con recomendaciones:
+[
+  {id: ..., nombre: ..., razón: ...},
+  ...
+]
+```
+
+</details>
+
+</details>
+
+</details>
+
+<details>
+<summary>Revisión de código y publicación</summary>
+
+  <details>
+  <summary>Revisión de código automatizada</summary>
+
+  ```mermaid
+  flowchart LR
+      PR[Pull Request] --> Lint[Pruebas automáticas]
+      Lint -->|Errores| Report[Formación de informe]
+      Lint -->|OK| Comments[LLM: generación de comentarios]
+      Comments --> Post[Añadir comentarios en PR]
+  ```
+
+  <details>
+  <summary>Ejemplos de solicitudes de entrada</summary>
+
+  ```text
+  Solicitud 1: Pull Request con cambios en el archivo app.js:
+  ```diff
+  - function add(a, b) { return a + b; }
+  + function add(a, b) { return Number(a) + Number(b); }
+  ```
+  Solicitud 2: Pull Request, eliminando variables no utilizadas en utils.js:
+  ```diff
+  - const unused = 42;
+  + // eliminado
+  ```
+  ```
+  </details>
+
+  <details>
+  <summary>Prompt del sistema: LLM — generación de comentarios</summary>
+
+  ```text
+  Eres un asistente para la revisión de código automatizada.
+  Tu tarea es, basándote en el diff de Pull Request:
+  - detectar errores sintácticos o lógicos,
+  - señalar violaciones de la guía de estilo,
+  - proponer recomendaciones para mejorar el código.
+  Datos de entrada:
+  - diff de Pull Request: {diff}
+  Formato de salida (structured output):
+  [
+    {file: "app.js", line: 1, comment: "Se recomienda convertir explícitamente los parámetros a Number para una suma de cadenas segura."},
+    {file: "utils.js", line: 3, comment: "La variable 'unused' no se utiliza, vale la pena eliminarla."}
+  ]
+  ```
+  </details>
+
+  </details>
+
+  <details>
+  <summary>Publicación de blog</summary>
+
+  ```mermaid
+  flowchart LR
+      Draft[Borrador del artículo] --> SpellCheck[LLM: revisión ortográfica]
+      SpellCheck --> StyleEdit[LLM: mejora del estilo]
+      StyleEdit --> Publish[Publicación en redes sociales]
+  ```
+
+  <details>
+  <summary>Ejemplos de solicitudes de entrada</summary>
+
+  ```text
+  Borrador del artículo:
+  "OpenAI presentó un nuevo modelo GPT-4. Ofrece capacidades mejoradas para la generación de texto, el soporte de código y el análisis de datos. Algunas partes del texto se pueden hacer más fluidas y expresivas..."
+  ```
+  </details>
+
+  <details>
+  <summary>Prompt del sistema: LLM — revisión ortográfica</summary>
+
+  ```text
+  Eres un modelo para la revisión ortográfica de textos.
+  Tu tarea es encontrar y corregir errores tipográficos y errores de imprenta.
+  Entrada:
+  - texto del borrador: {draft_text}
+  Salida:
+  - texto corregido sin errores.
+  ```
+  </details>
+
+  <details>
+  <summary>Prompt del sistema: LLM — mejora del estilo</summary>
+
+  ```text
+  Eres un modelo para la edición estilística de textos.
+  Tu tarea es hacer que el texto sea más fluido, claro y atractivo, conservando el significado original.
+  Entrada:
+  - texto después de la corrección ortográfica: {corrected_text}
+  Salida: texto editado.
+  ```
+  </details>
+
+  </details>
+
+</details>
+
+<details>
+<summary>Marketing y ventas</summary>
+
+  <details>
+  <summary>Personalización de la campaña de marketing</summary>
+
+  ```mermaid
+  flowchart LR
+      CRM[Datos de clientes] --> Segment[LLM: segmentación de la audiencia]
+      Segment --> Message[LLM: generación de mensajes]
+      Message --> Launch[Lanzamiento de la campaña de correo electrónico]
+  ```
+
+  <details>
+  <summary>Ejemplos de solicitudes de entrada</summary>
+
+  ```text
+  Datos de CRM 1: {id: 101, nombre: "Anna", edad: 28, últimas_compras: ["zapatillas","camiseta"], intereses: ["deporte","viajes"]}
+  Datos de CRM 2: {id: 102, nombre: "Boris", edad: 35, últimas_compras: ["smartwatch"], intereses: ["tecnología","fitness"]}
+  ```
+  </details>
+
+  <details>
+  <summary>Prompts del sistema</summary>
+
+    <details>
+    <summary>LLM: segmentación de la audiencia</summary>
+
+    ```text
+    Eres un modelo que, basándose en una lista de datos de CRM, segmenta a los clientes por categorías (edad, intereses, historial de compras).
+    Entrada: lista de clientes [{id, nombre, edad, últimas_compras, intereses}, ...]
+    Salida: matriz JSON de segmentos:
+    [
+      {segment_id: 1, criterios: "deportistas 25-35", clientes: [101, ...]},
+      ...
+    ]
+    ```
+    </details>
+
+    <details>
+    <summary>LLM: generación de mensajes</summary>
+
+    ```text
+    Eres un asistente de redactor publicitario que crea correos electrónicos personalizados para cada segmento.
+    Entrada: segmento {segment_id, criterios, clientes} y plantilla de mensaje.
+    Salida: matriz JSON de mensajes:
+    [
+      {segment_id: 1, subject: "Oferta especial para deportistas", body: "..."},
+      ...
+    ]
+    ```
+    </details>
+
+  </details>
+
+  </details>
+
+  <details>
+  <summary>Calificación de leads y upsale (Ventas)</summary>
+
+  ```mermaid
+  flowchart LR
+      Lead[Nuevo lead] --> Qualify[LLM: calificación]
+      Qualify -->|Listo para la venta| Propose[LLM: propuesta comercial]
+      Propose --> Send[Envío de propuesta]
+      Send --> Follow[LLM: análisis de respuestas]
+      Follow -->|Positivo| Upsell[LLM: generación de upsale]
+      Upsell --> SendUpsell[Envío de propuesta adicional]
+  ```
+
+  <details>
+  <summary>Ejemplos de solicitudes de entrada</summary>
+
+  ```text
+  Lead 1: {id: "LID123", compañía: "Acme Corp", presupuesto: 50000, necesidad: "Sistema CRM"}
+  Lead 2: {id: "LID124", compañía: "Beta LLC", presupuesto: 150000, necesidad: "análisis de ventas"}
+  ```
+  </details>
+
+  <details>
+  <summary>Prompts del sistema</summary>
+
+    <details>
+    <summary>LLM: calificación</summary>
+
+    ```text
+    Eres un modelo que evalúa los leads según su disposición a comprar.
+    Entrada: lead {id, compañía, presupuesto, necesidad}
+    Salida: {lead_id, status: "listo"/"no listo", score: número}
+    ```
+    </details>
+
+    <details>
+    <summary>LLM: propuesta comercial</summary>
+
+    ```text
+    Eres un asistente de ventas que genera propuestas comerciales.
+    Entrada: lead {lead_id, compañía, necesidad, presupuesto} y plantilla de CP.
+    Salida: {lead_id, proposal: "texto de la propuesta comercial"}
+    ```
+    </details>
+
+    <details>
+    <summary>LLM: análisis de respuestas</summary>
+
+    ```text
+    Eres un modelo para analizar los comentarios de los clientes.
+    Entrada: correspondencia {lead_id, mensajes: [...]}
+    Salida: {lead_id, sentiment: "positivo"/"negativo"/"neutral"}
+    ```
+    </details>
+
+    <details>
+    <summary>LLM: generación de upsale</summary>
+
+    ```text
+    Eres un asistente de upsell que forma una propuesta adicional.
+    Entrada: lead {lead_id} e historial de interacciones.
+    Salida: {lead_id, upsell_offer: "texto de la propuesta adicional"}
+    ```
+    </details>
+
+  </details>
+
+  </details>
+
+</details>
+
+<details>
+<summary>Procesos operativos</summary>
+
+<details>
+<summary>Recompra automática de productos</summary>
+
+```mermaid
+flowchart LR
+    SalesData[Datos de ventas] --> Forecast[LLM: previsión de la demanda]
+    Forecast --> OrderGen[LLM: generación de pedido]
+    OrderGen --> SendOrder[Envío de pedido al proveedor]
+```
+
+<details>
+<summary>Ejemplos de datos de entrada</summary>
+
+```json
+{
+  "sales_data": [
+    {"product_id": "A1", "date": "2024-06-01", "quantity": 120},
+    {"product_id": "B2", "date": "2024-06-01", "quantity": 75}
+  ],
+  "safety_stock": 50
+}
+```
+
+</details>
+
+<details>
+<summary>Prompts del sistema</summary>
+
+<details>
+<summary>LLM: previsión de la demanda</summary>
+
+```text
+Eres un modelo de previsión de la demanda.
+Entrada: matriz de registros de ventas con campos {product_id, date, quantity}.
+Tarea: basándose en datos históricos, predecir la demanda de cada producto para el próximo período.
+Salida: matriz de objetos [{product_id, forecast_quantity}, ...].
+```
+
+</details>
+
+<details>
+<summary>LLM: generación de pedido</summary>
+
+```text
+Eres un asistente para la formación de pedidos al proveedor.
+Entrada: previsión de la demanda [{product_id, forecast_quantity}, ...] y parámetro de seguridad (safety_stock).
+Tarea: calcular la cantidad del pedido para cubrir la demanda prevista más el stock de seguridad.
+Salida: matriz de objetos [{product_id, order_quantity}, ...].
+```
+
+</details>
+
+</details>
+
+</details>
+
+<details>
+<summary>Verificación de la conformidad de los documentos</summary>
+
+```mermaid
+flowchart LR
+    DocReview[Documento a revisar] --> Extract[LLM: extracción de puntos clave]
+    Extract --> ComplianceCheck[LLM: evaluación de la conformidad con las reglas]
+    ComplianceCheck --> ReportGen[Formación de informe]
+    ReportGen --> Approval[Aprobación por el responsable]
+```
+
+<details>
+<summary>Ejemplos de datos de entrada</summary>
+
+```text
+Tipo de documento: contrato de arrendamiento
+Texto del documento:
+"El presente contrato se celebra entre el Arrendador y el Arrendatario...
+Artículo 1. Objeto del contrato...
+Artículo 2. Plazo de validez..."
+```
+
+</details>
+
+<details>
+<summary>Prompts del sistema</summary>
+
+<details>
+<summary>LLM: extracción de puntos clave</summary>
+
+```text
+Eres un modelo para extraer puntos clave de un texto jurídico.
+Entrada: texto completo del documento.
+Tarea: resaltar los números de los artículos y su breve contenido.
+Salida: matriz de objetos [{article: número, summary: texto}, ...].
+```
+
+</details>
+
+<details>
+<summary>LLM: evaluación de la conformidad con las reglas</summary>
+
+```text
+Eres un modelo de verificación de la conformidad de un documento con las normas establecidas.
+Entrada: matriz de puntos clave y lista de reglas.
+Tarea: para cada punto, determinar si cumple con las reglas.
+Salida: [{article, compliance: "cumple"/"no cumple", comments}, ...].
+```
+
+</details>
+
+<details>
+<summary>LLM: formación de informe</summary>
+
+```text
+Eres un asistente para la preparación de informes.
+Entrada: resultados de la evaluación de la conformidad.
+Tarea: generar un informe estructurado en markdown con las secciones "Puntos conformes" y "Infracciones".
+Salida: texto markdown del informe.
+```
+
+</details>
+
+</details>
+
+</details>
+
+</details>

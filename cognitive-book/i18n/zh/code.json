@@ -1,0 +1,385 @@
+{
+  "theme.ErrorPageContent.title": {
+    "message": "此页面遇到了一个错误。",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "重试",
+    "description": "The label of the button to try again when the page crashed"
+  },
+  "theme.NotFound.title": {
+    "message": "未找到页面",
+    "description": "The title of the 404 page"
+  },
+  "theme.NotFound.p1": {
+    "message": "抱歉，我们无法找到您请求的页面。",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "请联系您点击链接的网站所有者，并告知他们链接已损坏。",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "关闭",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "滚动到顶部",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.archive.title": {
+    "message": "存档",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "存档",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "博客列表页面导航",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "较新的文章",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "较旧的文章",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} 篇标记为 \"{tagName}\"",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.common.editThisPage": {
+    "message": "编辑此页",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "指向 {heading} 的直接链接",
+    "description": "Title for link to heading"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← 返回主菜单",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "版本",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "在此页面上",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "主页",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "折叠侧边栏",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "折叠侧边栏",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "关闭导航面板",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "切换导航面板",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "文档侧边栏",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "展开侧边栏",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "展开侧边栏",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "未找到结果",
+    "description": "The paragraph for empty search result"
+  },
+  "theme.SearchPage.fetchingNewResults": {
+    "message": "正在获取新结果...",
+    "description": "The paragraph for fetching new search results"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "查看所有 {count} 个结果",
+    "description": "The all search result number text"
+  },
+  "theme.SearchBar.label": {
+    "message": "搜索",
+    "description": "The ARIA label and placeholder for search button"
+  },
+  "theme.docs.DocCard.categoryDescription": {
+    "message": "{count} 个项目",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "在深色和浅色模式之间切换（当前为 {mode}）",
+    "description": "The ARIA label for the navbar color mode toggle"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "深色模式",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "浅色模式",
+    "description": "The name for the light color mode"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "版本：{versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "这是版本 {versionLabel} 的未发布文档。",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "这是版本 {versionLabel} 的文档，已不再维护。",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "navbar.title": {
+    "message": "AI Agents 指南",
+    "description": "The title in the navbar"
+  },
+  "navbar.item.label.tutorial": {
+    "message": "教程",
+    "description": "Navbar item with label Tutorial"
+  },
+  "navbar.item.label.github": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "footer.link.label.introduction": {
+    "message": "介绍",
+    "description": "The label of footer link with label=Introduction linking to /introduction"
+  },
+  "footer.link.label.foundations": {
+    "message": "基础",
+    "description": "The label of footer link with label=Foundations linking to /foundations"
+  },
+  "footer.link.label.components": {
+    "message": "组件",
+    "description": "The label of footer link with label=Components linking to /components"
+  },
+  "footer.link.label.architectures": {
+    "message": "架构",
+    "description": "The label of footer link with label=Architectures linking to /architectures"
+  },
+  "footer.link.label.github": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to GitHub"
+  },
+  "footer.link.label.telegram": {
+    "message": "Telegram",
+    "description": "The label of footer link with label=Telegram linking to Telegram"
+  },
+  "footer.link.label.roadmap": {
+    "message": "Roadmap.sh",
+    "description": "The label of footer link with label=Roadmap.sh linking to Roadmap"
+  },
+  "footer.title.tutorial": {
+    "message": "教程",
+    "description": "The title of the footer tutorial links"
+  },
+  "footer.title.community": {
+    "message": "社区",
+    "description": "The title of the footer community links"
+  },
+  "footer.title.resources": {
+    "message": "资源",
+    "description": "The title of the footer resources links"
+  },
+  "footer.copyright": {
+    "message": "版权所有 © {currentYear} AI Agents 指南。由 Docusaurus 构建。",
+    "description": "The footer copyright"
+  },
+  "Guide to Creating and Using AI Agents": {
+    "message": "AI Agents 创建和使用指南"
+  },
+  "Introduction to AI Agents": {
+    "message": "AI Agents 简介"
+  },
+  "Foundations": {
+    "message": "基础"
+  },
+  "Components": {
+    "message": "组件"
+  },
+  "Architectures": {
+    "message": "架构"
+  },
+  "homepage.aiAgents.title": {
+    "message": "什么是 AI Agents？"
+  },
+  "homepage.aiAgents.description1": {
+    "message": "AI Agents 是能够自主感知环境、做出决策并执行动作以实现设定目标的软件系统，无需持续的人工干预。"
+  },
+  "homepage.aiAgents.description2": {
+    "message": "现代 AI Agents 基于先进的语言模型（LLM）运行，可以访问工具和外部 API，并利用内存存储交互上下文。"
+  },
+  "homepage.aiAgents.learnButton": {
+    "message": "学习基础知识"
+  },
+  "homepage.aiAgents.roadmapButton": {
+    "message": "路线图"
+  },
+  "homepage.features.section.title": {
+    "message": "我们的教程提供什么"
+  },
+  "homepage.features.practical.title": {
+    "message": "实践示例"
+  },
+  "homepage.features.practical.description": {
+    "message": "通过实际示例学习创建 AI Agents。从简单的聊天机器人到复杂的自主系统，循序渐进。"
+  },
+  "homepage.features.foundational.title": {
+    "message": "基础知识"
+  },
+  "homepage.features.foundational.description": {
+    "message": "深入了解 AI Agents 的基础知识。从 NLP 基础到复杂的多 Agent 交互架构。"
+  },
+  "homepage.features.community.title": {
+    "message": "开发者社区"
+  },
+  "homepage.features.community.description": {
+    "message": "加入由爱好者和专业人士组成的社区，共同学习和开发 AI Agents 技术。"
+  },
+  "homepage.features.freekeys.title": {
+    "message": "免费 LLM API 密钥"
+  },
+  "homepage.features.freekeys.description": {
+    "message": "免费访问强大的语言模型。使用真实的 LLM API 进行实践，无需任何费用。"
+  },
+  "homepage.modules.title": {
+    "message": "学习模块"
+  },
+  "homepage.modules.basics.title": {
+    "message": "基础"
+  },
+  "homepage.modules.basics.description": {
+    "message": "从 AI Agents 的基础开始。学习关键概念、架构，并创建您的第一个 AI Agent。"
+  },
+  "homepage.modules.junior.title": {
+    "message": "初级"
+  },
+  "homepage.modules.junior.description": {
+    "message": "培养使用 AI Agents 的技能。学习如何集成内存、工具，并构建更复杂的自主系统。"
+  },
+  "homepage.modules.future.title": {
+    "message": "未来模块"
+  },
+  "homepage.modules.future.description": {
+    "message": "敬请关注更新 - 即将推出关于高级主题的新模块，包括自主 Agents、Agent 群等。"
+  },
+  "homepage.modules.learnMore": {
+    "message": "了解更多"
+  },
+  "homepage.communities.title": {
+    "message": "加入我们的社区"
+  },
+  "homepage.communities.subtitle": {
+    "message": "与其他 AI Agents 开发者和爱好者交流"
+  },
+  "homepage.communities.discord.title": {
+    "message": "Discord 社区"
+  },
+  "homepage.communities.discord.description": {
+    "message": "加入我们的 Discord 服务器，参与讨论，分享您的项目，并获得社区成员的支持。"
+  },
+  "homepage.communities.discord.button": {
+    "message": "加入 Discord"
+  },
+  "homepage.communities.telegram.title": {
+    "message": "Telegram 频道"
+  },
+  "homepage.communities.telegram.description": {
+    "message": "订阅我们的 Telegram 频道，获取有关 AI Agents 和相关技术的更新、新闻和资源。"
+  },
+  "homepage.communities.telegram.button": {
+    "message": "加入 Telegram"
+  },
+  "homepage.cta.title": {
+    "message": "准备好开始您的 AI Agents 之旅了吗？"
+  },
+  "homepage.cta.description": {
+    "message": "深入了解我们的全面资源，并加入 AI Agents 开发者社区"
+  },
+  "homepage.cta.textbook": {
+    "message": "开始学习"
+  },
+  "homepage.cta.roadmap": {
+    "message": "路线图"
+  },
+  "homepage.cta.telegram": {
+    "message": "Telegram"
+  },
+  "homepage.cta.discord": {
+    "message": "Discord"
+  },
+  "homepage.header.button": {
+    "message": "开始学习 AI Agents"
+  },
+  "homepage.header.githubText": {
+    "message": "如果您喜欢这个项目，请在 GitHub 上给它加星"
+  },
+  "homepage.header.dynamicStarText": {
+    "message": "如果您喜欢这个项目，请在 GitHub 上给它第 {nextStar} 颗星"
+  },
+  "homepage.meta.title": {
+    "message": "AI Agents 手册 - 创建 AI Agents 的交互式教程"
+  },
+  "homepage.meta.description": {
+    "message": "一个关于创建和使用 AI Agents 的交互式教程，包含代码示例和实践指南"
+  },
+  "homepage.authors.title": {
+    "message": "作者"
+  },
+  "homepage.authors.description": {
+    "message": "我们的人工智能和机器学习专家团队"
+  },
+  "homepage.authors.viewProfile": {
+    "message": "个人资料"
+  },
+  "homepage.authors.main.name": {
+    "message": "Dmitry Merkulov"
+  },
+  "homepage.authors.main.title": {
+    "message": "项目创始人"
+  },
+  "homepage.authors.main.description": {
+    "message": "人工智能和机器学习专家。AI 教育项目的创始人。"
+  },
+  "homepage.authors.merkulov.role": {
+    "message": "项目创始人"
+  },
+  "homepage.authors.merkulov.description": {
+    "message": "hao.vc 创始人，莫斯科国立大学，前 Yandex。"
+  },
+  "homepage.authors.zhechkov.description": {
+    "message": "AI 架构师 @ Yandex Cloud, 前 VMware"
+  },
+  "homepage.authors.savelko.description": {
+    "message": "LLM 工程师 @ Tochka Bank, 前 Sber"
+  },
+  "homepage.authors.karpathy.description": {
+    "message": "前 OpenAI, Tesla, Stanford"
+  },
+  "homepage.authors.your.description": {
+    "message": "任何有兴趣合作的人"
+  },
+  "homepage.mission.title": {
+    "message": "我们的使命"
+  },
+  "homepage.mission.description": {
+    "message": "我们致力于通过提供高质量的学习材料、实践示例和支持活跃的社区，使 AI Agents 技术对所有开发者可用。"
+  }
+} 

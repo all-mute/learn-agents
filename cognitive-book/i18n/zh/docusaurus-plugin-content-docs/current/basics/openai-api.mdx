@@ -1,0 +1,109 @@
+---
+sidebar_label: OpenAI API
+---
+
+# 学习 OpenAI API
+
+理解如何使用 OpenAI API 将使您能够轻松理解我们将在 Junior 模块中学习的框架，并且在调试问题和使用所有 OpenAI 兼容的提供商时也会派上用场。
+
+## 问题
+
+- OpenAI API 中 API 请求的主体是什么样的？
+- 除了 temperature、max_tokens 之外，还可以配置哪些参数？
+- OpenAI API 中的数据流传输是如何工作的？
+- 如何在聊天模型中使用函数调用（function calling）？
+- 什么是结构化输出？
+
+## 步骤
+
+### 1. 阅读 [OpenAI API](https://platform.openai.com/docs/api-reference) 文档
+
+阅读关于 `chat/completions` 端点的所有内容，不要跳过任何内容。所有未来的材料都将基于此端点构建，您需要详细了解它的工作原理，否则您会感到困惑。
+
+<details>
+<summary>什么是 Temperature, Top P, Frequency penalty, Presence penalty?</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/33kb37NYOTc?si=AllO-NduTUKQAu41" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+### 2. 阅读 Cookbook 中的页面
+
+:::tip
+阅读以下内容有三种方式：
+    1. 粗略地了解 landscape 和 API 的功能。（如果觉得困难，这是一个不错的选择）
+    2. 仔细阅读，了解每个函数的作用。
+    3. 独立运行这些 notebook。
+:::
+
+1. [如何在文本中计算令牌？](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+
+    [Interactive tokenazer! - platform.openai.com/tokenizer](https://platform.openai.com/tokenizer)
+
+2. [OpenAI 流式响应中的块是什么样的？第一个、中间和最后一个块中传输哪些信息？](https://cookbook.openai.com/examples/how_to_stream_completions)
+
+### 3. 阅读 Cookbook 2 中的页面
+
+3. [关于函数，完整阅读 [how_to_call_functions_with_chat_models](https://cookbook.openai.com/examples/how_to_call_functions_with_chat_models)
+    
+
+4. [如何使用结构化输出？](https://cookbook.openai.com/examples/structured_outputs_intro) 或 [deeplearning.ai](https://www.deeplearning.ai/short-courses/getting-structured-llm-output/) 上的一个小时的替代课程
+
+## 额外步骤
+
+### E1. 确立分而治之的原则。
+
+https://cookbook.openai.com/examples/entity_extraction_for_long_documents
+
+### E2. 目前在任何公共 API 中都不存在哪些参数？
+
+*\<EOS> - 序列结束 - 在此令牌之后，我们通常停止预测下一个令牌*
+
+我想向您揭示一些有趣的时刻，我还没有在提供商那里遇到过。通常，我们以常量形式设置 temperature 和所有其他参数 - 但也可以**动态**地进行设置 - 以便参数根据条件、数学函数等而变化。例子：
+1. 例如，当 LLM 分析任务时 - 将 temperature 保持为零；当它开始编写创意文本时 - 将其提高到 0.6
+2. 在 LLM 生成 \<EOS> 之后 - 我们可以继续生成令牌
+3. 我们可以手动将 \<EOS> 的输出概率乘以任何值（甚至为 0），直到生成特定数量的令牌。除了乘法之外，任何逻辑都可用。
+4. 与 \<EOS> 相同，我们可以对任何令牌执行操作 - 我们可以提出任何只会在精神错乱中产生的逻辑。我们可以静态/动态/逻辑地影响特定令牌或令牌集或令牌序列的生成概率（0-100%）。
+
+可以添加到现有 API 的内容：
+- 能够在序列长度小于特定数量的令牌时禁止生成 \<EOS> (MinOutputLen)
+- BannedTokensToGenerate
+- 能够根据生成的文本长度控制 \<EOS> 的概率 (BoostEos)
+- NGramPenalty
+- 即使在 \<EOS> 之后也能够继续生成一定数量的步骤 (IncludeLateHypotheses)
+- 禁止在一定数量的重复后生成特定令牌 (MaxRepeats)
+- 能够通过 SamplerParams (Sampling, BeamSearch, StochasticBeamSearch), NumHypos & BeamSize 选择采样算法
+- 能够在生成过程中更改 temperature - TemperatureScheduler
+
+对于推理模型，可以将所有这些功能乘以 2：用于思考和生成阶段。
+
+##### 当然，所有这些都可以在您自己的硬件上进行模型的本地推理时实现。来 OpenAI/Sber/Yandex/Anthropic 工作吧 - 所有这些参数都可以在私有 API 中使用！
+
+## 现在我们知道了...
+
+我们学习了 OpenAI API 的主要组件，并且学会了：
+- 使用 tiktoken 计算文本中的令牌，以优化请求
+- 使用流式响应来创建更具响应性的界面
+- 使用函数调用（function calling）与外部工具进行结构化交互
+- 获取 JSON 格式的结构化响应，以便于处理
+- 应用“分而治之”的原则来处理长文档
+
+这些技能是在创建 AI 代理时的基础，因为它们可以有效地管理代理和 LLM 之间的通信，并提供与外部系统集成的能力。
+
+## 练习
+
+1. 消息有哪些角色？
+
+2. 您想在保留上下文的情况下向 LLM 发送两个请求：
+    1. “你好！我叫亚历克斯。”
+    2. “我叫什么名字？”
+
+    模型中第二个请求的主体是什么样的？
+
+3. 想出三个可以使用函数调用来显着提高 AI 代理能力的示例。
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
+
+4. **实践练习：**
+
+创建一个简单的 Python 脚本，该脚本仅将模型响应中的第一个、第二个、倒数第二个和最后一个块输出到控制台。

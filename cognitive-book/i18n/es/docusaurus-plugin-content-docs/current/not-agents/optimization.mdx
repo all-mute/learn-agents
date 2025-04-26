@@ -1,0 +1,138 @@
+---
+sidebar_label: Optimización de hiperparámetros
+---
+
+# Optimización de Hiperparámetros para Agentes de IA ✦
+
+Exploremos el arte del ajuste fino de los sistemas de IA: desde la corrección manual de prompts hasta la creación de agentes auto-optimizables. Aprenderemos cómo transformar "funciona" en "funciona impecablemente" a través de un enfoque sistemático de la parametrización.
+
+Estrategias para la auto-optimización: mejoramos automáticamente los prompts, ajustamos los hiperparámetros de los agentes/workflow, creamos escenarios de diálogo adaptativos. Permite a los bots encontrar soluciones óptimas a través de generaciones de mejoras: ¡tu secreto para crear sistemas de autoaprendizaje!
+
+## Preguntas
+
+- ¿Qué son los hiperparámetros?
+- ¿Qué hiperparámetros tienen los LLM, workflows, agentes?
+- ¿Cómo automatizar la búsqueda de configuraciones óptimas?
+- ¿Siempre podemos permitirnos la optimización automática?
+
+<details>
+<summary>¿Qué son los parámetros y los hiperparámetros?</summary>
+
+*Parámetros*: generalmente son los pesos de una red neuronal, magnitudes matemáticas que ajustamos en el proceso de entrenamiento.
+
+*Hiperparámetros*: son los parámetros que configuramos para optimizar el funcionamiento del modelo. Por ejemplo, para una red neuronal, esto podría ser la cantidad de neuronas en una capa oculta, una función de activación específica (hay muchas), etc. **Para LLM**, esto podría ser la temperatura, max_tokens, top_p, etc.
+</details>
+
+## Tipos de hiperparámetros
+
+En los materiales a continuación, hablaremos sobre los hiperparámetros para las redes neuronales, **pero les pido que piensen en ellos en el contexto de los workflows y los agentes.** Los parámetros pueden ser:
+1. enteros: podemos mover el valor en +1 o -100
+2. reales: podemos mover el valor en cualquier cantidad, por ejemplo, en 1e-10
+3. booleanos: podemos activar/desactivar un modo específico
+4. de cadena: podemos cambiar el texto
+5. de lista: podemos elegir de una lista de valores
+
+##### Para los agentes, esto podría ser:
+- la longitud del historial de mensajes en tokens, después de alcanzar la cual resumimos el historial
+- la temperatura
+- la activación/desactivación de ciertos modos de su agente
+- los prompts para cada agente
+- la lista de herramientas o subagentes para el agente
+
+##### En el contexto de los servicios basados en LLM, los hiperparámetros son los parámetros que configuramos para optimizar el funcionamiento de todo el sistema. Por ejemplo:
+- para un **chatbot simple**, esto podría ser:
+  - el prompt del sistema
+  - la temperatura
+  - (lo que significa que elegiremos entre varios prompts y temperaturas para generar las respuestas de mayor calidad)
+- para **RAG**, esto podría ser:
+  - k (la cantidad de fragmentos de "contexto" que se utilizarán para aumentar la respuesta)
+  - chunk_size (el tamaño del fragmento)
+  - chunk_overlap (la superposición de fragmentos)
+  - subáreas de documentos, bases de datos
+  - varios modelos de embeddings
+  - métodos de preprocesamiento de texto
+  - etc. + los RAG más complejos tienen aún más hiperparámetros
+- para **workflow**, esto podría ser:
+  - los prompts para cada paso
+  - los tipos de estructuras para las respuestas estructuradas
+  - varios métodos de clasificación para el routing
+  - etc.
+- para **agentes**, esto podría ser:
+  - los prompts para cada agente
+  - max_iterations
+  - subagentes
+  - la arquitectura
+  - las herramientas
+  - las descripciones de las herramientas
+  - los datos que se transmiten de un agente a otro
+  - todo lo que quieras optimizar
+
+**Ejemplos:**
+- Ajuste automático de prompts: [matamos la ingeniería de prompts una](https://youtu.be/OmTdkNEr2nU?si=Qx0M_PywhouQdHnb) y [dos](https://youtu.be/Vn8A3BxfplE?si=RJLKyZA-7QhOMOPi)
+- Auto-desarrollo evolutivo del sistema
+- Optimización del sistema para lograr la mejor calidad/precio/velocidad/eficiencia, etc.
+
+## Algoritmos centrales
+
+Materiales de texto:
+[Wikipedia](https://en.wikipedia.org/wiki/Hyperparameter_optimization)
+ &
+[Ilustraciones](https://www.nb-data.com/p/6-common-hyperparameter-optimization)
+
+Videos:
+- [Hyperparameter Optimization](https://youtu.be/ttE0F7fghfk?si=w9Cz3egxsw6aV1xv)
+- [Hyperparameter Optimization small lecture](https://youtu.be/IqQT8se9ofQ?si=6YQBlsW5ry8Xzh_2)
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
+
+#### 1. Grid Search & Random Search
+    - Grid Search: Evalúa todas las combinaciones en un conjunto predefinido. Es más adecuado para espacios pequeños y discretos, pero no escala bien.
+    - Random Search: Selecciona aleatoriamente los hiperparámetros, a menudo superando a grid search en espacios de alta dimensión, explorando eficazmente más valores.
+
+#### 2. Bayesian Optimization
+    - Mecanismo: Utiliza modelos probabilísticos (por ejemplo, Gaussian Processes) para predecir configuraciones prometedoras, equilibrando la exploración y la explotación.
+    - Ventajas: Eficaz para tareas de baja dimensión, pero tiene dificultades con la alta dimensión.
+
+#### 3. Evolutionary Algorithms
+    - Proceso: Imita la selección natural, desarrollando iterativamente poblaciones de conjuntos de hiperparámetros a través de la mutación y el cruce.
+    - Aplicación: Eficaz para espacios de búsqueda complejos y no diferenciables (por ejemplo, neural architecture search).
+
+#### 4. Hyperband & Successive Halving
+    - Hyperband: Combina random search con la detención temprana, distribuyendo dinámicamente los recursos a las configuraciones prometedoras.
+    - Successive Halving: Recorta agresivamente los modelos ineficaces en las primeras etapas del entrenamiento.
+
+#### 5. Population-Based Training (PBT)
+    - Ajuste adaptativo: Optimiza simultáneamente los hiperparámetros y los pesos del modelo durante el entrenamiento, ideal para tareas dinámicas como el reinforcement learning.
+
+## Genetic Algorithms
+
+**Recursos de video:**
+- [Genetic Algorithm with Solved Example](https://www.youtube.com/watch?v=uQj5UNhCPuo)
+
+## Optimización Manual
+
+:::info
+La optimización de hiperparámetros a menudo se realiza en tres pasos:
+1. Selección de parámetros
+2. Experimento
+3. Evaluación de resultados
+
+    - donde el experimento puede ser un gran conjunto de datos de preguntas/respuestas o un entorno automático complejo,
+    - y la evaluación de los resultados puede ser realizada por asesores humanos (la mayoría de las veces estos asesores son usted :) ) o LLM más caros
+
+**Si el costo total de este ciclo de muestreo-experimento-evaluación es demasiado alto (por ejemplo, 1000$), no podremos construir un sistema para la optimización automática y lo haremos manualmente.**
+
+Entonces puede elegir cualquier algoritmo de los estudiados anteriormente y seguir sus instrucciones manualmente. Además, la intuición y el razonamiento deductivo le ayudarán mucho en la optimización manual.
+:::
+
+## Now we know...
+
+Hemos aprendido qué son los hiperparámetros, cómo influyen en el funcionamiento de las aplicaciones GenAI y qué métodos de optimización se pueden utilizar para configurarlos. Ahora puede aplicar este conocimiento para mejorar sus sistemas de IA.
+
+## Exercises
+
+Recuerde uno de sus últimos proyectos:
+- ¿Cuáles cree que son los hiperparámetros más críticos para su proyecto?
+- ¿Qué métodos de optimización elegiría para su tarea y por qué?
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)

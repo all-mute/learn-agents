@@ -1,0 +1,84 @@
+---
+sidebar_label: Ingeniería de prompts
+---
+
+import PromptingMeme from './assets/prompting_meme.png';
+
+# Ingeniería de prompts
+
+<img src={PromptingMeme} alt="prompting meme" style={{ width: '50%', display: 'block', margin: '0 auto 20px' }} />
+
+
+Hoy vamos a dominar la ingeniería de prompts, la habilidad de ser un "psicólogo para LLM".
+
+Normalmente, cuando algo no funciona en un chatbot o agente, nosotros:
+
+1. primero intentamos solucionar el problema con la ingeniería de prompts
+2. cambiamos la arquitectura
+3. mejoramos la propia LLM
+
+Como puedes ver, la ingeniería de prompts está en la cima. Esto se debe a que mejorar un prompt es muy fácil (en comparación con la reelaboración del sistema o la LLM), y la ganancia en el peor de los casos será cero, en el mejor de los casos, muchas veces. **Por lo tanto, dominamos la ingeniería de prompts**
+
+## Questions
+
+Preguntas que discutiremos:
+- ¿Qué es un System Prompt?
+- ¿Qué es un User Prompt?
+- ¿Cuál es la diferencia entre las solicitudes zero-shot y few-shot?
+- ¿Qué es Chain of Thought?
+
+
+## Steps
+
+### 0. Miramos х2
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p09yRj47kNM?si=ZAq3fh1Lk6gIFXPp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+A continuación, ofrezco una opción: simplemente leer sobre las técnicas y seguir adelante; dominarlas interactivamente en un jupyter notebook; o pagar un curso de Google y ver allí largas y relajadas conferencias con práctica en AI Studio.
+
+### 1A. Base de la ingeniería de prompts
+
+1. Ir aquí https://www.promptingguide.ai/ y leer todos los capítulos hasta Chain of Thought inclusive desde el primero.
+
+    
+
+### 1B. Curso interactivo (alternativa)
+
+https://github.com/anthropics/prompt-eng-interactive-tutorial + use base_url 
+
+También estudiamos solo hasta Chain of Thought inclusive, más allá es una exageración.
+
+### 1B. Curso de Google (alternativa)
+
+https://www.coursera.org/learn/google-prompting-essentials ($60) - curso de 9 horas de Google
+
+## Extra Steps
+
+### E1. [Leemos los consejos oficiales](https://platform.openai.com/docs/guides/prompt-engineering)
+
+### E2. [Leemos el prompt del sistema Cursor AI](https://github.com/maxfahl/cursor-agent-master-prompt)
+
+### E3. [Leemos la publicación de Sutskever](https://x.com/ilyasutsk/status/1832211266129293618)
+
+### E4. Servicios para comparar prompts y ejecutar prompts en benchmarks
+
+- https://www.promptlayer.com/?ref=latitude-blog.ghost.io
+- https://github.com/Agenta-AI/agenta?ref=latitude-blog.ghost.io
+
+### E5.
+
+Si aún no te sientes seguro y no tienes una imagen completa de lo que estamos haciendo aquí, este video explica todo nuevamente desde el principio, en otro idioma.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LWiMwhDZ9as?si=_PE-sxOD7d_VoL1K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Now we know...
+Hemos estudiado los fundamentos de la ingeniería de prompts, incluyendo las diferencias entre los prompts del sistema y del usuario, los enfoques zero-shot y few-shot, así como la metodología Chain of Thought. Ahora entendemos por qué la ingeniería de prompts es la primera y más accesible forma de mejorar el rendimiento de los sistemas LLM, requiriendo una inversión mínima con una mejora potencialmente significativa en los resultados. Este conocimiento nos permitirá interactuar más eficazmente con los Agentes de IA, formular solicitudes más precisas y obtener respuestas de mayor calidad de los modelos.
+
+## Exercises
+
+- ¿qué pasará si no escribimos ningún mensaje del sistema?
+- ¿por qué indicamos un rol en el prompt? "Tú eres un abogado profesional..."
+- ¿podemos hacer few-shot del uso correcto de toolCall?
+- ¿para qué tareas Chain of Thought no tendrá ningún efecto?
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)

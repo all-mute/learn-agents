@@ -1,0 +1,194 @@
+---
+sidebar_label: 何时需要RAG？
+---
+
+# 何时需要 RAG，何时不需要？
+
+您已经熟悉了 RAG 的基础知识，但现在是时候了解它在实践中的真正力量了。这种方法可以将大量非结构化数据转换为简洁且相关的答案，从而节省您的时间和资源。**但是，在构建 RAG 之前，您需要知道它何时不起作用。**
+
+## 问题
+
+- 何时不需要使用 RAG？
+- 有哪些替代方案？
+- 什么是语调 (Ton-of-Voice) 和领域知识？
+
+## 步骤
+
+### 1. 提示词工程、RAG 和微调：优势和使用时机
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YVWxbHJakgg?si=ORwDR8sXd78cC8os" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### 2. 重要原则
+
+:::warning
+现代 LLM 模型乍一看似乎能够很好地遵循我们的指令。但是，当指令数量增加时，它们就会开始出错。
+
+噪声（文本数量）也会对答案的质量产生负面影响。
+:::
+
+### 3. 案例分析
+
+<details>
+<summary>
+什么是语调 (Ton of Voice)？
+</summary>
+
+*注：针对客户服务*：语调 (Ton of Voice) 是公司员工在与客户沟通时必须遵守的一组指令。
+
+一个假想银行需要的语调 (Ton of Voice) 示例：
+```text
+你是一个有用的助手“爱丽丝”，可以帮助银行客户。
+始终按照以下说明回复：
+- 用俄语回答
+- 简明扼要地回答
+- 永远不要在答案中提及其他银行
+- 始终使用礼貌和友好的语气
+- 遵守保密规则，不要泄露客户的个人数据
+- 澄清问题的细节，以便给出尽可能准确的答案
+- 遵循银行的脚本并使用官方术语
+- 如有必要，提供额外的银行产品
+- 立即将复杂的请求升级给专家
+- 在结束对话前确认收到的信息
+- 以结构化的形式提供答案，并带有清晰的要点
+- 快速回复并告知客户解决问题的时间
+- 积极主动，即使客户没有要求也提供帮助
+```
+
+在生产环境中，这个列表会随着时间和管理者的想象力而变得越来越长——每次他们注意到聊天机器人的行为不符合他们的喜好时，他们都会尝试通过新的指令来“修复它”。
+
+然后就会发生这种情况：
+
+![jenga](assets/jenga.png)
+
+</details>
+
+<details>
+<summary>
+什么是领域知识？
+</summary>
+
+领域知识是助手为了正确履行其职责而必须知道的一组信息（术语、概念、定义、规则、限制、特征、行为特征、交互特征等）。
+
+一个假想的农业机械租赁的领域知识示例：
+```text
+你是一个有用的助手“鲍里斯”，可以帮助我们租赁服务的客户。
+
+- 租赁佣金（Origination Fee）——一次性交易费用，通常为农业机械成本的 0.5-2%。
+- LTV 系数（Loan-to-Value）——融资额与设备市场价值的比率，决定了首付金额。
+- 残值（Residual Value）——租赁期末的设备预测价格，用于计算赎回付款。
+- 递减余额折旧（Declining Balance）——一种折旧方法，其中折旧金额在使用初期最大。
+- 现场服务（On-site Service）——直接在农场进行的预防性检查和维修计划，由合同规定。
+- 远程信息处理模块 GPRS-Monitor——一种远程监控拖拉机或联合收割机发动机状态、负载和位置的设备。
+- 农业综合企业补贴计划——一项国家支持措施，降低专业农业机械租赁的利率。
+- 保证资源——在租赁人开始保修服务之前的最小里程或运行小时数。
+- 逾期罚款——每日罚款利率（通常为逾期付款金额的 0.1-0.3%）。
+- 负载计划-实际报告——比较农业周期中计划的和实际的设备运行小时数。
+
+...
+
+（完整列表包含 50,000 个术语和概念）
+```
+</details>
+
+#### 答案质量
+
+答案质量 = 准确性 *或* 语调 (ton-of-voice) *或* 领域知识 *或* 知识库 *或* 所有这些...
+
+- **我想提高答案的质量，我只有 1 分钟** - 使用系统提示词
+
+- **我想提高答案的质量，我只有 10 分钟** - 提示词工程技术 (CoT, Few-shot, etc.)
+
+    *大规模：使用自动提示词优化 (APE) - 这将在后续模块中介绍*
+
+#### 自己的知识库
+
+- **我想训练 AI 使用我的知识库，避免幻觉，我只有 5 分钟** - 将所有信息加载到对话中（上下文学习）
+
+    *大规模：缓存提示词以降低请求成本* |
+    [什么是提示词缓存？](https://www.anthropic.com/news/prompt-caching) |
+    [文档](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
+
+- **我想训练 AI 使用我的知识库，避免幻觉** - Vanilla RAG
+
+    *大规模：使用高级 RAG 方法*
+
+    *大规模 2：**循环**，尝试新的方法和超参数（chunk_size, top_k, etc.），然后评估整个流程（例如，使用 RAGAS - 稍后会介绍）*
+
+#### 自己的语调 (Ton of Voice)
+
+- **我希望模型遵守我业务的语调 (Ton-of-Voice)** - 微调（Partial-Finetuning, Parameter-efficient fine-tuning）
+
+    *大规模：数据为王*
+
+#### 领域模型
+
+- **我希望模型了解我的领域** - 微调（Parameter-efficient fine-tuning, Domain-specific fine-tuning, Full tuning）
+
+    *大规模：数据为王*
+
+#### 常见问题解答
+
+- **我希望模型完全按照我的 FAQ 数据库中的答案来回答** - 使用分类或 LLM 作为路由器
+
+    *大规模：这是地狱，不惜一切代价避免*
+
+:::tip
+所有方法都可以组合使用！
+
+例如，您既需要知识库，也需要语调 (ton-of-voice)（客户服务的常见案例）
+- 您可以使用带有提示词技术的系统提示词 + RAG
+- 或者微调 + RAG
+:::
+
+:::info RAG 和提示词缓存相对于微调的优势
+
+微调过程需要时间和资源。在某些情况下（文档、大型网站），我们需要每天或每天多次更新整个 LLM 系统。
+
+如果我们使用 RAG，我们可以只更新向量索引，而不是整个 LLM 系统。（或者更新提供商的提示词缓存）
+
+微调发生得相对较慢：从几个小时到几天不等。
+:::
+
+## 额外步骤
+
+回顾：
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zYGDpG-pTho?si=gwtA2yDUDxM6y_H8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### E1. 什么是 LoRA？
+
+<details>
+<summary>
+什么是 LoRA？
+</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DhRoTONcyZE?si=RaopfibF8kfloQPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+高级：[LoRA 用例](../../senior/model-dev/lora-usecases)
+
+### E2. 什么是 DPO？
+
+<details>
+<summary>
+什么是 DPO？
+</summary>
+
+我们可以使用互联网上提供的说明和工具，对任何开源模型进行 DPO。DPO 也可以在专有平台中使用，例如 OpenAI。
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nSrj1J6ODoM?si=GivOE3gC3rz9q3L9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+## 现在我们知道了...
+
+我们已经了解了 RAG 方法何时能带来最大的好处，以及何时不值得应用它，并且了解了语调和领域知识对于准确答案的重要细微差别。将 RAG 方法与提示词技术和微调相结合，可以创建适应各种业务任务的灵活解决方案。请记住，RAG 系统的成功取决于答案质量、处理速度和资源成本之间的平衡。
+
+## 练习
+
+- 思考一下您需要使用 GenAI 为自己或您的企业解决的任务。
+    - RAG 方法将如何改进它？
+    - 微调方法将如何改进它？
+    - 提示词工程方法将如何改进它？
+- 为什么提示词缓存可以节省成本？
+- 使用本地模型时是否存在提示词缓存？

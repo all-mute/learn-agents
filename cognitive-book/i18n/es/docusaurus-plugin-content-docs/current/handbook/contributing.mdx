@@ -1,0 +1,264 @@
+---
+sidebar_label: Contribución
+---
+
+# Cómo contribuir al proyecto
+
+¡Nos complace dar la bienvenida a nuevos colaboradores a nuestro proyecto! Este documento te ayudará a entender cómo contribuir al desarrollo del proyecto Learn Agents, un libro interactivo sobre Agentes de IA.
+
+## ¿Qué es contribuir?
+
+Contribuir es el proceso de aportar a un proyecto abierto. La contribución puede ser diferente:
+- Creación de nuevos módulos o bloques
+- Actualización de información obsoleta
+- Traducción a otros idiomas
+- Corrección de errores menores en el contenido
+- Mejora de la UI/UX
+
+:::tip
+Para realizar cambios rápidos, puedes hacer clic en el botón "Edit this page" en la parte inferior de cada página.
+:::
+
+## ¿Por qué debería hacerlo?
+
+- Centro de intercambio de experiencia: puedes compartir tu experiencia y conocimientos con otros y recibir retroalimentación
+- Voluntariado: para desarrollar tu marca personal, mejorar tu currículum
+- Aprender a usar tu producto
+
+## [¿Qué páginas se necesitan lo antes posible?](orders)
+
+## Tengo información valiosa, pero no tengo tiempo para escribir el material
+
+- Podemos hacer una llamada.
+   - [telegram](https://t.me/nongilgamesj)
+   - [cal.com](https://cal.com/merkulov)
+
+## Cómo empezar
+
+:::danger enorgullécete de lo que haces
+Imagina que tu material es leído por miles de estudiantes. Respeta su genio, respeta su tiempo. Queremos que dediquen tiempo solo a lo que les sea útil para crear el futuro.
+:::
+
+### Filosofía
+
+1. Lee la página `/intro` "Acerca del libro de texto": valores, principios
+2. Antes de escribir un módulo, se recomienda acordar el tema con el consejo de profesores. ¿Cómo? [tg](https://t.me/nongilgamesj)
+
+### Cómo escribir un módulo desde cero
+
+[Plantilla de módulo](https://github.com/all-mute/learn-agents/blob/main/template-ru.mdx)
+
+<details>
+<summary>Cada módulo, una página en este sitio, consta de las siguientes partes:</summary>
+
+#### Introducción
+Comienza con una breve introducción que explique lo que se estudiará en esta página. Agrega motivación para interesar al lector. Una buena motivación es la solución de un problema de la vida, un caso industrial, una historia de fracaso.
+
+Objetivos de aprendizaje: Define lo que el lector debe poder hacer después de estudiar el material. Esto ayudará a enfocar la atención en los aspectos clave.
+
+#### Preguntas
+Enumera las principales preguntas que se discutirán. Esto ayudará al lector a comprender a qué prestar atención.
+
+#### Pasos de aprendizaje
+Divide el material en pasos o etapas lógicas. Esto puede ser una secuencia de acciones o conceptos que deben estudiarse.
+
+La menor cantidad posible de material debe incluirse en los pasos principales, pero lo suficiente para dominar los siguientes módulos y encontrar un trabajo de IA Aplicada (como guía)
+
+Pasos adicionales: Incluye pasos adicionales para un estudio más profundo del tema, si es necesario.
+
+#### Resumen del módulo
+
+Es útil leerlo para que el cerebro repase el material una vez más.
+
+#### Exercises
+Preguntas complejas. Será difícil mientras reflexionas sobre ellas, pero es normal. Es en este momento cuando el cerebro forma activamente nuevas conexiones neuronales.
+
+### Hablar sobre tu producto o tema, indirectamente relacionado con los agentes
+
+Vender es ayudar, pero tu producto solo puede estar presente en la lección de forma indirecta. También deberás hablar sobre los competidores.
+
+- Si coincide directamente con los agentes y es un conocimiento crítico para el trabajo, entonces entra en la hoja de ruta.
+
+- Si coincide con los agentes, pero el conocimiento no es obligatorio para el trabajo, entonces entra en la hoja de ruta con una marca de material adicional/profesional (marca de verificación verde/púrpura en el mapa)
+
+- Si no coincide con los agentes, se coloca en un bloque extra, con enlaces a la página del programa principal
+O en las páginas del programa principal, pero en pasos adicionales
+
+</details>
+
+### Cómo ingresar material al repositorio
+
+<details>
+<summary>Cómo ingresar material al libro de texto</summary>
+
+1. **Haz un fork del repositorio**
+   Crea un fork de nuestro repositorio principal:
+   - [github.com/all-mute/learn-agents](https://github.com/all-mute/learn-agents)
+
+2. Clona tu fork en tu máquina local
+
+3. Ingresa los comandos:
+   ```bash
+   # Instala las dependencias
+   npm install
+
+   # Inicia la versión local
+   npx docusaurus start --locale ru
+   ```
+
+4. Realiza cambios en los archivos
+
+5. Crea un Pull Request
+
+Puede ayudar un video (y chatgpt):
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CML6vfKjQss?si=ILGJemXDu8jAF0gH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+## Creación de contenido
+
+<details>
+<summary>Consejos para la creación de contenido</summary>
+
+### [Documentación de Docusaurus](https://docusaurus.io/docs)
+
+### [Markdown Features](https://docusaurus.io/docs/2.x/markdown-features)
+
+### Estructura del proyecto
+
+El contenido se encuentra en los siguientes directorios:
+- Versión en inglés: `/docs/`
+- Versión en ruso: `/i18n/ru/docusaurus-plugin-content-docs/current/`
+
+### Formato
+
+- Usa Markdown para el formato básico
+- Para componentes más complejos, usa MDX
+- Almacena las imágenes en `/static/img/`
+
+### Ejemplo de cómo agregar nuevo material
+
+1. Crea un nuevo archivo `.mdx` en el directorio correspondiente
+2. Agrega metadatos al principio del archivo:
+   ```mdx
+   ---
+   sidebar_label: Nombre para la barra lateral
+   ---
+
+   # Título de la página
+   ```
+3. Escribe y formatea tu contenido
+
+### Agregar una página a la navegación
+
+Para que tu nueva página aparezca en la barra lateral de navegación, debes agregarla al archivo `sidebars.ts` en la raíz del proyecto:
+
+1. Abre el archivo `sidebars.ts`
+2. Encuentra la categoría correspondiente para tu página
+3. Agrega la ruta a tu archivo en la sección correspondiente:
+
+```typescript
+// Ejemplo de cómo agregar una nueva página a la categoría Handbook
+{
+  type: 'category',
+  label: 'Handbook',
+  items: [
+    'handbook/introduction',
+    'handbook/contributing', // páginas existentes
+    'handbook/tu-nueva-pagina', // tu nueva página
+  ],
+},
+```
+
+Ten en cuenta que la ruta se especifica sin la extensión `.mdx` y en relación con el directorio `docs/` o `i18n/ru/docusaurus-plugin-content-docs/current/`.
+
+</details>
+
+## Proceso de revisión
+
+Después de crear un Pull Request, tus cambios serán revisados por el equipo del proyecto.
+Es posible que te pidamos que realices algunos ajustes. Después de una revisión exitosa, tus cambios se aceptarán en el proyecto.
+
+Se recomienda interactuar con el equipo: [tg](https://t.me/nongilgamesj)
+
+## Agradecimiento
+
+¡Muchas gracias por tu contribución al proyecto! Juntos hacemos que el conocimiento sobre los Agentes de IA sea más accesible para todos.
+
+## Cómo indicarte como autor del material
+
+<details>
+<summary>Cómo indicarte como autor del material</summary>
+
+Para indicarte como autor de la página, debes seguir dos pasos:
+
+### 1. Agrega información sobre ti en el archivo de autores
+
+Los datos sobre los autores se almacenan en el archivo `blog/authors.json`. Agrega tu información en formato JSON:
+
+```json
+{
+  "tu_clave": {
+    "name": "Tu Nombre",
+    "title": "Tu puesto o rol",
+    "url": "https://github.com/tu-cuenta",
+    "image_url": "https://github.com/tu-cuenta.png",
+    "socials": {
+      "github": "tu-cuenta",
+      "linkedin": "tu-perfil-linkedin",
+      "email": "tu-correo@example.com",
+      "x": "tu-cuenta-twitter"
+    },
+    "description": "Breve descripción sobre ti (opcional)"
+  }
+}
+```
+
+Todos los campos excepto `name` son opcionales, pero se recomienda especificar al menos una red social.
+
+### 2. Indícate como autor en el frontmatter de tu página
+
+Al principio de tu archivo `.mdx`, agrega el campo `authors` a la sección frontmatter:
+
+```mdx
+---
+sidebar_label: Nombre para la barra lateral
+authors: tu_clave
+---
+
+# Título de la página
+```
+
+También puedes especificar varios autores a través de un array:
+
+```mdx
+---
+sidebar_label: Nombre para la barra lateral
+authors:
+  - tu_clave
+  - otro_autor
+---
+```
+
+O especificar la información del autor directamente:
+
+```mdx
+---
+sidebar_label: Nombre para la barra lateral
+authors:
+  - name: Tu Nombre
+    title: Tu puesto o rol
+    url: https://github.com/tu-cuenta
+    image_url: https://github.com/tu-cuenta.png
+    socials:
+      github: tu-cuenta
+---
+```
+
+Después de estos cambios, tu información sobre el autor se mostrará debajo del título de la página, incluido el avatar y los enlaces a las redes sociales.
+
+:::note
+Asegúrate de que la clave del autor en `authors` coincida exactamente con la clave en el archivo `blog/authors.json`, de lo contrario, la información sobre el autor no se mostrará.
+:::
+
+</details>

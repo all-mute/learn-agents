@@ -1,0 +1,82 @@
+---
+sidebar_label: 数据预处理
+---
+
+# 数据预处理
+
+数据预处理 (Data Preprocessing) 是构建高效 RAG 系统的关键步骤。数据准备的质量直接影响模型生成的答案的准确性和相关性。在本节中，我们将探讨为 RAG 准备文本数据的主要方法和途径。
+
+*您不仅可以在 RAG 中应用数据预处理 - 它在 GenAI 工作流和代理中也很有用！*
+
+:::tip
+数据至上。数据预处理是 RAG 成功的 50%。
+
+如果您低估了这个阶段，您可能会损失 50% 的答案相关性。无用输入，无用输出。
+:::
+
+## 问题
+
+- 我们想把文档切成小块进行向量化。有哪些方法可以做到这一点？
+- 为什么切成 1000 个字符是个坏主意？那 100 个令牌呢？
+- 如何切割特定的文档，例如 html、json 或代码？
+- 什么时候我们需要从看似文本的文档中提取文本？
+
+## 步骤
+
+### 1. 仔细阅读 [langchain 中将文本分割成块的方法](https://python.langchain.com/docs/concepts/text_splitters/)
+
+或者观看讲座
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8OJC21T2SL4?si=IUYSuEf_9IwziIJA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### 2. 文本提取
+
+存在大量非结构化数据类型：pdf、docx、rtf 等。它们的问题在于，它们可能立即包含不同格式的数据：
+    - 文本
+    - 表格
+    - 图片（包括信息图表、图纸、图形）
+    - 等等。
+
+在我们开始将文档分割成块之前，我们必须学会从这些文档中提取文本。**生产环境经验表明，不可能全局性地准备文本提取：在每个案例中都存在其自身的陷阱。** 但是，我们在此为您留下了一些材料 - 但没有必要研究它们。
+
+1. [Upstage AI 文档解析器：彻底改变复杂的 PDF 数据提取！](https://youtu.be/Y2gXmCM3NMw?si=AhszbLJ23aUzdcJC)
+2. [✦ Marker：这个开源工具将使您的 PDF 准备好用于 LLM](https://youtu.be/Y2gXmCM3NMw?si=AhszbLJ23aUzdcJC)
+3. [✦ 从大型语言模型和 RAG 的 PDF 中提取文本 (PyMuPDF4llm 💚)](https://youtu.be/qjQNerPVrHg?si=EIibIR6mqoO1ZER3)
+
+#### 用于文本提取的 Python 库
+
+- [pandas](https://pandas.pydata.org/) – 方便的 DataFrame/Series 结构；对于加载、清除缺失值、合并不同来源以及准备表格数据以供后续生成文本示例至关重要。
+- [scikit-learn](https://scikit-learn.org/) – 用于缩放（StandardScaler、MinMaxScaler）、编码类别（OneHotEncoder、LabelEncoder）和分割样本（train_test_split）的工具；示例：在训练分类器之前准备特征，同时考虑生成上下文。
+- [NLTK](https://www.nltk.org/) – 经典的 NLP 模块：分词、停用词、词干提取/词形还原；在将文本输入 LLM 之前，可用于文本的初始处理。
+- [spaCy](https://spacy.io/) – 快速解析、NER、词形还原和 POS 标记；用于在 RAG 管道中提取实体和构建知识。
+- [regex](https://pypi.org/project/regex/) – 使用正则表达式进行高级工作（支持 Unicode、POS 环境）；对于复杂的文本清理和解析模板是必需的。
+- [ftfy](https://ftfy.readthedocs.io/) – “为您修复文本”：修复损坏的 Unicode、损坏的 HTML 编码和 OCR 人工制品；案例：清理来自不同 Web 抓取的数据。
+- [chardet](https://pypi.org/project/chardet/) – 自动检测文本文件的编码；有助于在预处理之前正确读取不同编码的文档。
+- [langdetect](https://pypi.org/project/langdetect/) – 用于检测文本语言的库；用于多语言 RAG 解决方案，按语言模型过滤和路由文档。
+- [clean-text](https://pypi.org/project/clean-text/) – 现成的文本清理功能：删除链接、表情符号、特殊字符和多余空格；加速向量化之前语料库的准备。
+- [unstructured](https://github.com/Unstructured-IO/unstructured) – 识别和解析 PDF、DOCX、HTML、PPTX；提取“干净”的文本和元数据以创建知识来源。
+- [Apache Tika](https://github.com/chrismattmann/tika-python) – 用于从多种格式中提取文本/元数据的服务；在大型文档存储的 ETL 管道中很有用。
+- [PDFPlumber](https://github.com/jsvine/pdfplumber) – 使用 PDF 进行详细工作：表格、列、坐标文本提取；适用于构建公司报告的结构。
+- [PyPDF2](https://pypi.org/project/PyPDF2/) – 读取/写入 PDF、合并和拆分页面的基本功能；用于准备批量文档以进行向量存储。
+- [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/) – 解析 HTML/XML；用于在创建类似维基的索引之前收集和清理 Web 数据。
+
+## 额外步骤
+
+### E1. 如何在文档分割器中设置块大小
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1bbDH3kyf9I?si=ITdTrQvmFabqffiO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### E2. 额外阅读：[掌握文本分割以实现 Langchain 的有效 RAG](https://hidevscommunity.substack.com/p/mastering-text-splitting-for-effective)
+
+## 现在我们知道了...
+
+我们学习了从各种数据格式中提取文本以及将文本分割成块的关键技术，这些技术是为 RAG 准备数据所必需的。 了解这些方法可以优化索引和搜索相关信息的过程。 现在，您已准备好在实践中应用这些知识来改进您的 RAG 应用程序。
+
+## 练习
+
+供学生思考的问题，以便学生大脑中的神经元开始运动：
+
+*   如果使用非常小或非常大的块大小，RAG 系统的答案质量会发生什么变化？ 在选择块大小时存在哪些权衡？
+*   假设您需要处理包含表格和代码的数据。 哪些文本分割策略最有效，为什么标准分割器可能会失败？
+*   在实际项目中，数据可能来自不同的来源（PDF、HTML、JSON、数据库）并且具有不同的结构。 在创建通用数据预处理管道时，您可能会遇到哪些困难，以及如何克服这些困难？
+*   如何在构建索引和生成答案的阶段之前评估文本分割成块的质量？ 是否存在用于此类评估的指标或方法？

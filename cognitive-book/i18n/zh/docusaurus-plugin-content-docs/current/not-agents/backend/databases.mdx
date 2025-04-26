@@ -1,0 +1,149 @@
+---
+sidebar_label: 数据库
+---
+
+# 数据库理论
+
+想象一下，数据库是你的 AI 代理的房屋地基。在这里，我们将分析如何为神经网络设计“记忆存储”，以便你的系统能够快速找到所需的数据，就像一位身处巨大书籍宇宙中的图书管理员。你将学习如何在 SQL 和 NoSQL 之间进行选择（就像为不同的保险箱选择钥匙一样），优化查询（就像为数据铺设高速公路），并确保事务的可靠性——正是这些技能将你从新手转变为工业 AI 系统的架构师。
+
+<details>
+<summary>Ask AI 指南</summary>
+
+:::tip 指南
+由于这些主题不会随时间变化，因此最好与你的私人导师 - ChatGPT 一起学习它们。
+
+学习过程应如下：
+- 你为 ChatGPT 编写一个系统提示词（[模板](../metalearning#chatgpt-prompts)），在其中描述你的背景、偏好、解释的详细程度等。
+- 从列表中复制主题（三击），并要求 ChatGPT 向你解释该主题
+- 如果想深入研究，请提出澄清问题
+
+目前，这是学习基础知识最方便的方法。**除了概念之外，你还可以在 Gold、Silver、Extra 部分学习其他材料。**
+1. Gold - 在与 ChatGPT 交流之前一定要学习
+2. Ask AI - 询问每个不熟悉的主题
+3. Silver - 次要材料
+4. Extra - 深入主题
+:::
+
+</details>
+
+## Golden
+
+bytebyte db playlist - https://youtube.com/playlist?list=PLCRMIe5FDPsdnSszazqVIQFh99t1ExH19&si=3tVd_dGWxmtQ2pQo
+
+<details>
+<summary>Fireship</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W2Z7fbCLSTw?si=60eK-dsMnFWZOINM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/n2Fluyr3lbc?si=lltEIffEkETV4n5l" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-bt_y4Loofg?si=xOpa80XW4nFo7T2b" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/T6L9EoBy8Zk?si=ng0sMPs4NdrShnoT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+## Ask AI
+
+### 数据库的基本概念
+1. **数据库架构：基本组件和术语（基础）**
+2. **关系型数据库：从规范化到表之间的关系**
+3. **数据库中的键：设计关系和数据完整性**
+4. **CRUD 操作：数据处理模式（实践）**
+
+### SQL 和数据处理
+5. **SQL：日常任务的语法（备忘单）**
+6. **SELECT 查询：高级过滤技术**
+7. **JOIN 操作：表之间关系的可视化**
+8. **事务：编写原子操作**
+
+### NoSQL 和现代数据存储方法
+9. **SQL vs NoSQL：数据模型比较**
+    <details>
+    <summary>SQL vs NoSQL：数据模型比较</summary>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GAe5oB742dw?si=76fujMvzHJJjua25" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    </details>
+
+10. **面向文档的数据库：MongoDB 和 JSON 数据处理**
+11. **ACID 属性：数据库中的事务**
+    <details>
+    <summary>ACID 属性：数据库中的事务</summary>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/GAe5oB742dw?si=76fujMvzHJJjua25" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    </details>
+
+### 优化和实践方面
+12. **数据库中的索引：工作原理和优化**
+13. **ORM：优点和缺点**
+14. **数据库中的关系：一对一、一对多、多对多**
+15. **分页：offset vs cursor-based 方法**
+    <details>
+    <summary>分页：offset vs cursor-based 方法</summary>
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/14K_a2kKTxU?si=GeKkgP09fzgkF5hv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+    </details>
+16. **键值存储：Redis 和缓存（概述）**
+17. **图数据库：Neo4j 的基础知识（概念）**
+
+## Silver
+
+<details>
+<summary>我用 Postgres 替换了我的整个技术栈...</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3JW732GrMdg?si=hkUA-ILoshFCS5DE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+## Exercises
+
+<details>
+<summary>练习：优化 PostgreSQL 中的慢查询</summary>
+
+**情况：**
+我们在 PostgreSQL 中有一个包含 1000 万条记录的 `user_actions` 表：
+```sql
+CREATE TABLE user_actions (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    action_type VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    metadata JSONB
+);
+```
+
+**问题：**
+以下查询执行时间为 2.8 秒：
+```sql
+SELECT * FROM user_actions 
+WHERE user_id = 123 
+  AND action_type = 'search'
+ORDER BY created_at DESC 
+LIMIT 100;
+```
+
+**任务：**
+1. 解释为什么查询变慢
+2. 通过索引提出解决方案
+3. 编写 SQL 来创建索引
+4. 解释你的解决方案的权衡
+
+<details>
+<summary>答案</summary>
+
+1. **速度慢的原因：** 缺少适用于 WHERE 和 ORDER BY 条件的适当索引
+2. **解决方案：** 创建一个覆盖过滤和排序的复合索引
+3. **SQL：**
+```sql
+CREATE INDEX idx_user_actions_composite ON user_actions 
+  (user_id, action_type, created_at DESC);
+```
+4. **权衡：**
+- 数据库大小增加约 15-20%
+- INSERT/UPDATE 操作略有减慢
+- 建议使用 CONCURRENTLY 在生产环境中创建：
+```sql
+CREATE INDEX CONCURRENTLY idx_user_actions_composite ...;
+```
+</details>
+</details>

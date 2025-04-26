@@ -1,0 +1,221 @@
+---
+sidebar_label: GenAI的算法和数据结构
+---
+
+# 面向 GenAI 的算法和数据结构
+
+这绝对是一个奖励课程，因为将其纳入 AI 代理的学习计划是一种变态行为。 这些知识对大约 10% 从头开始编写代理的学生有用。 **但是，我相信算法和数据结构 (АиСД) 的知识将为您带来很多好处——在架构思维、高级系统设计、复杂工作流程和多代理优化方面。**
+
+我们分析了 AI 代理中使用的 11 种最流行的算法和数据结构。
+
+:::tip 建议
+如果您遇到困难，请使用 ChatGPT：“像我 5 岁时一样向我解释这个算法”
+:::
+
+## 步骤
+
+### 0. 学习材料的选项
+
+- [**我不想花费超过 15 分钟**](https://youtu.be/cQWr9DFE1ww?si=KsJcj0itug5V-APj) - 观看一个视频并离开此模块
+
+- **推荐路径** - 观看一个您选择的理论，使用 ChatGPT 作为老师解决一个问题
+
+图和遗传算法需要发展观察力，但不是强制学习的。
+
+<details>
+<summary>ChatGPT 的提示词</summary>
+
+用于解决问题的提示词：
+```
+你是一位导师，帮助学生解决 LeetCode 上的问题。 使用苏格拉底方法：不要给出现成的答案，而是通过问题引导学生找到解决方案。 帮助理解问题条件，引导正确的策略，分析极端情况，选择数据结构，并逐步引导解决方案。 提供最少的例子，要求学生解释他们的推理并检查它们。 目标是培养思维，而不仅仅是解决问题。
+
+从以下短语开始：“告诉我你如何理解这个问题，以及你有什么初步的想法？”
+```
+
+用于解释问题条件或算法的提示词：
+```
+像给我 5 岁时一样解释主题。 使用简单的词语、隐喻、来自日常生活的类比（玩具、糖果、盒子、卡通片）。 避免使用技术术语，除非你非常简单地解释它们。 想象一下，你正在讲故事或和我一起玩游戏，并且希望我了解发生了什么。
+```
+</details>
+
+### 0.1. 我们每天使用的 10 种关键数据结构
+
+<details>
+<summary>我们每天使用的 10 种关键数据结构 - 8:42 视频</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ouipSd_5ivQ?si=MJ52aYpZ7DrgC9C9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+### 1. 链表
+
+##### 在 AI 代理中在哪里使用？
+- 您可以使用链表来存储和处理 AI 代理中的数据。 例如，您可以使用链表来存储对话历史记录、任务列表或存储有关主题领域的数据。
+
+**视频资源：**
+- [链表 - 数据结构简介](https://www.youtube.com/watch?v=njTh_OwMljA&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=3)
+- 或
+- [数据结构：链表](https://www.youtube.com/watch?v=njTh_OwMljA)
+
+**LeetCode 任务：**
+- [设计链表](https://leetcode.com/problems/design-linked-list/)
+- [✦ 反转链表](https://leetcode.com/problems/reverse-linked-list/)
+- [✦ 合并两个排序列表](https://leetcode.com/problems/merge-two-sorted-lists/)
+
+### 2. 数组
+
+##### 在 AI 代理中在哪里使用？
+用于处理聊天消息、存储嵌入和模型特征向量。 允许快速处理批量对话。 了解数组是高效 AI 系统的基础！
+
+**视频资源：**
+- （如果您对数组非常了解，请跳过）[数组 - 数据结构简介](https://www.youtube.com/watch?v=gWJtC6LmhJQ&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=2)
+
+### 3. 哈希表
+
+##### 在 AI 代理中在哪里使用？
+就像一个带有钥匙抽屉的魔法柜子：我们快速找到常见问题的答案（例如“如何重置密码？”），记住对话的上下文（“你问过天气”），或者缓存流行的食谱。 帮助工作更快，而不是在巨大的玩具篮中搜索！
+
+**视频资源：**
+- [哈希表 - 数据结构简介](https://www.youtube.com/watch?v=RsLt9_mKj4Q&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=15)
+- 或
+- [哈希表和哈希函数](https://www.youtube.com/watch?v=KyUTuwz_b7Q)
+
+**LeetCode 任务：**
+- [设计 HashMap](https://leetcode.com/problems/design-hashmap/)
+- NeetCode 视频：[两数之和 - Leetcode 1](https://youtu.be/KLlXCFG5TnA?si=1f3fCJIFwXN2v1E7)
+- [✦ 组合异位词](https://leetcode.com/problems/group-anagrams/)
+- [✦ 最常见的单词](https://leetcode.com/problems/most-common-word/)
+- NLP 重要主题的推荐视频：[什么是莱文斯坦距离？](https://youtu.be/mo_10k-L2zY?si=DMEMQg9UnNDQOSg9)
+- [✦✦ 编辑距离](https://leetcode.com/problems/edit-distance/)
+
+### 4. 队列
+
+##### 在 AI 代理中在哪里使用？
+就像出租车调度员 🚖：我们对 API 请求进行排序，在负载下缓冲消息，并计划代理任务。 保证处理的稳定性和一致性——可扩展系统的基础！
+
+**视频资源：**
+- [队列 - 数据结构简介](https://www.youtube.com/watch?v=nqOWyu-tN04&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=7)
+
+**LeetCode 任务：**
+- [使用栈实现队列](https://leetcode.com/problems/implement-queue-using-stacks/)
+- [✦ 设计循环队列](https://leetcode.com/problems/design-circular-queue/)
+- [✦ 使用队列实现栈](https://leetcode.com/problems/implement-stack-using-queues/)
+
+### 5. 递归
+##### 在 AI 代理中在哪里使用？
+就像俄罗斯套娃 🪆：我们处理嵌套对话（“如果...”），遍历场景树（多级菜单），并将复杂请求分解为多个部分。 允许代理逐步“思考”——从一般到细节，同时保持推理链的上下文！
+
+**例子：**
+- 处理答案中的澄清问题
+- 生成依赖任务链（计划程序）
+- 递归分析来自 API 的 JSON 结构
+- 根据条件自动分支对话
+- 构建知识层次结构（例如，主题 → 子主题 → 事实）
+
+**视频资源：**
+- [递归播放列表](https://youtube.com/playlist?list=PLDV1Zeh2NRsCmu1lb9grUcljeYJtmgmYc&si=yTLfIwrVBpyLbx-a)
+
+**LeetCode 任务：**
+- [阶乘](https://leetcode.com/problems/factorial-trailing-zeroes/)
+- [✦ 组合总和](https://leetcode.com/problems/combination-sum/)
+- [✦ 正则表达式匹配](https://leetcode.com/problems/regular-expression-matching/)
+
+### 6. 分而治之
+
+##### 在 AI 代理中在哪里使用？
+就像瑞士军刀 🔪：我们将复杂任务（分析 100 多页的 PDF、生成报告）分解为子任务，并行处理请求的各个部分，并将结果合并。 允许代理“消化”千兆字节的数据而不会过载——您处理大数据的秘诀！
+
+**例子：**
+- 并行处理文档
+- 用户目标的分层分析
+- 通过并行优化响应时间
+- 递归细化请求的细节
+- 将代码划分为模块（NLU → 逻辑 → 响应）
+
+**视频资源：**
+- [递归播放列表](https://youtube.com/playlist?list=PLDV1Zeh2NRsCmu1lb9grUcljeYJtmgmYc&si=yTLfIwrVBpyLbx-a)
+
+**LeetCode 任务：**
+- [合并 k 个排序列表](https://leetcode.com/problems/merge-k-sorted-lists/)
+- [✦ 两个排序数组的中位数](https://leetcode.com/problems/median-of-two-sorted-arrays/)
+
+### 7. 滑动窗口
+
+##### 在 AI 代理中在哪里使用？
+就像移动雷达 🚨：我们分析流数据（聊天历史记录、API 日志），实时查找模式，并管理 RAG 搜索的上下文窗口。 允许代理在不重新加载的情况下“滑动”数据——您处理长对话的关键！
+
+**例子：**
+- 在用户请求中搜索重复项
+- 动态缓存上下文（最近 N 条消息）
+- 将长文本分块处理以进行 RAG
+- 监控流数据中的异常
+- 通过“相关性窗口”优化 LLM 令牌
+
+**视频资源：**
+- [NeetCode - 滑动窗口：买卖股票的最佳时机](https://youtu.be/1pkOgXD63yU?si=7vVaNI1wn4nwK8wU)
+
+**LeetCode 任务：**
+- [买卖股票的最佳时机](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
+- [✦ 没有重复字符的最长子字符串](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+
+### 8. 双指针
+
+##### 在 AI 代理中在哪里使用？
+就像同步扫描仪 🔍：我们比较答案的版本，从两端分析对话历史记录，并优化 RAG 搜索。 允许代理以 O(n) 找到完美的匹配——您获得即时答案的工具！
+
+**例子：**
+- 比较不同版本的提示词
+- 从头/尾分析聊天上下文
+- 搜索用户数据中的矛盾
+- 通过双重搜索优化 RAG
+- 折叠重复消息
+
+**视频资源：**
+- [7 分钟内的双指针](https://youtu.be/QzZ7nmouLTI?si=HHkmvMnn_8IuDKJ_)
+- [NeetCode：从排序数组中删除重复项](https://youtu.be/DEJAZBq0FDA?si=MmF9USUGF3h314AC)
+
+**LeetCode 任务：**
+- [从排序数组中删除重复项](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+
+### 9. Map-Reduce
+
+##### 在 AI 代理中在哪里使用？
+就像工业联合收割机 🌾：我们处理 TB 级的数据（聊天日志、Web 抓取），在节点之间分配任务，并聚合结果。 在线研究代理使用它来并行分析 100 多个来源——您处理大数据的关键！
+
+**例子：**
+- 并行处理数百万个请求
+- 聚合来自不同 API 的数据
+- LLM 令牌使用情况统计
+- 分析大型错误日志
+- 在分布式数据上训练模型
+
+**视频资源：**
+- [**GenAI 设计模式：Map Reduce**](https://youtu.be/jLt6UuoksV8?si=4j_7U1Nhsz82rltL)
+- [MapReduce - Computerphile](https://www.youtube.com/watch?v=cvhKoniK5Uo)
+
+**LeetCode 任务：**
+- [✦ 前 K 个频繁元素](https://leetcode.com/problems/top-k-frequent-elements/)
+- [✦ 单词频率](https://leetcode.com/problems/word-frequency/)
+
+### E10. 图 ✦
+
+##### 在 AI 代理中在哪里使用？
+图是复杂交互的基础：我们通过树状结构管理对话场景，分析实体之间的关系（人-事件-地点），并优化请求处理链。 用于基于知识图的推荐系统和代理工作流程中循环依赖的检测。
+
+**例子：**
+- 场景的对话树
+- 分析聊天中的社交联系
+- 优化处理路线
+- 通过知识图进行推荐
+- 检测任务链中的循环
+
+**视频资源：**
+- [图 - 数据结构简介](https://www.youtube.com/watch?v=jAoXALwE1SY&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=16)
+- [图播放列表](https://youtube.com/playlist?list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&si=fn9ntCwfZe03QVQD)
+
+**LeetCode 任务：**
+- [课程表](https://leetcode.com/problems/course-schedule/)
+- [岛屿数量](https://leetcode.com/problems/number-of-islands/)
+- [克隆图](https://leetcode.com/problems/clone-graph/)
+
+### E11. [优化算法 ✦✦](optimization)

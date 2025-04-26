@@ -1,0 +1,82 @@
+---
+sidebar_label: Preprocesamiento de datos
+---
+
+# Preprocesamiento de Datos
+
+El preprocesamiento de datos es una etapa crítica en la construcción de sistemas RAG eficaces. La precisión y relevancia de las respuestas generadas por el modelo dependen directamente de la calidad de la preparación de los datos. En esta sección, examinaremos los principales métodos y enfoques para preparar datos de texto para RAG.
+
+*¡El preprocesamiento de datos se puede aplicar no solo en RAG, sino que también es útil en flujos de trabajo GenAI y agentes!*
+
+:::tip
+Los datos son el rey. La preparación previa de los datos es el 50% del éxito de RAG.
+
+Si subestimas esta etapa, puedes perder el 50% de la relevancia de las respuestas. Basura entra, basura sale.
+:::
+
+## Preguntas
+
+- Queremos dividir un documento en fragmentos para la vectorización. ¿Cuáles son las formas de hacerlo?
+- ¿Por qué dividir en 1000 caracteres es una mala idea? ¿Y en 100 tokens?
+- ¿Cómo dividir documentos específicos, por ejemplo, con html, json o código?
+- ¿Cuándo podríamos necesitar extraer texto de documentos aparentemente de texto?
+
+## Pasos
+
+### 1. Lea atentamente sobre [formas de dividir texto en fragmentos en langchain](https://python.langchain.com/docs/concepts/text_splitters/)
+
+o mira la conferencia
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8OJC21T2SL4?si=IUYSuEf_9IwziIJA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### 2. Extracción de texto
+
+Existe una gran cantidad de tipos de datos no estructurados: pdf, docx, rtf y similares. El problema con ellos es que pueden consistir en datos de diferentes formatos a la vez:
+    - texto
+    - tablas
+    - imágenes (incluidas infografías, dibujos, gráficos)
+    - etc.
+
+Antes de que empecemos a dividir los documentos en fragmentos, debemos aprender a extraer texto de estos documentos. **La experiencia en producción muestra que es imposible prepararse globalmente para la extracción de texto: en cada caso hay escollos.** Sin embargo, hemos dejado aquí algunos materiales para ti, pero no es necesario estudiarlos.
+
+1. [Upstage AI Document Parser: ¡Revoluciona la extracción de datos PDF complejos!](https://youtu.be/Y2gXmCM3NMw?si=AhszbLJ23aUzdcJC)
+2. [✦ Marker: Esta herramienta de código abierto preparará tus PDF para LLM](https://youtu.be/Y2gXmCM3NMw?si=AhszbLJ23aUzdcJC)
+3. [✦ Extracción de texto de archivos PDF para modelos de lenguaje grandes y RAG (PyMuPDF4llm 💚)](https://youtu.be/qjQNerPVrHg?si=EIibIR6mqoO1ZER3)
+
+#### Bibliotecas de Python para la extracción de texto
+
+- [pandas](https://pandas.pydata.org/) – estructuras DataFrame/Series convenientes; indispensable para cargar, limpiar valores faltantes, combinar diferentes fuentes y preparar datos tabulares para la posterior generación de ejemplos de texto.
+- [scikit-learn](https://scikit-learn.org/) – herramientas para escalar (StandardScaler, MinMaxScaler), codificar categorías (OneHotEncoder, LabelEncoder) y dividir muestras (train_test_split); ejemplos: preparación de características antes de entrenar un clasificador teniendo en cuenta el contexto generativo.
+- [NLTK](https://www.nltk.org/) – módulos clásicos de NLP: tokenización, palabras vacías, stemming/lematización; útil para el procesamiento inicial de textos antes de introducirlos en LLM.
+- [spaCy](https://spacy.io/) – análisis rápido, NER, lematización y etiquetado POS; se utiliza para extraer entidades y estructurar el conocimiento en pipelines RAG.
+- [regex](https://pypi.org/project/regex/) – trabajo avanzado con expresiones regulares (soporte de Unicode, entornos POS); necesario para la limpieza de texto compleja y el análisis de plantillas.
+- [ftfy](https://ftfy.readthedocs.io/) – "arregla el texto por ti": corrige Unicode roto, codificaciones HTML rotas y artefactos OCR; caso: limpieza de datos de diferentes web scrapings.
+- [chardet](https://pypi.org/project/chardet/) – detección automática de la codificación de archivos de texto; ayuda a leer correctamente documentos en diferentes codificaciones antes del preprocesamiento.
+- [langdetect](https://pypi.org/project/langdetect/) – biblioteca para la detección del idioma del texto; se utiliza para soluciones RAG multilingües, filtrado y enrutamiento de documentos por modelos de lenguaje.
+- [clean-text](https://pypi.org/project/clean-text/) – funciones listas para usar para limpiar texto: eliminar enlaces, emojis, caracteres especiales y espacios innecesarios; acelera la preparación del corpus antes de la vectorización.
+- [unstructured](https://github.com/Unstructured-IO/unstructured) – reconocimiento y análisis de PDF, DOCX, HTML, PPTX; extrae texto "limpio" y metadatos para crear fuentes de conocimiento.
+- [Apache Tika](https://github.com/chrismattmann/tika-python) – servicio para extraer texto/metadatos de muchos formatos; útil en pipelines ETL de grandes repositorios de documentos.
+- [PDFPlumber](https://github.com/jsvine/pdfplumber) – trabajo detallado con PDF: tablas, columnas, extracción de texto coordinada; adecuado para estructurar informes corporativos.
+- [PyPDF2](https://pypi.org/project/PyPDF2/) – funciones básicas de lectura/escritura de PDF, combinación y división de páginas; se utiliza para preparar lotes de documentos para el almacenamiento vectorial.
+- [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/) – análisis de HTML/XML; se utiliza para recopilar y limpiar datos web antes de crear índices tipo wiki.
+
+## Pasos Adicionales
+
+### E1. Cómo establecer el tamaño del fragmento en el divisor de documentos
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1bbDH3kyf9I?si=ITdTrQvmFabqffiO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### E2. Lectura adicional: [Dominar la división de texto para un RAG eficaz con Langchain](https://hidevscommunity.substack.com/p/mastering-text-splitting-for-effective)
+
+## Ahora sabemos...
+
+Hemos estudiado las técnicas clave para extraer texto de varios formatos de datos y dividir el texto en fragmentos, necesarias para la preparación de datos en RAG. La comprensión de estos métodos permite optimizar el proceso de indexación y búsqueda de información relevante. Ahora está listo para aplicar este conocimiento en la práctica para mejorar sus aplicaciones RAG.
+
+## Ejercicios
+
+Preguntas para la reflexión, para que las neuronas del estudiante se muevan:
+
+*   ¿Cómo cambiará la calidad de las respuestas del sistema RAG si se utilizan tamaños de fragmentos muy pequeños o muy grandes? ¿Qué compromisos existen al elegir el tamaño del fragmento?
+*   Imagine que necesita procesar datos que contienen tablas y código. ¿Qué estrategias de división de texto serían más efectivas y por qué los divisores estándar podrían fallar?
+*   En un proyecto real, los datos pueden provenir de diferentes fuentes (PDF, HTML, JSON, bases de datos) y tener diferentes estructuras. ¿Qué dificultades puede encontrar al crear un pipeline de preprocesamiento de datos universal y cómo se pueden superar?
+*   ¿Cómo se puede evaluar la calidad de la división de texto en fragmentos antes de la etapa de construcción del índice y generación de respuestas? ¿Existen métricas o enfoques para tal evaluación?

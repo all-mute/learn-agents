@@ -1,0 +1,221 @@
+---
+sidebar_label: Algoritmos y ED para GenAI
+---
+
+# Algoritmos y estructuras de datos para GenAI
+
+Esta es definitivamente una lección adicional, ya que incluirla en el programa para estudiar Agentes de IA es una perversión. Este conocimiento será útil para alrededor del 10% de los estudiantes que escribirán agentes desde cero. **Sin embargo, creo que el conocimiento de algoritmos y estructuras de datos (AED) te dará mucho: en el pensamiento arquitectónico, para el diseño de sistemas avanzados, la optimización de flujos de trabajo complejos y multiagentes.**
+
+Hemos analizado los 11 algoritmos y estructuras de datos más populares que se utilizan en los Agentes de IA.
+
+:::tip consejo
+Si te quedas atascado, usa ChatGPT: "Explícame este algoritmo como si tuviera 5 años"
+:::
+
+## Pasos
+
+### 0. Opciones para estudiar el material
+
+- [**No quiero gastar más de 15 minutos**](https://youtu.be/cQWr9DFE1ww?si=KsJcj0itug5V-APj) - mira un video y sal de este módulo
+
+- **Ruta recomendada** - Mira una teoría de tu elección, resuelve un problema usando ChatGPT como profesor
+
+Los grafos y los algoritmos genéticos son necesarios para desarrollar la familiaridad, pero no son obligatorios para el estudio.
+
+<details>
+<summary>Prompts para ChatGPT</summary>
+
+Prompt para resolver problemas:
+```
+Eres un mentor que ayuda a un estudiante a resolver un problema de LeetCode. Utiliza el método socrático: no des respuestas preparadas, sino que guía al estudiante hacia la solución a través de preguntas. Ayuda a comprender las condiciones del problema, sugiere la estrategia correcta, analiza los casos extremos, elige las estructuras de datos y conduce paso a paso hacia la solución. Proporciona ejemplos mínimos, pide al estudiante que explique su razonamiento y verifícalo. El objetivo es desarrollar el pensamiento, no solo resolver el problema.
+
+Comienza con la frase: "¿Cuéntame cómo has entendido el problema y qué primeras ideas tienes?"
+```
+
+Prompt para explicar la condición de un problema o un algoritmo:
+```
+Explica el TEMA como si tuviera 5 años. Utiliza palabras sencillas, metáforas, analogías de la vida cotidiana (juguetes, caramelos, cajas, dibujos animados). Evita los términos técnicos, a menos que los expliques de forma muy sencilla. Imagina que estás contando un cuento o jugando conmigo a un juego, y quieres que entienda lo que está pasando.
+```
+</details>
+
+### 0.1. 10 Key Data Structures We Use Every Day
+
+<details>
+<summary>10 Key Data Structures We Use Every Day - 8:42 video</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ouipSd_5ivQ?si=MJ52aYpZ7DrgC9C9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+### 1. Linked List
+
+##### ¿Dónde se utiliza en los Agentes de IA?
+- Puedes utilizar listas enlazadas para almacenar y procesar datos en agentes de IA. Por ejemplo, puedes utilizar listas enlazadas para almacenar el historial de diálogos, una lista de tareas o para almacenar datos sobre un área temática.
+
+**Recursos de vídeo:**
+- [Linked Lists - Introduction to Data Structures](https://www.youtube.com/watch?v=njTh_OwMljA&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=3)
+- o
+- [Data Structures: Linked Lists](https://www.youtube.com/watch?v=njTh_OwMljA)
+
+**Tareas de LeetCode:**
+- [Design Linked List](https://leetcode.com/problems/design-linked-list/)
+- [✦ Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/)
+- [✦ Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
+
+### 2. Array
+
+##### ¿Dónde se utiliza en los Agentes de IA?
+Se utilizan para procesar mensajes de chat, almacenar embeddings y vectores de características de modelos. Permiten trabajar rápidamente con lotes de diálogos. ¡El conocimiento de los arrays es la base para sistemas de IA eficaces!
+
+**Recursos de vídeo:**
+- (omite si conoces bien los arrays) [Arrays - Introduction to Data Structures](https://www.youtube.com/watch?v=gWJtC6LmhJQ&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=2)
+
+### 3. Hash Table
+
+##### ¿Dónde se utiliza en los Agentes de IA?
+Como un armario mágico con cajones-llave: encontramos rápidamente respuestas a preguntas frecuentes (como "¿cómo restablecer la contraseña?"), recordamos el contexto del diálogo ("estabas preguntando por el clima") o almacenamos en caché recetas populares. ¡Ayudan a trabajar más rápido que buscar en una enorme cesta de juguetes!
+
+**Recursos de vídeo:**
+- [Hash Tables - Introduction to Data Structures](https://www.youtube.com/watch?v=RsLt9_mKj4Q&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=15)
+- o
+- [Hash Tables and Hash Functions](https://www.youtube.com/watch?v=KyUTuwz_b7Q)
+
+**Tareas de LeetCode:**
+- [Design HashMap](https://leetcode.com/problems/design-hashmap/)
+- NeetCode video: [Two Sum - Leetcode 1](https://youtu.be/KLlXCFG5TnA?si=1f3fCJIFwXN2v1E7)
+- [✦ Group Anagrams](https://leetcode.com/problems/group-anagrams/)
+- [✦ Most Common Word](https://leetcode.com/problems/most-common-word/)
+- Vídeo recomendado sobre un tema importante para el PNL: [What is Levenshtein Distance?](https://youtu.be/mo_10k-L2zY?si=DMEMQg9UnNDQOSg9)
+- [✦✦ Edit Distance](https://leetcode.com/problems/edit-distance/)
+
+### 4. Queue
+
+##### ¿Dónde se utiliza en los Agentes de IA?
+Como un despachador de taxis 🚖: ordenamos las solicitudes a la API, almacenamos en búfer los mensajes bajo carga, planificamos las tareas de los agentes. Garantiza la estabilidad y la secuencia de procesamiento: ¡la base para sistemas escalables!
+
+**Recursos de vídeo:**
+- [Queues - Introduction to Data Structures](https://www.youtube.com/watch?v=nqOWyu-tN04&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=7)
+
+**Tareas de LeetCode:**
+- [Implement Queue using Stacks](https://leetcode.com/problems/implement-queue-using-stacks/)
+- [✦ Design Circular Queue](https://leetcode.com/problems/design-circular-queue/)
+- [✦ Implement Stack using Queues](https://leetcode.com/problems/implement-stack-using-queues/)
+
+### 5. Recursion
+##### ¿Dónde se utiliza en los Agentes de IA?
+Como una matrioshka 🪆: procesamos diálogos anidados ("¿y si..."), recorremos árboles de escenarios (menú de varios niveles), analizamos solicitudes complejas en partes. Permite a los agentes "pensar" paso a paso, de lo general a los detalles, ¡manteniendo el contexto de la cadena de razonamiento!
+
+**Ejemplos:**
+- Procesamiento de preguntas aclaratorias dentro de una respuesta
+- Generación de cadenas de tareas dependientes (planificador)
+- Análisis recursivo de estructuras JSON de la API
+- Ramificación automática de diálogos por condiciones
+- Construcción de jerarquías de conocimiento (por ejemplo, temas → subtemas → hechos)
+
+**Recursos de vídeo:**
+- [Playlist on recursion](https://youtube.com/playlist?list=PLDV1Zeh2NRsCmu1lb9grUcljeYJtmgmYc&si=yTLfIwrVBpyLbx-a)
+
+**Tareas de LeetCode:**
+- [Factorial](https://leetcode.com/problems/factorial-trailing-zeroes/)
+- [✦ Combination Sum](https://leetcode.com/problems/combination-sum/)
+- [✦ Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/)
+
+### 6. Divide and Conquer
+
+##### ¿Dónde se utiliza en los Agentes de IA?
+Como una navaja suiza 🔪: dividimos tareas complejas (análisis de más de 100 páginas de PDF, generación de informes) en subtareas, procesamos partes de la solicitud en paralelo, combinamos los resultados. Permite a los agentes "digerir" gigabytes de datos sin sobrecarga: ¡tu secreto para trabajar con Big Data!
+
+**Ejemplos:**
+- Paralelización del procesamiento de documentos
+- Análisis jerárquico de los objetivos del usuario
+- Optimización del tiempo de respuesta a través del paralelismo
+- Aclaración recursiva de los detalles de la solicitud
+- División del código en módulos (NLU → lógica → respuesta)
+
+**Recursos de vídeo:**
+- [Playlist on recursion](https://youtube.com/playlist?list=PLDV1Zeh2NRsCmu1lb9grUcljeYJtmgmYc&si=yTLfIwrVBpyLbx-a)
+
+**Tareas de LeetCode:**
+- [Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
+- [✦ Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)
+
+### 7. Sliding Window
+
+##### ¿Dónde se utiliza en los Agentes de IA?
+Como un radar en movimiento 🚨: analizamos datos de flujo (historias de chat, registros de API), encontramos patrones en tiempo real, gestionamos la ventana contextual para la búsqueda RAG. Permite a los agentes "deslizarse" por los datos sin recargar: ¡tu clave para procesar diálogos largos!
+
+**Ejemplos:**
+- Búsqueda de repeticiones en las solicitudes de los usuarios
+- Almacenamiento dinámico en caché del contexto (N últimos mensajes)
+- Procesamiento de textos largos en fragmentos para RAG
+- Monitorización de anomalías en datos de flujo
+- Optimización de tokens LLM a través de la "ventana de relevancia"
+
+**Recursos de vídeo:**
+- [NeetCode - Sliding Window: Best Time to Buy and Sell Stock](https://youtu.be/1pkOgXD63yU?si=7vVaNI1wn4nwK8wU)
+
+**Tareas de LeetCode:**
+- [Best Time to Buy and Sell Stock](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/)
+- [✦ Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/)
+
+### 8. Two Pointers
+
+##### ¿Dónde se utiliza en los Agentes de IA?
+Como escáneres síncronos 🔍: comparamos versiones de respuestas, analizamos el historial de diálogo desde ambos extremos, optimizamos la búsqueda RAG. Permite a los agentes encontrar coincidencias perfectas en O(n): ¡tu herramienta para respuestas instantáneas!
+
+**Ejemplos:**
+- Comparación de diferentes versiones de prompts
+- Análisis del contexto del chat desde el principio/final
+- Búsqueda de contradicciones en los datos del usuario
+- Optimización de RAG a través de la búsqueda dual
+- Contracción de mensajes duplicados
+
+**Recursos de vídeo:**
+- [Two Pointers in 7 minutes](https://youtu.be/QzZ7nmouLTI?si=HHkmvMnn_8IuDKJ_)
+- [NeetCode: Remove Duplicates from Sorted Array](https://youtu.be/DEJAZBq0FDA?si=MmF9USUGF3h314AC)
+
+**Tareas de LeetCode:**
+- [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+
+### 9. Map-Reduce
+
+##### ¿Dónde se utiliza en los Agentes de IA?
+Como una cosechadora industrial 🌾: procesamos terabytes de datos (registros de chat, web scraping), distribuimos tareas entre nodos, agregamos resultados. Los agentes de investigación en línea utilizan para el análisis paralelo de más de 100 fuentes: ¡tu clave para Big Data!
+
+**Ejemplos:**
+- Procesamiento paralelo de millones de solicitudes
+- Agregación de datos de diferentes API
+- Estadísticas de uso de tokens LLM
+- Análisis de grandes registros de errores
+- Entrenamiento de modelos en datos distribuidos
+
+**Recursos de vídeo:**
+- [**GenAI Design Patterns: Map Reduce**](https://youtu.be/jLt6UuoksV8?si=4j_7U1Nhsz82rltL)
+- [MapReduce - Computerphile](https://www.youtube.com/watch?v=cvhKoniK5Uo)
+
+**Tareas de LeetCode:**
+- [✦ Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
+- [✦ Word Frequency](https://leetcode.com/problems/word-frequency/)
+
+### E10. Graphs ✦
+
+##### ¿Dónde se utiliza en los Agentes de IA?
+Los grafos son la base de interacciones complejas: gestionamos escenarios de diálogo a través de estructuras de árbol, analizamos las conexiones entre entidades (personas-eventos-ubicaciones), optimizamos las cadenas de procesamiento de solicitudes. Se utilizan en sistemas de recomendación basados en un grafo de conocimiento y la detección de dependencias cíclicas en el flujo de trabajo de los agentes.
+
+**Ejemplos:**
+- Árboles de diálogo para escenarios
+- Análisis de conexiones sociales en chats
+- Optimización de rutas de procesamiento
+- Recomendaciones a través de un grafo de conocimiento
+- Detección de ciclos en cadenas de tareas
+
+**Recursos de vídeo:**
+- [Graphs - Introduction to Data Structures](https://www.youtube.com/watch?v=jAoXALwE1SY&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=16)
+- [Playlist on graphs](https://youtube.com/playlist?list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&si=fn9ntCwfZe03QVQD)
+
+**Tareas de LeetCode:**
+- [Course Schedule](https://leetcode.com/problems/course-schedule/)
+- [Number of Islands](https://leetcode.com/problems/number-of-islands/)
+- [Clone Graph](https://leetcode.com/problems/clone-graph/)
+
+### E11. [Algoritmos de optimización ✦✦](optimization)

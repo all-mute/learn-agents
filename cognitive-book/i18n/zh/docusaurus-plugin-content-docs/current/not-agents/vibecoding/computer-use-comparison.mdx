@@ -1,0 +1,199 @@
+---
+title: 用于自动化PC任务的多模态LLM
+authors: D. 热奇科夫
+---
+
+# 用于自动化PC任务的多模态LLM
+
+近年来，基于多模态人工智能模型的PC自动化工具发展迅速。它们提供了一种与计算机交互的全新方法——取代了需要编程或录制宏的传统自动化手段，它们能够像人一样在视觉上“读取”界面并对其做出反应。
+
+## 用于自动化的多模态LLM的一般工作原理
+
+用于自动化PC任务的多模态LLM结合了以下几项关键技术：
+
+1. **计算机视觉** — 分析屏幕并识别界面元素
+2. **自然语言处理** — 理解指令并生成响应
+3. **决策** — 根据上下文选择正确的操作
+4. **界面控制** — 模拟用户操作（点击、文本输入）
+
+## 主要的PC自动化工具
+
+### 1. 使用浏览器工具进行自动化
+
+#### Browser-use
+
+**这是什么**：一个使用AI代理自动化浏览器操作的库。
+
+**特点**：
+- 识别网页上的交互元素并将信息传递给LLM
+- 允许LLM决定点击哪里以及写什么
+- 与各种LLM集成，包括GPT-4、Claude等
+- 基于Playwright直接与浏览器交互
+
+**应用**：自动化表单填写、信息搜索、复杂Web界面导航。
+
+[Browser-use](https://github.com/browser-use/browser-use) 因其与网页元素交互的高精度而得到广泛应用。
+
+#### Skyvern
+
+**这是什么**：一种使用LLM和计算机视觉自动化浏览器工作流程的工具。
+
+**特点**：
+- 使用“代理群”来理解网站、规划和执行操作
+- 包括用于不同任务的专用代理（导航、数据提取等）
+- 与Playwright一起使用以与浏览器交互
+- 实时分析页面内容
+
+**应用**：自动化浏览器中复杂的、多步骤的流程，对界面更改具有鲁棒性。
+
+#### GPT-4V-Act
+
+**这是什么**：一个使用GPT-4V(ision)与Web界面交互的AI代理。
+
+**特点**：
+- 结合了GPT-4V和浏览器的功能
+- 使用Set-of-Mark Prompting技术和自动元素标记
+- 为每个交互式UI元素分配唯一的数字标识符
+- 理解屏幕截图并决定下一步操作
+
+**应用**：自动化UI测试、提高界面可访问性、基于AI的工作流程。
+
+### 2. 自动化桌面应用程序
+
+#### Claude Computer Use (Anthropic)
+
+**这是什么**：Claude模型的一项实验性功能，允许与计算机界面交互。
+
+**特点**：
+- 允许模型查看屏幕并控制界面
+- 像人一样运作：移动光标、点击、填写表单
+- 基于对通用计算机技能的训练，而不是专门的工具
+- 在API Claude 3.5 Sonnet中可用
+
+**应用**：自动化开发、软件测试、多步骤流程和重复性任务。
+
+**限制**：该技术是实验性的，某些操作（滚动、拖放、缩放）会遇到困难。
+
+#### Computer Use Tool (OpenAI)
+
+**这是什么**：与OpenAI模型集成的计算机控制工具。
+
+**特点**：
+- 允许GPT模型控制计算机界面
+- 适用于美国的ChatGPT Pro用户
+- 通过对界面的视觉分析与应用程序交互
+
+**应用**：自动化日常任务、通过语音或文本控制应用程序。
+
+#### OmniParser V2 (Microsoft)
+
+**这是什么**：一种将任何LLM转换为计算机控制代理的工具。
+
+**特点**：
+- “令牌化”UI屏幕截图，将像素图像转换为结构化元素
+- 在大型数据集上训练以识别交互元素
+- 与上一版本相比，延迟降低了60%
+- 与各种LLM集成：OpenAI、DeepSeek、Qwen、Anthropic
+
+**应用**：将任何语言模型转换为有效的GUI自动化代理。
+
+**成就**：在ScreenSpot Pro基准测试中，OmniParser+GPT-4o的组合达到了39.6%的准确率，而纯GPT-4o仅显示0.8%的结果。
+
+#### Magma (Microsoft)
+
+**这是什么**：一种用于处理数字和物理环境中信息和操作的多模态AI基础模型。
+
+**特点**：
+- 合成视觉和文本数据以生成操作
+- 使用创新的注释系统：Set-of-Mark (SoM) 和 Trace-of-Mark (ToM)
+- 既可以处理数字界面，也可以处理机器人机械手
+- 可以通过最少的示例进行微调
+
+**应用**：PC自动化、机器人控制、虚拟助手。
+
+#### UI Vision RPA
+
+**这是什么**：一种具有AI集成的跨平台桌面自动化工具。
+
+**特点**：
+- 使用计算机视觉、OCR和无代码UI自动化
+- 在Windows、MacOS和Linux上运行
+- 提供用于与其他程序集成的API
+- 通过aiPrompt、aiScreenXY和Computer Use命令与Anthropic Claude集成
+
+**应用**：应用程序测试、SAP自动化、Citrix自动化、屏幕抓取。
+
+**限制**：录制模式仅适用于浏览器自动化，桌面自动化需要手动创建宏。
+
+### 3. 相关工具
+
+#### Anything-LLM
+
+**这是什么**：一种通用的AI应用程序，用于从文档创建上下文。
+
+**特点**：
+- 允许使用任何文档作为LLM的上下文
+- 与各种LLM和向量数据库集成
+- 允许创建自定义AI代理，无需代码
+- 支持与llama.cpp兼容的本地模型
+
+**应用**：创建用于处理文档和自动化相关任务的专用代理。
+
+## PC自动化工具比较
+
+| 工具 | 开发者 | 自动化类型 | 可用性 | AI集成 |
+|------------|-------------|-------------------|-------------|-----------------|
+| Browser-use | 开源 | 浏览器 | 开源 | GPT, Claude, 本地LLM |
+| Skyvern | Skyvern-AI | 浏览器 | 开源 | 各种LLM |
+| GPT-4V-Act | 开源 | 浏览器 | 开源 | GPT-4V |
+| Claude Computer Use | Anthropic | 桌面/浏览器 | API（付费） | Claude 3.5 Sonnet |
+| Computer Use Tool | OpenAI | 桌面/浏览器 | ChatGPT Pro订阅 | GPT-4o |
+| OmniParser V2 | Microsoft | 桌面/浏览器 | 开源 | 各种LLM |
+| Magma | Microsoft | 桌面/机器人 | 研究型 | 自有多模态模型 |
+| UI Vision RPA | UI.Vision | 桌面/浏览器 | 免费软件 + Anthropic API | Anthropic Claude |
+
+## 特点和区别
+
+### 浏览器工具
+- **Browser-use** 专注于精确识别网页上的交互元素
+- **Skyvern** 使用多代理架构进行复杂自动化
+- **GPT-4V-Act** 强调视觉识别和元素数字标记
+
+### 桌面工具
+- **Claude Computer Use** 和 **Computer Use Tool** 像虚拟用户一样工作， “看到”屏幕
+- **OmniParser V2** 允许将任何LLM转换为通过屏幕截图令牌化来理解UI的代理
+- **Magma** 通过机器人将功能扩展到物理世界
+- **UI Vision RPA** 将传统的RPA方法与AI集成相结合
+
+## 工具选择建议
+
+### 对于Web流程自动化：
+- **Browser-use** — 如果需要精确可靠地处理网页元素
+- **Skyvern** — 适用于具有不断变化的界面的复杂多步骤流程
+
+### 对于桌面应用程序自动化：
+- **Claude Computer Use** 或 **Computer Use Tool** — 用于在没有编程的情况下与GUI进行交互
+- **OmniParser V2** — 如果您可以访问各种LLM并且想要最大的灵活性
+- **UI Vision RPA** — 当需要具有AI元素的跨平台自动化时
+
+### 对于研究任务：
+- **Magma** — 如果您对处理数字和物理界面的高级功能感兴趣
+
+## 结论
+
+用于自动化PC任务的多模态LLM提供了一种革命性的计算机任务执行方法。与传统的RPA工具不同，它们像人一样“看到”和理解界面，这使得它们灵活且能够适应变化。
+
+目前的趋势表明，发展方向是创建能够自动化浏览器和桌面应用程序中各种任务的通用代理。技术巨头（Microsoft、OpenAI、Anthropic）正在积极开发该领域，并且在未来几年，我们可能会看到更强大和更易于使用的工具。
+
+对于实际应用，目前有丰富的工具可供选择，这些工具具有不同的复杂性和功能，从开放库到与商业LLM集成的解决方案。
+
+## 来源
+
+- [Browser-use GitHub](https://github.com/browser-use/browser-use)
+- [Anthropic Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use)
+- [Skyvern](https://github.com/Skyvern-AI/skyvern)
+- [GPT-4V-Act GitHub](https://github.com/ddupont808/GPT-4V-Act)
+- [OmniParser V2](https://www.microsoft.com/en-us/research/articles/omniparser-v2-turning-any-llm-into-a-computer-use-agent/)
+- [Microsoft Magma](https://www.microsoft.com/en-us/research/blog/magma-a-foundation-model-for-multimodal-ai-agents-across-digital-and-physical-worlds/)
+- [UI Vision RPA](https://ui.vision/)
+- [Anything-LLM](https://github.com/Mintplex-Labs/anything-llm)
