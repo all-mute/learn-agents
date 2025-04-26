@@ -1,0 +1,37 @@
+# Benchmarks de uso de herramientas LLM
+
+de https://www.perplexity.ai/page/understanding-llm-benchmarks-e-VZmXIq_FQgCIS.3QSVo6EA
+
+A medida que los LLM transicionan de generadores de lenguaje puro a agentes activos capaces de interactuar con sistemas externos, los benchmarks de uso de herramientas representan una frontera crítica en las metodologías de evaluación.
+
+### ToolBench
+
+ToolBench evalúa específicamente la capacidad de un LLM para usar herramientas externas basándose en instrucciones en lenguaje natural.
+
+**Estructura**: Presenta tareas que requieren el uso de herramientas de una API proporcionada, evaluando la capacidad del modelo para seleccionar las herramientas apropiadas y usarlas correctamente.
+
+**Método de evaluación**: El rendimiento se mide por la tasa de éxito en la finalización de tareas y la corrección del uso de la herramienta, incluyendo la selección de la herramienta, la especificación de parámetros y la interpretación de resultados.
+
+**Importancia**: ToolBench aborda la creciente importancia del uso de herramientas en los agentes de IA, una capacidad que extiende los LLM más allá de la generación de lenguaje puro.
+
+### API-Bank
+
+API-Bank evalúa con qué eficacia los LLM pueden interactuar con varias API para realizar tareas.
+
+**Estructura**: Colección de especificaciones de API y tareas que requieren su uso.
+
+**Método de evaluación**: Mide la capacidad del modelo para interpretar correctamente la documentación de la API, construir llamadas válidas y manejar las respuestas de forma adecuada.
+
+**Importancia**: Crítico para evaluar los LLM como componentes en ecosistemas de software donde la interacción con la API es esencial.
+
+### ReAct Benchmark
+
+ReAct evalúa la capacidad del modelo para alternar entre el razonamiento y la actuación en tareas basadas en el entorno.
+
+**Estructura**: Tareas que requieren razonamiento de varios pasos y el uso de herramientas para recopilar información y lograr objetivos.
+
+**Método de evaluación**: Evalúa tanto el proceso de razonamiento (demostrado a través del pensamiento paso a paso) como la precisión de la acción (selección y uso correctos de la herramienta).
+
+**Importancia**: Particularmente relevante para los sistemas de agentes que deben planificar secuencias de acciones y adaptarse en función de los resultados intermedios.
+
+Los benchmarks de uso de herramientas representan una evolución más allá de la evaluación de la generación de lenguaje puro, abordando el creciente papel de los LLM como agentes activos en entornos complejos. A medida que los modelos continúan avanzando en su capacidad para interactuar con sistemas externos, estos benchmarks serán cada vez más importantes para una evaluación exhaustiva.

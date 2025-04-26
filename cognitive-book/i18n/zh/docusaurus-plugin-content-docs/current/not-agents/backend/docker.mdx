@@ -1,0 +1,119 @@
+---
+sidebar_label: Docker容器
+---
+
+# Docker
+
+想象一下，你正在建造一座 AI 代理摩天大楼 - 如果没有坚实的云基础设施基础，你的建筑将在第一批真实用户的冲击下崩溃。在这里，我们将掌握 Docker容器 作为通用的“卡车”来交付模型，Kubernetes编排作为请求流量的“红绿灯”系统，并学习如何在AWS/GCP云中部署服务，作为你的AI代理的太空站。这些技能是任何生产环境项目的氧气面罩：没有它们，你天才的模型将仍然只是笔记本电脑上的本地脚本。
+
+<details>
+<summary>Ask AI 指南</summary>
+
+:::tip 指南
+由于这些主题不会随时间变化，因此最好通过个人导师 - ChatGPT 来学习它们。
+
+学习过程应如下：
+- 你为 ChatGPT 编写一个系统提示词 ([模板](../metalearning#chatgpt-prompts))，在其中描述你的背景、偏好、解释的详细程度等。
+- 从列表中复制主题（三击），并要求 ChatGPT 向你解释该主题
+- 如果想深入研究，请提出澄清问题
+
+目前，这是学习基础知识最方便的方法。**除了概念之外，你还可以在 Gold、Silver、Extra 部分学习其他材料。**
+1. Gold - 在与 ChatGPT 交流之前一定要学习
+2. Ask AI - 询问每个不熟悉的主题
+3. Silver - 次要材料
+4. Extra - 深入主题
+:::
+
+</details>
+
+## Golden
+
+<details>
+<summary>Docker</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Gjnup-PuquQ?si=UfwaYs0OB-GZMncF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rIrNIzy6U_g?si=gHZNVM3JPGuhQA8h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eGz9DS-aIeY?si=6qbM1MIwE52J97lJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+## Ask AI
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
+
+### Docker：GenAI 工程师必须知道的 20 个主题
+
+1. **容器化架构：虚拟机和 Docker 的比较**
+2. **Docker vs Conda/venv：主要区别和应用场景**
+3. **在不同操作系统上逐步安装 Docker**
+4. **Docker CLI 的基本命令：管理容器和镜像**
+5. **创建 Dockerfile：语法和实践模板**
+6. **使用 Docker 镜像：构建、标记和发布**
+7. Docker Hub：基本操作（概述）
+8. **使用卷：volumes 和 bind mounts 的实际使用**
+9. Docker 中的网络模型：主要连接类型（简述）
+10. 微服务架构：基本原则（简述）
+11. **使用 Docker Compose 设置环境：创建和调试配置**
+12. **优化 Docker 镜像：减小大小并加速构建**
+13. 镜像层：缓存和依赖机制（概述）
+14. **打包 Python 应用程序：容器中的依赖项和环境**
+15. **在 Docker 中为机器学习设置 GPU：完整指南**
+16. 数据存储：本地和云解决方案（简要概述）
+17. **使用云注册表：ECR/Artifact Registry 的实际示例**
+18. 选择基础镜像：Alpine vs Ubuntu（比较和建议）
+19. **通过 systemd 设置容器自动启动（实践）**
+20. **性能优化：生产环境中的冷启动与热启动**
+
+## Silver
+
+### 实践示例
+
+#### 多阶段镜像构建
+```dockerfile
+# 构建阶段：在临时镜像中安装依赖项
+FROM python:3.9-slim as builder
+COPY requirements.txt .
+RUN pip install --user -r requirements.txt  # --user 用于在 .local 中隔离
+
+# 最终镜像：仅从 builder 复制必要内容
+FROM python:3.9-alpine  # Alpine Linux - 最小镜像
+COPY --from=builder /root/.local /root/.local  # 复制已安装的包
+COPY . /app  # 添加应用程序源代码
+ENV PATH=/root/.local/bin:$PATH  # 添加已安装包的路径
+CMD ["python", "/app/main.py"]  # 应用程序入口点
+```
+
+#### 用于自动启动的 Systemd 服务
+```bash
+# /etc/systemd/system/ml-service.service
+[Unit]
+Description=ML Service  # 服务名称
+After=network.target    # 在网络初始化后启动
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/ml  # 包含 docker-compose.yml 的工作目录
+ExecStart=/usr/bin/docker-compose up  # 主要启动命令
+Restart=always  # 崩溃时自动重启
+
+[Install]
+WantedBy=multi-user.target  # 系统启动时运行
+
+# 激活服务：
+# sudo systemctl daemon-reload
+# sudo systemctl enable ml-service
+# sudo systemctl start ml-service
+```
+
+#### 不同镜像的启动时间（冷启动）
+| 镜像         | 大小  | 启动时间 | 用途         |
+|---------------|---------|--------------|-----------------------|
+| python:alpine | 58MB    | 1.2s         | 生产环境 API         | # 用于微服务的最小镜像
+| ubuntu:latest | 77MB    | 2.1s         | 开发/测试 | # 用于调试的完整操作系统
+| nvidia/cuda   | 4.7GB   | 8.5s         | ML 训练         | # 带有 GPU 驱动程序的重型镜像
+
+- *冷启动 - 从 docker run 到应用程序准备就绪的时间*
+- *热启动（停止/重启后）通常快 30-40%*
+
+## Extra

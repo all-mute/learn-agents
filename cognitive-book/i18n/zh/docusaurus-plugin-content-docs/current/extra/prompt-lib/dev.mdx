@@ -1,0 +1,324 @@
+---
+sidebar_position: 5
+title: 编程
+---
+
+### 代码生成
+
+**系统提示词**
+
+```text
+你是一位经验丰富的软件开发人员。你的任务是用 Python 生成代码来解决给定的任务。遵守代码编写标准并添加注释进行解释。
+```
+
+**用户提示词**
+
+```text
+编写一个 Python 函数，该函数接收一个数字列表并返回一个仅包含偶数的列表。
+```
+
+**LLM 的回复**
+
+```python
+
+def filter_even_numbers(numbers):
+    """
+    从列表中过滤偶数。
+
+\
+    :param numbers: 数字列表
+    :return: 偶数列表
+    """
+    return [num for num in numbers if num % 2 == 0]
+
+\
+# 使用示例
+numbers = [1, 2, 3, 4, 5, 6]
+even_numbers = filter_even_numbers(numbers)
+print(even_numbers)  # 输出: [2, 4, 6]
+```
+
+### 调试
+
+**系统提示词**
+
+```text
+你是一位专业的开发人员，可以帮助查找和修复代码中的错误。你的任务是找到错误并提出修复建议。
+```
+
+**用户提示词**
+
+```text
+这是一段应该返回列表中所有数字之和的代码，但它无法正常工作：
+
+\
+def sum_numbers(numbers):
+    total = 0
+    for i in range(1, len(numbers)):
+        total += numbers[i]
+    return total
+```
+
+**LLM 的回复**
+
+```python
+
+def sum_numbers(numbers):
+    """
+    返回列表中所有数字的总和。
+
+\
+    :param numbers: 数字列表
+    :return: 数字之和
+    """
+    total = 0
+    for i in range(len(numbers)):  # 已修复：循环应从 0 开始
+        total += numbers[i]
+    return total
+
+\
+# 使用示例
+numbers = [1, 2, 3, 4]
+total_sum = sum_numbers(numbers)
+print(total_sum)  # 输出: 10
+```
+
+### 文档字符串
+
+**系统提示词**
+
+```text
+你是一位 Python 专家，可以向函数添加文档字符串，以提高代码的可读性和理解性。你的任务是编写详细的文档字符串。
+```
+
+**用户提示词**
+
+```text
+这是一段没有文档字符串的函数代码：
+
+\
+def multiply(a, b):
+    return a * b
+```
+
+**LLM 的回复**
+
+```python
+
+def multiply(a, b):
+    """
+    将两个数字相乘。
+
+\
+    :param a: 第一个数字
+    :param b: 第二个数字
+    :return: a 和 b 的乘积
+    """
+    return a * b
+```
+
+### 重写代码（添加日志记录）
+
+**系统提示词**
+
+```text
+你是一位经验丰富的程序员，可以向代码添加日志记录以跟踪程序的执行。使用标准库 logging。
+```
+
+**用户提示词**
+
+```text
+将日志记录添加到以下函数：
+
+\
+def divide(a, b):
+    return a / b
+```
+
+**LLM 的回复**
+
+```python
+
+import logging
+
+\
+logging.basicConfig(level=logging.INFO)
+
+\
+def divide(a, b):
+    """
+    将数字 a 除以数字 b，并添加日志记录。
+
+\
+    :param a: 被除数
+    :param b: 除数
+    :return: 除法结果
+    """
+    logging.info(f"将 {a} 除以 {b}")
+    if b == 0:
+        logging.error("尝试除以零")
+        return None
+    return a / b
+
+\
+# 使用示例
+result = divide(10, 2)
+print(result)  # 输出: 5.0
+```
+
+### 日志分析
+
+**系统提示词**
+
+```text
+你是一位数据分析专家，可以分析应用程序日志以识别错误和异常。你的任务是在日志中查找并描述问题。
+```
+
+**用户提示词**
+
+```text
+[INFO] 2024-11-22 12:00:00 - 应用程序启动
+[ERROR] 2024-11-22 12:01:00 - 数据库连接错误
+[INFO] 2024-11-22 12:02:00 - 重新尝试连接
+[ERROR] 2024-11-22 12:03:00 - 数据库连接错误
+[INFO] 2024-11-22 12:04:00 - 连接成功
+```
+
+**LLM 的回复**
+
+```text
+日志显示在 12:01 和 12:03 出现重复的数据库连接错误。这可能表明网络不稳定或数据库配置存在问题。建议检查连接设置和网络稳定性。
+```
+
+### 根据表格绘制图表
+
+**系统提示词**
+
+```text
+你是一位数据可视化专家，可以根据提供的数据创建图表。使用 matplotlib 库来绘制图表。
+```
+
+**用户提示词**
+
+```text
+根据以下销售数据绘制图表：
+
+\
+月份：['一月', '二月', '三月']
+销售额：[100, 150, 200]
+```
+
+**LLM 的回复**
+
+```python
+
+import matplotlib.pyplot as plt
+
+\
+months = ['一月', '二月', '三月']
+sales = [100, 150, 200]
+
+\
+plt.plot(months, sales, marker='o')
+plt.title('按月销售额')
+plt.xlabel('月份')
+plt.ylabel('销售额')
+plt.grid(True)
+plt.show()
+```
+
+更广泛地说，此提示词可以应用于 Chat with Data 应用程序中，这些应用程序按照以下算法工作：
+
+1. 研究用户的文件（例如，询问用户或使用代码）
+2. 编写代码以从文件中获取必要的数据/构建图表
+3. 在执行环境中运行此代码
+4. 解释代码的运行结果并将其返回给用户
+
+### Chat with data
+
+**系统提示词**
+
+```text
+你是一位数据处理专家，可以帮助从文本文件中提取和解释数据。你的任务是编写代码来提取信息并解释结果。
+```
+
+**用户提示词**
+
+```text
+编写代码以从文件中提取所有唯一的单词并计算它们的频率。
+```
+
+**LLM 的回复**
+
+```python
+
+def extract_unique_words(file_path):
+    """
+    从文件中提取唯一的单词并计算它们的频率。
+
+\
+    :param file_path: 文件路径
+    :return: 包含唯一单词及其频率的字典
+    """
+    word_count = {}
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file:
+            words = line.split()
+            for word in words:
+                word = word.lower().strip('.,!?')
+                if word in word_count:
+                    word_count[word] += 1
+                else:
+                    word_count[word] = 1
+    return word_count
+
+\
+# 使用示例
+# results = extract_unique_words('example.txt')
+# print(results)
+```
+
+### 根据 API 文档生成 API 请求的代码
+
+**系统提示词**
+
+```text
+你是一位经验丰富的开发人员，可以根据提供的文档创建与 API 交互的代码。使用 requests 库来执行 HTTP 请求。
+```
+
+**用户提示词**
+
+```text
+创建代码以对以下 URL 执行 GET 请求："https://api.example.com/data" 并处理响应。
+```
+
+**LLM 的回复**
+
+```python
+
+import requests
+
+\
+def fetch_data_from_api():
+    """
+    执行 GET 请求到 API 并返回数据。
+
+\
+    :return: 来自 API 的 JSON 格式的数据
+    """
+    url = "https://api.example.com/data"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"错误: {response.status_code}")
+        return None
+
+\
+# 使用示例
+data = fetch_data_from_api()
+if data:
+    print(data)
+```
+
+在这种情况下，我们进行简单的 GET，没有请求正文和标头。除了用户指令之外，我们还可以传递 api 端点的文档，以生成具有更复杂逻辑的请求。

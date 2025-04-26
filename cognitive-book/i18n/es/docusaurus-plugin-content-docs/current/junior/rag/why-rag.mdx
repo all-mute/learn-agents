@@ -1,0 +1,194 @@
+---
+sidebar_label: ¿Cuándo se necesita RAG?
+---
+
+# ¿Cuándo se necesita RAG y cuándo no?
+
+Ya conoces los fundamentos de RAG, pero ahora es el momento de ver su verdadero poder en acción. Este enfoque te permite transformar enormes volúmenes de datos no estructurados en respuestas compactas y relevantes, ahorrando tiempo y recursos. **Sin embargo, antes de construir RAG, es necesario saber cuándo no funciona.**
+
+## Preguntas
+
+- ¿Cuándo no es necesario utilizar RAG?
+- ¿Qué alternativas existen?
+- ¿Qué es el Tono de Voz y el conocimiento del dominio?
+
+## Pasos
+
+### 1. Ingeniería de Prompts, RAG y Fine-tuning: Beneficios y Cuándo Usar
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YVWxbHJakgg?si=ORwDR8sXd78cC8os" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### 2. Principio importante
+
+:::warning
+Los modelos LLM modernos, a primera vista, siguen bastante bien nuestras instrucciones. Sin embargo, al aumentar el número de instrucciones, empiezan a cometer errores.
+
+El ruido (cantidad de texto) también afecta negativamente a la calidad de las respuestas.
+:::
+
+### 3. Análisis de casos
+
+<details>
+<summary>
+¿Qué es el Tono de Voz?
+</summary>
+
+*Nota para el servicio de atención al cliente*: El Tono de Voz es un conjunto de instrucciones que un empleado de la empresa debe seguir al comunicarse con un cliente.
+
+Ejemplo de Tono de Voz que necesita un banco condicional:
+```text
+Eres un asistente útil "Alicia" que ayuda a los clientes del banco.
+Responde siempre siguiendo las instrucciones:
+- Responde en español
+- Responde de forma breve y concisa
+- Nunca menciones otros bancos en las respuestas
+- Utiliza siempre un tono cortés y amigable
+- Cumple con las normas de confidencialidad y no reveles datos personales de los clientes
+- Aclara los detalles de la pregunta para dar respuestas lo más precisas posible
+- Sigue el guion del banco y utiliza la terminología oficial
+- Si es necesario, ofrece productos bancarios adicionales
+- Escala inmediatamente las solicitudes complejas a un especialista
+- Confirma la información recibida antes de finalizar el diálogo
+- Proporciona respuestas de forma estructurada con puntos claros
+- Responde con rapidez e informa al cliente sobre los plazos de resolución de la cuestión
+- Muestra proactividad y ofrece ayuda, incluso si el cliente no lo ha solicitado
+```
+
+En producción, esta lista crece con el tiempo y las fantasías de los gestores hasta alcanzar proporciones enormes: cada vez que observan un comportamiento del chatbot que no les gusta, intentan "arreglarlo" con nuevas y nuevas instrucciones.
+
+Y luego sucede esto:
+
+![jenga](assets/jenga.png)
+
+</details>
+
+<details>
+<summary>
+¿Qué es el conocimiento del dominio?
+</summary>
+
+El conocimiento del dominio es un conjunto de información (términos, conceptos, definiciones, reglas, restricciones, características, peculiaridades de comportamiento, peculiaridades de interacción, etc.) que un asistente debe conocer para desempeñar correctamente su función.
+
+Ejemplo de conocimiento del dominio para un leasing condicional de equipos agroindustriales:
+```text
+Eres un asistente útil "Boris" que ayuda a los clientes de nuestro servicio de leasing.
+
+- Comisión de leasing (Origination Fee): pago único por la tramitación de la operación, normalmente del 0,5-2% del coste de la maquinaria agrícola.
+- Coeficiente LTV (Loan-to-Value): relación entre el importe de la financiación y el valor de mercado del equipo, determina el importe del pago inicial.
+- Valor residual (Residual Value): precio previsto de la maquinaria al final del plazo del leasing, sobre cuya base se calcula el pago de rescate.
+- Amortización decreciente (Declining Balance): método de cálculo de la depreciación, en el que el importe de la depreciación es máximo en los primeros periodos de uso.
+- Servicio On-site: programa de inspecciones preventivas y reparaciones directamente en la explotación, regulado por contrato.
+- Módulo telemétrico GPRS-Monitor: dispositivo de control remoto del estado del motor, la carga y la ubicación del tractor o la cosechadora.
+- Programa de subvenciones al sector agroindustrial: medida de apoyo estatal que reduce el tipo de interés del leasing de maquinaria agrícola especializada.
+- Recurso de garantía: kilometraje mínimo u horas de funcionamiento hasta el inicio del servicio de garantía por parte del arrendador.
+- Penalización por demora: tipo de penalización diaria (normalmente del 0,1-0,3% del importe del pago atrasado).
+- Informe plan-real de carga: comparación de las horas de funcionamiento previstas y reales de la maquinaria en el contexto de los ciclos agrícolas.
+
+...
+
+(la lista completa contiene 50.000 términos y conceptos)
+```
+</details>
+
+#### Calidad de las respuestas
+
+Calidad de las respuestas = precisión *o* tono de voz *o* conocimiento del dominio *o* base de conocimientos *o* todo junto...
+
+- **Quiero mejorar la calidad de las respuestas, tengo 1 minuto** - Utiliza un prompt del sistema
+
+- **Quiero mejorar la calidad de las respuestas, tengo 10 minutos** - Técnicas de Ingeniería de Prompts (CoT, Few-shot, etc.)
+
+    *In-Scale: utiliza la optimización automática de prompts (APE) - sobre esto en los siguientes módulos*
+
+#### Tu propia base de conocimientos
+
+- **Quiero entrenar a la IA con mi base de conocimientos, evitar alucinaciones, tengo 5 minutos** - Carga toda la información en el diálogo (In-Context Learning)
+
+    *In-Scale: guarda en caché el prompt para reducir el coste de las solicitudes* |
+    [¿Qué es el prompt caching?](https://www.anthropic.com/news/prompt-caching) |
+    [Docs](https://docs.anthropic.com/en/docs/build-with-claude/prompt-caching)
+
+- **Quiero entrenar a la IA con mi base de conocimientos, evitar alucinaciones** - Vanilla RAG
+
+    *In-Scale: utiliza enfoques RAG avanzados*
+
+    *In-Scale 2: **en ciclo**, prueba nuevos enfoques e hiperparámetros (chunk_size, top_k, etc.), luego evalúa toda la pipeline (por ejemplo, con la ayuda de RAGAS - sobre esto más adelante)*
+
+#### Tu propio Tono de Voz
+
+- **Quiero que el modelo respete el Tono de Voz de mi negocio** - Fine-tuning (Partial-Finetuning, Parameter-efficient fine-tuning)
+
+    *In-Scale: Data is the king*
+
+#### Modelo para el área de dominio
+
+- **Quiero que el modelo entienda mi área de dominio** - Fine-tuning (Parameter-efficient fine-tuning, Domain-specific fine-tuning, Full tuning)
+
+    *In-Scale: Data is the king*
+
+#### FAQ
+
+- **Quiero que el modelo responda 1 a 1 como las respuestas en mi base de datos de preguntas frecuentes** - Utiliza la clasificación o LLM como un router
+
+    *In-Scale: This is hell, avoid at all costs*
+
+:::tip
+¡Todos los enfoques se combinan!
+
+Por ejemplo, necesitas tanto una base de conocimientos como un tono de voz (caso frecuente para los servicios de atención al cliente)
+- puedes utilizar un prompt del sistema con técnicas de prompt + RAG
+- o fine-tuning + RAG
+:::
+
+:::info Ventajas de RAG y prompt-caching frente al fine-tuning
+
+El proceso de fine-tuning lleva tiempo y recursos. En algunos casos (documentación, sitio web grande) necesitamos actualizar todo el sistema LLM todos los días o varias veces al día.
+
+Si utilizamos RAG, podemos actualizar solo el índice vectorial, no todo el sistema LLM. (O actualizar la caché del prompt en el proveedor)
+
+El fine-tuning se produce con relativa lentitud: de varias horas a varios días.
+:::
+
+## Pasos adicionales
+
+Rewind:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zYGDpG-pTho?si=gwtA2yDUDxM6y_H8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### E1. ¿Qué es LoRA?
+
+<details>
+<summary>
+¿Qué es LoRA?
+</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/DhRoTONcyZE?si=RaopfibF8kfloQPA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+Nivel senior: [Casos de uso de LoRA](../../senior/model-dev/lora-usecases)
+
+### E2. ¿Qué es DPO?
+
+<details>
+<summary>
+¿Qué es DPO?
+</summary>
+
+Podemos realizar DPO con cualquier modelo de código abierto, utilizando las instrucciones y herramientas disponibles en Internet. DPO también está disponible dentro de plataformas propietarias, por ejemplo, en OpenAI.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/nSrj1J6ODoM?si=GivOE3gC3rz9q3L9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+## Ahora sabemos...
+
+Hemos analizado cuándo el enfoque RAG aporta el máximo beneficio y cuándo su aplicación no está justificada, y también hemos aprendido sobre los matices importantes de la tonalidad y el conocimiento del dominio para obtener respuestas precisas. La combinación de los métodos RAG con las técnicas de prompt y el fine-tuning permite crear soluciones flexibles que se adaptan a diversas tareas empresariales. Recuerda que el éxito de un sistema RAG depende del equilibrio entre la calidad de las respuestas, la velocidad de procesamiento y los costes de los recursos.
+
+## Ejercicios
+
+- Piensa en una tarea que tengas que resolver con GenAI para ti o para tu negocio.
+    - ¿Qué mejoras aportará el enfoque RAG?
+    - ¿Qué mejoras aportará el enfoque de Fine-tuning?
+    - ¿Qué mejoras aportará el enfoque de Ingeniería de Prompts?
+- ¿Por qué el prompt-caching permite ahorrar?
+- ¿Existe el prompt-caching cuando se utilizan modelos locales?

@@ -1,0 +1,85 @@
+---
+sidebar_position: 4
+title: Casos de uso del texto para la formación de la respuesta
+---
+
+### QnA Zero-shot
+
+**Prompt del sistema**
+
+```text
+Eres un experto, listo para responder cualquier pregunta del usuario, utilizando tus conocimientos y lógica. Responde de forma breve y al grano.
+```
+
+**Prompt del usuario**
+
+```text
+¿Por qué el cielo es azul?
+```
+
+**Respuesta del LLM**
+
+```text
+El cielo parece azul debido a la dispersión de la luz solar en la atmósfera. Las ondas cortas de la luz azul se dispersan más que otros colores, por lo que vemos el cielo azul.
+```
+
+**Casos de uso**
+
+- Explicación de fenómenos científicos
+- Respuestas a preguntas sobre cultura e historia
+
+### Respuestas a preguntas sobre el texto de la lección + LLM-profesor
+
+**Prompt del sistema**
+
+```text
+Eres un profesor virtual que ayuda a los estudiantes a comprender el material de la lección. Responde a las preguntas utilizando la información del texto de la lección.
+```
+
+**Prompt del usuario**
+
+```text
+{lesson_text}
+
+\
+¿Cuál es la idea principal de esta lección?
+```
+
+**Respuesta del LLM**
+
+```text
+La idea principal de la lección es explicar los principios de funcionamiento de la ingeniería de prompts y su aplicación para mejorar la interacción con los modelos de lenguaje.
+```
+
+**Casos de uso**
+
+- Apoyo a estudiantes en cursos en línea
+- Ayuda en la preparación para exámenes
+
+### Respuestas a preguntas utilizando el contexto (enfoque RAG)
+
+**Prompt del sistema**
+
+```text
+Eres un sistema inteligente que responde a preguntas utilizando el contexto proporcionado. Utiliza la información del contexto y tus conocimientos para formar una respuesta precisa. Si en el contexto no hay información para responder a la pregunta del usuario, escribe que no puedes responder a su pregunta.
+```
+
+**Prompt del usuario**
+
+```text
+{context_0}
+{context_1}
+{context_2}
+{context_3}
+
+\
+¿Qué influencia tuvo el factor indicado en el desarrollo del evento?
+```
+
+**Respuesta del LLM**
+
+```text
+El factor indicado aceleró significativamente el desarrollo del evento, ya que condujo a un aumento de los recursos y la atención por parte de las principales partes interesadas.
+```
+
+**Descripción del enfoque** RAG (Retrieval-Augmented Generation) combina la extracción de información de una base de datos o documentos con la generación de una respuesta. En este enfoque, el LLM primero obtiene el contexto relevante y luego forma una respuesta, utilizando tanto los datos extraídos como sus conocimientos integrados. Esto permite dar respuestas más precisas y fundamentadas a preguntas complejas.

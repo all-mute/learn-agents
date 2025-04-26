@@ -1,0 +1,385 @@
+{
+  "theme.ErrorPageContent.title": {
+    "message": "Esta página ha devuelto un error.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Intentar de nuevo",
+    "description": "The label of the button to try again when the page crashed"
+  },
+  "theme.NotFound.title": {
+    "message": "Página no encontrada",
+    "description": "The title of the 404 page"
+  },
+  "theme.NotFound.p1": {
+    "message": "Lamentablemente, no pudimos encontrar la página que solicitaste.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Por favor, contacta al propietario del sitio desde el que accediste al enlace e infórmale que el enlace está roto.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Cerrar",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Desplazarse hacia arriba",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.archive.title": {
+    "message": "Archivo",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "Archivo",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Navegación de la página de la lista del blog",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Entradas más recientes",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Entradas más antiguas",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} etiquetado con \"{tagName}\"",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.common.editThisPage": {
+    "message": "Editar esta página",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Enlace directo a {heading}",
+    "description": "Title for link to heading"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Volver al menú principal",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versiones",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "En esta página",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Página de inicio",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Contraer barra lateral",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Contraer barra lateral",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Cerrar panel de navegación",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Alternar panel de navegación",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Barra lateral de documentación",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Expandir barra lateral",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Expandir barra lateral",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "No se encontraron resultados",
+    "description": "The paragraph for empty search result"
+  },
+  "theme.SearchPage.fetchingNewResults": {
+    "message": "Obteniendo nuevos resultados...",
+    "description": "The paragraph for fetching new search results"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "Ver todos los {count} resultados",
+    "description": "The all search result number text"
+  },
+  "theme.SearchBar.label": {
+    "message": "Buscar",
+    "description": "The ARIA label and placeholder for search button"
+  },
+  "theme.docs.DocCard.categoryDescription": {
+    "message": "{count} elementos",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Alternar entre modo oscuro y claro (actualmente {mode})",
+    "description": "The ARIA label for the navbar color mode toggle"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "modo oscuro",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "modo claro",
+    "description": "The name for the light color mode"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Versión: {versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "Esta es documentación no publicada para la versión {versionLabel}.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "Esta es documentación para {versionLabel}, que ya no se mantiene.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "navbar.title": {
+    "message": "Guía de Agentes de IA",
+    "description": "The title in the navbar"
+  },
+  "navbar.item.label.tutorial": {
+    "message": "Tutorial",
+    "description": "Navbar item with label Tutorial"
+  },
+  "navbar.item.label.github": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "footer.link.label.introduction": {
+    "message": "Introducción",
+    "description": "The label of footer link with label=Introduction linking to /introduction"
+  },
+  "footer.link.label.foundations": {
+    "message": "Fundamentos",
+    "description": "The label of footer link with label=Foundations linking to /foundations"
+  },
+  "footer.link.label.components": {
+    "message": "Componentes",
+    "description": "The label of footer link with label=Components linking to /components"
+  },
+  "footer.link.label.architectures": {
+    "message": "Arquitecturas",
+    "description": "The label of footer link with label=Architectures linking to /architectures"
+  },
+  "footer.link.label.github": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to GitHub"
+  },
+  "footer.link.label.telegram": {
+    "message": "Telegram",
+    "description": "The label of footer link with label=Telegram linking to Telegram"
+  },
+  "footer.link.label.roadmap": {
+    "message": "Roadmap.sh",
+    "description": "The label of footer link with label=Roadmap.sh linking to Roadmap"
+  },
+  "footer.title.tutorial": {
+    "message": "Tutorial",
+    "description": "The title of the footer tutorial links"
+  },
+  "footer.title.community": {
+    "message": "Comunidad",
+    "description": "The title of the footer community links"
+  },
+  "footer.title.resources": {
+    "message": "Recursos",
+    "description": "The title of the footer resources links"
+  },
+  "footer.copyright": {
+    "message": "Copyright © {currentYear} Guía de Agentes de IA. Creado con Docusaurus.",
+    "description": "The footer copyright"
+  },
+  "Guide to Creating and Using AI Agents": {
+    "message": "Guía para Crear y Usar Agentes de IA"
+  },
+  "Introduction to AI Agents": {
+    "message": "Introducción a los Agentes de IA"
+  },
+  "Foundations": {
+    "message": "Fundamentos"
+  },
+  "Components": {
+    "message": "Componentes"
+  },
+  "Architectures": {
+    "message": "Arquitecturas"
+  },
+  "homepage.aiAgents.title": {
+    "message": "¿Qué son los Agentes de IA?"
+  },
+  "homepage.aiAgents.description1": {
+    "message": "Los Agentes de IA son sistemas de software capaces de percibir autónomamente su entorno, tomar decisiones y realizar acciones para alcanzar objetivos establecidos sin intervención humana constante."
+  },
+  "homepage.aiAgents.description2": {
+    "message": "Los agentes de IA modernos funcionan con modelos lingüísticos avanzados (LLM), tienen acceso a herramientas y API externas, y utilizan memoria para almacenar el contexto de la interacción."
+  },
+  "homepage.aiAgents.learnButton": {
+    "message": "Aprender los fundamentos"
+  },
+  "homepage.aiAgents.roadmapButton": {
+    "message": "Mapa de ruta"
+  },
+  "homepage.features.section.title": {
+    "message": "Qué ofrece nuestro tutorial"
+  },
+  "homepage.features.practical.title": {
+    "message": "Ejemplos prácticos"
+  },
+  "homepage.features.practical.description": {
+    "message": "Aprende a crear agentes de IA con ejemplos del mundo real. Paso a paso desde chatbots simples hasta sistemas autónomos complejos."
+  },
+  "homepage.features.foundational.title": {
+    "message": "Conocimientos fundamentales"
+  },
+  "homepage.features.foundational.description": {
+    "message": "Comprensión profunda de los fundamentos de los agentes de IA. Desde los conceptos básicos de NLP hasta arquitecturas complejas de interacción multiagente."
+  },
+  "homepage.features.community.title": {
+    "message": "Comunidad de desarrolladores"
+  },
+  "homepage.features.community.description": {
+    "message": "Únete a una comunidad de entusiastas y profesionales que estudian y desarrollan tecnologías de agentes de IA."
+  },
+  "homepage.features.freekeys.title": {
+    "message": "Claves gratuitas de API LLM"
+  },
+  "homepage.features.freekeys.description": {
+    "message": "Obtén acceso gratuito a potentes modelos lingüísticos. Practica con API LLM reales sin coste."
+  },
+  "homepage.modules.title": {
+    "message": "Módulos de aprendizaje"
+  },
+  "homepage.modules.basics.title": {
+    "message": "Fundamentos"
+  },
+  "homepage.modules.basics.description": {
+    "message": "Comienza con los fundamentos de los agentes de IA. Aprende conceptos clave, arquitectura y crea tu primer agente de IA."
+  },
+  "homepage.modules.junior.title": {
+    "message": "Junior"
+  },
+  "homepage.modules.junior.description": {
+    "message": "Desarrolla tus habilidades trabajando con agentes de IA. Aprende a implementar memoria, herramientas y crear sistemas autónomos más complejos."
+  },
+  "homepage.modules.future.title": {
+    "message": "Módulos futuros"
+  },
+  "homepage.modules.future.description": {
+    "message": "Mantente atento a las actualizaciones: pronto habrá nuevos módulos sobre temas avanzados, incluidos agentes autónomos, enjambres de agentes y más."
+  },
+  "homepage.modules.learnMore": {
+    "message": "Saber más"
+  },
+  "homepage.communities.title": {
+    "message": "Únete a nuestra comunidad"
+  },
+  "homepage.communities.subtitle": {
+    "message": "Conéctate con otros desarrolladores y entusiastas de los agentes de IA"
+  },
+  "homepage.communities.discord.title": {
+    "message": "Comunidad de Discord"
+  },
+  "homepage.communities.discord.description": {
+    "message": "Únete a nuestro servidor de Discord para participar en discusiones, compartir tus proyectos y obtener apoyo de los miembros de la comunidad."
+  },
+  "homepage.communities.discord.button": {
+    "message": "Unirse a Discord"
+  },
+  "homepage.communities.telegram.title": {
+    "message": "Canal de Telegram"
+  },
+  "homepage.communities.telegram.description": {
+    "message": "Suscríbete a nuestro canal de Telegram para obtener actualizaciones, noticias y recursos sobre agentes de IA y tecnologías relacionadas."
+  },
+  "homepage.communities.telegram.button": {
+    "message": "Unirse a Telegram"
+  },
+  "homepage.cta.title": {
+    "message": "¿Listo para comenzar tu viaje con los agentes de IA?"
+  },
+  "homepage.cta.description": {
+    "message": "Sumérgete en nuestros recursos integrales y únete a la comunidad de desarrolladores de agentes de IA"
+  },
+  "homepage.cta.textbook": {
+    "message": "Empezar a aprender"
+  },
+  "homepage.cta.roadmap": {
+    "message": "Mapa de ruta"
+  },
+  "homepage.cta.telegram": {
+    "message": "Telegram"
+  },
+  "homepage.cta.discord": {
+    "message": "Discord"
+  },
+  "homepage.header.button": {
+    "message": "Comenzar a explorar los Agentes de IA"
+  },
+  "homepage.header.githubText": {
+    "message": "Si te gusta el proyecto, dale una estrella en GitHub"
+  },
+  "homepage.header.dynamicStarText": {
+    "message": "Si te gusta el proyecto, dale la {nextStar}-ésima estrella en GitHub"
+  },
+  "homepage.meta.title": {
+    "message": "Manual de Agentes de IA - Tutorial interactivo sobre la creación de agentes de IA"
+  },
+  "homepage.meta.description": {
+    "message": "Tutorial interactivo sobre la creación y el uso de agentes de IA con ejemplos de código y guías prácticas"
+  },
+  "homepage.authors.title": {
+    "message": "Autores"
+  },
+  "homepage.authors.description": {
+    "message": "Nuestro equipo de expertos en inteligencia artificial y aprendizaje automático"
+  },
+  "homepage.authors.viewProfile": {
+    "message": "Perfil"
+  },
+  "homepage.authors.main.name": {
+    "message": "Dmitry Merkulov"
+  },
+  "homepage.authors.main.title": {
+    "message": "Fundador del proyecto"
+  },
+  "homepage.authors.main.description": {
+    "message": "Experto en inteligencia artificial y aprendizaje automático. Fundador de proyectos educativos sobre IA."
+  },
+  "homepage.authors.merkulov.role": {
+    "message": "Fundador del proyecto"
+  },
+  "homepage.authors.merkulov.description": {
+    "message": "Fundador de hao.vc, MSU, Ex-Yandex."
+  },
+  "homepage.authors.zhechkov.description": {
+    "message": "Arquitecto de IA @ Yandex Cloud, Ex-VMware"
+  },
+  "homepage.authors.savelko.description": {
+    "message": "Ingeniero LLM @ Tochka Bank, Ex-Sber"
+  },
+  "homepage.authors.karpathy.description": {
+    "message": "Ex OpenAI, Tesla, Stanford"
+  },
+  "homepage.authors.your.description": {
+    "message": "Cualquier persona interesada en colaborar"
+  },
+  "homepage.mission.title": {
+    "message": "Nuestra misión"
+  },
+  "homepage.mission.description": {
+    "message": "Nos esforzamos por hacer que las tecnologías de agentes de IA sean accesibles para todos los desarrolladores, proporcionando materiales educativos de calidad, ejemplos prácticos y apoyando a una comunidad activa."
+  }
+} 

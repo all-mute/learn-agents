@@ -1,0 +1,159 @@
+---
+sidebar_label: Selección y evaluación de LLM ✦
+---
+
+import GSM8K from './assets/gsm8k.png';
+
+# Selección y evaluación de LLM
+
+Bien: te has puesto a escribir un servicio impulsado por LLM. Has descargado las dependencias, has creado un archivo .py, has importado tu framework. Ante ti se plantea la pregunta: ¿qué `model_name` elegir?
+
+## Preguntas
+
+- ¿Qué modelo es el número 1 ahora mismo para mi caso de uso?
+- ¿Cómo se comparan los diferentes modelos entre sí?
+- ¿Qué es importante **para el negocio** además de la precisión de las respuestas?
+- ¿Cómo estar empíricamente seguro de la elección del modelo?
+
+## Pasos
+
+### 1. tl;dr;
+
+La opción más sencilla es ir a [artificalanalysis.ai/models](https://artificialanalysis.ai/models) y elegir algo de lo mejor. Se trata de una clasificación imparcial de LLM que se actualiza en línea.
+
+Las clasificaciones de modelos por casos de uso en este sitio son simplemente una agregación de resultados en diferentes benchmarks.
+
+### 2. Todas las formas de evaluar LLM.
+
+Leamos la genial guía del cofundador de *Confident AI*, Jeffrey Ip:
+    - [LLM Evaluation Metrics: The Ultimate LLM Evaluation Guide](https://www.confident-ai.com/blog/llm-evaluation-metrics-everything-you-need-for-llm-evaluation)
+    
+
+### 3. Benchmarks populares
+
+Un benchmark es una forma de evaluar un modelo. Por ejemplo, podemos dar al modelo la instrucción de resolver un problema matemático y su descripción. Dar 100 de estos problemas y comparar los modelos por el número de respuestas correctas.
+
+Así es como se ven los problemas del popular benchmark GSM8K:
+
+<img src={GSM8K} alt="gsm8k" width="1000" />
+
+<details>
+<summary>7 Popular LLM Benchmarks Explained [OpenLLM Leaderboard & Chatbot Arena]</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/aOjgPJ94-aM?si=qRhXDnZpMrf0bvLv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+
+#### [Investigación de benchmarks](https://www.perplexity.ai/page/understanding-llm-benchmarks-e-VZmXIq_FQgCIS.3QSVo6EA)
+- Categorías de benchmarks
+- Benchmarks populares en detalle
+- Métricas clave de evaluación
+- Limitaciones de la evaluación de LLM mediante benchmarks
+- El futuro de los benchmarks
+
+#### [LLM Tool Use Benchmarks](../extra/benchmarks)
+
+### 4. ¿Cómo elige una empresa un modelo para producción?
+
+#### En producción, en principio, todo se elige de forma muy sencilla:
+1) Investigaciones en línea, por ejemplo, observando lo que utilizan los colegas y en [artificalanalysis.ai/models](https://artificialanalysis.ai/models)
+2) Existen métricas offline y online. Primero se realizan mediciones en benchmarks formados offline. A continuación, para mayor seguridad, se pueden desplegar varios modelos en producción en diferentes subgrupos de usuarios (prueba A/B) y medir allí las métricas online. Todo este proceso es la validación del pipeline.
+3) Además de la calidad del trabajo, también nos pueden interesar un montón de parámetros: $ por tokens, tokens por segundo (TPS), confidencialidad (en qué contorno funciona el modelo = dónde llevamos los datos), funcionalidad del ecosistema (posibilidad de reentrenar fácilmente el modelo para nuestras necesidades, características serverless (como la búsqueda en Internet, hilos en OpenAI Assistants))
+4) Momentos inventados en privado que pueden formarse en un caso concreto (por ejemplo, la política de respuestas a 10 preguntas súper importantes para el cliente (también conocido como "qué pasó en China en tal año")
+
+Bueno, y aquí, como al comprar un portátil o un coche, intentas encontrar el óptimo teniendo en cuenta un montón de parámetros diferentes.
+
+#### Para las empresas, los parámetros más importantes (más arriba = más importante):
+1. Legalidad y confidencialidad (Licencia, su propio contorno o cumplimiento de FZ-152/GDPR/SOC)
+2. Calidad mínimamente satisfactoria
+3. Precio o ecosistema
+4. Ecosistema o precio
+5. Máxima calidad (sí, la máxima calidad del modelo no es tan importante como, por ejemplo, la posibilidad de reentrenar los modelos para sus propias tareas)
+
+Por supuesto, esto no es todo, pero en general es lo más importante. También pueden tener en cuenta: El número de características al trabajar con el modelo (¿se puede controlar dinámicamente la temperatura?), DevX, la ética y la seguridad de LLM (o viceversa), para la inferencia local - ¿se ejecuta el modelo en nuestras GPU?
+
+#### Por calidad se entiende:
+- la calidad del modelo en un caso o casos concretos
+- el horizonte global del modelo y la calidad en otras tareas - ya que en producción el usuario puede hacer lo que quiera con LLM
+- velocidad de inferencia (TPS) o tiempo de respuesta end-to-end (alto en los modelos de razonamiento)
+- Time to first token (TTFT)
+- modalidades del modelo (Trabajo con imágenes, **gráficos, voz**, audio, vídeo, 3D, etc. **en la entrada y en la salida**)
+
+Otras métricas:
+- Perplejidad: lo bien que el modelo predice un fragmento de texto dado
+- Capacidad de escribir texto "humano" con baja perplejidad :)
+- varios sesgos del modelo (por ejemplo, en las respuestas a preguntas sobre política o raza)
+- fluidez, coherencia y relevancia del contenido
+- ética y seguridad (incluida la toxicidad)
+
+También añadiría la métrica de **sostenibilidad**: lo resistente que es el modelo a seguir las instrucciones en función de lo lejos que nos desviemos de nuestros benchmarks.
+Por ejemplo, elegimos entre dos modelos X e Y con precisiones en nuestro benchmark de 94 y 95. Parece que deberíamos elegir el segundo. Pero tan pronto como empezamos a desviarnos de los casos de nuestro benchmark un poco hacia un lado en términos de instrucciones, contexto, etc., el primer modelo sigue funcionando bien, pero el segundo deja de funcionar por completo.
+
+---
+*Y todo esto tanto en estática como en dinámica, es decir, teniendo en cuenta la velocidad de desarrollo de los proveedores de LLM*
+
+Si hay ingenieros de PNL en la empresa, ellos se encargarán de esta tarea.
+
+### 5. ¿Cómo estar empíricamente seguro de la elección del modelo?
+
+**Por mucho que mires las investigaciones y los benchmarks en Internet, para la producción queremos tener nuestras propias evaluaciones de datos de LLM.**
+- o un conjunto de ejemplos de input-correct output + evaluadores (Asesores humanos o LLM)
+- o un entorno con evaluación automática (por ejemplo, si el código se compila)
+
+Cómo hacer tu propio benchmark lo discutiremos al final del bloque Junior. En el bloque Senior hablaremos de la evaluación del workflow y de los agentes.
+
+## Extra Steps
+
+### E1. En general, te recomiendo que leas también otros artículos de Roma sobre eval - ha escrito una serie maravillosa:
+1. [Evaluación de sistemas LLM: métricas clave, benchmarks y mejores prácticas](https://www.confident-ai.com/blog/evaluating-llm-systems-metrics-benchmarks-and-best-practices)
+2. [Evaluación de chatbots LLM: métricas clave y métodos de prueba](https://www.confident-ai.com/blog/llm-chatbot-evaluation-explained-top-chatbot-evaluation-metrics-and-testing-techniques)
+3. [Evaluación de sistemas de modelos de lenguaje grandes (LLM): métricas, desafíos y mejores prácticas](https://medium.com/data-science-at-microsoft/evaluating-llm-systems-metrics-challenges-and-best-practices-664ac25be7e5)
+4. [Benchmarking de agentes de IA: evaluación del rendimiento en tareas del mundo real](https://www.galileo.ai/blog/evaluating-ai-agent-performance-benchmarks-real-world-tasks)
+5. [Evaluación de modelos de lenguaje grandes en 2025: cinco métodos](https://research.aimultiple.com/large-language-model-evaluation/)
+
+*Más información sobre la evaluación de sistemas y agentes en los bloques Junior, Sinior, Research.*
+
+## Now we know...
+
+Hemos estudiado los enfoques para la selección y evaluación de modelos lingüísticos para el desarrollo de Agentes de IA, incluyendo el uso de servicios de clasificación, la comprensión de los benchmarks y los factores clave del negocio. Hemos analizado lo que incluye el concepto de "calidad" de un modelo y por qué es importante la propia evaluación para la producción. Este conocimiento permite tomar una decisión informada sobre LLM para tareas específicas.
+
+## Exercises
+
+### Preguntas para la reflexión
+
+1. Estás haciendo un asistente:
+    - para consulta médica
+    - para la búsqueda de información (con la lectura de una gran cantidad de documentos)
+    - para la atención al cliente
+    - robot de voz para la atención al cliente
+    - para escribir texto creativo
+    - para escribir código
+    - para escribir el texto de una tesina (con el objetivo de tener una baja probabilidad de detección de que se trata de un texto generado por GPT)
+    - para trabajar en el contorno cerrado de su empresa
+    - para una institución gubernamental con bajos riesgos de reputación al utilizarlo en producción
+    - un agente que utiliza una gran cantidad de herramientas
+
+    **1. Piensa detenidamente en qué criterios elegirías LLM para cada uno de estos casos.**
+
+    **2. Piensa en qué benchmarks prestarías atención**
+
+    **3. Piensa en qué métricas utilizarías para evaluar LLM en producción. Por ejemplo, para una prueba A/B**
+
+2. Analiza las ventajas y desventajas de utilizar otros LLM como evaluadores para tus modelos. ¿En qué casos podría estar justificado?
+
+3. Piensa en por qué incluso el uso de asesores (personas) puede llevar a errores en la evaluación de LLM.
+
+4. ¿Por qué la máxima calidad del modelo no suele ser el factor más importante para una empresa?
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
+
+### Tarea práctica
+
+1. Regístrate en [cloud.agenta.ai](https://cloud.agenta.ai)
+2. Crea una tarea de completion, arriba a la derecha en "Load test set" carga las preguntas de completion_testset y prueba algún LLM.
+3. Ahora intenta crear tu propio benchmark para alguna tarea más compleja y compara varios modelos.
+
+Estudia qué otras funcionalidades hay en cloud.agenta.ai.
+
+https://youtu.be/lX1oLcgkZXg?si=CTEch5uGImDq0aOj - otra forma de evaluar LLM, utilizando GPT-eval. No te sumerjas ahora específicamente en esta herramienta LLMOps - en el futuro las elegiremos juntos en los módulos sobre AgentOps.

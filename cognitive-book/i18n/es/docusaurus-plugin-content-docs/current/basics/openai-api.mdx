@@ -1,0 +1,109 @@
+---
+sidebar_label: API de OpenAI
+---
+
+# Aprendiendo la API de OpenAI
+
+Comprender cómo trabajar con la API de OpenAI te permitirá comprender sin problemas el funcionamiento de los frameworks que cubriremos en el bloque Junior, y también será útil para depurar problemas y trabajar con todos los proveedores compatibles con OpenAI.
+
+## Preguntas
+
+- ¿Cómo es el cuerpo de una solicitud API en la API de OpenAI?
+- ¿Qué parámetros se pueden configurar además de temperature, max_tokens?
+- ¿Cómo funciona la transmisión de datos en la API de OpenAI?
+- ¿Cómo usar las llamadas a funciones (function calling) en los modelos de chat?
+- ¿Qué es la salida estructurada?
+
+## Pasos
+
+### 1. Leer la documentación de la [API de OpenAI](https://platform.openai.com/docs/api-reference)
+
+Leer todo sobre el endpoint `chat/completions`, no omitir nada. Todo el material futuro se basará en este endpoint y es importante que comprendas en detalle cómo funciona, de lo contrario te confundirás.
+
+<details>
+<summary>¿Qué son Temperature, Top P, Frequency penalty, Presence penalty?</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/33kb37NYOTc?si=AllO-NduTUKQAu41" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+### 2. Leer las páginas del Cookbook
+
+:::tip
+Puedes seguir leyendo de tres maneras:
+    1. Superficialmente, para comprender el panorama y las capacidades de la API. (una buena opción si te resulta difícil)
+    2. Leer detenidamente, comprender qué hace exactamente cada función.
+    3. Ejecutar estos notebooks por tu cuenta.
+:::
+
+1. [¿Cómo contar tokens en un texto?](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+
+    [Interactive tokenazer! - platform.openai.com/tokenizer](https://platform.openai.com/tokenizer)
+
+2. [¿Cómo se ven los chunks en una respuesta de transmisión de OpenAI? ¿Qué información se transmite en el primer chunk, los intermedios y el último?](https://cookbook.openai.com/examples/how_to_stream_completions)
+
+### 3. Leer las páginas del Cookbook 2
+
+3. [Sobre las funciones, leer completamente [how_to_call_functions_with_chat_models](https://cookbook.openai.com/examples/how_to_call_functions_with_chat_models)
+    
+
+4. [¿Cómo usar structured outputs?](https://cookbook.openai.com/examples/structured_outputs_intro) o un curso alternativo de una hora en [deeplearning.ai](https://www.deeplearning.ai/short-courses/getting-structured-llm-output/)
+
+## Pasos Extra
+
+### E1. Adoptar el principio de divide y vencerás.
+
+https://cookbook.openai.com/examples/entity_extraction_for_long_documents
+
+### E2. ¿Qué parámetros aún no existen en ninguna API pública?
+
+*\<EOS> - end of sequence - token, después del cual normalmente dejamos de hacer predicciones de los siguientes tokens*
+
+Quiero revelarte algunos momentos interesantes que aún no he encontrado en los proveedores. Normalmente, la temperatura y todos los demás parámetros los establecemos como una constante, pero también se puede hacer **dinámicamente**, de modo que los parámetros cambien según las condiciones, las funciones matemáticas, etc. Ejemplos:
+1. Por ejemplo, mientras la LLM analiza la tarea, mantenemos la temperatura en cero; y cuando pase a escribir un texto creativo, la subimos a 0.6
+2. Después de que la LLM genera \<EOS>, podemos continuar generando tokens
+3. Podemos multiplicar manualmente la probabilidad de salida de \<EOS> por cualquier valor (incluso por 0) hasta una cierta cantidad de tokens generados. Además de la multiplicación, cualquier lógica está disponible.
+4. Al igual que con \<EOS>, podemos hacer lo mismo con cualquier token: podemos inventar cualquier lógica que se nos ocurra. Podemos influir estática/dinámicamente/lógicamente en las probabilidades (0-100%) de generación de un token determinado o un conjunto de tokens o una secuencia de tokens.
+
+Qué se podría agregar a las API existentes:
+- la capacidad de prohibir la generación de \<EOS> cuando la longitud de la secuencia es menor que una cierta cantidad de tokens (MinOutputLen)
+- BannedTokensToGenerate
+- la capacidad de controlar la probabilidad de \<EOS> dependiendo de la longitud del texto generado (BoostEos)
+- NGramPenalty
+- la capacidad de continuar la generación durante una cierta cantidad de pasos incluso después de \<EOS> (IncludeLateHypotheses)
+- prohibir la generación de ciertos tokens después de una cierta cantidad de repeticiones (MaxRepeats)
+- la capacidad de elegir el algoritmo de muestreo a través de SamplerParams (Sampling, BeamSearch, StochasticBeamSearch), NumHypos & BeamSize
+- la capacidad de cambiar la temperatura durante la generación - TemperatureScheduler
+
+Para los modelos de razonamiento, puedes multiplicar todas estas características por dos: para la fase de reflexión y generación.
+
+##### Por supuesto, todo esto se puede implementar con la inferencia local del modelo en tu propio hardware. ¡Ven a trabajar en OpenAI/Sber/Yandex/Anthropic: todos estos parámetros están disponibles en la API privada!
+
+## Ahora sabemos...
+
+Hemos estudiado los componentes principales de la API de OpenAI y hemos aprendido a:
+- Contar tokens en textos usando tiktoken para optimizar las solicitudes
+- Trabajar con respuestas de transmisión para crear interfaces más receptivas
+- Usar llamadas a funciones (function calling) para una interacción estructurada con herramientas externas
+- Obtener respuestas estructuradas en formato JSON para un procesamiento conveniente
+- Aplicar el principio de "divide y vencerás" para procesar documentos largos
+
+Estas habilidades son fundamentales al crear Agentes de IA, ya que permiten gestionar eficazmente la comunicación entre el agente y la LLM, y también proporcionan la capacidad de integrarse con sistemas externos.
+
+## Ejercicios
+
+1. ¿Qué roles tienen los mensajes?
+
+2. Quieres enviar dos solicitudes a la LLM manteniendo el contexto:
+    1. "¡Hola! Me llamo Alex."
+    2. "¿Cómo me llamo?"
+
+    ¿Cómo se vería el cuerpo de la segunda solicitud al modelo?
+
+3. Piensa en tres ejemplos de uso de llamadas a funciones que podrían mejorar significativamente las capacidades de un Agente de IA.
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
+
+4. **Ejercicio práctico:**
+
+Crea un script simple en Python que imprima en la consola solo el primer, segundo, penúltimo y último chunk de la respuesta del modelo.

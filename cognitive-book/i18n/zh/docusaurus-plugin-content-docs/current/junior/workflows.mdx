@@ -1,0 +1,112 @@
+---
+sidebar_label: 工作流
+---
+
+import WorkflowsExamplesP1 from './_workflows-examples-p1.mdx';
+import WorkflowsExamplesP2 from './_workflows-examples-p2.mdx';
+
+# GenAI 工作流
+
+并非所有的 AI 应用程序都是智能体！用工程术语来说，智能体是具有高度自由和自主性的系统，但人为控制程度较低。在深入研究智能体之前，让我们先来了解一下更可控的 LLM 应用，因为在未来，你的智能体将会把它们用作子系统。
+
+## 问题
+
+- 在我们的工程世界中，什么不是智能体？
+- 什么是有向无环图 (DAG)？
+- 工作流有哪些子类型？
+
+## 步骤
+
+:::info 工程定义
+
+根据目前社区（X、Anthropic、OpenAI）的观点，智能体是循环运行的系统，直到它们自己决定停止。借助 LLM，智能体可以自行评估任务的完成情况，并暂停执行（例如，通过调用 `ToolCall: ReturnFinalAnswer`）。
+
+目前大多数高级智能体，除了评估任务完成情况外，还会自主规划实现目标的*子步骤*，并在每个步骤上循环，直到完成该步骤，然后才进入后续步骤。
+
+因此，所有 **DAG - directed acyclic graph** - 有向无环图 - 都不是智能体。
+
+<details>
+<summary> DAG 简介 </summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1Yh5S-S6wsI?si=In2W4txN8bPkCrsy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+or 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IltIGJOHYgo?si=8ix-lpFUKrIn5fXt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+</details>
+
+<details>
+<summary>例外情况</summary>
+
+**如果循环是由严格的逻辑触发的，通常认为这是一个工作流，而不是智能体。**
+
+在下面你将看到一个“无限文本摘要”工作流，它递归地总结文本，直到达到特定长度的短文本。这不是智能体，而是一个工作流，即使它有循环。
+
+</details>
+
+:::
+
+### 1. [阅读这篇 Anthropic 文章](https://www.anthropic.com/engineering/building-effective-agents)
+
+### 2. LLM 工作流的真实示例
+
+:::tip
+
+研究下面的例子。这对架构视野很重要。
+
+尝试在脑海中“编译”一些管道。
+
+我们尽量编写请求/提示词的示例 - 如果有不清楚的地方，请阅读它们。
+
+:::
+
+<WorkflowsExamplesP1 />
+<WorkflowsExamplesP2 />
+
+在工业商业项目中，工作流通常由 20 多个节点组成，混合了 API 集成、严格的逻辑、LLM 子工作流和 AI 智能体。有时甚至可以达到 100 个节点。
+
+### 2. [LLM 工作流中的高级路由](https://youtu.be/-EYyrlfoqDU?si=y9g6qB8P9ieN6K0C)
+
+## 额外步骤
+
+### E1. langchain
+
+LangChain 是一个用于构建和使用 LLM 工作流的库。它很老，但文档齐全，并且拥有庞大的社区。
+
+查看 LangChain 中有哪些实体：https://python.langchain.com/docs/concepts/
+
+[最简单的 langchain 代码示例](https://dev.to/koolkamalkishor/how-to-use-langchain-for-ai-workflow-automation-1i94)。
+
+### E2. 模式元理解
+
+1. https://refactoring.guru/design-patterns/chain-of-responsibility
+2. https://refactoring.guru/design-patterns/command
+
+<details>
+<summary>已弃用的内容</summary>
+
+https://langchain-ai.github.io/langgraph/tutorials/workflows/
+
+</details>
+
+## 现在我们知道了...
+
+在本课程中，我们了解了 LLM 工作流的基础知识：分析了智能体的工程定义以及循环系统与 DAG 结构的差异，研究了实际示例、设计模式，并深入研究了路由。
+
+:::danger
+但是，不要对其他人过于严格地定义。只有工程师才需要理解智能体、聊天机器人和工作流之间的区别，以避免沟通不畅。
+
+经理、客户和投资者不应该理解这种差异。让他们可以随意称呼一切：AI 智能体、“神经网络”、“人工智能”。
+:::
+
+## 练习
+
+1. 如果你的系统中有循环，那么它是智能体还是工作流？
+2. 你还记得哪些分支模式？
+3. *对于那些完成了 GenAI 算法模块的人：
+    - 思考如何将算法方法和 LLM 工作流结合起来
+2. **在纸上设计：**
+    - 一个自动回复外卖移动应用程序支持请求的系统
+    - 一个自动回复来自陌生联系人的消息的工作流
+    - 一个自动创建博客文章的系统
+    - 一个对职位候选人进行评分的系统，然后是一个立即比较多个候选人的系统

@@ -1,0 +1,119 @@
+---
+sidebar_label: Docker
+---
+
+# Docker
+
+Imagina que estás construyendo un rascacielos de Agentes de IA: sin una base sólida de infraestructura en la nube, tu estructura se derrumbará con el primer flujo de usuarios reales. Aquí dominaremos los contenedores Docker como "camiones" universales para la entrega de modelos, la orquestación de Kubernetes como un sistema de "semáforos" para el tráfico de solicitudes, y aprenderemos a desplegar servicios en las nubes de AWS/GCP como estaciones espaciales para tus Agentes de IA. Estas habilidades son una máscara de oxígeno para cualquier proyecto de producción: sin ellas, tus modelos geniales seguirán siendo scripts locales en un portátil.
+
+<details>
+<summary>Instrucciones para Ask AI</summary>
+
+:::tip instrucción
+Dado que estos temas no cambian con el tiempo, lo mejor es que los estudies con un profesor personal: ChatGPT.
+
+El proceso de estudio debe ser el siguiente:
+- Creas un prompt de sistema para ChatGPT ([plantillas](../metalearning#chatgpt-prompts)), donde describes tu experiencia, preferencias, nivel de detalle de las explicaciones, etc.
+- Copias el tema de la lista (triple clic) y le pides a ChatGPT que te explique ese tema.
+- Si deseas profundizar, haz preguntas aclaratorias.
+
+Actualmente, esta es la forma más conveniente de estudiar los fundamentos. **Además de los conceptos, puedes estudiar materiales adicionales en las secciones Gold, Silver, Extra.**
+1. Gold - es imprescindible estudiar antes de interactuar con ChatGPT
+2. Ask AI - haz preguntas sobre cada tema desconocido
+3. Silver - materiales secundarios
+4. Extra - temas avanzados
+:::
+
+</details>
+
+## Golden
+
+<details>
+<summary>Docker</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Gjnup-PuquQ?si=UfwaYs0OB-GZMncF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/rIrNIzy6U_g?si=gHZNVM3JPGuhQA8h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/eGz9DS-aIeY?si=6qbM1MIwE52J97lJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+## Ask AI
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
+
+### Docker: 20 temas imprescindibles para un ingeniero de GenAI
+
+1. **Arquitectura de la contenedorización: comparación de máquinas virtuales y Docker**
+2. **Docker vs Conda/venv: diferencias clave y escenarios de aplicación**
+3. **Instalación paso a paso de Docker en diferentes sistemas operativos**
+4. **Comandos básicos de la CLI de Docker: gestión de contenedores e imágenes**
+5. **Creación de Dockerfile: sintaxis y plantillas prácticas**
+6. **Trabajo con imágenes de Docker: construcción, etiquetado y publicación**
+7. Docker Hub: operaciones básicas (Visión general)
+8. **Trabajo con volúmenes: uso práctico de volumes y bind mounts**
+9. Modelos de red en Docker: tipos básicos de conexiones (Breve)
+10. Arquitectura de microservicios: principios básicos (Breve)
+11. **Configuración de entornos con Docker Compose: creación y depuración de configuraciones**
+12. **Optimización de imágenes de Docker: reducción del tamaño y aceleración de la construcción**
+13. Capas de imágenes: mecanismo de almacenamiento en caché y dependencias (Visión general)
+14. **Empaquetado de aplicaciones Python: dependencias y entorno en un contenedor**
+15. **Configuración de GPU en Docker para el aprendizaje automático: guía completa**
+16. Almacenamiento de datos: soluciones locales y en la nube (Breve descripción general)
+17. **Trabajo con registros en la nube: ejemplos prácticos de ECR/Artifact Registry**
+18. Selección de una imagen base: Alpine vs Ubuntu (Comparación y recomendaciones)
+19. **Configuración del inicio automático de contenedores a través de systemd (Prácticas)**
+20. **Optimización del rendimiento: cold vs hot start en entornos de producción**
+
+## Silver
+
+### Ejemplos prácticos
+
+#### Construcción de imágenes en varias etapas
+```dockerfile
+# Etapa de construcción: instalamos dependencias en una imagen temporal
+FROM python:3.9-slim as builder
+COPY requirements.txt .
+RUN pip install --user -r requirements.txt  # --user para aislamiento en .local
+
+# Imagen final: copiamos solo lo necesario de builder
+FROM python:3.9-alpine  # Alpine Linux - imagen minimalista
+COPY --from=builder /root/.local /root/.local  # Copiamos los paquetes instalados
+COPY . /app  # Agregamos el código fuente de la aplicación
+ENV PATH=/root/.local/bin:$PATH  # Agregamos la ruta a los paquetes instalados
+CMD ["python", "/app/main.py"]  # Punto de entrada de la aplicación
+```
+
+#### Servicio Systemd para el inicio automático
+```bash
+# /etc/systemd/system/ml-service.service
+[Unit]
+Description=ML Service  # Nombre del servicio
+After=network.target    # Ejecutar después de la inicialización de la red
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/ml  # Directorio de trabajo con docker-compose.yml
+ExecStart=/usr/bin/docker-compose up  # Comando principal de inicio
+Restart=always  # Reinicio automático en caso de fallo
+
+[Install]
+WantedBy=multi-user.target  # Ejecutar al inicio del sistema
+
+# Activación del servicio:
+# sudo systemctl daemon-reload
+# sudo systemctl enable ml-service
+# sudo systemctl start ml-service
+```
+
+#### Tiempo de inicio de diferentes imágenes (inicio en frío)
+| Imagen         | Tamaño  | Tiempo de inicio | Uso                     |
+|---------------|---------|-----------------|--------------------------|
+| python:alpine | 58MB    | 1.2s            | API de producción        | # Imagen mínima para microservicios
+| ubuntu:latest | 77MB    | 2.1s            | Desarrollo/pruebas       | # SO completo para depuración
+| nvidia/cuda   | 4.7GB   | 8.5s            | Entrenamientos de ML     | # Imagen pesada con controladores de GPU
+
+- *Inicio en frío: tiempo desde docker run hasta que la aplicación está lista*
+- *El inicio en caliente (después de detener/reiniciar) suele ser un 30-40% más rápido*
+
+## Extra

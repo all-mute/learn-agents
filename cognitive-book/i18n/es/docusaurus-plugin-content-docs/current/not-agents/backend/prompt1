@@ -1,0 +1,23 @@
+Я пишу учебник по легкой бэкенд разработке для будущих GenAI разработчиков. Я ориентируюсь на студентов-первокурсников IT вузов. После прочтения моего учебника они должны быть способны пройти собеседования сразу на middle/senior позиции.
+
+Помоги мне написать список тем в виде буллет листа в H2 "Ask AI", чтобы студенты последовательно просили ChatGPT объяснить каждую тему. 
+
+Вот темы, которые как мне кажутся, должны быть в этом списке:
+
+#### 1. Основы Software Engineering  
+- **Agile, Scrum, Kanban:** базовые методологии разработки  
+- **Git и системы контроля версий:** концепции, branching, merge, pull requests  
+- **Принципы чистого кода:** SOLID, DRY, KISS  
+- **Тестирование кода:** юнит-тесты, интеграционные тесты, TDD  
+- **Software Development Life Cycle (SDLC):** стадии разработки, планирование, ревью кода
+- **CI/CD, GitHub Actions пайплайны:** линтинг, тесты, деплой
+- Rest, restful
+- stateless vs statefull service
+- Modern Auth methods
+- error handling
+- rate-limiting, popular api quotas and limits types
+- Popular API building principles
+- async vs sync in python
+- multithreading vs multiprocessing vs multitasking (idk those)
+
+Теперь на онсове моих тем, предложи список из 100 топиков для Ask AI в этом уроке. Они должны идти в адекватном для моего студента порядке. Каждый топик должен быть лаконичен (примеры: A vs B, концепция A, и тд).

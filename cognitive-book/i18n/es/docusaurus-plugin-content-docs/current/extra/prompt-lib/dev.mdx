@@ -1,0 +1,324 @@
+---
+sidebar_position: 5
+title: Programación
+---
+
+### Generación de código
+
+**Prompt del sistema**
+
+```text
+Eres un desarrollador de software experimentado. Tu tarea es generar código en Python que resuelva la tarea planteada. Cumple con los estándares de escritura de código y añade comentarios para explicarlo.
+```
+
+**Prompt del usuario**
+
+```text
+Escribe una función en Python que tome una lista de números y devuelva una lista solo con los números pares.
+```
+
+**Respuesta del LLM**
+
+```python
+
+def filter_even_numbers(numbers):
+    """
+    Filtra los números pares de una lista.
+
+\
+    :param numbers: Lista de números
+    :return: Lista de números pares
+    """
+    return [num for num in numbers if num % 2 == 0]
+
+\
+# Ejemplo de uso
+numbers = [1, 2, 3, 4, 5, 6]
+even_numbers = filter_even_numbers(numbers)
+print(even_numbers)  # Salida: [2, 4, 6]
+```
+
+### Debug
+
+**Prompt del sistema**
+
+```text
+Eres un desarrollador profesional que ayuda a encontrar y corregir errores en el código. Tu tarea es encontrar el error y proponer una corrección.
+```
+
+**Prompt del usuario**
+
+```text
+Aquí hay un código que debería devolver la suma de todos los números en una lista, pero no funciona correctamente:
+
+\
+def sum_numbers(numbers):
+    total = 0
+    for i in range(1, len(numbers)):
+        total += numbers[i]
+    return total
+```
+
+**Respuesta del LLM**
+
+```python
+
+def sum_numbers(numbers):
+    """
+    Devuelve la suma de todos los números en una lista.
+
+\
+    :param numbers: Lista de números
+    :return: Suma de los números
+    """
+    total = 0
+    for i in range(len(numbers)):  # Corregido: el bucle debe comenzar en 0
+        total += numbers[i]
+    return total
+
+\
+# Ejemplo de uso
+numbers = [1, 2, 3, 4]
+total_sum = sum_numbers(numbers)
+print(total_sum)  # Salida: 10
+```
+
+### Docstrings
+
+**Prompt del sistema**
+
+```text
+Eres un experto en Python que añade docstrings a las funciones para mejorar la legibilidad y la comprensión del código. Tu tarea es escribir docstrings detallados.
+```
+
+**Prompt del usuario**
+
+```text
+Aquí hay un código de función sin docstring:
+
+\
+def multiply(a, b):
+    return a * b
+```
+
+**Respuesta del LLM**
+
+```python
+
+def multiply(a, b):
+    """
+    Multiplica dos números.
+
+\
+    :param a: Primer número
+    :param b: Segundo número
+    :return: Producto de a y b
+    """
+    return a * b
+```
+
+### Reescribir código (añadir logging)
+
+**Prompt del sistema**
+
+```text
+Eres un programador experimentado que añade logging al código para rastrear la ejecución del programa. Utiliza la biblioteca estándar logging.
+```
+
+**Prompt del usuario**
+
+```text
+Añade logging a la siguiente función:
+
+\
+def divide(a, b):
+    return a / b
+```
+
+**Respuesta del LLM**
+
+```python
+
+import logging
+
+\
+logging.basicConfig(level=logging.INFO)
+
+\
+def divide(a, b):
+    """
+    Divide el número a por el número b, añadiendo logging.
+
+\
+    :param a: Dividendo
+    :param b: Divisor
+    :return: Resultado de la división
+    """
+    logging.info(f"División de {a} entre {b}")
+    if b == 0:
+        logging.error("Intento de división por cero")
+        return None
+    return a / b
+
+\
+# Ejemplo de uso
+result = divide(10, 2)
+print(result)  # Salida: 5.0
+```
+
+### Análisis de logs
+
+**Prompt del sistema**
+
+```text
+Eres un especialista en análisis de datos que analiza los logs de la aplicación para identificar errores y anomalías. Tu tarea es encontrar y describir los problemas en los logs.
+```
+
+**Prompt del usuario**
+
+```text
+[INFO] 2024-11-22 12:00:00 - Inicio de la aplicación
+[ERROR] 2024-11-22 12:01:00 - Error de conexión a la base de datos
+[INFO] 2024-11-22 12:02:00 - Reintento de conexión
+[ERROR] 2024-11-22 12:03:00 - Error de conexión a la base de datos
+[INFO] 2024-11-22 12:04:00 - Conexión exitosa
+```
+
+**Respuesta del LLM**
+
+```text
+En los logs se observan errores repetidos de conexión a la base de datos a las 12:01 y 12:03. Esto puede indicar inestabilidad de la red o problemas con la configuración de la base de datos. Se recomienda verificar la configuración de la conexión y la estabilidad de la red.
+```
+
+### Dibujar un gráfico para una tabla
+
+**Prompt del sistema**
+
+```text
+Eres un especialista en visualización de datos que crea gráficos basados en los datos proporcionados. Utiliza la biblioteca matplotlib para construir gráficos.
+```
+
+**Prompt del usuario**
+
+```text
+Construye un gráfico para los siguientes datos de ventas:
+
+\
+Mes: ['Enero', 'Febrero', 'Marzo']
+Ventas: [100, 150, 200]
+```
+
+**Respuesta del LLM**
+
+```python
+
+import matplotlib.pyplot as plt
+
+\
+months = ['Enero', 'Febrero', 'Marzo']
+sales = [100, 150, 200]
+
+\
+plt.plot(months, sales, marker='o')
+plt.title('Ventas por mes')
+plt.xlabel('Mes')
+plt.ylabel('Ventas')
+plt.grid(True)
+plt.show()
+```
+
+Este prompt se puede aplicar más ampliamente dentro de las aplicaciones Chat with Data, que funcionan según el siguiente algoritmo:
+
+1. estudiar el archivo del usuario (por ejemplo, preguntando a la persona o mediante código)
+2. escribir código para obtener los datos necesarios del archivo / construir gráficos
+3. ejecutar este código en un entorno de ejecución
+4. interpretar el resultado del código y devolverlo al usuario
+
+### Chat with data
+
+**Prompt del sistema**
+
+```text
+Eres un experto en procesamiento de datos que ayuda a extraer e interpretar datos de archivos de texto. Tu tarea es escribir código para extraer información y explicar los resultados.
+```
+
+**Prompt del usuario**
+
+```text
+Escribe código para extraer todas las palabras únicas de un archivo y contar su frecuencia.
+```
+
+**Respuesta del LLM**
+
+```python
+
+def extract_unique_words(file_path):
+    """
+    Extrae palabras únicas de un archivo y cuenta su frecuencia.
+
+\
+    :param file_path: Ruta al archivo
+    :return: Diccionario con palabras únicas y su frecuencia
+    """
+    word_count = {}
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file:
+            words = line.split()
+            for word in words:
+                word = word.lower().strip('.,!?')
+                if word in word_count:
+                    word_count[word] += 1
+                else:
+                    word_count[word] = 1
+    return word_count
+
+\
+# Ejemplo de uso
+# results = extract_unique_words('example.txt')
+# print(results)
+```
+
+### Generación de código para una solicitud API según la documentación de la API
+
+**Prompt del sistema**
+
+```text
+Eres un desarrollador experimentado que crea código para interactuar con una API basándose en la documentación proporcionada. Utiliza la biblioteca requests para realizar solicitudes HTTP.
+```
+
+**Prompt del usuario**
+
+```text
+Crea código para realizar una solicitud GET a la API en la siguiente URL: "https://api.example.com/data" y procesa la respuesta.
+```
+
+**Respuesta del LLM**
+
+```python
+
+import requests
+
+\
+def fetch_data_from_api():
+    """
+    Realiza una solicitud GET a la API y devuelve los datos.
+
+\
+    :return: Datos de la API en formato JSON
+    """
+    url = "https://api.example.com/data"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error: {response.status_code}")
+        return None
+
+\
+# Ejemplo de uso
+data = fetch_data_from_api()
+if data:
+    print(data)
+```
+
+En este caso, estamos haciendo un GET simple, sin cuerpo ni encabezados de solicitud. Junto con la instrucción del usuario, podemos pasar la documentación del endpoint de la API para generar una solicitud con una lógica más compleja.

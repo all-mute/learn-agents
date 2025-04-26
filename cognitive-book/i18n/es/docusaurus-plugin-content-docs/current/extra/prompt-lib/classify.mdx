@@ -1,0 +1,297 @@
+---
+sidebar_position: 9
+title: Clasificación de texto
+---
+
+### Clasificación de la pregunta por tema
+
+**Prompt del sistema**
+
+```text
+Eres un experto en la clasificación de consultas. Tu tarea es determinar a qué tema pertenece la pregunta. Los temas posibles son: automóviles, comida, tecnología.
+```
+
+**Prompt del usuario**
+
+```text
+¿Cuál es su kilometraje en un coche eléctrico Tesla Model 3?
+```
+
+**Respuesta del clasificador LLM**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "automóviles",
+      "confidence": 0.85
+    },
+    {
+      "label": "comida",
+      "confidence": 0.05
+    },
+    {
+      "label": "tecnología",
+      "confidence": 0.10
+    }
+  ]
+}
+```
+
+### Clasificación en ética y política
+
+**Prompt del sistema**
+
+```text
+Eres un especialista en el análisis ético y político de textos. Determina si el texto contiene temas éticos o políticos.
+```
+
+**Prompt del usuario**
+
+```text
+¿Deberían las empresas estar obligadas a pagar a sus empleados más del salario mínimo?
+```
+
+**Respuesta del clasificador LLM**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "ética",
+      "confidence": 0.70
+    },
+    {
+      "label": "política",
+      "confidence": 0.30
+    }
+  ]
+}
+```
+
+### Clasificación en RAG (relevancia del texto a la pregunta)
+
+**Prompt del sistema**
+
+```text
+Eres un experto en la evaluación de la relevancia de los textos. Determina si el fragmento de texto dado es relevante para la pregunta planteada.
+```
+
+**Prompt del usuario**
+
+```text
+Pregunta: ¿Cuáles son las ventajas de los coches híbridos?
+Texto: Los coches híbridos combinan un motor de combustión interna y un motor eléctrico, lo que permite ahorrar combustible.
+```
+
+**Respuesta del clasificador LLM**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "relevante",
+      "confidence": 0.92
+    },
+    {
+      "label": "no relevante",
+      "confidence": 0.08
+    }
+  ]
+}
+```
+
+### Clasificación en RAG (respuesta final)
+
+**Prompt del sistema**
+
+```text
+Eres un especialista en la evaluación de la integridad de las respuestas. Determina si la respuesta dada responde a la pregunta del usuario.
+```
+
+**Prompt del usuario**
+
+```text
+Pregunta: ¿Cuáles son las ventajas de los coches eléctricos?
+Respuesta: Los coches eléctricos son ecológicos y económicos de operar.
+```
+
+**Respuesta del clasificador LLM**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "respuesta completa",
+      "confidence": 0.88
+    },
+    {
+      "label": "respuesta incompleta",
+      "confidence": 0.12
+    }
+  ]
+}
+```
+
+### Clasificación de la satisfacción del cliente
+
+**Prompt del sistema**
+
+```text
+Eres un analista de evaluación de la satisfacción del cliente. Determina si el cliente estaba molesto en el diálogo.
+```
+
+**Prompt del usuario**
+
+```text
+Cliente: ¡He estado esperando una respuesta durante una hora! Esto es inaceptable.
+```
+
+**Respuesta del clasificador LLM**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "molesto",
+      "confidence": 0.95
+    },
+    {
+      "label": "no molesto",
+      "confidence": 0.05
+    }
+  ]
+}
+```
+
+### Asignación de etiquetas: reseñas
+
+**Prompt del sistema**
+
+```text
+Eres un experto en la clasificación de reseñas. Determina qué etiquetas son apropiadas para la reseña dada. Las etiquetas posibles son: calidad, entrega, precio, soporte.
+```
+
+**Prompt del usuario**
+
+```text
+El producto llegó rápido, pero la calidad deja mucho que desear.
+```
+
+**Respuesta del clasificador LLM**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "entrega",
+      "confidence": 0.80
+    },
+    {
+      "label": "calidad",
+      "confidence": 0.90
+    }
+  ]
+}
+```
+
+### Detección de intenciones del usuario
+
+**Prompt del sistema**
+
+```text
+Eres un especialista en el análisis de las intenciones de los usuarios. Determina cuál es la intención del usuario. Las intenciones posibles son: compra, soporte, información.
+```
+
+**Prompt del usuario**
+
+```text
+¿Puedo saber más sobre su nuevo producto?
+```
+
+**Respuesta del clasificador LLM**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "información",
+      "confidence": 0.85
+    },
+    {
+      "label": "compra",
+      "confidence": 0.10
+    },
+    {
+      "label": "soporte",
+      "confidence": 0.05
+    }
+  ]
+}
+```
+
+### Clasificación de la ejecución de la tarea
+
+**Prompt del sistema**
+
+```text
+Eres un experto en la evaluación de la ejecución de tareas. Determina si la tarea se ha completado.
+```
+
+**Prompt del usuario**
+
+```text
+Tarea: Preparar un informe de ventas del mes.
+Respuesta: El informe ha sido preparado y enviado para su revisión.
+```
+
+**Respuesta del clasificador LLM**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "completado",
+      "confidence": 0.95
+    },
+    {
+      "label": "no completado",
+      "confidence": 0.05
+    }
+  ]
+}
+```
+
+### Verificación de condiciones
+
+**Prompt del sistema**
+
+```text
+Eres un analista de verificación de condiciones de texto. Determina si el texto contiene información personal, discurso directo o violación de políticas.
+```
+
+**Prompt del usuario**
+
+```text
+{news_article}
+```
+
+**Respuesta del clasificador LLM**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "información personal",
+      "confidence": 0.20
+    },
+    {
+      "label": "discurso directo",
+      "confidence": 0.60
+    },
+    {
+      "label": "violación de políticas",
+      "confidence": 0.10
+    }
+  ]
+}

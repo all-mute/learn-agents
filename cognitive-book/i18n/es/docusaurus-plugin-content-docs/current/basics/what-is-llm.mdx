@@ -1,0 +1,105 @@
+---
+
+---
+
+import PromptInjection from './assets/prompt-injection.jpg';
+import PromptInjection2 from './assets/prompt-injection-2.jpg';
+import PromptInjectionEng from './assets/prompt-injection-eng.png';
+
+# Entendiendo LLM
+
+En este módulo, realizaremos una revisión exhaustiva de los grandes modelos de lenguaje, como ChatGPT. Exploraremos cómo funcionan estos modelos, qué arquitectura los respalda y examinaremos el proceso de su entrenamiento.
+*Para un ingeniero de IA Aplicada, saber cómo funciona un LLM es como para un electricista saber cómo funciona la electricidad.*
+
+## Pasos
+
+### 1. Ver el video de un científico y conferencista legendario sobre LLM (LLM: The Movie)
+
+Preguntas para la primera lección:
+- ¿Qué son los grandes modelos de lenguaje (LLM) y cómo funcionan?
+- ¿Cómo obtenemos ChatGPT con la ayuda de todos los textos de Internet y un montón de GPU?
+- ¿Qué tarea resuelven los LLM, como ChatGPT, en un solo paso? ¿Qué es un token?
+- ¿Cuáles son algunos ejemplos de tareas que los LLM pueden realizar mejor?
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zjkBMFhNj_g?si=Kxz5RkVUm9Wk1LJQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### E1. Una película más densa, también sin coding/math de febrero de 2025 (LLM: The returning of the Jedi)
+
+Preguntas para la segunda lección:
+- ¿Cómo se lleva a cabo el proceso de preentrenamiento de los modelos de lenguaje?
+- ¿En qué se diferencia la etapa de preentrenamiento de la etapa de ajuste fino (fine-tuning)?
+- ¿Qué es el aprendizaje por refuerzo y cómo se aplica a los LLM?
+- ¿Qué métodos se utilizan para reducir las alucinaciones y mejorar la precisión de las respuestas de los LLM?
+- ¿En qué se diferencian los modelos "inteligentes" de los LLM tradicionales?
+- ¿Qué son las "alucinaciones" y cómo evitarlas?
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7xTGNNLPyMI?si=8kshyVoS22ZCY9Na" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+He movido la secuela aquí debido a los buenos comentarios de los estudiantes.
+
+## Pasos Extra
+
+### E2. Andrej Karpathy: How I use LLMs
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EWvNQjAaOHw?si=hqjJsvfhscJrDo3Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### E3. Cómo funciona la temperatura
+- https://lena-voita.github.io/nlp_course/language_modeling.html + ctrl+F `Sampling with temperature`.
+Puedes jugar con la imagen interactiva.
+
+### E4. [The **Illustrated** GPT-2 (Visualizing Transformer Language Models)](https://jalammar.github.io/illustrated-gpt2/) *sin matemáticas*
+
+### E5. [matan] Intuición detrás de los mecanismos
+
+Si quieres profundizar en cómo funcionan los LLM y los mecanismos internos, te recomiendo ver [esta lista de reproducción](https://youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&si=of9V1P2DaxOyV3zE) con excelentes visualizaciones y explicaciones. Mira comenzando con "Breve explicación de los grandes modelos de lenguaje".
+
+La duración de los cuatro videos es de 1.5 horas, pero es probable que te lleve más tiempo.
+
+<details>
+<summary>Transformer Neural Networks, ChatGPT's foundation, Clearly Explained!!! - StatQuest with Josh Starmer</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zxQyTK8quyY?si=-niT5GogmBMl2UW3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+
+### E6. Inyecciones de prompt visualmente
+
+<img src={PromptInjectionEng} alt="prompt injection" width="500" />
+
+
+
+<details>
+<summary>¿Por qué la inyección de prompt puede no funcionar?</summary>
+
+Versiones:
+- los modelos industriales intentan ser resistentes a las inyecciones de prompt
+- los modelos prestan más "atención" al prompt del sistema que al del usuario
+- los modelos demasiado pequeños y tontos pueden "no prestar atención" a la inyección
+
+También existen herramientas industriales para combatir las inyecciones de prompt, por ejemplo, su detección y bloqueo en diferentes etapas del workflow.
+
+</details>
+
+## Ahora sabemos...
+
+En este módulo, hemos explorado profundamente los principios de funcionamiento de los grandes modelos de lenguaje y su entrenamiento, incluyendo las etapas de preentrenamiento, aprendizaje supervisado y aprendizaje por refuerzo. Hemos visto cómo estos modelos se convierten en herramientas capaces no solo de generar texto, sino también de resolver tareas complejas, utilizando diversas estrategias de pensamiento. Es importante recordar que, aunque las tecnologías son impresionantes, su uso requiere un enfoque cuidadoso y un pensamiento crítico para lograr los mejores resultados.
+
+Sabiendo cómo está construido un LLM por dentro, en el siguiente módulo estudiaremos cómo se ve un LLM desde el otro lado: desde el lado del desarrollador.
+
+## Ejercicios
+
+- ¿De qué tres etapas suele constar el proceso de entrenamiento de un LLM?
+- ¿Por qué un LLM puede dar diferentes respuestas al mismo texto de entrada?
+- ¿Puede un LLM responder preguntas sobre las noticias de ayer?
+- ¿Qué se necesita para RLHF (Reinforcement Learning from Human Feedback)?
+- ¿Por qué a los modelos les cuesta contar el número de letras "a" en una palabra?
+
+Difíciles:
+- ¿Qué son los tokens especiales?
+- ¿Por qué nos resulta difícil hacer RL inmediatamente después del pre-entrenamiento? ¿Y qué nos ayuda con esto?
+- ¿Cuál es la ventaja de RLHF sobre SFT?
+- ¿Qué pasará si establecemos la temperatura en 10?
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
+
+Puedes ver otras películas de Andrey sobre GPT-2 y el tokenizador si quieres tener una comprensión increíblemente profunda de los LLM. Para el diseño de agentes de IA, esto no es obligatorio.

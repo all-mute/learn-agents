@@ -1,0 +1,177 @@
+---
+sidebar_position: 6
+title: Tareas de gestión (para Agentes)
+---
+
+### Determinación (descomposición en subtareas)
+
+**Prompt del sistema**
+
+```text
+Eres un experto en gestión de proyectos. Tu tarea es descomponer una tarea compleja en subtareas más pequeñas y manejables. Cada subtarea debe estar claramente definida y tener un resultado específico.
+```
+
+**Prompt del usuario**
+
+```text
+Tarea: Desarrollar y lanzar un nuevo sitio web para una tienda online.
+```
+
+**Respuesta del LLM**
+
+```text
+1. Investigación de mercado y competidores.
+2. Definición de los requisitos funcionales.
+3. Creación de un prototipo de diseño.
+4. Desarrollo de la interfaz de usuario.
+5. Configuración del backend.
+6. Integración del sistema de gestión de contenidos.
+7. Pruebas del sitio web.
+8. Lanzamiento y monitorización del funcionamiento del sitio web.
+```
+
+### Planificación, priorización de tareas
+
+**Prompt del sistema**
+
+```text
+Eres un consultor de gestión del tiempo. Tu tarea es ayudar al usuario a priorizar una lista de tareas, teniendo en cuenta su importancia y urgencia.
+```
+
+**Prompt del usuario**
+
+```text
+Tareas:
+1. Escribir un informe.
+2. Responder a los correos electrónicos.
+3. Preparar una presentación para la reunión de mañana.
+4. Realizar una investigación de mercado.
+```
+
+**Respuesta del LLM**
+
+```text
+1. Preparar la presentación para la reunión de mañana (alta urgencia e importancia).
+2. Escribir un informe (alta importancia, urgencia media).
+3. Responder a los correos electrónicos (urgencia e importancia medias).
+4. Realizar una investigación de mercado (baja urgencia, pero alta importancia).
+```
+
+### Resumen con resaltado de detalles
+
+**Prompt del sistema**
+
+```text
+Eres un editor profesional. Tu tarea es resumir el texto, conservando los detalles y requisitos clave.
+```
+
+**Prompt del usuario**
+
+```text
+{news_article}
+```
+
+**Respuesta del LLM**
+
+```text
+Puntos principales del artículo:
+- La empresa X ha anunciado el lanzamiento del nuevo producto Y.
+- El producto estará disponible a partir del 1 de diciembre.
+- Las principales funciones del producto incluyen A, B y C.
+- Se espera que el producto cambie el mercado gracias a las tecnologías innovadoras.
+```
+
+### Toma de decisiones (tarea completada o no)
+
+**Prompt del sistema**
+
+```text
+Eres un experto en control de calidad. Tu tarea es evaluar si una tarea se ha completado en función de los criterios proporcionados.
+```
+
+**Prompt del usuario**
+
+```text
+Tarea: Escribir un artículo sobre el impacto de la tecnología en la educación.
+Criterios:
+1. Mínimo 1000 palabras.
+2. Incluir ejemplos de la vida real.
+3. Mencionar las últimas investigaciones.
+```
+
+**Respuesta del LLM**
+
+```text
+Tarea completada. El artículo contiene 1050 palabras, incluye ejemplos de la vida real y hace referencia a las últimas investigaciones.
+```
+
+### Delegación a otros agentes
+
+**Prompt del sistema**
+
+```text
+Eres un gestor de proyectos. Tu tarea es determinar qué tareas se pueden delegar a otros agentes y proponer un plan para su ejecución.
+```
+
+**Prompt del usuario**
+
+```text
+Proyecto: Desarrollo de una aplicación móvil.
+Tareas:
+1. Diseño de la interfaz.
+2. Desarrollo de la funcionalidad.
+3. Pruebas.
+4. Promoción.
+```
+
+**Respuesta del LLM**
+
+```text
+1. Diseño de la interfaz - delegar a un diseñador.
+2. Desarrollo de la funcionalidad - delegar al equipo de desarrollo.
+3. Pruebas - delegar al departamento de control de calidad.
+4. Promoción - delegar al equipo de marketing.
+```
+
+### Crítica de la ejecución de la tarea, búsqueda de errores
+
+**Prompt del sistema**
+
+```text
+Eres un experto en la mejora de procesos. Tu tarea es evaluar críticamente la ejecución de una tarea e identificar posibles errores o deficiencias.
+```
+
+**Prompt del usuario**
+
+```text
+Tarea: Preparar un informe de ventas trimestral.
+```
+
+**Respuesta del LLM**
+
+```text
+El informe está preparado, pero falta un análisis de las tendencias de ventas. Tampoco se han tenido en cuenta las fluctuaciones estacionales, que podrían dar una visión más completa de los datos.
+```
+
+### Lluvia de ideas
+
+**Prompt del sistema**
+
+```text
+Eres un consultor creativo. Tu tarea es generar nuevas ideas para un tema determinado.
+```
+
+**Prompt del usuario**
+
+```text
+Tema: Nuevas funciones para una aplicación móvil de gestión financiera.
+```
+
+**Respuesta del LLM**
+
+```text
+1. Integración con redes sociales para compartir objetivos financieros.
+2. Consultor financiero virtual basado en IA.
+3. Gamificación para alcanzar objetivos financieros.
+4. Soporte para cuentas multidivisa.
+5. Análisis de gastos basado en IA con recomendaciones de ahorro.
