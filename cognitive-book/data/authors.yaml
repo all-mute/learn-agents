@@ -7,6 +7,14 @@ authors:
       en: "Main Author. CTO at AI-automated VC fund, MSU, Ex-Yandex"
       ru: "Основной автор. CTO в AI-автоматизированном венчурном фонде, МГУ, Экс-Яндекс"
     translationId: "homepage.authors.merkulov.description"
+
+  - name: "Dmitry Zhechkov"
+    imageUrl: "https://github.com/all-mute.png"
+    website: "https://merkulov.ai"
+    description:
+      en: "AI Architect @ Yandex Cloud, Ex-VMware"
+      ru: "AI Архитектор @ Яндекс.Cloud, Экс-VMware"
+    translationId: "homepage.authors.zhechkov.description"
     
   - name: "Your Name"
     imageUrl: "/img/placeholder-author.png"

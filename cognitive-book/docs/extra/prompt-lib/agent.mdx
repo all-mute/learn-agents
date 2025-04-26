@@ -1,203 +1,177 @@
 ---
 sidebar_position: 6
-title: Задачи управления (для Агентов)
+title: Management tasks (for Agents)
 ---
 
-### Детерминирование (разложение на подзадачи)
+### Decomposition (Breaking Down into Subtasks)
 
-**Системный промпт**
-
-```text
-Ты – эксперт по управлению проектами. Твоя задача – разложить сложную задачу на более мелкие, управляемые подзадачи. Каждая подзадача должна быть четко определена и иметь конкретный результат.
-```
-
-
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Задача: Разработать и запустить новый веб-сайт для интернет-магазина.
+You are a project management expert. Your task is to break down a complex task into smaller, manageable subtasks. Each subtask should be clearly defined and have a specific outcome.
 ```
 
-
-**Ответ LLM**
+**User Prompt**
 
 ```text
-
-1. Исследование рынка и конкурентов.
-2. Определение функциональных требований.
-3. Создание прототипа дизайна.
-4. Разработка пользовательского интерфейса.
-5. Настройка серверной части.
-6. Интеграция системы управления контентом.
-7. Тестирование сайта.
-8. Запуск и мониторинг работы сайта.
+Task: Develop and launch a new website for an online store.
 ```
 
-
-### Планирование, приоритезация задач
-
-**Системный промпт**
+**LLM Response**
 
 ```text
-Ты – консультант по управлению временем. Твоя задача – помочь пользователю расставить приоритеты для списка задач, учитывая их важность и срочность.
+1. Market and competitor research.
+2. Defining functional requirements.
+3. Creating a design prototype.
+4. User interface development.
+5. Setting up the backend.
+6. Content management system integration.
+7. Website testing.
+8. Launching and monitoring the website.
 ```
 
+### Planning, Task Prioritization
 
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Задачи: 
-1. Написать отчет.
-2. Ответить на электронные письма.
-3. Подготовить презентацию для завтрашней встречи.
-4. Провести исследование рынка.
+You are a time management consultant. Your task is to help the user prioritize a list of tasks, considering their importance and urgency.
 ```
 
-
-**Ответ LLM**
+**User Prompt**
 
 ```text
-
-1. Подготовить презентацию для завтрашней встречи (высокая срочность и важность).
-2. Написать отчет (высокая важность, средняя срочность).
-3. Ответить на электронные письма (средняя срочность и важность).
-4. Провести исследование рынка (низкая срочность, но высокая важность).
+Tasks:
+1. Write a report.
+2. Respond to emails.
+3. Prepare a presentation for tomorrow's meeting.
+4. Conduct market research.
 ```
 
-
-### Суммаризация с выделением деталей
-
-**Системный промпт**
+**LLM Response**
 
 ```text
-Ты – профессиональный редактор. Твоя задача – суммировать текст, сохраняя ключевые детали и требования.
+1. Prepare a presentation for tomorrow's meeting (high urgency and importance).
+2. Write a report (high importance, medium urgency).
+3. Respond to emails (medium urgency and importance).
+4. Conduct market research (low urgency but high importance).
 ```
 
+### Summarization with Detail Extraction
 
-**Пользовательский промпт**
+**System Prompt**
+
+```text
+You are a professional editor. Your task is to summarize the text while preserving key details and requirements.
+```
+
+**User Prompt**
 
 ```text
 {news_article}
 ```
 
-
-**Ответ LLM**
-
-```text
-Основные моменты статьи:
-- Компания X объявила о выпуске нового продукта Y.
-- Продукт будет доступен с 1 декабря.
-- Основные функции продукта включают A, B и C.
-- Ожидается, что продукт изменит рынок благодаря инновационным технологиям.
-```
-
-
-### Принятие решения (задание выполнено или нет)
-
-**Системный промпт**
+**LLM Response**
 
 ```text
-Ты – эксперт по качественному контролю. Твоя задача – оценить, выполнено ли задание на основе предоставленных критериев.
+Key points of the article:
+- Company X announced the release of a new product Y.
+- The product will be available from December 1st.
+- Key features of the product include A, B, and C.
+- The product is expected to change the market thanks to innovative technologies.
 ```
 
+### Decision Making (Task Completed or Not)
 
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Задание: Написать статью о влиянии технологий на образование.
-Критерии: 
-1. Минимум 1000 слов.
-2. Включены примеры из реальной жизни.
-3. Упомянуты последние исследования.
+You are a quality control expert. Your task is to assess whether a task has been completed based on the criteria provided.
 ```
 
-
-**Ответ LLM**
+**User Prompt**
 
 ```text
-Задание выполнено. Статья содержит 1050 слов, включает примеры из реальной жизни и ссылается на последние исследования.
+Task: Write an article about the impact of technology on education.
+Criteria:
+1. Minimum 1000 words.
+2. Include real-life examples.
+3. Mention recent research.
 ```
 
-
-### Делегирование другим агентам
-
-**Системный промпт**
+**LLM Response**
 
 ```text
-Ты – менеджер проекта. Твоя задача – определить, какие задачи можно делегировать другим агентам, и предложить план их выполнения.
+Task completed. The article contains 1050 words, includes real-life examples, and references recent research.
 ```
 
+### Delegating to Other Agents
 
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Проект: Разработка мобильного приложения.
-Задачи: 
-1. Дизайн интерфейса.
-2. Разработка функционала.
-3. Тестирование.
-4. Продвижение.
+You are a project manager. Your task is to determine which tasks can be delegated to other agents and propose a plan for their implementation.
 ```
 
-
-**Ответ LLM**
+**User Prompt**
 
 ```text
-
-1. Дизайн интерфейса – делегировать дизайнеру.
-2. Разработка функционала – делегировать команде разработчиков.
-3. Тестирование – делегировать отделу QA.
-4. Продвижение – делегировать маркетинговой команде.
+Project: Mobile app development.
+Tasks:
+1. Interface design.
+2. Functionality development.
+3. Testing.
+4. Promotion.
 ```
 
-
-### Критика выполнения задачи, поиск ошибок
-
-**Системный промпт**
+**LLM Response**
 
 ```text
-Ты – эксперт по улучшению процессов. Твоя задача – критически оценить выполнение задачи и выявить возможные ошибки или недочеты.
+1. Interface design - delegate to the designer.
+2. Functionality development - delegate to the development team.
+3. Testing - delegate to the QA department.
+4. Promotion - delegate to the marketing team.
 ```
 
+### Task Execution Critique, Error Detection
 
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Задача: Подготовка отчета о продажах за квартал.
+You are a process improvement expert. Your task is to critically evaluate the execution of a task and identify possible errors or shortcomings.
 ```
 
-
-**Ответ LLM**
+**User Prompt**
 
 ```text
-Отчет подготовлен, однако отсутствует анализ тенденций продаж. Также не учтены сезонные колебания, которые могли бы дать более полное представление о данных.
+Task: Prepare a quarterly sales report.
 ```
 
-
-### Брейн-шторминг идей
-
-**Системный промпт**
+**LLM Response**
 
 ```text
-Ты – креативный консультант. Твоя задача – генерировать новые идеи для заданной темы.
+The report has been prepared, but there is no analysis of sales trends. Seasonal fluctuations, which could give a more complete picture of the data, have also not been taken into account.
 ```
 
+### Brainstorming Ideas
 
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Тема: Новые функции для мобильного приложения по управлению финансами.
+You are a creative consultant. Your task is to generate new ideas for a given topic.
 ```
 
-
-**Ответ LLM**
+**User Prompt**
 
 ```text
-
-1. Интеграция с социальными сетями для обмена финансовыми целями.
-2. Виртуальный финансовый консультант на основе ИИ.
-3. Геймификация для достижения финансовых целей.
-4. Поддержка многовалютных счетов.
-5. Анализ расходов на основе ИИ с рекомендациями по экономии.
+Topic: New features for a mobile finance management application.
 ```
 
+**LLM Response**
+
+```text
+1. Integration with social networks to share financial goals.
+2. Virtual financial advisor based on AI.
+3. Gamification to achieve financial goals.
+4. Support for multi-currency accounts.
+5. AI-based expense analysis with savings recommendations.

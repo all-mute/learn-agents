@@ -1,194 +1,193 @@
 ---
-title: Мультимодальные LLM для автоматизации задач на ПК
-author: D. Zhechkov
+title: Multimodal LLMs for PC task automation
+authors: D. Zhechkov
 ---
 
+# Multimodal LLMs for Automating PC Tasks
 
-# Мультимодальные LLM для автоматизации задач на ПК
+In recent years, there has been a rapid development of PC automation tools based on multimodal artificial intelligence models. They offer a fundamentally new approach to interacting with a computer — instead of traditional automation tools that require programming or macro recording, they can visually "read" interfaces and respond to them like a human.
 
-В последние годы наблюдается стремительное развитие инструментов автоматизации ПК на базе мультимодальных моделей искусственного интеллекта. Они предлагают принципиально новый подход к взаимодействию с компьютером — вместо традиционных средств автоматизации, требующих программирования или записи макросов, они умеют визуально "читать" интерфейсы и реагировать на них как человек.
+## General Principles of Multimodal LLMs for Automation
 
-## Общие принципы работы мультимодальных LLM для автоматизации
+Multimodal LLMs for automating PC tasks combine several key technologies:
 
-Мультимодальные LLM для автоматизации задач на ПК объединяют несколько ключевых технологий:
+1. **Computer vision** — analyzing the screen and recognizing interface elements
+2. **Natural language processing** — understanding instructions and generating responses
+3. **Decision-making** — choosing the right actions based on context
+4. **Interface management** — emulating user actions (clicks, text input)
 
-1. **Компьютерное зрение** — анализ экрана и распознавание элементов интерфейса
-2. **Обработка естественного языка** — понимание инструкций и генерация ответов
-3. **Принятие решений** — выбор правильных действий на основе контекста
-4. **Управление интерфейсом** — эмуляция действий пользователя (клики, ввод текста)
+## Main Tools for PC Automation
 
-## Основные инструменты для автоматизации ПК
-
-### 1. Автоматизация с помощью браузерных инструментов
+### 1. Automation with Browser Tools
 
 #### Browser-use
 
-**Что это**: Библиотека для автоматизации действий в браузере с помощью ИИ-агентов.
+**What it is**: A library for automating actions in a browser using AI agents.
 
-**Особенности**:
-- Идентифицирует интерактивные элементы на веб-странице и передает информацию в LLM
-- Позволяет LLM принимать решения о том, куда кликать и что писать
-- Интегрируется с различными LLM, включая GPT-4, Claude и другие
-- Основан на Playwright для непосредственного взаимодействия с браузером
+**Features**:
+- Identifies interactive elements on a web page and transmits information to the LLM
+- Allows the LLM to make decisions about where to click and what to write
+- Integrates with various LLMs, including GPT-4, Claude, and others
+- Based on Playwright for direct interaction with the browser
 
-**Применение**: Автоматизация заполнения форм, поиска информации, навигации по сложным веб-интерфейсам.
+**Application**: Automating form filling, information retrieval, navigation through complex web interfaces.
 
-[Browser-use](https://github.com/browser-use/browser-use) получил значительное распространение благодаря высокой точности взаимодействия с элементами веб-страниц.
+[Browser-use](https://github.com/browser-use/browser-use) has gained significant popularity due to its high accuracy in interacting with web page elements.
 
 #### Skyvern
 
-**Что это**: Инструмент для автоматизации браузерных рабочих процессов с использованием LLM и компьютерного зрения.
+**What it is**: A tool for automating browser workflows using LLMs and computer vision.
 
-**Особенности**:
-- Использует "рой агентов" для понимания сайта, планирования и выполнения действий
-- Включает специализированных агентов для разных задач (навигация, извлечение данных и т.д.)
-- Работает с Playwright для взаимодействия с браузером
-- Анализирует содержимое страницы в режиме реального времени
+**Features**:
+- Uses a "swarm of agents" to understand the site, plan, and execute actions
+- Includes specialized agents for different tasks (navigation, data extraction, etc.)
+- Works with Playwright to interact with the browser
+- Analyzes page content in real time
 
-**Применение**: Автоматизация сложных многошаговых процессов в браузере, устойчивая к изменениям интерфейса.
+**Application**: Automating complex multi-step processes in the browser, resistant to interface changes.
 
 #### GPT-4V-Act
 
-**Что это**: AI-агент, использующий GPT-4V(ision) для взаимодействия с веб-интерфейсами.
+**What it is**: An AI agent using GPT-4V(ision) to interact with web interfaces.
 
-**Особенности**:
-- Объединяет возможности GPT-4V и браузера
-- Использует технологию Set-of-Mark Prompting и автоматическую разметку элементов
-- Присваивает уникальные числовые идентификаторы каждому интерактивному элементу UI
-- Понимает скриншоты и принимает решения о следующих действиях
+**Features**:
+- Combines the capabilities of GPT-4V and a browser
+- Uses Set-of-Mark Prompting technology and automatic element markup
+- Assigns unique numeric identifiers to each interactive UI element
+- Understands screenshots and makes decisions about the next actions
 
-**Применение**: Автоматизация UI-тестирования, повышение доступности интерфейсов, рабочие процессы на основе ИИ.
+**Application**: Automating UI testing, improving interface accessibility, AI-based workflows.
 
-### 2. Автоматизация десктопных приложений
+### 2. Automation of Desktop Applications
 
 #### Claude Computer Use (Anthropic)
 
-**Что это**: Экспериментальная функция модели Claude, позволяющая взаимодействовать с компьютерными интерфейсами.
+**What it is**: An experimental feature of the Claude model that allows interaction with computer interfaces.
 
-**Особенности**:
-- Позволяет модели увидеть экран и управлять интерфейсами
-- Функционирует как человек: перемещает курсор, кликает, заполняет формы
-- Основана на обучении общим компьютерным навыкам, а не специализированным инструментам
-- Доступна в API Claude 3.5 Sonnet
+**Features**:
+- Allows the model to see the screen and control interfaces
+- Functions like a human: moves the cursor, clicks, fills out forms
+- Based on learning general computer skills, not specialized tools
+- Available in the Claude 3.5 Sonnet API
 
-**Применение**: Автоматизация разработки, тестирования ПО, многошаговых процессов и повторяющихся задач.
+**Application**: Automating development, software testing, multi-step processes, and repetitive tasks.
 
-**Ограничения**: Технология экспериментальная, некоторые действия (скроллинг, перетаскивание, зум) вызывают затруднения.
+**Limitations**: The technology is experimental; some actions (scrolling, dragging, zooming) cause difficulties.
 
 #### Computer Use Tool (OpenAI)
 
-**Что это**: Инструмент для управления компьютером, интегрированный с моделями OpenAI.
+**What it is**: A tool for computer management integrated with OpenAI models.
 
-**Особенности**:
-- Позволяет моделям GPT управлять компьютерным интерфейсом
-- Доступен для ChatGPT Pro пользователей в США
-- Взаимодействует с приложениями через визуальный анализ интерфейса
+**Features**:
+- Allows GPT models to control the computer interface
+- Available to ChatGPT Pro users in the USA
+- Interacts with applications through visual interface analysis
 
-**Применение**: Автоматизация рутинных задач, управление приложениями голосом или текстом.
+**Application**: Automating routine tasks, managing applications by voice or text.
 
 #### OmniParser V2 (Microsoft)
 
-**Что это**: Инструмент, который превращает любую LLM в агента управления компьютером.
+**What it is**: A tool that turns any LLM into a computer management agent.
 
-**Особенности**:
-- "Токенизирует" скриншоты UI, преобразуя пиксельные изображения в структурированные элементы
-- Обучен на большом наборе данных для распознавания интерактивных элементов
-- Снижает латентность на 60% по сравнению с предыдущей версией
-- Интегрируется с различными LLM: OpenAI, DeepSeek, Qwen, Anthropic
+**Features**:
+- "Tokenizes" UI screenshots, converting pixel images into structured elements
+- Trained on a large dataset to recognize interactive elements
+- Reduces latency by 60% compared to the previous version
+- Integrates with various LLMs: OpenAI, DeepSeek, Qwen, Anthropic
 
-**Применение**: Превращение любой языковой модели в эффективного агента автоматизации GUI.
+**Application**: Turning any language model into an effective GUI automation agent.
 
-**Достижения**: На бенчмарке ScreenSpot Pro комбинация OmniParser+GPT-4o достигает точности 39.6%, в то время как чистый GPT-4o показывает результат всего 0.8%.
+**Achievements**: On the ScreenSpot Pro benchmark, the OmniParser+GPT-4o combination achieves an accuracy of 39.6%, while pure GPT-4o shows a result of only 0.8%.
 
 #### Magma (Microsoft)
 
-**Что это**: Мультимодальная AI foundation-модель для обработки информации и действий в цифровой и физической среде.
+**What it is**: A multimodal AI foundation model for processing information and actions in digital and physical environments.
 
-**Особенности**:
-- Синтезирует визуальные и текстовые данные для генерации действий
-- Использует инновационную систему аннотаций: Set-of-Mark (SoM) и Trace-of-Mark (ToM)
-- Работает как с цифровыми интерфейсами, так и с роботизированными манипуляторами
-- Может быть дообучена с минимальным количеством примеров
+**Features**:
+- Synthesizes visual and textual data to generate actions
+- Uses an innovative annotation system: Set-of-Mark (SoM) and Trace-of-Mark (ToM)
+- Works with both digital interfaces and robotic manipulators
+- Can be fine-tuned with a minimal number of examples
 
-**Применение**: Автоматизация ПК, управление роботами, виртуальные ассистенты.
+**Application**: PC automation, robot control, virtual assistants.
 
 #### UI Vision RPA
 
-**Что это**: Инструмент для кроссплатформенной десктопной автоматизации с интеграцией ИИ.
+**What it is**: A tool for cross-platform desktop automation with AI integration.
 
-**Особенности**:
-- Использует компьютерное зрение, OCR и безкодовую автоматизацию UI
-- Работает на Windows, MacOS и Linux
-- Предоставляет API для интеграции с другими программами
-- Интегрируется с Anthropic Claude через команды aiPrompt, aiScreenXY и Computer Use
+**Features**:
+- Uses computer vision, OCR, and codeless UI automation
+- Works on Windows, MacOS, and Linux
+- Provides an API for integration with other programs
+- Integrates with Anthropic Claude via aiPrompt, aiScreenXY, and Computer Use commands
 
-**Применение**: Тестирование приложений, автоматизация SAP, Citrix, экранный скрейпинг.
+**Application**: Application testing, SAP automation, Citrix automation, screen scraping.
 
-**Ограничения**: Режим записи доступен только для браузерной автоматизации, десктопная автоматизация требует ручного создания макросов.
+**Limitations**: Recording mode is only available for browser automation; desktop automation requires manual macro creation.
 
-### 3. Сопутствующие инструменты
+### 3. Accompanying Tools
 
 #### Anything-LLM
 
-**Что это**: Универсальное AI-приложение для создания контекста из документов.
+**What it is**: A universal AI application for creating context from documents.
 
-**Особенности**:
-- Позволяет использовать любые документы как контекст для LLM
-- Интегрируется с различными LLM и векторными базами данных
-- Позволяет создавать кастомных AI-агентов без кода
-- Поддерживает локальные модели, совместимые с llama.cpp
+**Features**:
+- Allows you to use any documents as context for the LLM
+- Integrates with various LLMs and vector databases
+- Allows you to create custom AI agents without code
+- Supports local models compatible with llama.cpp
 
-**Применение**: Создание специализированных агентов для работы с документами и автоматизации связанных задач.
+**Application**: Creating specialized agents for working with documents and automating related tasks.
 
-## Сравнение инструментов для автоматизации ПК
+## Comparison of PC Automation Tools
 
-| Инструмент | Разработчик | Тип автоматизации | Доступность | Интеграция с ИИ |
+| Tool | Developer | Automation Type | Availability | AI Integration |
 |------------|-------------|-------------------|-------------|-----------------|
-| Browser-use | Open-source | Браузер | Открытый исходный код | GPT, Claude, локальные LLM |
-| Skyvern | Skyvern-AI | Браузер | Открытый исходный код | Различные LLM |
-| GPT-4V-Act | Open-source | Браузер | Открытый исходный код | GPT-4V |
-| Claude Computer Use | Anthropic | Десктоп/Браузер | API (платно) | Claude 3.5 Sonnet |
-| Computer Use Tool | OpenAI | Десктоп/Браузер | Подписка ChatGPT Pro | GPT-4o |
-| OmniParser V2 | Microsoft | Десктоп/Браузер | Открытый исходный код | Различные LLM |
-| Magma | Microsoft | Десктоп/Роботы | Исследовательская | Собственная мультимодальная модель |
-| UI Vision RPA | UI.Vision | Десктоп/Браузер | Бесплатное ПО + API для Anthropic | Anthropic Claude |
+| Browser-use | Open-source | Browser | Open source | GPT, Claude, local LLMs |
+| Skyvern | Skyvern-AI | Browser | Open source | Various LLMs |
+| GPT-4V-Act | Open-source | Browser | Open source | GPT-4V |
+| Claude Computer Use | Anthropic | Desktop/Browser | API (paid) | Claude 3.5 Sonnet |
+| Computer Use Tool | OpenAI | Desktop/Browser | ChatGPT Pro subscription | GPT-4o |
+| OmniParser V2 | Microsoft | Desktop/Browser | Open source | Various LLMs |
+| Magma | Microsoft | Desktop/Robots | Research | Proprietary multimodal model |
+| UI Vision RPA | UI.Vision | Desktop/Browser | Free software + API for Anthropic | Anthropic Claude |
 
-## Особенности и отличия
+## Features and Differences
 
-### Браузерные инструменты
-- **Browser-use** фокусируется на точной идентификации интерактивных элементов на веб-страницах
-- **Skyvern** использует многоагентную архитектуру для комплексной автоматизации
-- **GPT-4V-Act** делает акцент на визуальном распознавании и числовой разметке элементов
+### Browser Tools
+- **Browser-use** focuses on accurate identification of interactive elements on web pages
+- **Skyvern** uses a multi-agent architecture for comprehensive automation
+- **GPT-4V-Act** emphasizes visual recognition and numerical markup of elements
 
-### Десктопные инструменты
-- **Claude Computer Use** и **Computer Use Tool** работают как виртуальные пользователи, "видящие" экран
-- **OmniParser V2** позволяет превратить любую LLM в агента, понимающего UI через токенизацию скриншотов
-- **Magma** расширяет возможности на физический мир через роботов
-- **UI Vision RPA** сочетает традиционные методы RPA с интеграцией ИИ
+### Desktop Tools
+- **Claude Computer Use** and **Computer Use Tool** work as virtual users who "see" the screen
+- **OmniParser V2** allows you to turn any LLM into an agent that understands the UI by tokenizing screenshots
+- **Magma** extends capabilities to the physical world through robots
+- **UI Vision RPA** combines traditional RPA methods with AI integration
 
-## Рекомендации по выбору инструмента
+## Recommendations for Choosing a Tool
 
-### Для автоматизации веб-процессов:
-- **Browser-use** — если нужна точная и надежная работа с элементами веб-страниц
-- **Skyvern** — для сложных многошаговых процессов с изменяющимися интерфейсами
+### For automating web processes:
+- **Browser-use** — if you need accurate and reliable work with web page elements
+- **Skyvern** — for complex multi-step processes with changing interfaces
 
-### Для автоматизации десктопных приложений:
-- **Claude Computer Use** или **Computer Use Tool** — для интерактивной работы с GUI без программирования
-- **OmniParser V2** — если у вас есть доступ к различным LLM и вы хотите максимальную гибкость
-- **UI Vision RPA** — когда нужна кроссплатформенная автоматизация с элементами ИИ
+### For automating desktop applications:
+- **Claude Computer Use** or **Computer Use Tool** — for interactive work with the GUI without programming
+- **OmniParser V2** — if you have access to various LLMs and want maximum flexibility
+- **UI Vision RPA** — when you need cross-platform automation with AI elements
 
-### Для исследовательских задач:
-- **Magma** — если интересуют продвинутые возможности работы как с цифровыми, так и с физическими интерфейсами
+### For research tasks:
+- **Magma** — if you are interested in advanced capabilities for working with both digital and physical interfaces
 
-## Заключение
+## Conclusion
 
-Мультимодальные LLM для автоматизации ПК предлагают революционный подход к выполнению задач на компьютере. В отличие от традиционных инструментов RPA, они "видят" и понимают интерфейс как человек, что делает их гибкими и устойчивыми к изменениям.
+Multimodal LLMs for PC automation offer a revolutionary approach to performing tasks on a computer. Unlike traditional RPA tools, they "see" and understand the interface like a human, making them flexible and resistant to changes.
 
-Текущие тенденции указывают на то, что развитие идет по пути создания универсальных агентов, способных автоматизировать широкий спектр задач как в браузере, так и в десктопных приложениях. Технологические гиганты (Microsoft, OpenAI, Anthropic) активно развивают эту область, и в ближайшие годы мы, вероятно, увидим еще более мощные и доступные инструменты.
+Current trends indicate that development is moving towards creating universal agents capable of automating a wide range of tasks both in the browser and in desktop applications. Technology giants (Microsoft, OpenAI, Anthropic) are actively developing this area, and in the coming years, we will likely see even more powerful and accessible tools.
 
-Для практического применения уже сейчас доступен богатый выбор инструментов с различным уровнем сложности и возможностей, от открытых библиотек до интегрированных решений с коммерческими LLM.
+For practical application, a rich selection of tools with varying levels of complexity and capabilities is already available, from open libraries to integrated solutions with commercial LLMs.
 
-## Источники
+## Sources
 
 - [Browser-use GitHub](https://github.com/browser-use/browser-use)
 - [Anthropic Computer Use](https://www.anthropic.com/news/3-5-models-and-computer-use)

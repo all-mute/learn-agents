@@ -1,124 +1,108 @@
 ---
 sidebar_position: 2
-title: Задачи анализа текста
+title: Text analysis tasks
 ---
 
-### Критика идеи
+### Idea Critique
 
-**Системный промпт**
-
-```text
-Ты - эксперт по критическому анализу идей. Твоя задача - выявить слабые стороны предложенной идеи и предложить пути улучшения. Используй конструктивный подход.
-```
-
-
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Идея: Создать кафе, где посетители могут платить за время пребывания, а не за еду.
+You are an expert in critical analysis of ideas. Your task is to identify the weaknesses of the proposed idea and suggest ways to improve it. Use a constructive approach.
 ```
 
-
-**Ответ LLM**
+**User Prompt**
 
 ```text
-
-1. Сложности в управлении временем пребывания клиентов, которые могут затруднить контроль за оплатой.
-2. Потенциальные проблемы с клиентами, которые задерживаются дольше, чем планировалось.
-3. Необходимость в создании уникальной атмосферы, чтобы привлечь клиентов и удержать их.
-4. Возможные улучшения: внедрение системы бонусов для постоянных клиентов, разработка программ лояльности.
+Idea: Create a cafe where visitors can pay for the time they spend, not for the food.
 ```
 
-
-### Критика ответа LLM
-
-**Системный промпт**
+**LLM Response**
 
 ```text
-Ты - опытный рецензент, который анализирует ответы LLM на предмет точности, полноты и стиля. Твоя задача - выявить недостатки в ответе и предложить улучшения.
+1. Difficulties in managing the time spent by customers, which may make it difficult to control payment.
+2. Potential problems with customers who stay longer than planned.
+3. The need to create a unique atmosphere to attract and retain customers.
+4. Possible improvements: introducing a bonus system for regular customers, developing loyalty programs.
 ```
 
-или
+### LLM Response Critique
 
-**Пользовательский промпт в середине интеракции с LLM**
+**System Prompt**
 
 ```text
-Перечитай свой последний ответ, проанализируй его и подумай, есть ли в нем ошибки. Если что-то можно улучшить, перепиши свой ответ с изменениями.
+You are an experienced reviewer who analyzes LLM responses for accuracy, completeness, and style. Your task is to identify shortcomings in the response and suggest improvements.
 ```
 
+or
 
-### Анализ диалога продажника с клиентом
-
-**Системный промпт**
+**User Prompt in the middle of an interaction with LLM**
 
 ```text
-Ты - эксперт по анализу продаж. Твоя задача - оценить диалог между продавцом и клиентом, выявить точки роста и оценить вежливость и тон общения.
+Reread your last response, analyze it, and think about whether there are any errors in it. If something can be improved, rewrite your response with the changes.
 ```
 
+### Salesperson-Client Dialogue Analysis
 
-**Пользовательский промпт**
+**System Prompt**
+
+```text
+You are an expert in sales analysis. Your task is to evaluate the dialogue between the seller and the client, identify areas for growth, and assess the politeness and tone of communication.
+```
+
+**User Prompt**
 
 ```text
 {sales_dialog}
 ```
 
-
-**Ответ LLM**
-
-```text
-
-1. Точки роста: продавец не уточнил потребности клиента, что могло бы помочь в более точном предложении продукта.
-2. Вежливость: Продавец использовал вежливый и дружелюбный тон, однако стоит избегать слишком формального языка.
-3. Рекомендации: задавать больше открытых вопросов, чтобы лучше понять клиента.
-```
-
-
-### Модерация по параметрам
-
-**Системный промпт**
+**LLM Response**
 
 ```text
-Ты - модератор контента. Оцени текст по заданным критериям: достоверность, нейтральность, ясность. Расставь баллы от 1 до 5 по каждому критерию.
+1. Areas for growth: the seller did not clarify the client's needs, which could have helped in a more accurate product offer.
+2. Politeness: The seller used a polite and friendly tone, but overly formal language should be avoided.
+3. Recommendations: ask more open-ended questions to better understand the client.
 ```
 
+### Moderation by Parameters
 
-**Пользовательский промпт**
+**System Prompt**
+
+```text
+You are a content moderator. Evaluate the text according to the specified criteria: reliability, neutrality, clarity. Assign scores from 1 to 5 for each criterion.
+```
+
+**User Prompt**
 
 ```text
 {content_text}
 ```
 
-
-**Ответ LLM**
-
-```text
-Достоверность: 4 - информация в целом правдива, но требует проверки источников.
-Нейтральность: 3 - присутствует некоторая предвзятость.
-Ясность: 5 - текст четкий и легко читается.
-```
-
-
-### Заполнение баллов опросника
-
-**Системный промпт**
+**LLM Response**
 
 ```text
-Ты - аналитик данных. На основе ответа респондента, оцени его по шкале от 1 до 10 по следующим критериям: удовлетворенность, вовлеченность, лояльность.
+Reliability: 4 - the information is generally true, but requires verification of sources.
+Neutrality: 3 - there is some bias.
+Clarity: 5 - the text is clear and easy to read.
 ```
 
+### Questionnaire Score Filling
 
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Ответ респондента: "Мне нравится продукт, но я не уверен, что буду его рекомендовать. Использую его нечасто."
+You are a data analyst. Based on the respondent's answer, rate them on a scale of 1 to 10 according to the following criteria: satisfaction, engagement, loyalty.
 ```
 
-
-**Ответ LLM**
+**User Prompt**
 
 ```text
-Удовлетворенность: 7 - в целом положительное отношение к продукту.
-Вовлеченность: 4 - продукт используется нечасто.
-Лояльность: 5 - неуверенность в рекомендации продукта.
+Respondent's answer: "I like the product, but I'm not sure I would recommend it. I don't use it often."
 ```
 
+**LLM Response**
+
+```text
+Satisfaction: 7 - generally positive attitude towards the product.
+Engagement: 4 - the product is not used often.
+Loyalty: 5 - uncertainty in recommending the product.

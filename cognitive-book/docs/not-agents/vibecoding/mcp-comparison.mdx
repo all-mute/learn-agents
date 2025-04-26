@@ -1,690 +1,729 @@
 ---
-title: Сравнение MCP и Vibe-Coding
-author: D. Zhechkov
+title: MCP vs. Vibe-Coding comparison
+authors: D. Zhechkov
 ---
 
-# Обзор и сравнение платформ для MCP (Model Context Protocol) серверов
+# Overview and Comparison of Platforms for MCP (Model Context Protocol) Servers
 
-## Содержание
-- [Введение в MCP (Model Context Protocol)](#введение-в-mcp-model-context-protocol)
-- [Категории платформ для MCP серверов](#категории-платформ-для-mcp-серверов)
-- [Обзор ключевых платформ для MCP серверов](#обзор-ключевых-платформ-для-mcp-серверов)
-  - [Фреймворки для разработки MCP серверов](#1-фреймворки-для-разработки-mcp-серверов)
-  - [Реестры и каталоги MCP серверов](#2-реестры-и-каталоги-mcp-серверов)
-  - [Хостинг-платформы для MCP серверов](#3-хостинг-платформы-для-mcp-серверов)
-  - [Инструменты управления MCP серверами](#4-инструменты-управления-mcp-серверами)
-- [Маркетплейсы и реестры MCP серверов](#маркетплейсы-и-реестры-mcp-серверов)
-- [MCP серверы с поддержкой аутентификации](#mcp-серверы-с-поддержкой-аутентификации)
-- [Сравнительная таблица платформ для MCP серверов](#сравнительная-таблица-платформ-для-mcp-серверов)
-- [Популярные MCP-серверы и их сравнение](#популярные-mcp-серверы-и-их-сравнение)
-- [Рекомендации по выбору платформы](#рекомендации-по-выбору-платформы)
-- [Тенденции развития MCP платформ](#тенденции-развития-mcp-платформ)
-- [Часто задаваемые вопросы о MCP платформах](#часто-задаваемые-вопросы-о-mcp-платформах)
-- [Ресурсы для изучения MCP](#ресурсы-для-изучения-mcp)
-- [Заключительные рекомендации](#заключительные-рекомендации)
+## Contents
+- [Introduction to MCP (Model Context Protocol)](#introduction-to-mcp-model-context-protocol)
+- [Categories of Platforms for MCP Servers](#categories-of-platforms-for-mcp-servers)
+- [Overview of Key Platforms for MCP Servers](#overview-of-key-platforms-for-mcp-servers)
+  - [Frameworks for Developing MCP Servers](#1-frameworks-for-developing-mcp-servers)
+  - [Registries and Catalogs of MCP Servers](#2-registries-and-catalogs-of-mcp-servers)
+  - [Hosting Platforms for MCP Servers](#3-hosting-platforms-for-mcp-servers)
+  - [MCP Server Management Tools](#4-mcp-server-management-tools)
+- [Marketplaces and Registries of MCP Servers](#marketplaces-and-registries-of-mcp-servers)
+- [MCP Servers with Authentication Support](#mcp-servers-with-authentication-support)
+- [Comparative Table of Platforms for MCP Servers](#comparative-table-of-platforms-for-mcp-servers)
+- [Popular MCP Servers and Their Comparison](#popular-mcp-servers-and-their-comparison)
+- [Recommendations for Choosing a Platform](#recommendations-for-choosing-a-platform)
+- [Trends in the Development of MCP Platforms](#trends-in-the-development-of-mcp-platforms)
+- [Frequently Asked Questions About MCP Platforms](#frequently-asked-questions-about-mcp-platforms)
+- [Resources for Learning MCP](#resources-for-learning-mcp)
+- [Concluding Recommendations](#concluding-recommendations)
 
-## Введение в MCP (Model Context Protocol)
 
-Model Context Protocol (MCP) – это открытый протокол, стандартизирующий взаимодействие между приложениями и языковыми моделями (LLM), такими как Claude от Anthropic. Представленный в конце 2024 года, MCP позволяет AI-ассистентам получать доступ к внешним данным, инструментам и API через стандартизированный интерфейс.
+## Introduction to MCP (Model Context Protocol)
 
-Образно говоря, MCP можно сравнить с USB-портом для ИИ-приложений. Он позволяет AI-моделям безопасно взаимодействовать с локальными и удаленными ресурсами – от файловой системы и баз данных до внешних API и сервисов.
+Model Context Protocol (MCP) is an open protocol that standardizes interaction between applications and language models (LLM), such as Claude from Anthropic. Introduced in late 2024, MCP allows AI assistants to access external data, tools, and APIs through a standardized interface.
 
-MCP-серверы – это программы, которые реализуют протокол MCP и предоставляют инструменты, ресурсы и подсказки для AI-клиентов. Они могут давать доступ к различным источникам данных (файлы, документы, базы данных) и API, расширяя возможности ИИ-систем.
+Figuratively speaking, MCP can be compared to a USB port for AI applications. It allows AI models to securely interact with local and remote resources – from the file system and databases to external APIs and services.
 
-## Категории платформ для MCP серверов
+MCP servers are programs that implement the MCP protocol and provide tools, resources, and prompts for AI clients. They can provide access to various data sources (files, documents, databases) and APIs, expanding the capabilities of AI systems.
 
-На основе проведенного исследования можно выделить четыре основные категории платформ, связанных с MCP:
 
-1. **Фреймворки для разработки** - библиотеки и инструменты для создания MCP серверов
-2. **Реестры и каталоги** - платформы для поиска и установки готовых MCP серверов
-3. **Хостинг-платформы** - сервисы для размещения и управления MCP серверами
-4. **Инструменты управления** - приложения для установки и администрирования MCP серверов
+## Categories of Platforms for MCP Servers
 
-## Обзор ключевых платформ для MCP серверов
+Based on the conducted research, four main categories of platforms related to MCP can be distinguished:
 
-### 1. Фреймворки для разработки MCP серверов
+1. **Development Frameworks** - libraries and tools for creating MCP servers
+2. **Registries and Catalogs** - platforms for finding and installing ready-made MCP servers
+3. **Hosting Platforms** - services for hosting and managing MCP servers
+4. **Management Tools** - applications for installing and administering MCP servers
+
+
+## Overview of Key Platforms for MCP Servers
+
+### 1. Frameworks for Developing MCP Servers
 
 #### EasyMCP (TypeScript)
-![Рейтинг GitHub: ~94⭐](https://img.shields.io/badge/GitHub-~94⭐-yellow)
+![GitHub Rating: ~94⭐](https://img.shields.io/badge/GitHub-~94⭐-yellow)
 
-**EasyMCP** предлагает максимально простой подход к созданию MCP-серверов с минимумом кода. Разработчику не нужно заботиться о деталях реализации протокола.
+**EasyMCP** offers the simplest possible approach to creating MCP servers with a minimum of code. The developer does not need to worry about the details of the protocol implementation.
 
-**Ключевые особенности:**
-- Express-подобный API для определения инструментов и ресурсов
-- Автоматическое определение параметров с помощью декораторов
-- Контекстный объект для логирования
+**Key Features:**
+- Express-like API for defining tools and resources
+- Automatic parameter definition using decorators
+- Context object for logging
 
-**Плюсы:**
-- Минимальный объем кода для запуска сервера
-- Простой и понятный для разработчиков TypeScript
-- Хорошая типизация для раннего обнаружения ошибок
+**Pros:**
+- Minimal amount of code to launch the server
+- Simple and understandable for TypeScript developers
+- Good typing for early error detection
 
-**Минусы:**
-- На начало 2025 года все еще в бета-версии
-- Отсутствие поддержки некоторых продвинутых функций MCP
-- Отсутствие явной системы плагинов или промежуточного ПО
+**Cons:**
+- As of early 2025, still in beta
+- Lack of support for some advanced MCP features
+- No explicit plugin or middleware system
 
-**Идеально подходит для:** быстрого прототипирования, хакатонов, демонстраций или интеграции быстрых инструментов в ИИ-ассистента.
+**Ideal for:** rapid prototyping, hackathons, demos, or integrating quick tools into an AI assistant.
+
 
 #### FastAPI-MCP (Python/FastAPI)
-![Рейтинг GitHub: ~395⭐](https://img.shields.io/badge/GitHub-~395⭐-green)
+![GitHub Rating: ~395⭐](https://img.shields.io/badge/GitHub-~395⭐-green)
 
-**FastAPI-MCP** – это расширение популярного веб-фреймворка FastAPI, автоматически экспортирующее существующие REST API-эндпоинты как MCP-инструменты.
+**FastAPI-MCP** is an extension of the popular FastAPI web framework that automatically exports existing REST API endpoints as MCP tools.
 
-**Ключевые особенности:**
-- "Нулевая конфигурация" для интеграции с FastAPI
-- Автоматическое обнаружение всех существующих API-эндпоинтов
-- Повторное использование схем Pydantic для валидации входных данных
+**Key Features:**
+- "Zero configuration" for integration with FastAPI
+- Automatic discovery of all existing API endpoints
+- Reuse of Pydantic schemas for input data validation
 
-**Плюсы:**
-- Исключительная простота для пользователей FastAPI
-- Повторное использование аутентификации, middleware и обработки ошибок FastAPI
-- Хорошая производительность благодаря асинхронности FastAPI/Uvicorn
+**Pros:**
+- Exceptional simplicity for FastAPI users
+- Reuse of FastAPI authentication, middleware, and error handling
+- Good performance thanks to FastAPI/Uvicorn asynchronicity
 
-**Минусы:**
-- Полезно только если вы уже используете FastAPI
-- Ограничен парадигмами FastAPI
-- Автоматическое предоставление всех эндпоинтов может быть слишком разрешающим
+**Cons:**
+- Only useful if you are already using FastAPI
+- Limited by FastAPI paradigms
+- Automatically exposing all endpoints may be too permissive
 
-**Идеально подходит для:** Python-разработчиков, которые хотят быстро интегрировать существующее API с ИИ-агентами без переписывания кода.
+**Ideal for:** Python developers who want to quickly integrate an existing API with AI agents without rewriting code.
+
 
 #### FastMCP (TypeScript)
-![Рейтинг GitHub: ~706⭐](https://img.shields.io/badge/GitHub-~706⭐-brightgreen)
+![GitHub Rating: ~706⭐](https://img.shields.io/badge/GitHub-~706⭐-brightgreen)
 
-**FastMCP** – полнофункциональный фреймворк для TypeScript с богатым набором готовых функций и простым API.
+**FastMCP** is a full-featured TypeScript framework with a rich set of ready-made functions and a simple API.
 
-**Ключевые особенности:**
-- Поддержка аутентификации, сессий пользователей, структурированного логирования
-- SSE-стриминг, уведомления о прогрессе, поддержка сэмплирования
-- CLI-инструмент для разработки и тестирования
+**Key Features:**
+- Support for authentication, user sessions, structured logging
+- SSE streaming, progress notifications, sampling support
+- CLI tool for development and testing
 
-**Плюсы:**
-- Хороший баланс между простотой и мощностью
-- Декларативный API для быстрого создания серверов
-- Поддержка продвинутых функций MCP
+**Pros:**
+- Good balance between simplicity and power
+- Declarative API for quickly creating servers
+- Support for advanced MCP features
 
-**Минусы:**
-- Более высокая кривая обучения из-за большого количества функций
-- Наследует ограничения Node.js в плане производительности
-- Требует понимания нескольких транспортных протоколов
+**Cons:**
+- Higher learning curve due to the large number of functions
+- Inherits Node.js limitations in terms of performance
+- Requires understanding of several transport protocols
 
-**Идеально подходит для:** создания продакшн-серверов на TypeScript, которые могут потребовать потоковой передачи данных, многошаговых взаимодействий или сессий пользователей.
+**Ideal for:** creating production servers in TypeScript that may require data streaming, multi-step interactions, or user sessions.
+
 
 #### MCP-Framework (TypeScript)
-![Рейтинг GitHub: ~456⭐](https://img.shields.io/badge/GitHub-~456⭐-green)
+![GitHub Rating: ~456⭐](https://img.shields.io/badge/GitHub-~456⭐-green)
 
-**MCP-Framework** фокусируется на быстрой разработке с CLI для создания проектов и автоматическом обнаружении компонентов.
+**MCP-Framework** focuses on rapid development with a CLI for project creation and automatic component discovery.
 
-**Ключевые особенности:**
-- CLI для создания проектов (`mcp create`)
-- Автоматическое обнаружение инструментов/ресурсов из кода
-- Поддержка множества транспортов (stdio, SSE, HTTP stream)
+**Key Features:**
+- CLI for project creation (`mcp create`)
+- Automatic discovery of tools/resources from code
+- Support for multiple transports (stdio, SSE, HTTP stream)
 
-**Плюсы:**
-- Очень быстрое начало работы благодаря CLI
-- Минимум ручной конфигурации
-- Активное сообщество с Discord-поддержкой
+**Pros:**
+- Very quick start thanks to CLI
+- Minimum manual configuration
+- Active community with Discord support
 
-**Минусы:**
-- Требует изучения соглашений фреймворка
-- Дополнительный уровень абстракции над MCP SDK
-- Средняя производительность (на основе Node.js)
+**Cons:**
+- Requires learning framework conventions
+- Additional layer of abstraction over MCP SDK
+- Average performance (based on Node.js)
 
-**Идеально подходит для:** разработчиков, желающих быстро начать работу и создать хорошо структурированный проект с нуля.
+**Ideal for:** developers who want to get started quickly and create a well-structured project from scratch.
+
 
 #### Foxy Contexts (Golang)
-![Рейтинг GitHub: ~70⭐](https://img.shields.io/badge/GitHub-~70⭐-orange)
+![GitHub Rating: ~70⭐](https://img.shields.io/badge/GitHub-~70⭐-orange)
 
-**Foxy Contexts** – Go-библиотека с акцентом на производительность и декларативный подход к созданию MCP-серверов.
+**Foxy Contexts** is a Go library with an emphasis on performance and a declarative approach to creating MCP servers.
 
-**Ключевые особенности:**
-- Использование Uber Fx для внедрения зависимостей
-- Поддержка как STDIO, так и SSE транспортов
-- Пакет для тестирования (foxytest)
+**Key Features:**
+- Using Uber Fx for dependency injection
+- Support for both STDIO and SSE transports
+- Testing package (foxytest)
 
-**Плюсы:**
-- Высокая производительность и эффективность Go
-- Чистое разделение компонентов благодаря DI
-- Отличная масштабируемость
+**Pros:**
+- High performance and efficiency of Go
+- Clean separation of components thanks to DI
+- Excellent scalability
 
-**Минусы:**
-- Более высокая сложность по сравнению со скриптовыми языками
-- Меньшее сообщество и меньше доступных материалов
-- Требует опыта работы с Go и шаблонами DI
+**Cons:**
+- Higher complexity compared to scripting languages
+- Smaller community and fewer available materials
+- Requires experience with Go and DI patterns
 
-**Идеально подходит для:** приложений, требующих высокой производительности, команд с опытом Go, серверов с ожидаемой высокой нагрузкой.
+**Ideal for:** applications requiring high performance, teams with Go experience, servers with expected high load.
 
-### 2. Реестры и каталоги MCP серверов
+
+### 2. Registries and Catalogs of MCP Servers
 
 #### Portkey.ai
 [https://portkey.ai/mcp-servers](https://portkey.ai/mcp-servers)
 
-**Portkey.ai** предлагает комплексную карту всех доступных MCP серверов, от эталонных реализаций до вкладов сообщества.
+**Portkey.ai** offers a comprehensive map of all available MCP servers, from reference implementations to community contributions.
 
-**Ключевые особенности:**
-- Каталогизация MCP серверов по категориям
-- Подробные описания и ссылки на репозитории
-- Регулярные обновления для включения новых серверов
+**Key Features:**
+- Categorization of MCP servers by category
+- Detailed descriptions and links to repositories
+- Regular updates to include new servers
 
-**Плюсы:**
-- Хорошо структурированный и легкий для навигации интерфейс
-- Комплексный обзор экосистемы MCP
-- Включение как официальных, так и сторонних серверов
+**Pros:**
+- Well-structured and easy-to-navigate interface
+- Comprehensive overview of the MCP ecosystem
+- Inclusion of both official and third-party servers
 
-**Минусы:**
-- Отсутствие возможности прямой установки серверов
-- Ограниченная информация о совместимости и требованиях
+**Cons:**
+- No direct server installation capability
+- Limited information on compatibility and requirements
 
-**Идеально подходит для:** изучения доступных опций MCP серверов и выбора наиболее подходящей для конкретных нужд.
+**Ideal for:** exploring available MCP server options and choosing the most suitable one for specific needs.
+
 
 #### mcp-get.com
 [https://mcp-get.com/](https://mcp-get.com/)
 
-**mcp-get** – это реестр MCP серверов с возможностью поиска и инструментами командной строки для установки и управления.
+**mcp-get** is a registry of MCP servers with search capabilities and command-line tools for installation and management.
 
-**Ключевые особенности:**
-- Поиск серверов с фильтрацией
-- Инструмент командной строки для установки серверов
-- Рейтинги и отзывы от сообщества
+**Key Features:**
+- Server search with filtering
+- Command-line tool for installing servers
+- Ratings and reviews from the community
 
-**Плюсы:**
-- Прямая интеграция с инструментом установки
-- Аналитика и статистика использования
-- Активное сообщество пользователей
+**Pros:**
+- Direct integration with the installation tool
+- Usage analytics and statistics
+- Active user community
 
-**Минусы:**
-- Не такой обширный каталог, как у некоторых конкурентов
-- Ограниченная поддержка некоторых операционных систем
+**Cons:**
+- Not as extensive a catalog as some competitors
+- Limited support for some operating systems
 
-**Идеально подходит для:** разработчиков, которые хотят быстро находить и устанавливать MCP серверы через командную строку.
+**Ideal for:** developers who want to quickly find and install MCP servers via the command line.
+
 
 #### mcp.so
 [https://mcp.so/](https://mcp.so/)
 
-**mcp.so** – обширный каталог MCP серверов с детальной документацией и инструкциями по установке.
+**mcp.so** is an extensive catalog of MCP servers with detailed documentation and installation instructions.
 
-**Ключевые особенности:**
-- Обширная коллекция серверов (тысячи опций)
-- Категоризация и теги для удобного поиска
-- Подробные страницы серверов с примерами использования
+**Key Features:**
+- Extensive collection of servers (thousands of options)
+- Categorization and tags for easy searching
+- Detailed server pages with usage examples
 
-**Плюсы:**
-- Один из самых полных каталогов MCP серверов
-- Активное сообщество и регулярные обновления
-- Детальная документация для каждого сервера
+**Pros:**
+- One of the most complete catalogs of MCP servers
+- Active community and regular updates
+- Detailed documentation for each server
 
-**Минусы:**
-- Отсутствие интегрированных инструментов для управления серверами
-- Может быть сложно найти нужное из-за большого количества опций
+**Cons:**
+- No integrated tools for server management
+- It can be difficult to find what you need due to the large number of options
 
-**Идеально подходит для:** обнаружения специализированных MCP серверов для конкретных задач, изучения возможностей протокола MCP.
+**Ideal for:** discovering specialized MCP servers for specific tasks, exploring the capabilities of the MCP protocol.
+
 
 #### mcpm.sh
 [https://mcpm.sh/](https://mcpm.sh/)
 
-**mcpm.sh** (MCP Manager) – это открытый сервис и инструмент командной строки для управления MCP серверами в стиле Homebrew.
+**mcpm.sh** (MCP Manager) is an open-source service and command-line tool for managing MCP servers in the style of Homebrew.
 
-**Ключевые особенности:**
-- Управление конфигурациями серверов через множество клиентов
-- Автоматическое обновление серверов
-- Роутер для подключения к множеству серверов
+**Key Features:**
+- Managing server configurations through multiple clients
+- Automatic server updates
+- Router for connecting to multiple servers
 
-**Плюсы:**
-- Простота установки и использования
-- Управление зависимостями и версиями
-- Поддержка как локальных, так и удаленных серверов
+**Pros:**
+- Ease of installation and use
+- Dependency and version management
+- Support for both local and remote servers
 
-**Минусы:**
-- Меньший каталог по сравнению с некоторыми альтернативами
-- В первую очередь ориентирован на опытных пользователей командной строки
+**Cons:**
+- Smaller catalog compared to some alternatives
+- Primarily aimed at experienced command-line users
 
-**Идеально подходит для:** разработчиков, которые хотят единообразно управлять несколькими MCP серверами в стиле пакетных менеджеров.
+**Ideal for:** developers who want to manage multiple MCP servers uniformly in the style of package managers.
 
-### 3. Хостинг-платформы для MCP серверов
+
+### 3. Hosting Platforms for MCP Servers
 
 #### mcp.run
 [https://mcp.run/](https://mcp.run/)
 
-**mcp.run** – это хостинг-платформа, предоставляющая реестр и контрольную плоскость для установки и запуска безопасных и переносимых MCP серверов.
+**mcp.run** is a hosting platform that provides a registry and control plane for installing and running secure and portable MCP servers.
 
-**Ключевые особенности:**
-- Централизованный хостинг MCP серверов
-- Управление доступом и безопасностью
-- Масштабирование и мониторинг
+**Key Features:**
+- Centralized hosting of MCP servers
+- Access and security management
+- Scaling and monitoring
 
-**Плюсы:**
-- Упрощенное развертывание серверов
-- Централизованное управление
-- Обеспечение безопасности и изоляции
+**Pros:**
+- Simplified server deployment
+- Centralized management
+- Ensuring security and isolation
 
-**Минусы:**
-- Потенциальная зависимость от стороннего сервиса
-- Возможные ограничения для настройки серверов
+**Cons:**
+- Potential dependence on a third-party service
+- Possible restrictions for server configuration
 
-**Идеально подходит для:** организаций, которым требуется централизованное и безопасное развертывание MCP серверов без необходимости собственной инфраструктуры.
+**Ideal for:** organizations that require centralized and secure deployment of MCP servers without the need for their own infrastructure.
+
 
 #### Composio
 [https://mcp.composio.dev/](https://mcp.composio.dev/)
 
-**Composio** предлагает более 100 управляемых MCP серверов с встроенной аутентификацией и простым подключением.
+**Composio** offers over 100 managed MCP servers with built-in authentication and easy connectivity.
 
-**Ключевые особенности:**
-- Готовые к использованию управляемые MCP серверы
-- Встроенная аутентификация и безопасность
-- Бесшовное масштабирование
+**Key Features:**
+- Ready-to-use managed MCP servers
+- Built-in authentication and security
+- Seamless scaling
 
-**Плюсы:**
-- Устранение необходимости настройки серверов
-- Высокая доступность и производительность
-- Профессиональная поддержка
+**Pros:**
+- Eliminating the need to configure servers
+- High availability and performance
+- Professional support
 
-**Минусы:**
-- Может быть дороже самостоятельного хостинга
-- Ограниченный контроль над инфраструктурой
+**Cons:**
+- May be more expensive than self-hosting
+- Limited control over infrastructure
 
-**Идеально подходит для:** предприятий и команд, которые нуждаются в быстром доступе к надежной инфраструктуре MCP без технических сложностей.
+**Ideal for:** enterprises and teams that need quick access to reliable MCP infrastructure without technical complexities.
 
-#### Cloudflare для MCP
+
+#### Cloudflare for MCP
 [https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp/](https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp/)
 
-**Cloudflare** предлагает возможность создания и развертывания удаленных MCP серверов с использованием своей инфраструктуры.
+**Cloudflare** offers the ability to create and deploy remote MCP servers using its infrastructure.
 
-**Ключевые особенности:**
-- Интеграция с Cloudflare Workers
-- Глобальная сеть с низкой задержкой
-- Безопасность и масштабируемость
+**Key Features:**
+- Integration with Cloudflare Workers
+- Global network with low latency
+- Security and scalability
 
-**Плюсы:**
-- Использование глобальной сети Cloudflare
-- Интеграция с другими сервисами Cloudflare
-- Высокая производительность и доступность
+**Pros:**
+- Using the Cloudflare global network
+- Integration with other Cloudflare services
+- High performance and availability
 
-**Минусы:**
-- Привязка к экосистеме Cloudflare
-- Потенциально сложная настройка для новичков
+**Cons:**
+- Binding to the Cloudflare ecosystem
+- Potentially complex setup for beginners
 
-**Идеально подходит для:** разработчиков, уже использующих Cloudflare, и команд, нуждающихся в глобально распределенных MCP серверах с высокой производительностью.
+**Ideal for:** developers already using Cloudflare and teams needing globally distributed MCP servers with high performance.
+
 
 #### MCPServer.cloud
 [https://mcpserver.cloud/](https://mcpserver.cloud/)
 
-**MCPServer.cloud** - это хостинг-платформа, специализирующаяся на размещении и управлении MCP серверами в облаке.
+**MCPServer.cloud** is a hosting platform specializing in hosting and managing MCP servers in the cloud.
 
-**Ключевые особенности:**
-- Быстрое развертывание MCP серверов в облаке
-- Панель управления для мониторинга и контроля
-- Высокодоступная инфраструктура
+**Key Features:**
+- Fast deployment of MCP servers in the cloud
+- Control panel for monitoring and control
+- Highly available infrastructure
 
-**Плюсы:**
-- Простота масштабирования
-- Отсутствие необходимости настройки собственной инфраструктуры
-- Автоматические обновления
+**Pros:**
+- Ease of scaling
+- No need to configure your own infrastructure
+- Automatic updates
 
-**Минусы:**
-- Ограничения по возможностям кастомизации
-- Потенциальная зависимость от провайдера
+**Cons:**
+- Limitations on customization options
+- Potential dependence on the provider
 
-**Идеально подходит для:** команд, которым нужно быстро развернуть MCP сервер без погружения в детали инфраструктуры.
+**Ideal for:** teams that need to quickly deploy an MCP server without delving into infrastructure details.
 
-### 4. Инструменты управления MCP серверами
+
+### 4. MCP Server Management Tools
 
 #### mcp-cli
 [https://github.com/wong2/mcp-cli](https://github.com/wong2/mcp-cli)
 
-**mcp-cli** – это инспектор командной строки для протокола MCP, позволяющий исследовать и отлаживать серверы.
+**mcp-cli** is a command-line inspector for the MCP protocol, allowing you to explore and debug servers.
 
-**Ключевые особенности:**
-- Интерактивный режим для тестирования серверов
-- Поддержка различных транспортных протоколов
-- Подробная информация о доступных инструментах и ресурсах
+**Key Features:**
+- Interactive mode for testing servers
+- Support for various transport protocols
+- Detailed information about available tools and resources
 
-**Плюсы:**
-- Удобно для разработки и отладки
-- Простой в использовании интерфейс командной строки
-- Поддержка расширенных функций MCP
+**Pros:**
+- Convenient for development and debugging
+- Easy-to-use command-line interface
+- Support for advanced MCP features
 
-**Минусы:**
-- Ограниченная функциональность для массового управления
-- В основном ориентирован на разработчиков
+**Cons:**
+- Limited functionality for mass management
+- Primarily aimed at developers
 
-**Идеально подходит для:** разработчиков MCP серверов, которым нужен инструмент для тестирования и отладки.
+**Ideal for:** MCP server developers who need a tool for testing and debugging.
+
 
 #### MCPHub
 [https://github.com/Jeamee/MCPHub-Desktop](https://github.com/Jeamee/MCPHub-Desktop)
 
-**MCPHub** – это открытое приложение для macOS и Windows для обнаружения, установки и управления MCP серверами.
+**MCPHub** is an open-source application for macOS and Windows for discovering, installing, and managing MCP servers.
 
-**Ключевые особенности:**
-- Графический интерфейс для управления серверами
-- Обнаружение и установка серверов
-- Мониторинг статуса и журналов
+**Key Features:**
+- Graphical interface for managing servers
+- Server discovery and installation
+- Status and log monitoring
 
-**Плюсы:**
-- Дружественный пользовательский интерфейс
-- Упрощенное управление несколькими серверами
-- Открытый исходный код
+**Pros:**
+- Friendly user interface
+- Simplified management of multiple servers
+- Open source
 
-**Минусы:**
-- Ограниченная поддержка некоторых специализированных серверов
-- Меньше возможностей настройки по сравнению с CLI-инструментами
+**Cons:**
+- Limited support for some specialized servers
+- Fewer customization options compared to CLI tools
 
-**Идеально подходит для:** пользователей, предпочитающих графический интерфейс для управления MCP серверами, и тех, кто новичок в экосистеме MCP.
+**Ideal for:** users who prefer a graphical interface for managing MCP servers and those new to the MCP ecosystem.
+
 
 #### mcp-guardian
 [https://github.com/eqtylab/mcp-guardian](https://github.com/eqtylab/mcp-guardian)
 
-**mcp-guardian** – GUI-приложение и инструменты для проксирования и управления MCP серверами.
+**mcp-guardian** is a GUI application and tools for proxying and managing MCP servers.
 
-**Ключевые особенности:**
-- Централизованное управление доступом
-- Проксирование запросов к серверам
-- Мониторинг и логирование
+**Key Features:**
+- Centralized access management
+- Proxying requests to servers
+- Monitoring and logging
 
-**Плюсы:**
-- Улучшенная безопасность и контроль
-- Простое добавление и управление серверами
-- Гибкая настройка
+**Pros:**
+- Improved security and control
+- Easy addition and management of servers
+- Flexible configuration
 
-**Минусы:**
-- Дополнительный уровень сложности
-- Требует отдельной настройки
+**Cons:**
+- Additional level of complexity
+- Requires separate configuration
 
-**Идеально подходит для:** организаций с высокими требованиями к безопасности и необходимостью централизованного контроля над MCP серверами.
+**Ideal for:** organizations with high security requirements and the need for centralized control over MCP servers.
 
-## Маркетплейсы и реестры MCP серверов
+
+## Marketplaces and Registries of MCP Servers
 
 ### GitHub (modelcontextprotocol/servers)
 [https://github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
 
-**Официальный репозиторий MCP серверов** содержит эталонные реализации и ссылки на серверы, созданные сообществом.
+**The official MCP server repository** contains reference implementations and links to servers created by the community.
 
-**Ключевые особенности:**
-- Эталонные реализации серверов для различных случаев использования
-- Документация и рекомендации по реализации
-- Поддержка от основных разработчиков протокола MCP
+**Key Features:**
+- Reference implementations of servers for various use cases
+- Documentation and implementation guidelines
+- Support from the main developers of the MCP protocol
 
-**Плюсы:**
-- Официальный источник с высоким качеством кода
-- Наиболее актуальные и соответствующие спецификации серверы
-- Детальная документация и примеры
+**Pros:**
+- Official source with high code quality
+- The most up-to-date and specification-compliant servers
+- Detailed documentation and examples
 
-**Минусы:**
-- Ориентирован на разработчиков, знакомых с GitHub
-- Отсутствие централизованного GUI для управления
+**Cons:**
+- Aimed at developers familiar with GitHub
+- No centralized GUI for management
 
-**Идеально подходит для:** разработчиков, желающих изучить эталонные реализации и следовать лучшим практикам.
+**Ideal for:** developers who want to study reference implementations and follow best practices.
+
 
 ### Glama.ai
 [https://glama.ai/mcp/servers](https://glama.ai/mcp/servers)
 
-**Glama.ai** предоставляет каталог готовых к использованию и экспериментальных MCP серверов с акцентом на расширение возможностей ИИ.
+**Glama.ai** provides a catalog of ready-to-use and experimental MCP servers with an emphasis on expanding AI capabilities.
 
-**Ключевые особенности:**
-- Обширная коллекция серверов для различных задач
-- Акцент на инновационные применения MCP
-- Интеграция с другими сервисами Glama
+**Key Features:**
+- Extensive collection of servers for various tasks
+- Emphasis on innovative applications of MCP
+- Integration with other Glama services
 
-**Плюсы:**
-- Простой, хорошо организованный интерфейс
-- Подробные описания возможностей каждого сервера
-- Активное сообщество разработчиков
+**Pros:**
+- Simple, well-organized interface
+- Detailed descriptions of the capabilities of each server
+- Active developer community
 
-**Минусы:**
-- Некоторые серверы могут быть экспериментальными
-- Не все серверы имеют одинаково подробную документацию
+**Cons:**
+- Some servers may be experimental
+- Not all servers have equally detailed documentation
 
-**Идеально подходит для:** инноваторов, исследующих новые возможности взаимодействия ИИ с внешними данными и инструментами.
+**Ideal for:** innovators exploring new ways to interact AI with external data and tools.
+
 
 ### Smithery.ai
 [https://smithery.ai/](https://smithery.ai/)
 
-**Smithery.ai** — реестр MCP серверов, помогающий найти подходящие инструменты для ИИ-агентов.
+**Smithery.ai** is a registry of MCP servers that helps you find the right tools for AI agents.
 
-**Ключевые особенности:**
-- Интеллектуальный поиск и рекомендации
-- Акцент на пользовательский опыт и удобство поиска
-- Интеграция с различными LLM-агентами
+**Key Features:**
+- Intelligent search and recommendations
+- Emphasis on user experience and ease of search
+- Integration with various LLM agents
 
-**Плюсы:**
-- Интуитивный интерфейс для поиска и фильтрации
-- Подробные профили каждого сервера с примерами использования
-- Оценки и отзывы пользователей
+**Pros:**
+- Intuitive interface for searching and filtering
+- Detailed profiles of each server with usage examples
+- User ratings and reviews
 
-**Минусы:**
-- Меньшая коллекция по сравнению с некоторыми другими каталогами
-- Ориентирован больше на конечных пользователей, чем на разработчиков
+**Cons:**
+- Smaller collection compared to some other catalogs
+- Focused more on end users than developers
 
-**Идеально подходит для:** пользователей ИИ, ищущих конкретные инструменты для расширения возможностей своих ИИ-ассистентов.
+**Ideal for:** AI users looking for specific tools to enhance the capabilities of their AI assistants.
 
-## MCP серверы с поддержкой аутентификации
+
+## MCP Servers with Authentication Support
 
 ### Pipedream MCP
 [https://mcp.pipedream.com/](https://mcp.pipedream.com/)
 
-**Pipedream MCP** предлагает MCP серверы с встроенной аутентификацией, интегрированные с платформой Pipedream для автоматизации.
+**Pipedream MCP** offers MCP servers with built-in authentication, integrated with the Pipedream platform for automation.
 
-**Ключевые особенности:**
-- Безопасная аутентификация для доступа к MCP серверам
-- Интеграция с экосистемой Pipedream
-- Автоматизация рабочих процессов через MCP
+**Key Features:**
+- Secure authentication for accessing MCP servers
+- Integration with the Pipedream ecosystem
+- Automation of workflows via MCP
 
-**Плюсы:**
-- Безопасность корпоративного уровня
-- Простая интеграция с другими сервисами через Pipedream
-- Расширенные возможности логирования и аудита
+**Pros:**
+- Enterprise-grade security
+- Easy integration with other services via Pipedream
+- Advanced logging and auditing capabilities
 
-**Минусы:**
-- Требует знакомства с платформой Pipedream
-- Потенциальные ограничения бесплатного плана
+**Cons:**
+- Requires familiarity with the Pipedream platform
+- Potential limitations of the free plan
 
-**Идеально подходит для:** бизнес-пользователей, которым требуется безопасная интеграция ИИ с существующими рабочими процессами.
+**Ideal for:** business users who need secure AI integration with existing workflows.
 
-### Composio MCP с аутентификацией
+
+### Composio MCP with Authentication
 [https://mcp.composio.dev/](https://mcp.composio.dev/)
 
-**Composio MCP** предоставляет более 100 управляемых MCP серверов с встроенной аутентификацией и безопасностью.
+**Composio MCP** provides over 100 managed MCP servers with built-in authentication and security.
 
-**Ключевые особенности:**
-- Различные методы аутентификации (API-ключи, OAuth)
-- Управление правами доступа на уровне серверов и инструментов
-- Специализированные MCP серверы для корпоративных клиентов
+**Key Features:**
+- Various authentication methods (API keys, OAuth)
+- Access rights management at the server and tool level
+- Specialized MCP servers for enterprise clients
 
-**Плюсы:**
-- Готовые к использованию серверы без сложной настройки
-- Соответствие корпоративным стандартам безопасности
-- Централизованное управление доступом
+**Pros:**
+- Ready-to-use servers without complex configuration
+- Compliance with corporate security standards
+- Centralized access management
 
-**Минусы:**
-- Платные планы для расширенных возможностей
-- Привязка к инфраструктуре Composio
+**Cons:**
+- Paid plans for advanced features
+- Binding to the Composio infrastructure
 
-**Идеально подходит для:** организаций, требующих безопасного и управляемого доступа к MCP серверам с минимальными усилиями по настройке.
+**Ideal for:** organizations requiring secure and managed access to MCP servers with minimal setup effort.
 
-## Сравнительная таблица платформ для MCP серверов
 
-### Фреймворки для разработки
+## Comparative Table of Platforms for MCP Servers
 
-| Фреймворк | Язык | Простота использования | Функциональность | Расширяемость | Производительность | Сообщество | Особенности |
+### Development Frameworks
+
+| Framework | Language | Ease of Use | Functionality | Extensibility | Performance | Community | Features |
 |-----------|------|------------------------|------------------|---------------|-------------------|------------|-------------|
-| EasyMCP | TypeScript | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ | ⭐⭐ | Максимальная простота, декораторы |
-| FastAPI-MCP | Python | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | Интеграция с FastAPI, автовыявление эндпоинтов |
-| FastMCP | TypeScript | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | Полнофункциональный, CLI, сессии |
-| MCP-Framework | TypeScript | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | CLI создания проектов, автообнаружение |
-| Foxy Contexts | Go | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | DI, высокая производительность |
+| EasyMCP | TypeScript | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ | ⭐⭐ | Maximum simplicity, decorators |
+| FastAPI-MCP | Python | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | FastAPI integration, endpoint auto-discovery |
+| FastMCP | TypeScript | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | Full-featured, CLI, sessions |
+| MCP-Framework | TypeScript | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | CLI project creation, auto-discovery |
+| Foxy Contexts | Go | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | DI, high performance |
 
-### Реестры, маркетплейсы и платформы
 
-| Платформа | Тип | Количество серверов | Удобство использования | Управление | Документация | Интеграция | Аутентификация |
+### Registries, Marketplaces, and Platforms
+
+| Platform | Type | Number of Servers | Ease of Use | Management | Documentation | Integration | Authentication |
 |-----------|-----|---------------------|------------------------|------------|--------------|------------|----------------|
-| Portkey.ai | Каталог | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
-| mcp-get.com | Реестр+CLI | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ |
-| mcp.so | Каталог | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
-| mcpm.sh | Пакетный менеджер | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
-| mcp.run | Хостинг | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| Composio | Хостинг | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
-| Cloudflare | Хостинг | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| MCPServer.cloud | Хостинг | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ |
-| Glama.ai | Каталог | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
-| Smithery.ai | Реестр | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
-| Pipedream MCP | Хостинг | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Portkey.ai | Catalog | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| mcp-get.com | Registry+CLI | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ |
+| mcp.so | Catalog | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| mcpm.sh | Package manager | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+| mcp.run | Hosting | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| Composio | Hosting | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Cloudflare | Hosting | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| MCPServer.cloud | Hosting | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+| Glama.ai | Catalog | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| Smithery.ai | Registry | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| Pipedream MCP | Hosting | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
 
-## Популярные MCP-серверы и их сравнение
 
-На основе изученных материалов, вот сравнение 10 наиболее популярных MCP-серверов:
+## Popular MCP Servers and Their Comparison
 
-| Сервер | Назначение | Особенности | Простота использования | Популярность |
+Based on the materials studied, here is a comparison of the 10 most popular MCP servers:
+
+| Server | Purpose | Features | Ease of Use | Popularity |
 |--------|------------|-------------|------------------------|--------------|
-| File System MCP | Работа с файлами | Доступ к локальной файловой системе | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
-| GitHub MCP | Управление кодом | Управление репозиториями, PR, issues | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
-| Slack MCP | Коммуникации | Автоматизация сообщений и каналов | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| Google Maps MCP | Геоданные | Поиск мест, маршруты, геокодирование | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| Brave Search MCP | Поиск | Поиск в интернете через Brave API | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
-| PostgreSQL MCP | Базы данных | Запросы к PostgreSQL базам данных | ⭐⭐⭐ | ⭐⭐⭐⭐ |
-| Cloudflare MCP | Облачная инфраструктура | Управление Cloudflare сервисами | ⭐⭐⭐ | ⭐⭐⭐ |
-| Raygun MCP | Мониторинг ошибок | Отслеживание ошибок и производительности | ⭐⭐⭐ | ⭐⭐⭐ |
-| Vector Search MCP | Семантический поиск | Поиск по векторным встраиваниям | ⭐⭐⭐ | ⭐⭐⭐ |
-| Docker MCP | Контейнеризация | Управление Docker-контейнерами | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+| File System MCP | File operations | Access to the local file system | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| GitHub MCP | Code management | Repository management, PRs, issues | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Slack MCP | Communications | Automation of messages and channels | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| Google Maps MCP | Geodata | Place search, routes, geocoding | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| Brave Search MCP | Search | Internet search via Brave API | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| PostgreSQL MCP | Databases | Queries to PostgreSQL databases | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+| Cloudflare MCP | Cloud infrastructure | Cloudflare service management | ⭐⭐⭐ | ⭐⭐⭐ |
+| Raygun MCP | Error monitoring | Tracking errors and performance | ⭐⭐⭐ | ⭐⭐⭐ |
+| Vector Search MCP | Semantic search | Search by vector embeddings | ⭐⭐⭐ | ⭐⭐⭐ |
+| Docker MCP | Containerization | Docker container management | ⭐⭐⭐ | ⭐⭐⭐⭐ |
 
-## Рекомендации по выбору платформы
 
-### Для разработчиков и технических экспертов
+## Recommendations for Choosing a Platform
 
-1. **Разработка собственного MCP-сервера:**
-   - Если вы разрабатываете на TypeScript/JavaScript: выбирайте **FastMCP** для полного набора функций или **EasyMCP** для максимальной простоты
-   - Для Python-разработчиков: **FastAPI-MCP** — идеальный выбор для интеграции с существующими API
-   - Для высоконагруженных приложений: **Foxy Contexts** на Go обеспечит максимальную производительность
+### For Developers and Technical Experts
 
-2. **Поиск и установка существующих серверов:**
-   - Для общего ознакомления с экосистемой: **Portkey.ai**, **mcp.so** или **Glama.ai**
-   - Для установки через командную строку: **mcp-get.com** или **mcpm.sh**
-   - Для разработчиков, предпочитающих графический интерфейс: **MCPHub**
-   - Для интеллектуального поиска инструментов: **Smithery.ai**
+1. **Developing Your Own MCP Server:**
+   - If you are developing in TypeScript/JavaScript: choose **FastMCP** for a full set of features or **EasyMCP** for maximum simplicity
+   - For Python developers: **FastAPI-MCP** is an ideal choice for integration with existing APIs
+   - For high-load applications: **Foxy Contexts** on Go will provide maximum performance
 
-3. **Хостинг и управление:**
-   - Для простого управляемого хостинга: **Composio** или **MCPServer.cloud**
-   - Для интеграции с существующей Cloudflare-инфраструктурой: **Cloudflare для MCP**
-   - Для централизованного управления множеством серверов: **mcp.run**
-   - Для интеграции с автоматизацией и рабочими процессами: **Pipedream MCP**
+2. **Finding and Installing Existing Servers:**
+   - For a general overview of the ecosystem: **Portkey.ai**, **mcp.so**, or **Glama.ai**
+   - For installation via the command line: **mcp-get.com** or **mcpm.sh**
+   - For developers who prefer a graphical interface: **MCPHub**
+   - For intelligent tool search: **Smithery.ai**
 
-4. **Серверы с усиленной безопасностью:**
-   - Для корпоративных сценариев: **Composio** с аутентификацией 
-   - Для автоматизации рабочих процессов с безопасным доступом: **Pipedream MCP**
-   - Для локального контроля безопасности: **mcp-guardian**
+3. **Hosting and Management:**
+   - For simple managed hosting: **Composio** or **MCPServer.cloud**
+   - For integration with existing Cloudflare infrastructure: **Cloudflare for MCP**
+   - For centralized management of multiple servers: **mcp.run**
+   - For integration with automation and workflows: **Pipedream MCP**
 
-### Для предприятий и организаций
+4. **Servers with Enhanced Security:**
+   - For enterprise scenarios: **Composio** with authentication
+   - For automating workflows with secure access: **Pipedream MCP**
+   - For local security control: **mcp-guardian**
 
-1. **Малые команды и стартапы:**
-   - Используйте готовые MCP-серверы из каталогов и фреймворки для быстрой разработки
-   - **FastMCP** или **MCP-Framework** обеспечат баланс между простотой и функциональностью
-   - **MCPHub** позволит быстро начать использовать существующие серверы
 
-2. **Средние и крупные организации:**
-   - Рассмотрите хостинг-платформы для централизованного управления: **Composio** или **mcp.run**
-   - Для корпоративных сценариев с высокими требованиями к безопасности: **mcp-guardian** или **Pipedream MCP**
-   - Фреймворки на Java (**Quarkus MCP**) или Go (**Foxy Contexts**) для высоконагруженных систем
+### For Enterprises and Organizations
 
-3. **Корпоративные требования:**
-   - Для интеграции с существующей инфраструктурой: выбирайте фреймворки, совместимые с вашим стеком
-   - Для контроля безопасности и доступа: хостинг-платформы с аутентификацией
-   - Для масштабирования: решения на Go или Java с поддержкой контейнеризации
+1. **Small Teams and Startups:**
+   - Use ready-made MCP servers from catalogs and frameworks for rapid development
+   - **FastMCP** or **MCP-Framework** will provide a balance between simplicity and functionality
+   - **MCPHub** will allow you to quickly start using existing servers
 
-## Тенденции развития MCP платформ
+2. **Medium and Large Organizations:**
+   - Consider hosting platforms for centralized management: **Composio** or **mcp.run**
+   - For enterprise scenarios with high security requirements: **mcp-guardian** or **Pipedream MCP**
+   - Frameworks in Java (**Quarkus MCP**) or Go (**Foxy Contexts**) for high-load systems
 
-Анализируя текущую экосистему MCP, можно выделить несколько ключевых тенденций:
+3. **Corporate Requirements:**
+   - For integration with existing infrastructure: choose frameworks compatible with your stack
+   - For security and access control: hosting platforms with authentication
+   - For scaling: solutions in Go or Java with containerization support
 
-1. **Специализация серверов** - появление все более узкоспециализированных MCP серверов для конкретных областей, таких как финансы, медицина, юриспруденция и т.д.
 
-2. **Улучшение безопасности** - усиление внимания к безопасности, появление дополнительных механизмов аутентификации и авторизации для MCP серверов.
+## Trends in the Development of MCP Platforms
 
-3. **Интеграция с облачными платформами** - крупные облачные провайдеры интегрируют MCP в свои платформы, упрощая развертывание и управление.
+Analyzing the current MCP ecosystem, several key trends can be identified:
 
-4. **Инструменты для нетехнических пользователей** - появление решений, позволяющих бизнес-пользователям создавать и управлять MCP серверами без глубоких технических знаний.
+1. **Server Specialization** - the emergence of increasingly specialized MCP servers for specific areas, such as finance, medicine, law, etc.
 
-5. **Оптимизация для мобильных устройств** - разработка MCP серверов с учетом ограничений мобильных устройств и оптимизация для работы на низкопроизводительном оборудовании.
+2. **Security Improvement** - increased attention to security, the emergence of additional authentication and authorization mechanisms for MCP servers.
 
-## Часто задаваемые вопросы о MCP платформах
+3. **Integration with Cloud Platforms** - major cloud providers are integrating MCP into their platforms, simplifying deployment and management.
 
-### Что такое MCP и зачем он нужен?
-MCP (Model Context Protocol) - это открытый протокол, стандартизирующий взаимодействие между ИИ-моделями и внешними инструментами/данными. Он позволяет ИИ-ассистентам, например Claude, безопасно подключаться к внешним источникам данных и инструментам, расширяя их возможности.
+4. **Tools for Non-Technical Users** - the emergence of solutions that allow business users to create and manage MCP servers without deep technical knowledge.
 
-### Какая MCP платформа лучше всего подходит для начинающих?
-Для начинающих рекомендуется использовать EasyMCP (TypeScript) или FastAPI-MCP (Python), если вы знакомы с соответствующими языками. Также можно использовать графические инструменты, такие как MCPHub, для управления существующими серверами без необходимости программирования.
+5. **Optimization for Mobile Devices** - development of MCP servers taking into account the limitations of mobile devices and optimization for operation on low-performance equipment.
 
-### Можно ли использовать MCP с моделями, отличными от Claude?
-Да, хотя протокол MCP был изначально представлен Anthropic для Claude, он является открытым и может быть использован с другими LLM. Многие клиенты, такие как Cline и Cursor, уже поддерживают MCP, и список совместимых моделей продолжает расти.
 
-### Безопасно ли использовать MCP серверы?
-MCP серверы могут иметь различные уровни безопасности. Официальные серверы обычно следуют рекомендуемым практикам безопасности, но при использовании сторонних серверов следует проявлять осторожность. Рекомендуется проверять исходный код, использовать доверенные источники и ограничивать доступ серверов только к необходимым ресурсам.
+## Frequently Asked Questions About MCP Platforms
 
-### Какие альтернативы существуют для MCP?
-Альтернативами MCP являются другие фреймворки для создания инструментов для ИИ, такие как LangChain, LlamaIndex, API-интеграции без стандартизированного протокола, и собственные решения разных провайдеров LLM. Однако MCP отличается стандартизацией и простотой интеграции.
+### What is MCP and why is it needed?
+MCP (Model Context Protocol) is an open protocol that standardizes interaction between AI models and external tools/data. It allows AI assistants, such as Claude, to securely connect to external data sources and tools, expanding their capabilities.
 
-### Как обеспечить безопасность при использовании MCP серверов?
-Для обеспечения безопасности при использовании MCP серверов рекомендуется:
-- Использовать серверы с поддержкой аутентификации (Composio, Pipedream MCP)
-- Ограничивать доступ серверов только к необходимым ресурсам
-- Применять инструменты контроля, такие как mcp-guardian
-- Регулярно обновлять серверы до последних версий
-- Проводить аудит безопасности для критически важных серверов
 
-## Ресурсы для изучения MCP
+### Which MCP platform is best for beginners?
+For beginners, it is recommended to use EasyMCP (TypeScript) or FastAPI-MCP (Python) if you are familiar with the respective languages. You can also use graphical tools such as MCPHub to manage existing servers without programming.
 
-Для углубленного изучения MCP и работы с платформами рекомендуем следующие ресурсы:
 
-1. **Официальная документация:**
+### Can MCP be used with models other than Claude?
+Yes, although the MCP protocol was originally introduced by Anthropic for Claude, it is open and can be used with other LLMs. Many clients, such as Cline and Cursor, already support MCP, and the list of compatible models continues to grow.
+
+
+### Is it safe to use MCP servers?
+MCP servers can have different levels of security. Official servers usually follow recommended security practices, but caution should be exercised when using third-party servers. It is recommended to check the source code, use trusted sources, and limit server access to only the necessary resources.
+
+
+### What alternatives exist for MCP?
+Alternatives to MCP include other frameworks for creating tools for AI, such as LangChain, LlamaIndex, API integrations without a standardized protocol, and proprietary solutions from different LLM providers. However, MCP is distinguished by standardization and ease of integration.
+
+
+### How to ensure security when using MCP servers?
+To ensure security when using MCP servers, it is recommended to:
+- Use servers with authentication support (Composio, Pipedream MCP)
+- Limit server access to only the necessary resources
+- Use control tools such as mcp-guardian
+- Regularly update servers to the latest versions
+- Conduct security audits for critical servers
+
+
+## Resources for Learning MCP
+
+For in-depth study of MCP and work with platforms, we recommend the following resources:
+
+1. **Official Documentation:**
    - [Model Context Protocol: Introduction](https://modelcontextprotocol.io/introduction)
    - [Anthropic MCP API Documentation](https://docs.anthropic.com/en/docs/agents-and-tools/mcp)
 
-2. **Репозитории на GitHub:**
-   - [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) - Эталонные реализации MCP серверов
-   - [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) - Курируемый список MCP серверов
+2. **Repositories on GitHub:**
+   - [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) - Reference implementations of MCP servers
+   - [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) - Curated list of MCP servers
 
-3. **Сообщества:**
-   - [Discord сервер MCP](https://glama.ai/mcp/discord) - Активное сообщество разработчиков MCP
-   - [Reddit r/mcp](https://www.reddit.com/r/mcp) - Обсуждения и новости по MCP
+3. **Communities:**
+   - [Discord server MCP](https://glama.ai/mcp/discord) - Active community of MCP developers
+   - [Reddit r/mcp](https://www.reddit.com/r/mcp) - Discussions and news on MCP
 
-4. **Обучающие материалы:**
+4. **Training Materials:**
    - [The Model Context Protocol (MCP): A Complete Tutorial](https://medium.com/@nimritakoul01/the-model-context-protocol-mcp-a-complete-tutorial-a3abe8a7f4ef)
    - [Model Context Protocol (MCP), clearly explained](https://www.youtube.com/watch?v=7j_NE6Pjv-E)
 
-5. **Инструменты:**
-   - [mcp-cli](https://github.com/wong2/mcp-cli) - Инспектор командной строки для MCP
-   - [mcpm](https://mcpm.sh/) - Менеджер пакетов для MCP серверов
-   - [MCPHub](https://github.com/Jeamee/MCPHub-Desktop) - Графический интерфейс для управления MCP серверами
-
-## Заключительные рекомендации
-
-При выборе и использовании MCP платформ рекомендуется:
-
-1. **Начинать с малого** - выберите несколько основных MCP серверов, соответствующих вашим потребностям, и постепенно добавляйте новые.
-
-2. **Изучать примеры** - рассмотрите открытые примеры использования платформ, чтобы понять лучшие практики и возможные подводные камни.
-
-3. **Участвовать в сообществе** - присоединяйтесь к дискуссиям, задавайте вопросы и делитесь опытом с другими разработчиками MCP.
-
-4. **Следить за обновлениями** - протокол MCP активно развивается, поэтому важно быть в курсе последних изменений и улучшений.
-
-5. **Тестировать безопасность** - регулярно проверяйте безопасность ваших MCP-интеграций, особенно при работе с конфиденциальными данными.
-
-6. **Документировать свои реализации** - создавайте документацию по вашим MCP серверам и интеграциям для облегчения поддержки и обмена знаниями внутри команды.
-
-MCP открывает новые горизонты для интеграции ИИ в различные системы и рабочие процессы. С правильно выбранными платформами и инструментами вы сможете максимально эффективно использовать потенциал этой технологии для решения ваших задач.
-
-## Радар-графики для сравнения платформ MCP
+5. **Tools:**
+   - [mcp-cli](https://github.com/wong2/mcp-cli) - Command-line inspector for MCP
+   - [mcpm](https://mcpm.sh/) - Package manager for MCP servers
+   - [MCPHub](https://github.com/Jeamee/MCPHub-Desktop) - Graphical interface for managing MCP servers
 
 
-### Тепловая карта сравнения характеристик различных MCP платформ
+## Concluding Recommendations
+
+When choosing and using MCP platforms, it is recommended to:
+
+1. **Start Small** - select a few basic MCP servers that meet your needs and gradually add new ones.
+
+2. **Study Examples** - consider open-source examples of platform usage to understand best practices and potential pitfalls.
+
+3. **Participate in the Community** - join discussions, ask questions, and share experiences with other MCP developers.
+
+4. **Follow Updates** - the MCP protocol is actively evolving, so it is important to stay up to date with the latest changes and improvements.
+
+5. **Test Security** - regularly check the security of your MCP integrations, especially when working with sensitive data.
+
+6. **Document Your Implementations** - create documentation for your MCP servers and integrations to facilitate support and knowledge sharing within the team.
+
+MCP opens new horizons for integrating AI into various systems and workflows. With the right platforms and tools, you can maximize the potential of this technology to solve your problems.
+
+
+## Radar Charts for Comparing MCP Platforms
+
+
+### Heatmap comparing the characteristics of various MCP platforms
 https://claude.site/artifacts/9506227e-7e75-48b2-8620-4999fe9282be
 
 
-## Диаграмма экосистемы MCP
+
+## MCP Ecosystem Diagram
 ```mermaid
 flowchart TD
-    MCP[Model Context Protocol] --> Frameworks[Фреймворки]
-    MCP --> Registries[Реестры]
-    MCP --> Hosting[Хостинг]
-    MCP --> Tools[Инструменты]
-    MCP --> Servers[Серверы]
+    MCP[Model Context Protocol] --> Frameworks[Frameworks]
+    MCP --> Registries[Registries]
+    MCP --> Hosting[Hosting]
+    MCP --> Tools[Tools]
+    MCP --> Servers[Servers]
     
     Frameworks --> EasyMCP["EasyMCP (TypeScript)"]
     Frameworks --> FastAPIMCP["FastAPI-MCP (Python)"]
@@ -716,301 +755,329 @@ flowchart TD
     Servers --> Brave[Brave Search MCP]
     Servers --> PostgreSQL[PostgreSQL MCP]
     Servers --> Docker[Docker MCP]
-```
 
-## Интеграция MCP с различными экосистемами
 
-Важной особенностью MCP является его способность интегрироваться с различными существующими экосистемами и технологическими стеками. Ниже представлены примеры таких интеграций:
+## MCP Integration with Various Ecosystems
 
-### Интеграция с облачными провайдерами
+An important feature of MCP is its ability to integrate with various existing ecosystems and technology stacks. Below are examples of such integrations:
 
-| Провайдер | Уровень интеграции | Особенности | Примеры MCP серверов |
+### Integration with Cloud Providers
+
+| Provider | Integration Level | Features | Examples of MCP Servers |
 |-----------|-------------------|-------------|---------------------|
-| AWS | ⭐⭐⭐⭐ | Интеграция с AWS Lambda, S3, EC2, и другими сервисами | AWS S3 MCP, AWS Cost Explorer MCP, AWS Athena MCP |
-| Azure | ⭐⭐⭐ | Поддержка Azure Functions и Azure DevOps | Azure DevOps MCP, Azure ADX MCP |
-| Google Cloud | ⭐⭐⭐ | Интеграция с GCP сервисами, включая BigQuery и GCS | Google Drive MCP, BigQuery MCP |
-| Cloudflare | ⭐⭐⭐⭐⭐ | Нативная поддержка MCP через Workers | Cloudflare MCP |
+| AWS | ⭐⭐⭐⭐ | Integration with AWS Lambda, S3, EC2, and other services | AWS S3 MCP, AWS Cost Explorer MCP, AWS Athena MCP |
+| Azure | ⭐⭐⭐ | Support for Azure Functions and Azure DevOps | Azure DevOps MCP, Azure ADX MCP |
+| Google Cloud | ⭐⭐⭐ | Integration with GCP services, including BigQuery and GCS | Google Drive MCP, BigQuery MCP |
+| Cloudflare | ⭐⭐⭐⭐⭐ | Native MCP support via Workers | Cloudflare MCP |
 
-### Интеграция с базами данных
 
-| Тип базы данных | Доступность MCP серверов | Функциональность | Популярные серверы |
+### Integration with Databases
+
+| Database Type | MCP Server Availability | Functionality | Popular Servers |
 |-----------------|-------------------------|-----------------|-------------------|
-| SQL | ⭐⭐⭐⭐⭐ | Запросы, схемы, управление | PostgreSQL MCP, MySQL MCP, MSSQL MCP |
-| NoSQL | ⭐⭐⭐⭐ | Операции CRUD, индексирование | MongoDB MCP, Redis MCP |
-| Векторные | ⭐⭐⭐⭐ | Семантический поиск, встраивания | Chroma MCP, Pinecone MCP, Qdrant MCP |
-| Графовые | ⭐⭐⭐ | Запросы на Cypher, графовая аналитика | Neo4j MCP |
-| Временные ряды | ⭐⭐⭐ | Запросы временных данных, агрегация | InfluxDB MCP, TimescaleDB MCP |
+| SQL | ⭐⭐⭐⭐⭐ | Queries, schemas, management | PostgreSQL MCP, MySQL MCP, MSSQL MCP |
+| NoSQL | ⭐⭐⭐⭐ | CRUD operations, indexing | MongoDB MCP, Redis MCP |
+| Vector | ⭐⭐⭐⭐ | Semantic search, embeddings | Chroma MCP, Pinecone MCP, Qdrant MCP |
+| Graph | ⭐⭐⭐ | Cypher queries, graph analytics | Neo4j MCP |
+| Time Series | ⭐⭐⭐ | Time series queries, aggregation | InfluxDB MCP, TimescaleDB MCP |
 
-### Сравнение MCP с другими протоколами и технологиями
 
-| Технология | Сходства с MCP | Отличия от MCP | Применимость |
+### Comparison of MCP with Other Protocols and Technologies
+
+| Technology | Similarities to MCP | Differences from MCP | Applicability |
 |------------|----------------|----------------|--------------|
-| LangChain | Интеграция с LLM, инструменты | Библиотека, а не протокол; сложнее стандартизация | Более гибкое программное использование |
-| LlamaIndex | RAG и интеграция с данными | Фокус на индексации и поиске; не полный протокол | Специализирован для RAG |
-| OAIF (OpenAI Function Calling) | Определение инструментов для LLM | Привязан к OpenAI; менее универсален | Только для моделей OpenAI |
-| REST API | Стандартизированный интерфейс | Не оптимизирован для LLM; нет контекстуальности | Общая интеграция систем |
-| GraphQL | Гибкий запрос данных | Не специфичен для AI; другой подход к запросам | Когда требуется точный контроль запросов |
+| LangChain | LLM integration, tools | Library, not a protocol; more difficult to standardize | More flexible software use |
+| LlamaIndex | RAG and data integration | Focus on indexing and search; not a complete protocol | Specialized for RAG |
+| OAIF (OpenAI Function Calling) | Defining tools for LLM | Tied to OpenAI; less versatile | Only for OpenAI models |
+| REST API | Standardized interface | Not optimized for LLM; no contextuality | General system integration |
+| GraphQL | Flexible data querying | Not specific to AI; different approach to queries | When precise query control is required |
 
-## Практические сценарии использования MCP-серверов
 
-Чтобы лучше понять практическую ценность MCP-серверов, рассмотрим несколько реальных сценариев использования:
+## Practical Use Cases for MCP Servers
 
-### Сценарий 1: Разработка программного обеспечения
+To better understand the practical value of MCP servers, let's consider several real-world use cases:
 
-**Проблема:** Команда разработчиков нуждается в AI-ассистенте, который может анализировать код в их GitHub-репозитории, находить проблемы и предлагать исправления.
+### Scenario 1: Software Development
 
-**Решение с MCP:**
-1. Установка **GitHub MCP** сервера для доступа к репозиторию
-2. Подключение **Git MCP** для локальной работы с кодом
-3. Интеграция с **Raygun MCP** для анализа ошибок
-4. Дополнение **PostgreSQL MCP** для доступа к базе данных проекта
+**Problem:** A team of developers needs an AI assistant that can analyze code in their GitHub repository, find issues, and suggest fixes.
 
-**Результат:** Разработчики могут задавать вопросы AI-ассистенту о коде, который имеет прямой доступ к репозиторию, может анализировать изменения, проверять историю коммитов и даже тестировать исправления без необходимости копирования кода в чат.
+**Solution with MCP:**
+1. Install a **GitHub MCP** server to access the repository
+2. Connect **Git MCP** for local code work
+3. Integrate with **Raygun MCP** for error analysis
+4. Add **PostgreSQL MCP** for access to the project database
 
-### Сценарий 2: Маркетинговые исследования
+**Result:** Developers can ask the AI assistant questions about the code, which has direct access to the repository, can analyze changes, check commit history, and even test fixes without having to copy the code into the chat.
 
-**Проблема:** Маркетинговая команда нуждается в анализе данных о рынке, конкурентах и тенденциях.
 
-**Решение с MCP:**
-1. Использование **Brave Search MCP** для актуальных данных из интернета
-2. Интеграция с **Google Maps MCP** для географических данных
-3. Подключение **CSV MCP** для работы с локальными данными исследований
-4. Добавление **Tavily MCP** для специализированного поиска
+### Scenario 2: Marketing Research
 
-**Результат:** Маркетологи получают AI-ассистента, который может объединять данные из различных источников, анализировать тренды и конкурентов, генерировать отчеты, основанные на актуальных данных.
+**Problem:** A marketing team needs to analyze data on the market, competitors, and trends.
 
-### Сценарий 3: Корпоративная информационная безопасность
+**Solution with MCP:**
+1. Use **Brave Search MCP** for up-to-date data from the internet
+2. Integrate with **Google Maps MCP** for geographic data
+3. Connect **CSV MCP** to work with local research data
+4. Add **Tavily MCP** for specialized search
 
-**Проблема:** Команда информационной безопасности нуждается в инструменте, который поможет анализировать логи, выявлять потенциальные угрозы и соответствовать нормативным требованиям.
+**Result:** Marketers get an AI assistant that can combine data from various sources, analyze trends and competitors, and generate reports based on current data.
 
-**Решение с MCP:**
-1. Установка **Elasticsearch MCP** для доступа к логам
-2. Интеграция с **Semgrep MCP** для анализа безопасности кода
-3. Подключение **OpenCTI MCP** для информации о киберугрозах
-4. Использование **PostgreSQL MCP** для доступа к базе данных инцидентов
 
-**Результат:** Специалисты по безопасности могут задавать AI-ассистенту вопросы о потенциальных угрозах, анализировать инциденты и получать рекомендации по устранению проблем, причем вся информация берется из корпоративных систем безопасности.
+### Scenario 3: Corporate Information Security
 
-## Производительность и масштабируемость MCP-серверов
+**Problem:** An information security team needs a tool to help analyze logs, identify potential threats, and comply with regulatory requirements.
 
-При выборе платформы для MCP-серверов важно учитывать аспекты производительности и масштабируемости. Ниже представлены данные по этим параметрам для различных платформ:
+**Solution with MCP:**
+1. Install **Elasticsearch MCP** for access to logs
+2. Integrate with **Semgrep MCP** for code security analysis
+3. Connect **OpenCTI MCP** for cyber threat information
+4. Use **PostgreSQL MCP** for access to the incident database
 
-### Сравнение производительности MCP-фреймворков
+**Result:** Security specialists can ask the AI assistant questions about potential threats, analyze incidents, and receive recommendations for resolving issues, with all information taken from corporate security systems.
 
-| Фреймворк | Язык | Пропускная способность (запросов/сек) | Задержка (мс) | Потребление памяти | Масштабируемость |
+
+## Performance and Scalability of MCP Servers
+
+When choosing a platform for MCP servers, it is important to consider performance and scalability aspects. Below is data on these parameters for various platforms:
+
+### Performance Comparison of MCP Frameworks
+
+| Framework | Language | Throughput (requests/sec) | Latency (ms) | Memory Consumption | Scalability |
 |-----------|------|--------------------------------------|---------------|-------------------|------------------|
-| EasyMCP | TypeScript/Node.js | ~100-300 | 20-50 | Средняя | Горизонтальная через кластеризацию |
-| FastAPI-MCP | Python | ~50-200 | 30-70 | Средняя | Горизонтальная через ASGI-серверы |
-| FastMCP | TypeScript/Node.js | ~150-350 | 15-40 | Средняя | Горизонтальная через кластеризацию |
-| Foxy Contexts | Go | ~500-1000+ | 5-15 | Низкая | Отличная нативная масштабируемость |
-| Quarkus MCP | Java | ~300-800 | 10-30 | Высокая | Хорошая вертикальная и горизонтальная |
+| EasyMCP | TypeScript/Node.js | ~100-300 | 20-50 | Medium | Horizontal via clustering |
+| FastAPI-MCP | Python | ~50-200 | 30-70 | Medium | Horizontal via ASGI servers |
+| FastMCP | TypeScript/Node.js | ~150-350 | 15-40 | Medium | Horizontal via clustering |
+| Foxy Contexts | Go | ~500-1000+ | 5-15 | Low | Excellent native scalability |
+| Quarkus MCP | Java | ~300-800 | 10-30 | High | Good vertical and horizontal |
 
-*Примечание: Данные представляют оценочные значения для типичных сценариев использования. Фактическая производительность может варьироваться в зависимости от конкретной реализации, нагрузки и инфраструктуры.*
+*Note: The data represents estimated values for typical use cases. Actual performance may vary depending on the specific implementation, load, and infrastructure.*
 
-### Стратегии масштабирования MCP-серверов
 
-1. **Горизонтальное масштабирование:**
-   - Запуск нескольких экземпляров сервера за балансировщиком нагрузки
-   - Использование Kubernetes для оркестрации контейнеров с MCP-серверами
-   - Применение сервисных меш-решений, таких как Istio, для управления трафиком
+### MCP Server Scaling Strategies
 
-2. **Вертикальное масштабирование:**
-   - Увеличение ресурсов (CPU, память) на существующих серверах
-   - Оптимизация кода и повышение эффективности запросов
-   - Применение кэширования для часто запрашиваемых ресурсов
+1. **Horizontal Scaling:**
+   - Running multiple instances of the server behind a load balancer
+   - Using Kubernetes to orchestrate containers with MCP servers
+   - Applying service mesh solutions such as Istio to manage traffic
 
-3. **Гибридные подходы:**
-   - Выделение "горячих" MCP-серверов на более мощное оборудование
-   - Распределение нагрузки между локальными и облачными серверами
-   - Динамическое выделение ресурсов в зависимости от нагрузки
+2. **Vertical Scaling:**
+   - Increasing resources (CPU, memory) on existing servers
+   - Optimizing code and improving query efficiency
+   - Applying caching for frequently requested resources
 
-## Будущее MCP и перспективы развития
+3. **Hybrid Approaches:**
+   - Allocating "hot" MCP servers to more powerful hardware
+   - Distributing load between local and cloud servers
+   - Dynamically allocating resources based on load
 
-На основе текущих тенденций и прогресса, можно выделить несколько ключевых направлений развития MCP и связанных платформ:
 
-### Краткосрочные перспективы (1-2 года)
+## The Future of MCP and Development Prospects
 
-1. **Стандартизация протокола** - ожидается окончательное формирование и принятие стандарта MCP различными производителями LLM
-2. **Рост экосистемы серверов** - увеличение количества и разнообразия MCP-серверов для различных задач
-3. **Интеграция с популярными LLM** - добавление поддержки MCP в большинство популярных языковых моделей
-4. **Улучшение инструментов разработки** - создание более удобных SDK, фреймворков и инструментов для разработки MCP-серверов
+Based on current trends and progress, several key directions for the development of MCP and related platforms can be identified:
 
-### Среднесрочные перспективы (3-5 лет)
+### Short-Term Prospects (1-2 years)
 
-1. **Федеративные MCP-сети** - создание сетей взаимодействующих MCP-серверов, обменивающихся данными и возможностями
-2. **Интеграция с Интернетом вещей (IoT)** - появление MCP-серверов для управления и взаимодействия с IoT-устройствами
-3. **Специализированные аппаратные решения** - оптимизированные аппаратные платформы для запуска MCP-серверов с высокой нагрузкой
-4. **Расширенные механизмы безопасности** - разработка специализированных стандартов и протоколов безопасности для MCP
+1. **Protocol Standardization** - the final formation and adoption of the MCP standard by various LLM manufacturers is expected
+2. **Growth of the Server Ecosystem** - an increase in the number and variety of MCP servers for various tasks
+3. **Integration with Popular LLMs** - adding MCP support to most popular language models
+4. **Improvement of Development Tools** - creating more convenient SDKs, frameworks, and tools for developing MCP servers
 
-### Долгосрочные перспективы (5+ лет)
 
-1. **Автономные MCP-сети** - самоорганизующиеся сети MCP-серверов с элементами автономного управления
-2. **Интеграция с нейронными интерфейсами** - возможность подключения MCP-серверов к нейронным интерфейсам для прямого взаимодействия с человеческим мозгом
-3. **Квантовые MCP-серверы** - использование квантовых вычислений для повышения эффективности MCP-серверов
-4. **Глобальная MCP-инфраструктура** - создание глобальной распределенной инфраструктуры MCP, доступной как стандартный сервис
+### Medium-Term Prospects (3-5 years)
 
-## Заключение
+1. **Federated MCP Networks** - creating networks of interacting MCP servers that exchange data and capabilities
+2. **Integration with the Internet of Things (IoT)** - the emergence of MCP servers for managing and interacting with IoT devices
+3. **Specialized Hardware Solutions** - optimized hardware platforms for running MCP servers with high loads
+4. **Advanced Security Mechanisms** - developing specialized security standards and protocols for MCP
 
-Model Context Protocol (MCP) представляет собой важный шаг в эволюции взаимодействия между языковыми моделями и внешними системами. Стандартизация этого взаимодействия открывает новые возможности для создания более интеллектуальных, контекстно-зависимых и полезных ИИ-ассистентов.
 
-В этом отчете мы рассмотрели различные аспекты экосистемы MCP, от фреймворков для разработки и платформ для хостинга до популярных серверов и тенденций развития. Мы также проанализировали вопросы производительности, безопасности и масштабируемости, что должно помочь принять обоснованное решение при выборе и использовании MCP-решений.
+### Long-Term Prospects (5+ years)
 
-Независимо от того, являетесь ли вы разработчиком, стремящимся создать собственный MCP-сервер, или пользователем, ищущим способы расширить возможности своих ИИ-ассистентов, понимание основных принципов и доступных опций в экосистеме MCP является ключом к успешному использованию этой технологии.
+1. **Autonomous MCP Networks** - self-organizing networks of MCP servers with elements of autonomous control
+2. **Integration with Neural Interfaces** - the ability to connect MCP servers to neural interfaces for direct interaction with the human brain
+3. **Quantum MCP Servers** - using quantum computing to improve the efficiency of MCP servers
+4. **Global MCP Infrastructure** - creating a global distributed MCP infrastructure available as a standard service
 
-По мере развития MCP и связанных технологий, мы будем видеть все более тесную интеграцию между ИИ и различными системами, что приведет к созданию более мощных, контекстно-осведомленных и полезных ИИ-решений. Это откроет новые возможности для автоматизации, анализа данных, принятия решений и других областей, где искусственный интеллект может принести существенную пользу.
+
+## Conclusion
+
+Model Context Protocol (MCP) represents an important step in the evolution of interaction between language models and external systems. Standardizing this interaction opens up new opportunities for creating more intelligent, context-dependent, and useful AI assistants.
+
+In this report, we have reviewed various aspects of the MCP ecosystem, from development frameworks and hosting platforms to popular servers and development trends. We also analyzed performance, security, and scalability issues, which should help make informed decisions when choosing and using MCP solutions.
+
+Whether you are a developer looking to create your own MCP server or a user looking for ways to extend the capabilities of your AI assistants, understanding the basic principles and available options in the MCP ecosystem is key to successfully using this technology.
+
+As MCP and related technologies evolve, we will see increasingly close integration between AI and various systems, leading to the creation of more powerful, context-aware, and useful AI solutions. This will open up new opportunities for automation, data analysis, decision-making, and other areas where artificial intelligence can bring significant benefits.
 
 ---
 
-*Данный обзор основан на информации, доступной на апрель 2025 года. Учитывая быстрое развитие экосистемы MCP, рекомендуется регулярно обращаться к первоисточникам и официальной документации для получения наиболее актуальной информации.*
-
-## Примечания и ссылки
-
-- Диаграммы в формате Mermaid отображаются автоматически на GitHub при просмотре markdown-файлов.
-- Все упомянутые в отчете MCP-серверы и платформы доступны по состоянию на апрель 2025 года, однако их функциональность и доступность могут измениться со временем.
+*This review is based on information available as of April 2025. Given the rapid development of the MCP ecosystem, it is recommended to regularly consult original sources and official documentation for the most up-to-date information.*
 
 
-# Лучшие практики разработки MCP серверов
+## Notes and References
 
-При разработке MCP серверов важно следовать определенным практикам для обеспечения надежности, безопасности и удобства использования. Ниже представлены рекомендации, собранные из опыта сообщества разработчиков MCP:
+- Diagrams in Mermaid format are displayed automatically on GitHub when viewing markdown files.
+- All MCP servers and platforms mentioned in the report are available as of April 2025, but their functionality and availability may change over time.
 
-## Архитектурные рекомендации
 
-### Модульный дизайн
-- Разделяйте функциональность на независимые модули
-- Используйте инверсию зависимостей для гибкости и тестируемости
-- Обеспечивайте четкие интерфейсы между компонентами
 
-### Документирование инструментов и ресурсов
-- Предоставляйте подробное описание каждого инструмента и ресурса
-- Документируйте параметры, их типы и допустимые значения
-- Включайте примеры использования и ожидаемые результаты
+# Best Practices for Developing MCP Servers
 
-### Обработка ошибок
-- Реализуйте детальное логирование для отладки
-- Возвращайте понятные сообщения об ошибках с возможными решениями
-- Предусматривайте корректную обработку нестандартных ситуаций
+When developing MCP servers, it is important to follow certain practices to ensure reliability, security, and ease of use. Below are recommendations gathered from the experience of the MCP developer community:
 
-### Интеграция с существующими системами
-- Используйте адаптеры для взаимодействия с внешними API
-- Кэшируйте результаты для повышения производительности
-- Обеспечивайте конфигурируемость для различных окружений
+## Architectural Recommendations
 
-## Безопасность и приватность
+### Modular Design
+- Separate functionality into independent modules
+- Use dependency inversion for flexibility and testability
+- Provide clear interfaces between components
 
-### Аутентификация и авторизация
-- Реализуйте строгую аутентификацию для всех MCP-клиентов
-- Используйте принцип минимальных привилегий для доступа к ресурсам
-- Введите механизмы генерации и ротации токенов доступа
 
-### Защита данных
-- Шифруйте чувствительные данные при хранении и передаче
-- Реализуйте механизмы анонимизации персональных данных
-- Соблюдайте требования GDPR, CCPA и других регуляторов
+### Documenting Tools and Resources
+- Provide a detailed description of each tool and resource
+- Document parameters, their types, and allowed values
+- Include usage examples and expected results
 
-### Безопасность кода
-- Регулярно обновляйте зависимости для устранения уязвимостей
-- Используйте статический анализ кода для выявления проблем безопасности
-- Проводите аудит безопасности для критических MCP-серверов
 
-### Логирование и мониторинг
-- Регистрируйте все операции доступа к чувствительным данным
-- Реализуйте мониторинг аномалий и потенциальных атак
-- Настройте оповещения о подозрительной активности
+### Error Handling
+- Implement detailed logging for debugging
+- Return clear error messages with possible solutions
+- Provide for correct handling of non-standard situations
 
-## Производительность и масштабируемость
 
-### Оптимизация запросов
-- Минимизируйте количество запросов к внешним системам
-- Используйте пакетную обработку где возможно
-- Оптимизируйте размер передаваемых данных
+### Integration with Existing Systems
+- Use adapters to interact with external APIs
+- Cache results to improve performance
+- Ensure configurability for different environments
 
-### Кэширование
-- Используйте многоуровневое кэширование для частых запросов
-- Настройте политики инвалидации кэша для актуальности данных
-- Примените распределенное кэширование для высоконагруженных систем
 
-### Асинхронная обработка
-- Используйте асинхронное выполнение для длительных операций
-- Реализуйте механизмы отслеживания прогресса операций
-- Применяйте очереди сообщений для надежной обработки задач
+## Security and Privacy
 
-### Горизонтальное масштабирование
-- Проектируйте сервер как безсостояние-приложение
-- Используйте репликацию и шардирование для распределения нагрузки
-- Настройте автоматическое масштабирование по метрикам использования
+### Authentication and Authorization
+- Implement strong authentication for all MCP clients
+- Use the principle of least privilege for access to resources
+- Introduce mechanisms for generating and rotating access tokens
 
-## Интеграция MCP с существующими AI-платформами
 
-MCP позволяет интегрировать различные AI-платформы с внешними системами и данными. Ниже представлена информация о совместимости MCP с популярными AI-платформами:
+### Data Protection
+- Encrypt sensitive data during storage and transmission
+- Implement mechanisms for anonymizing personal data
+- Comply with GDPR, CCPA, and other regulatory requirements
 
-### Поддержка MCP различными LLM-платформами
 
-| AI-платформа | Статус поддержки MCP | Способ интеграции | Ограничения |
+### Code Security
+- Regularly update dependencies to eliminate vulnerabilities
+- Use static code analysis to identify security issues
+- Conduct security audits for critical MCP servers
+
+
+### Logging and Monitoring
+- Log all access operations to sensitive data
+- Implement monitoring of anomalies and potential attacks
+- Configure alerts for suspicious activity
+
+
+## Performance and Scalability
+
+### Query Optimization
+- Minimize the number of requests to external systems
+- Use batch processing where possible
+- Optimize the size of transmitted data
+
+
+### Caching
+- Use multi-level caching for frequent requests
+- Configure cache invalidation policies for data relevance
+- Apply distributed caching for high-load systems
+
+
+### Asynchronous Processing
+- Use asynchronous execution for long operations
+- Implement mechanisms for tracking operation progress
+- Use message queues for reliable task processing
+
+
+### Horizontal Scaling
+- Design the server as a stateless application
+- Use replication and sharding to distribute the load
+- Configure automatic scaling based on usage metrics
+
+
+## MCP Integration with Existing AI Platforms
+
+MCP allows you to integrate various AI platforms with external systems and data. Below is information on MCP compatibility with popular AI platforms:
+
+### MCP Support by Various LLM Platforms
+
+| AI Platform | MCP Support Status | Integration Method | Limitations |
 |--------------|----------------------|-------------------|-------------|
-| Claude (Anthropic) | Нативная поддержка | Встроенная в Claude Desktop | Нет существенных ограничений |
-| Cursor | Полная поддержка | Встроенная в редактор | Ограничения по количеству серверов |
-| Cline | Полная поддержка | Настройка через конфигурационный файл | Нет существенных ограничений |
-| Microsoft Copilot | Частичная поддержка | Через Copilot Studio | Ограниченный набор инструментов |
-| OpenAI API | Адаптированная поддержка | Через адаптеры MCP-to-Function | Различия в спецификации функций |
-| Gemini (Google) | Экспериментальная поддержка | Через внешние адаптеры | В стадии разработки |
-| Groq | Начальная поддержка | Через Groq Bridge | Ограниченная функциональность |
-| Mistral AI | Планируется | - | В разработке |
+| Claude (Anthropic) | Native support | Built into Claude Desktop | No significant limitations |
+| Cursor | Full support | Built into the editor | Limitations on the number of servers |
+| Cline | Full support | Configuration via configuration file | No significant limitations |
+| Microsoft Copilot | Partial support | Via Copilot Studio | Limited set of tools |
+| OpenAI API | Adapted support | Via MCP-to-Function adapters | Differences in function specification |
+| Gemini (Google) | Experimental support | Via external adapters | Under development |
+| Groq | Initial support | Via Groq Bridge | Limited functionality |
+| Mistral AI | Planned | - | In development |
 
-### Интеграция MCP с фреймворками разработки AI-приложений
 
-| Фреймворк | Уровень интеграции | Особенности | Примеры использования |
+### MCP Integration with AI Application Development Frameworks
+
+| Framework | Integration Level | Features | Usage Examples |
 |-----------|-------------------|-------------|----------------------|
-| LangChain | Высокий | Адаптеры для MCP-серверов, конвертация инструментов | AI-агенты с доступом к MCP-серверам |
-| LlamaIndex | Средний | Провайдеры данных через MCP | RAG-системы с использованием MCP для извлечения данных |
-| AutoGen | Высокий | Нативный API для MCP-серверов | Мультиагентные системы с MCP-инструментами |
-| CrewAI | Средний | Интеграция через адаптеры | Коллаборативные агенты с MCP-возможностями |
-| LiteLLM | Низкий | Базовая поддержка MCP | Унифицированный API для LLM с MCP-интеграцией |
+| LangChain | High | Adapters for MCP servers, tool conversion | AI agent with access to MCP servers |
+| LlamaIndex | Medium | Data providers via MCP | RAG systems using MCP for data extraction |
+| AutoGen | High | Native API for MCP servers | Multi-agent systems with MCP tools |
+| CrewAI | Medium | Integration via adapters | Collaborative agents with MCP capabilities |
+| LiteLLM | Low | Basic MCP support | Unified API for LLM with MCP integration |
 
-## Глоссарий терминов MCP
 
-Для лучшего понимания экосистемы MCP важно знать основные термины и концепции:
+## MCP Glossary of Terms
 
-**MCP (Model Context Protocol)** - открытый протокол, стандартизирующий взаимодействие между языковыми моделями и внешними системами данных и инструментов.
+For a better understanding of the MCP ecosystem, it is important to know the basic terms and concepts:
 
-**MCP-сервер** - программа, которая реализует протокол MCP и предоставляет инструменты, ресурсы и подсказки для AI-клиентов.
+**MCP (Model Context Protocol)** - an open protocol that standardizes the interaction between language models and external data and tool systems.
 
-**MCP-клиент** - программа, которая подключается к MCP-серверам и использует их возможности (часто это AI-ассистент или LLM).
+**MCP Server** - a program that implements the MCP protocol and provides tools, resources, and prompts for AI clients.
 
-**MCP Tool (Инструмент)** - функциональность в MCP-сервере, которая выполняет определенное действие по запросу клиента.
+**MCP Client** - a program that connects to MCP servers and uses their capabilities (often an AI assistant or LLM).
 
-**MCP Resource (Ресурс)** - данные или информация, которые MCP-сервер делает доступными для клиента.
+**MCP Tool** - functionality in an MCP server that performs a specific action at the request of a client.
 
-**MCP Prompt (Подсказка)** - предварительно определенные инструкции или шаблоны, которые могут быть использованы для взаимодействия с языковой моделью.
+**MCP Resource** - data or information that an MCP server makes available to a client.
 
-**MCP Host (Хост)** - программа, которая обеспечивает взаимодействие между MCP-клиентом и MCP-серверами.
+**MCP Prompt** - pre-defined instructions or templates that can be used to interact with a language model.
 
-**STDIO Transport** - транспортный механизм для MCP, использующий стандартные потоки ввода/вывода для локального взаимодействия.
+**MCP Host** - a program that provides interaction between an MCP client and MCP servers.
 
-**SSE Transport** - транспортный механизм для MCP, использующий Server-Sent Events для удаленного взаимодействия.
+**STDIO Transport** - a transport mechanism for MCP that uses standard input/output streams for local interaction.
 
-**MCP Registry (Реестр)** - каталог или репозиторий доступных MCP-серверов.
+**SSE Transport** - a transport mechanism for MCP that uses Server-Sent Events for remote interaction.
 
-**MCP SDK** - набор инструментов разработки для создания MCP-серверов на различных языках программирования.
+**MCP Registry** - a catalog or repository of available MCP servers.
 
-**MCP Manifest** - файл, описывающий возможности MCP-сервера, включая инструменты, ресурсы и подсказки.
+**MCP SDK** - a set of development tools for creating MCP servers in various programming languages.
 
-## Заключение
+**MCP Manifest** - a file describing the capabilities of an MCP server, including tools, resources, and prompts.
 
-Model Context Protocol (MCP) представляет собой важную эволюцию в способах взаимодействия языковых моделей с внешними системами и данными. Эта технология открывает новый уровень возможностей для AI-ассистентов, позволяя им безопасно и эффективно работать с различными источниками информации и инструментами.
 
-В этом обзоре мы рассмотрели:
+## Conclusion
 
-- Основные принципы и компоненты экосистемы MCP
-- Различные платформы для разработки, хостинга и управления MCP-серверами
-- Сравнительный анализ по ключевым параметрам
-- Практические сценарии использования
-- Вопросы производительности, безопасности и масштабируемости
-- Перспективы и тенденции развития технологии
+Model Context Protocol (MCP) represents an important evolution in the way language models interact with external systems and data. This technology opens up a new level of capabilities for AI assistants, allowing them to work safely and efficiently with various sources of information and tools.
 
-По мере развития экосистемы MCP мы ожидаем увидеть еще более тесную интеграцию между языковыми моделями и внешними системами, что приведет к созданию более мощных, контекстно-осведомленных и эффективных AI-решений.
+In this review, we covered:
 
-Для организаций и разработчиков, стремящихся использовать потенциал современных языковых моделей, понимание и использование MCP становится важным конкурентным преимуществом. Эта технология позволяет преодолеть многие ограничения существующих LLM и создать по-настоящему полезные AI-инструменты для различных бизнес-задач.
+- The basic principles and components of the MCP ecosystem
+- Various platforms for developing, hosting, and managing MCP servers
+- Comparative analysis of key parameters
+- Practical use cases
+- Performance, security, and scalability issues
+- Prospects and trends in technology development
 
-Мы надеемся, что данный обзор поможет вам сделать осознанный выбор подходящей платформы MCP и эффективно использовать эту технологию для ваших задач.
+As the MCP ecosystem evolves, we expect to see even closer integration between language models and external systems, leading to the creation of more powerful, context-aware, and effective AI solutions.
 
-Данный отчет подготовлен в апреле 2025 года и отражает текущее состояние экосистемы MCP. В связи с быстрым развитием этой области, рекомендуется регулярно обращаться к актуальным источникам информации для получения обновленных данных.
+For organizations and developers looking to harness the potential of modern language models, understanding and using MCP is becoming an important competitive advantage. This technology makes it possible to overcome many of the limitations of existing LLMs and create truly useful AI tools for various business tasks.
+
+We hope that this review will help you make an informed choice of a suitable MCP platform and effectively use this technology for your tasks.
+
+This report was prepared in April 2025 and reflects the current state of the MCP ecosystem. Due to the rapid development of this area, it is recommended to regularly consult current sources of information for updated data.

@@ -1,326 +1,297 @@
 ---
 sidebar_position: 9
-title: Классификация текста
+title: Text classification
 ---
 
-### Классификация вопроса по теме
+### Question Classification by Topic
 
-**Системный промпт**
-
-```text
-Ты - эксперт по классификации запросов. Твоя задача - определить, к какой теме относится вопрос. Возможные темы: автомобили, еда, технологии.
-```
-
-
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Какой у вас пробег на электромобиле Tesla Model 3?
+You are an expert in classifying requests. Your task is to determine which topic a question belongs to. Possible topics: cars, food, technology.
 ```
 
+**User Prompt**
 
-**Ответ LLM классификатора**
+```text
+What is your mileage on a Tesla Model 3 electric car?
+```
+
+**LLM Classifier Response**
 
 ```json
 {
   "predictions": [
     {
-      "label": "автомобили",
+      "label": "cars",
       "confidence": 0.85
     },
     {
-      "label": "еда",
+      "label": "food",
       "confidence": 0.05
     },
     {
-      "label": "технологии",
+      "label": "technology",
       "confidence": 0.10
     }
   ]
 }
 ```
 
+### Classification for Ethics and Politics
 
-### Классификация на этичность и политику
-
-**Системный промпт**
-
-```text
-Ты - специалист по этическому и политическому анализу текстов. Определи, содержит ли текст этические или политические темы.
-```
-
-
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Должны ли компании быть обязаны платить своим сотрудникам больше минимальной зарплаты?
+You are a specialist in ethical and political text analysis. Determine whether the text contains ethical or political topics.
 ```
 
+**User Prompt**
 
-**Ответ LLM классификатора**
+```text
+Should companies be required to pay their employees more than the minimum wage?
+```
+
+**LLM Classifier Response**
 
 ```json
 {
   "predictions": [
     {
-      "label": "этика",
+      "label": "ethics",
       "confidence": 0.70
     },
     {
-      "label": "политика",
+      "label": "politics",
       "confidence": 0.30
     }
   ]
 }
 ```
 
+### Classification in RAG (Text Relevance to Question)
 
-### Классификация в RAG (относимость текста к вопросу)
-
-**Системный промпт**
-
-```text
-Ты - эксперт по оценке релевантности текстов. Определи, относится ли данный чанк текста к заданному вопросу.
-```
-
-
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Вопрос: Каковы преимущества гибридных автомобилей?
-Текст: Гибридные автомобили сочетают в себе двигатель внутреннего сгорания и электродвигатель, что позволяет экономить топливо.
+You are an expert in assessing the relevance of texts. Determine whether the given text chunk relates to the given question.
 ```
 
+**User Prompt**
 
-**Ответ LLM классификатора**
+```text
+Question: What are the advantages of hybrid cars?
+Text: Hybrid cars combine an internal combustion engine and an electric motor, which saves fuel.
+```
+
+**LLM Classifier Response**
 
 ```json
 {
   "predictions": [
     {
-      "label": "релевантный",
+      "label": "relevant",
       "confidence": 0.92
     },
     {
-      "label": "нерелевантный",
+      "label": "irrelevant",
       "confidence": 0.08
     }
   ]
 }
 ```
 
+### Classification in RAG (Final Answer)
 
-### Классификация в RAG (финальный ответ)
-
-**Системный промпт**
-
-```text
-Ты - специалист по оценке полноты ответов. Определи, отвечает ли данный ответ на вопрос пользователя.
-```
-
-
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Вопрос: Какие преимущества у электромобилей?
-Ответ: Электромобили экологичны и экономичны в эксплуатации.
+You are a specialist in assessing the completeness of answers. Determine whether the given answer answers the user's question.
 ```
 
+**User Prompt**
 
-**Ответ LLM классификатора**
+```text
+Question: What are the advantages of electric cars?
+Answer: Electric cars are environmentally friendly and economical to operate.
+```
+
+**LLM Classifier Response**
 
 ```json
 {
   "predictions": [
     {
-      "label": "полный ответ",
+      "label": "complete answer",
       "confidence": 0.88
     },
     {
-      "label": "неполный ответ",
+      "label": "incomplete answer",
       "confidence": 0.12
     }
   ]
 }
 ```
 
+### Customer Satisfaction Classification
 
-### Классификация удовлетворенности клиента
-
-**Системный промпт**
-
-```text
-Ты - аналитик по оценке удовлетворенности клиентов. Определи, был ли клиент раздражен в диалоге.
-```
-
-
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Клиент: Я ждал ответа целый час! Это неприемлемо.
+You are an analyst for assessing customer satisfaction. Determine whether the customer was annoyed in the dialogue.
 ```
 
+**User Prompt**
 
-**Ответ LLM классификатора**
+```text
+Customer: I waited an hour for a response! This is unacceptable.
+```
+
+**LLM Classifier Response**
 
 ```json
 {
   "predictions": [
     {
-      "label": "раздражен",
+      "label": "annoyed",
       "confidence": 0.95
     },
     {
-      "label": "не раздражен",
+      "label": "not annoyed",
       "confidence": 0.05
     }
   ]
 }
 ```
 
+### Tagging: Reviews
 
-### Расставление тегов: отзывы
-
-**Системный промпт**
-
-```text
-Ты - эксперт по классификации отзывов. Определи, какие теги подходят для данного отзыва. Возможные теги: качество, доставка, цена, поддержка.
-```
-
-
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Продукт пришел быстро, но качество оставляет желать лучшего.
+You are an expert in classifying reviews. Determine which tags are appropriate for this review. Possible tags: quality, delivery, price, support.
 ```
 
+**User Prompt**
 
-**Ответ LLM классификатора**
+```text
+The product arrived quickly, but the quality leaves much to be desired.
+```
+
+**LLM Classifier Response**
 
 ```json
 {
   "predictions": [
     {
-      "label": "доставка",
+      "label": "delivery",
       "confidence": 0.80
     },
     {
-      "label": "качество",
+      "label": "quality",
       "confidence": 0.90
     }
   ]
 }
 ```
 
+### User Intent Detection
 
-### Детекция интентов пользователя
-
-**Системный промпт**
-
-```text
-Ты - специалист по анализу намерений пользователей. Определи, какой интент у пользователя. Возможные интенты: покупка, поддержка, информация.
-```
-
-
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Могу ли я узнать больше о вашем новом продукте?
+You are a specialist in analyzing user intentions. Determine what the user's intent is. Possible intents: purchase, support, information.
 ```
 
+**User Prompt**
 
-**Ответ LLM классификатора**
+```text
+Can I learn more about your new product?
+```
+
+**LLM Classifier Response**
 
 ```json
 {
   "predictions": [
     {
-      "label": "информация",
+      "label": "information",
       "confidence": 0.85
     },
     {
-      "label": "покупка",
+      "label": "purchase",
       "confidence": 0.10
     },
     {
-      "label": "поддержка",
+      "label": "support",
       "confidence": 0.05
     }
   ]
 }
 ```
 
+### Task Completion Classification
 
-### Классификация выполнения задания
-
-**Системный промпт**
-
-```text
-Ты - эксперт по оценке выполнения заданий. Определи, выполнено ли задание.
-```
-
-
-**Пользовательский промпт**
+**System Prompt**
 
 ```text
-Задание: Подготовить отчет по продажам за месяц.
-Ответ: Отчет подготовлен и отправлен на проверку.
+You are an expert in assessing task completion. Determine whether the task has been completed.
 ```
 
+**User Prompt**
 
-**Ответ LLM классификатора**
+```text
+Task: Prepare a sales report for the month.
+Answer: The report has been prepared and sent for review.
+```
+
+**LLM Classifier Response**
 
 ```json
 {
   "predictions": [
     {
-      "label": "выполнено",
+      "label": "completed",
       "confidence": 0.95
     },
     {
-      "label": "не выполнено",
+      "label": "not completed",
       "confidence": 0.05
     }
   ]
 }
 ```
 
+### Condition Check
 
-### Проверка условий
-
-**Системный промпт**
+**System Prompt**
 
 ```text
-Ты - аналитик по проверке условий текста. Определи, содержит ли текст персональную информацию, прямую речь или нарушение политик.
+You are an analyst for checking text conditions. Determine whether the text contains personal information, direct speech, or policy violations.
 ```
 
-
-**Пользовательский промпт**
+**User Prompt**
 
 ```text
 {news_article}
 ```
 
-
-**Ответ LLM классификатора**
+**LLM Classifier Response**
 
 ```json
 {
   "predictions": [
     {
-      "label": "персональная информация",
+      "label": "personal information",
       "confidence": 0.20
     },
     {
-      "label": "прямая речь",
+      "label": "direct speech",
       "confidence": 0.60
     },
     {
-      "label": "нарушение политик",
+      "label": "policy violation",
       "confidence": 0.10
     }
   ]
 }
-```
-
-

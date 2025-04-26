@@ -1,0 +1,26 @@
+{
+  "homepage.authors.merkulov.description": {
+    "message": "Main Author. CTO at AI-automated VC fund, MSU, Ex-Yandex",
+    "description": "Description for David Merkulov on the homepage authors section"
+  },
+  "homepage.authors.zhechkov.description": {
+    "message": "AI Architect @ Yandex Cloud, Ex-VMware.",
+    "description": "Description for Dmitry Zhechkov on the homepage authors section"
+  },
+  "homepage.authors.savelko.description": {
+    "message": "LLM Engineer @ Tochka Bank, Ex-Sber.",
+    "description": "Description for Dmitry Savelko on the homepage authors section"
+  },
+  "homepage.authors.karpathy.description": {
+    "message": "Ex OpenAI, Tesla, Stanford. Materials author.",
+    "description": "Description for Andrey Karpathy on the homepage authors section"
+  },
+  "homepage.authors.your.description": {
+    "message": "Anyone who is interested in collaboration",
+    "description": "Placeholder description for potential contributors on the homepage authors section"
+  },
+  "homepage.authors.title": {
+    "message": "Project Authors",
+    "description": "The title for the project authors section on the homepage"
+  }
+} 

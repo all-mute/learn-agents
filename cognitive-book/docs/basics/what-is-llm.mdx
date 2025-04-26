@@ -1,0 +1,105 @@
+---
+
+---
+
+import PromptInjection from './assets/prompt-injection.jpg';
+import PromptInjection2 from './assets/prompt-injection-2.jpg';
+import PromptInjectionEng from './assets/prompt-injection-eng.png';
+
+# Understanding LLMs
+
+In this module, we will conduct a comprehensive overview of large language models, such as ChatGPT. We will explore how these models work, the architecture behind them, and consider their training process.
+*For an Applied AI engineer, knowing how an LLM works is like an electrician knowing how electricity works.*
+
+## Steps
+
+### 1. Watch the video of the legendary scientist and lecturer on LLMs (LLM: The Movie)
+
+Questions for lecture 1:
+- What are large language models (LLMs) and how do they work?
+- How do we get ChatGPT with the help of all the texts on the Internet and a bunch of GPUs?
+- What task do LLMs like ChatGPT solve in one step? What is a token?
+- What are some examples of tasks that LLMs can perform best?
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zjkBMFhNj_g?si=Kxz5RkVUm9Wk1LJQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### E1. A denser movie, also without coding/math from February 2025 (LLM: The returning of the Jedi)
+
+Questions for lecture 2:
+- How does the pre-training process of language models take place?
+- How does the pre-training stage differ from the fine-tuning stage?
+- What is reinforcement learning and how is it applicable to LLMs?
+- What methods are used to reduce hallucinations and improve the accuracy of LLM responses?
+- How do "smart" models differ from traditional LLMs?
+- What are "hallucinations" and how to avoid them?
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7xTGNNLPyMI?si=8kshyVoS22ZCY9Na" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Moved the sequel here due to good student feedback.
+
+## Extra Steps
+
+### E2. Andrej Karpathy: How I use LLMs
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EWvNQjAaOHw?si=hqjJsvfhscJrDo3Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+### E3. How temperature works
+- https://lena-voita.github.io/nlp_course/language_modeling.html + ctrl+F `Sampling with temperature`.
+You can play with the interactive picture.
+
+### E4. [The **Illustrated** GPT-2 (Visualizing Transformer Language Models)](https://jalammar.github.io/illustrated-gpt2/) *math-less*
+
+### E5. [math] Intuition behind the mechanisms
+
+If you want to delve deeper into how LLMs and the mechanisms inside work, I recommend watching [this playlist](https://youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi&si=of9V1P2DaxOyV3zE) with excellent visualizations and explanations. Watch starting with "A brief explanation of large language models".
+
+The duration of the four videos: 1.5 hours, but they will most likely take you longer.
+
+<details>
+<summary>Transformer Neural Networks, ChatGPT's foundation, Clearly Explained!!! - StatQuest with Josh Starmer</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zxQyTK8quyY?si=-niT5GogmBMl2UW3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+
+### E6. Prompt injections clearly
+
+<img src={PromptInjectionEng} alt="prompt injection" width="500" />
+
+
+
+<details>
+<summary>Why might prompt injection not work?</summary>
+
+Versions:
+- industrial models try to be resistant to prompt injections
+- models pay more "attention" to the system prompt than to the user prompt
+- too small and stupid models may "not pay attention" to the injection
+
+There are also industrial tools to combat prompt injections, such as their detection and blocking at various stages of the workflow.
+
+</details>
+
+## Now we know...
+
+In this module, we deeply explored the principles of operation of large language models and their training, including the stages of pre-training, supervised learning, and reinforcement learning. We have seen how these models become tools capable of not only generating text, but also solving complex problems using various thinking strategies. It is important to remember that while the technologies are impressive, their use requires a careful approach and critical thinking to achieve the best results.
+
+Knowing how an LLM is arranged under the hood, in the next module we will study what an LLm looks like from the other side - from the developer's side.
+
+## Exercises
+
+- What three stages does the LLM training process usually consist of?
+- Why can an LLM give different answers to the same input text?
+- Can an LLM answer questions about yesterday's news?
+- What is needed for RLHF (Reinforcement Learning from Human Feedback)?
+- Why is it difficult for models to count the number of letters "a" in a word?
+
+Complex:
+- What are special tokens?
+- Why do we find it difficult to do RL immediately after pre-training? And what helps us with this?
+- What is the advantage of RLHF over SFT?
+- What happens if we set the temperature to 10?
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
+
+You can watch other films by Andrey about GPT-2 and the tokenizer if you want to have an incredibly deep understanding of LLMs. This is not necessary for the design of AI agent.

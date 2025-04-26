@@ -1,78 +1,70 @@
 ---
 sidebar_position: 4
-title: Задачи использования текста для формирования ответа
+title: Tasks for using text to form a response
 ---
 
 ### QnA Zero-shot
 
-**Системный промпт**
+**System prompt**
 
 ```text
-Ты - эксперт, готовый отвечать на любые вопросы пользователя, используя свои знания и логику. Отвечай кратко и по существу.
+You are an expert ready to answer any user questions using your knowledge and logic. Answer briefly and to the point.
 ```
 
-
-**Пользовательский промпт**
+**User prompt**
 
 ```text
-Почему небо голубое?
+Why is the sky blue?
 ```
 
-
-**Ответ LLM**
+**LLM response**
 
 ```text
-Небо кажется голубым из-за рассеяния солнечного света в атмосфере. Короткие волны синего света рассеиваются больше, чем другие цвета, поэтому мы видим небо голубым.
+The sky appears blue due to the scattering of sunlight in the atmosphere. Short waves of blue light scatter more than other colors, so we see the sky as blue.
 ```
 
+**Use cases**
 
-**Кейсы использования**
+- Explanation of scientific phenomena
+- Answering questions about culture and history
 
-- Объяснение научных явлений
-- Ответы на вопросы о культуре и истории
+### Answering questions based on the lesson text + LLM-teacher
 
-
-### Ответы на вопросы по тексту урока + LLM-учитель
-
-**Системный промпт**
+**System prompt**
 
 ```text
-Ты - виртуальный учитель, который помогает студентам понять материал урока. Отвечай на вопросы, используя информацию из текста урока.
+You are a virtual teacher who helps students understand the lesson material. Answer questions using information from the lesson text.
 ```
 
-
-**Пользовательский промпт**
+**User prompt**
 
 ```text
 {lesson_text}
 
 \
-Какова основная идея этого урока?
+What is the main idea of this lesson?
 ```
 
-
-**Ответ LLM**
+**LLM response**
 
 ```text
-Основная идея урока заключается в объяснении принципов работы промпт-инжиниринга и его применения для улучшения взаимодействия с языковыми моделями.
+The main idea of the lesson is to explain the principles of prompt engineering and its application to improve interaction with language models.
 ```
 
+**Use cases**
 
-**Кейсы использования**
+- Supporting students in online courses
+- Helping with exam preparation
 
-- Поддержка студентов в онлайн-курсах
-- Помощь при подготовке к экзаменам
+### Answering questions using context (RAG approach)
 
-### Ответы на вопросы с использованием контекста (RAG-подход)
-
-**Системный промпт**
+**System prompt**
 
 ```text
-Ты - интеллектуальная система, которая отвечает на вопросы, используя предоставленный контекст. Используй информацию из контекста и свои знания для формирования точного ответа. Если в контексте нет ифнормации для ответа на вопрос пользователя, напиши, что не можешь ответить на его вопрос.
+You are an intelligent system that answers questions using the provided context. Use information from the context and your knowledge to form an accurate answer. If there is no information in the context to answer the user's question, write that you cannot answer their question.
 ```
 
-
-**Пользовательский промпт**
+**User prompt**
 
 ```text
 {context_0}
@@ -81,15 +73,13 @@ title: Задачи использования текста для формир�
 {context_3}
 
 \
-Какое влияние оказал указанный фактор на развитие события?
+What impact did the specified factor have on the development of the event?
 ```
 
-
-**Ответ LLM**
+**LLM response**
 
 ```text
-Указанный фактор значительно ускорил развитие события, так как он привел к увеличению ресурсов и внимания со стороны ключевых заинтересованных сторон.
+The specified factor significantly accelerated the development of the event, as it led to an increase in resources and attention from key stakeholders.
 ```
 
-
-**Описание подхода** RAG (Retrieval-Augmented Generation) комбинирует извлечение информации из базы данных или документов с генерацией ответа. В этом подходе LLM сначала получает релевантный контекст, а затем формирует ответ, используя как извлечённые данные, так и свои встроенные знания. Это позволяет давать более точные и обоснованные ответы на сложные вопросы.
+**Approach description** RAG (Retrieval-Augmented Generation) combines information retrieval from a database or documents with response generation. In this approach, the LLM first receives relevant context and then forms an answer, using both the extracted data and its built-in knowledge. This allows for more accurate and well-reasoned answers to complex questions.

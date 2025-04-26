@@ -6,28 +6,28 @@
 
 ```mermaid
 flowchart LR
-    Applicants[Resume Flow] --> Parser[LLM: resume parsing]
+    Applicants[Resume flow] --> Parser[LLM: resume parsing]
     Parser --> Score[LLM: candidate scoring]
     Score --> Filter{Passes threshold?}
-    Filter -->|Yes| Interview[Schedule Interview]
-    Filter -->|No| Reject[Send Rejection]
-    Interview --> Scheduler[Calendar Automation]
-    Scheduler --> Done[Notify Candidate]
+    Filter -->|Yes| Interview[Schedule interview]
+    Filter -->|No| Reject[Send rejection]
+    Interview --> Scheduler[Calendar automation]
+    Scheduler --> Done[Notify candidate]
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Input data examples</summary>
 
 ```json
 [
   {
-    "name": "Ivan Ivanov",
+    "name": "Иван Иванов",
     "skills": ["Python", "SQL", "Docker"],
     "experience_years": 3,
     "education": "Master of Computer Science"
   },
   {
-    "name": "Anna Petrova",
+    "name": "Анна Петрова",
     "skills": ["Java", "Spring", "Microservices"],
     "experience_years": 5,
     "education": "Bachelor of IT"
@@ -38,7 +38,7 @@ flowchart LR
 </details>
 
 <details>
-<summary>System Prompts</summary>
+<summary>System prompts</summary>
 
 <details>
 <summary>LLM: resume parsing</summary>
@@ -56,7 +56,7 @@ Output: JSON object with candidate fields.
 <summary>LLM: candidate scoring</summary>
 
 ```text
-You are a model for evaluating resumes based on given criteria.
+You are a model for evaluating resumes based on specified criteria.
 Input: object {name, skills, experience_years}.
 Criteria: relevance of skills and work experience.
 Output: {name, score: number from 0 to 100}.
@@ -70,7 +70,7 @@ Output: {name, score: number from 0 to 100}.
 ```text
 You are an interview scheduling assistant.
 Input: list of candidates who passed the threshold and available interview slots.
-Task: assign candidates to slots.
+Task: allocate candidates to slots.
 Output: [{name, interview_time}, ...].
 ```
 
@@ -85,20 +85,20 @@ Output: [{name, interview_time}, ...].
 
 ```mermaid
 flowchart LR
-    NewHire[New Employee] --> Docs[LLM: document preparation]
+    NewHire[New employee] --> Docs[LLM: document preparation]
     Docs --> Setup[LLM: IT and access instructions]
-    Setup --> Training[Training Plan]
-    Training --> Feedback[Feedback Collection]
-    Feedback --> HR[HR Notification]
+    Setup --> Training[Training plan]
+    Training --> Feedback[Collect feedback]
+    Feedback --> HR[HR notification]
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Input data examples</summary>
 
 ```json
 {
-  "name": "Sergey Kuznetsov",
-  "position": "Frontend Developer",
+  "name": "Сергей Кузнецов",
+  "position": "Frontend-разработчик",
   "start_date": "2024-07-01"
 }
 ```
@@ -106,7 +106,7 @@ flowchart LR
 </details>
 
 <details>
-<summary>System Prompts</summary>
+<summary>System prompts</summary>
 
 <details>
 <summary>LLM: document preparation</summary>
@@ -125,7 +125,7 @@ Output: [{document_type, template_text}, ...].
 
 ```text
 You are a model for generating instructions for setting up the IT environment.
-Input: employee position.
+Input: employee's position.
 Task: create a checklist for creating accounts and setting up software.
 Output: a list of checklist items.
 ```
@@ -145,7 +145,7 @@ Output: [{module, duration_days}, ...].
 </details>
 
 <details>
-<summary>LLM: feedback collection</summary>
+<summary>LLM: collect feedback</summary>
 
 ```text
 You are a model for generating a feedback questionnaire.
@@ -182,20 +182,20 @@ Output: notification text.
 
 ```mermaid
 flowchart LR
-    Commit[Commit] --> Build[Build Project]
+    Commit[Commit] --> Build[Project build]
     Build -->|Error| Analyze[LLM: log analysis]
-    Analyze --> Report[Error Report]
-    Report --> Notify[Team Notification]
+    Analyze --> Report[Error report]
+    Report --> Notify[Team notification]
     Build -->|Success| Deploy[Deploy to staging]
-    Deploy --> Test[Run Autotests]
-    Test -->|Error| AnalyzeTest[LLM: result analysis]
-    AnalyzeTest --> ReportTest[Problem Report]
+    Deploy --> Test[Run autotests]
+    Test -->|Error| AnalyzeTest[LLM: results analysis]
+    AnalyzeTest --> ReportTest[Problem report]
     ReportTest --> Notify
-    Test -->|Success| Done[Successful Deploy]
+    Test -->|Success| Done[Successful deploy]
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Input data examples</summary>
 
 ```text
 Commit: {id: "abc123", author: "ivan", timestamp: "2024-06-15T10:23:00Z"}
@@ -204,7 +204,7 @@ Build logs: "ERROR: Module not found: 'utils.js'"
 </details>
 
 <details>
-<summary>System Prompt Examples</summary>
+<summary>System prompt examples</summary>
 
 <details>
 <summary>LLM: log analysis</summary>
@@ -215,7 +215,7 @@ You are a model for analyzing CI logs. Input: build log text. Task: find the cau
 </details>
 
 <details>
-<summary>LLM: result analysis</summary>
+<summary>LLM: results analysis</summary>
 
 ```text
 You are a model for analyzing autotest results. Input: test runner output. Task: identify failed tests and describe the problem. Output: [{test_name, status: "fail"/"pass", log}].
@@ -230,15 +230,15 @@ You are a model for analyzing autotest results. Input: test runner output. Task:
 
 ```mermaid
 flowchart LR
-    Code[Code Changes] --> TestGen[LLM: autotest generation]
-    TestGen --> Run[Run Tests]
-    Run --> Analyze[LLM: result analysis]
-    Analyze --> Report[Report Generation]
-    Report --> Notify[Developer Notification]
+    Code[Code changes] --> TestGen[LLM: autotest generation]
+    TestGen --> Run[Run tests]
+    Run --> Analyze[LLM: results analysis]
+    Analyze --> Report[Report generation]
+    Report --> Notify[Developer notification]
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Input data examples</summary>
 
 ```text
 Code changes: diff function sum(a, b)
@@ -247,18 +247,18 @@ Test results: 3 passed, 1 failed (test_sum.js)
 </details>
 
 <details>
-<summary>System Prompt Examples</summary>
+<summary>System prompt examples</summary>
 
 <details>
 <summary>LLM: autotest generation</summary>
 
 ```text
-You are an autotest generation assistant. Input: code diff. Task: generate unit tests in Jest for new or modified functions. Output: test code.
+You are an autotest generation assistant. Input: code diff. Task: generate unit tests on Jest for new or modified functions. Output: test code.
 ```
 </details>
 
 <details>
-<summary>LLM: result analysis</summary>
+<summary>LLM: results analysis</summary>
 
 ```text
 You are a model for analyzing test results. Input: test runner output. Task: highlight failed tests and suggest fix options. Output: [{test_name, status, suggestion}].
@@ -271,29 +271,29 @@ You are a model for analyzing test results. Input: test runner output. Task: hig
 </details>
 
 <details>
-<summary>Other Cases</summary>
+<summary>Other cases</summary>
 
 <details>
-<summary>Quiz Generation for Training</summary>
+<summary>Quiz generation for training</summary>
 
 ```mermaid
 flowchart LR
-    Material[Training Material] --> QuizGen[LLM: question generation]
+    Material[Training material] --> QuizGen[LLM: question generation]
     QuizGen --> Review[LLM: quality check]
-    Review --> Format[Quiz Formatting]
-    Format --> Publish[Publication for Participants]
+    Review --> Format[Quiz formatting]
+    Format --> Publish[Publication for participants]
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Input data examples</summary>
 
 ```text
-Training material: "HTTP Basics: GET/POST methods, status codes"
+Training material: "HTTP basics: GET/POST methods, status codes"
 ```
 </details>
 
 <details>
-<summary>System Prompt Examples</summary>
+<summary>System prompt examples</summary>
 
 <details>
 <summary>LLM: question generation</summary>
@@ -307,7 +307,7 @@ You are a model for generating training questions. Input: material text. Task: f
 <summary>LLM: quality check</summary>
 
 ```text
-You are a model for evaluating the quality of questions. Input: list of questions. Task: check the correctness of formulations and difficulty. Output: [{question, ok: true/false, comment}].
+You are a model for evaluating the quality of questions. Input: list of questions. Task: check the correctness of formulations and complexity. Output: [{question, ok: true/false, comment}].
 ```
 </details>
 
@@ -315,19 +315,19 @@ You are a model for evaluating the quality of questions. Input: list of question
 </details>
 
 <details>
-<summary>Expense Report Automation</summary>
+<summary>Expense report automation</summary>
 
 ```mermaid
 flowchart LR
-    Transactions[Transaction Data] --> Extract[LLM: expense extraction]
+    Transactions[Transaction data] --> Extract[LLM: expense extraction]
     Extract --> Categorize[LLM: categorization]
-    Categorize --> Summary[Report Generation]
+    Categorize --> Summary[Report generation]
     Summary --> Approve[Approval]
-    Approve --> Done[Report Submission]
+    Approve --> Done[Report submission]
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Input data examples</summary>
 
 ```json
 {
@@ -340,7 +340,7 @@ flowchart LR
 </details>
 
 <details>
-<summary>System Prompt Examples</summary>
+<summary>System prompt examples</summary>
 
 <details>
 <summary>LLM: expense extraction</summary>
@@ -362,30 +362,30 @@ You are a model for classifying expenses. Input: list of {id, amount}. Task: ass
 </details>
 
 <details>
-<summary>Personal Travel Planner</summary>
+<summary>Personal travel planner</summary>
 
 ```mermaid
 flowchart LR
-    Preferences[Trip Parameters] --> Plan[LLM: route plan]
-    Plan --> Book[Booking Generation]
-    Book --> Itinerary[Plan Formatting]
-    Itinerary --> Send[Send to Traveler]
+    Preferences[Trip parameters] --> Plan[LLM: route plan]
+    Plan --> Book[Booking generation]
+    Book --> Itinerary[Plan formatting]
+    Itinerary --> Send[Send to traveler]
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Input data examples</summary>
 
 ```json
 {
-  "destination": "Barcelona",
+  "destination": "Барселона",
   "dates": ["2024-07-01", "2024-07-07"],
-  "preferences": ["museums", "beach"]
+  "preferences": ["музеи", "пляж"]
 }
 ```
 </details>
 
 <details>
-<summary>System Prompt Examples</summary>
+<summary>System prompt examples</summary>
 
 <details>
 <summary>LLM: route plan</summary>
@@ -399,7 +399,7 @@ You are a travel planning assistant. Input: trip parameters. Task: suggest a rou
 <summary>LLM: booking generation</summary>
 
 ```text
-You are a model for generating bookings. Input: route. Task: generate data for booking a hotel and transport. Output: [{service, details}].
+You are a model for generating bookings. Input: route. Task: generate data for hotel and transport bookings. Output: [{service, details}].
 ```
 </details>
 
@@ -407,7 +407,7 @@ You are a model for generating bookings. Input: route. Task: generate data for b
 <summary>LLM: plan formatting</summary>
 
 ```text
-You are an assistant for formatting the plan. Input: booking data and route. Task: assemble a single document with a schedule. Output: markdown.
+You are a plan formatting assistant. Input: booking data and route. Task: assemble a single document with a schedule. Output: markdown.
 ```
 </details>
 
@@ -417,56 +417,56 @@ You are an assistant for formatting the plan. Input: booking data and route. Tas
 </details>
 
 <details>
-<summary>Request Routing to Four Departments</summary>
+<summary>Request routing to four departments</summary>
 
 ```mermaid
 flowchart LR
-    Request[Incoming Customer Request] --> Router[LLM routing]
-    Router -->|Sales| Sales[Sales Department]
-    Router -->|Technical Support| Tech[Technical Support Department]
-    Router -->|Billing| Billing[Billing Department]
-    Router -->|General Questions| General[General Department]
-    Sales --> Process[Request Processing]
+    Request[Incoming customer request] --> Router[LLM routing]
+    Router -->|Sales| Sales[Sales department]
+    Router -->|Technical support| Tech[Technical support department]
+    Router -->|Billing| Billing[Billing department]
+    Router -->|General questions| General[General department]
+    Sales --> Process[Request processing]
     Tech --> Process
     Billing --> Process
     General --> Process
-    Process --> Respond[Sending Response]
+    Process --> Respond[Sending a response]
 ```
 
 <details>
-<summary>Input Request Examples</summary>
+<summary>Examples of incoming requests</summary>
 
 ```text
-Request 1: "Hello! I want to know about the new rates."
+Request 1: "Hello! I want to know about new tariffs."
 Request 2: "I can't pay the bill, the payment is declined."
-Request 3: "How to enable international roaming?"
+Request 3: "How to connect international roaming?"
 Request 4: "Where can I find the offer agreement?"
 ```
 
 </details>
 
 <details>
-<summary>System Prompt: LLM routing</summary>
+<summary>System prompt: LLM routing</summary>
 
 ```text
 You are a model for routing incoming customer requests.
 Input data:
 - Customer request text: {request}
-Task: determine the direction of request processing: one of the values "Sales", "Technical Support", "Billing", "General Questions".
+Task: determine the direction of request processing: one of the values "Sales", "Technical support", "Billing", "General questions".
 Output: a string with one of the specified values.
 ```
 
 </details>
 
 <details>
-<summary>System Prompt: LLM request processing</summary>
+<summary>System prompt: LLM request processing</summary>
 
 ```text
 You are a model for processing customer requests in the {direction} direction.
 Input data:
 - Customer request text: {request}
 Task: generate a detailed and polite response to the request in accordance with the specifics of the direction.
-Output: a text response to the customer.
+Output: text response to the client.
 ```
 
 </details>
@@ -474,14 +474,14 @@ Output: a text response to the customer.
 </details>
 
 <details>
-<summary>Web3 workflow examples</summary>
+<summary>Web3 workflows examples</summary>
 
 <details>
 <summary>Minting and listing NFT</summary>
 
 ```mermaid
 flowchart TD
-    Metadata[NFT Metadata Input] --> LLMGenerate[LLM: JSON metadata generation]
+    Metadata[NFT metadata input] --> LLMGenerate[LLM: JSON metadata generation]
     LLMGenerate --> Sign[Wallet: mint transaction signature]
     Sign --> Blockchain[Sending transaction to blockchain]
     Blockchain --> Confirm[Transaction confirmation]
@@ -491,7 +491,7 @@ flowchart TD
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Input data examples</summary>
 
 ```json
 {
@@ -508,7 +508,7 @@ flowchart TD
 </details>
 
 <details>
-<summary>System Prompts</summary>
+<summary>System prompts</summary>
 
 <details>
 <summary>LLM: JSON metadata generation</summary>
@@ -541,7 +541,7 @@ Output: plain text.
 
 ```mermaid
 flowchart TD
-    UserRequest[Token Swap Request] --> Parse[LLM: swap parameter parsing]
+    UserRequest[Token swap request] --> Parse[LLM: swap parameter parsing]
     Parse --> Price[Getting rate from oracle]
     Price --> LLMRoute[LLM: optimal route selection]
     LLMRoute --> TxGen[Transaction data generation]
@@ -552,7 +552,7 @@ flowchart TD
 ```
 
 <details>
-<summary>Input Request Examples</summary>
+<summary>Input request examples</summary>
 
 ```text
 Request 1: "Swap 1.5 ETH to DAI at the best rate."
@@ -562,7 +562,7 @@ Request 2: "Swap 1000 USDC to USDT with minimal fees."
 </details>
 
 <details>
-<summary>System Prompts</summary>
+<summary>System prompts</summary>
 
 <details>
 <summary>LLM: swap parameter parsing</summary>
@@ -595,17 +595,17 @@ Output: JSON {route, estimated_gas}.
 
 ```mermaid
 flowchart TD
-    Idea[User Idea] --> LLMDraft[LLM: proposal text draft]
+    Idea[User idea] --> LLMDraft[LLM: proposal text draft]
     LLMDraft --> Review[Human: review and edit]
     Review --> LLMFormat[LLM: formatting to DAO requirements]
     LLMFormat --> Submit[Submission to DAO smart contract]
-    Submit --> Vote[Voting Phase]
+    Submit --> Vote[Voting phase]
     Vote --> LLMSummary[LLM: voting results summary]
     LLMSummary --> Publish[Publication of results]
 ```
 
 <details>
-<summary>Input Request Examples</summary>
+<summary>Input request examples</summary>
 
 ```text
 Idea 1: "Suggest increasing the liquidity pool by 5% transaction fee."
@@ -615,7 +615,7 @@ Idea 2: "Implement a reward program for active DAO participants."
 </details>
 
 <details>
-<summary>System Prompts</summary>
+<summary>System prompts</summary>
 
 <details>
 <summary>LLM: proposal text draft</summary>
@@ -656,20 +656,20 @@ Output: text summary.
 </details>
 
 <details>
-<summary>Automated Smart Contract Audit</summary>
+<summary>Automated smart contract audit</summary>
 
 ```mermaid
 flowchart TD
-    Source[Smart Contract Source Code] --> LLMAnalyze[LLM: security analysis]
+    Source[Smart contract source code] --> LLMAnalyze[LLM: security analysis]
     LLMAnalyze --> Report[LLM: vulnerability report generation]
     Report --> HumanReview[Human: report review]
     HumanReview --> Fixes[Making fixes]
     Fixes --> ReAnalyze[LLM: re-analysis]
-    ReAnalyze --> FinalReport[Final Report]
+    ReAnalyze --> FinalReport[Final report]
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Input data examples</summary>
 
 ```solidity
 // SPDX-License-Identifier: MIT
@@ -686,13 +686,13 @@ contract SimpleToken {
 </details>
 
 <details>
-<summary>System Prompts</summary>
+<summary>System prompts</summary>
 
 <details>
 <summary>LLM: security analysis</summary>
 
 ```text
-You are a model for analyzing the security of smart contracts.
+You are a model for smart contract security analysis.
 Input: contract source code.
 Task: identify vulnerabilities (overflow, reentrancy, etc.) and provide recommendations.
 Output: JSON [{issue, severity, recommendation}].

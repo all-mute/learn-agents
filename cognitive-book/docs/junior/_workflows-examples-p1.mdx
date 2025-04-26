@@ -16,7 +16,7 @@ flowchart LR
 ```
 
 <details>
-<summary>Input Request Examples</summary>
+<summary>Example Input Requests</summary>
 
 ```text
 Email 1:
@@ -26,8 +26,8 @@ Message: "Hello, I paid for the order a few days ago, but the status has not cha
 
 Email 2:
 From: user2@example.com
-Subject: Product Question
-Message: "Good day, please tell me about the features of your application."
+Subject: Question about the product
+Message: "Good afternoon, please tell me about the features of your application."
 ```
 </details>
 
@@ -55,7 +55,7 @@ If the answer is simple, output 'simple_answer', otherwise 'complex_answer'.
 <summary>System Prompt: Answer Generation</summary>
 
 ```text
-You are a support service assistant. Compose a polite and concise answer to the client based on the text of the email:
+You are a support assistant. Compose a polite and concise answer to the client based on the text of the email:
 \"\"\"{email_body}\"\"\"
 ```
 </details>
@@ -68,7 +68,7 @@ You are a support service assistant. Compose a polite and concise answer to the 
 ```mermaid
 flowchart LR
     Request[Client Message] --> Intent[Intent Classification]
-    Intent -->|FAQ| FAQSearch[FAQ DB Search]
+    Intent -->|FAQ| FAQSearch[Search in FAQ DB]
     Intent -->|Tech Support| Human[To Operator]
     FAQSearch --> Answer[LLM: Answer Generation]
     Answer --> Send[Send Answer to Client]
@@ -76,7 +76,7 @@ flowchart LR
 ```
 
 <details>
-<summary>Input Request Examples</summary>
+<summary>Example Input Requests</summary>
 
 ```text
 Request 1: "How do I reset my account password?"
@@ -97,7 +97,7 @@ Output is 'FAQ' or 'technical_support'.
 <summary>System Prompt: LLM FAQ Answer Generation</summary>
 
 ```text
-You are an assistant that generates an answer based on the found FAQ.
+You are an assistant generating an answer based on the found FAQ.
 Input: client request and FAQ content:
 \"\"\"Question: {faq_question}
 Answer: {faq_answer}\"\"\"
@@ -123,7 +123,7 @@ flowchart LR
 ```
 
 <details>
-<summary>Input Document Examples</summary>
+<summary>Example Input Documents</summary>
 
 ```text
 Document 1: Article about JavaScript (≈ 5,000 tokens)
@@ -139,7 +139,7 @@ Document 2: Quarterly Sales Report (≈ 8,000 tokens)
 You are a model for summarizing text fragments.
 Your task is to form a short and informative summary (≤ 500 tokens) based on the input fragment (≤ 6000 tokens).
 Input: text fragment of the document.
-Output: fragment summary.
+Output: summary of the fragment.
 ```
 
 </details>
@@ -153,7 +153,7 @@ Suppose you can only use an LLM that can maximally accommodate 8000 tokens in it
 
 ```mermaid
 flowchart LR
-    Doc[Source document about 400,000 tokens] --> Split[Split by 6000 tokens]
+    Doc[Original document about 400,000 tokens] --> Split[Split into 6000 tokens]
     Split --> Summarize[LLM: summarizes each part to 2000 tokens]
     Summarize --> Merge[Combining intermediate summaries]
     Merge --> Decision{Summary length > 2000 tokens?}
@@ -161,7 +161,7 @@ flowchart LR
     Decision -->|No| Final[Final summary ≤ 2000 tokens]
 ```
 
-For example, for a text of 18 megatokens, the algorithm will work in 2 summarization cycles:
+For example, for a text of 18 megatokens, the algorithm will run in 2 summarization cycles:
     1. 1 cycle: 18,000 tokens -> 6,000 tokens
         1.1. 18,000 tokens -> 3 chunks of 6,000 tokens
         1.2. 3 chunks of 6,000 tokens -> 3 summaries of 2,000 tokens
@@ -172,10 +172,10 @@ For example, for a text of 18 megatokens, the algorithm will work in 2 summariza
         2.3. 1 summary of 2,000 tokens -> final summary
 
 <details>
-<summary>Input Document Examples</summary>
+<summary>Example Input Document</summary>
 
 ```text
-Document: Product Technical Specification (≈ 400,000 tokens)
+Document: Technical product specification (≈ 400,000 tokens)
 ```
 
 </details>
@@ -196,31 +196,31 @@ Summarize the text in 2000 tokens.
 
 ```mermaid
 flowchart LR
-    U[User Processing Logic] --> Process
-    Doc[Large Text] --> Split[Split into Chunks]
-    Split --> Process[LLM: Processing Each Chunk]
-    Process --> Merge[Aggregation of Results]
+    U[Processing logic from user] --> Process
+    Doc[Large text] --> Split[Split into chunks]
+    Split --> Process[LLM: processing each chunk]
+    Process --> Merge[Aggregation of results]
     Merge --> Final[ReturnFinalAnswer]
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Example Input Data</summary>
 
 ```text
-Processing Logic: "Find all mentions of the words 'error' and 'exception', count their frequency."
-Text: Application Logs (≈ 100,000 tokens)
+Processing logic: "Find all mentions of the words 'error' and 'exception', count their frequency."
+Text: Application logs (≈ 100,000 tokens)
 ```
 
 </details>
 
 <details>
-<summary>System Prompt: LLM — Processing a Text Chunk</summary>
+<summary>System Prompt: LLM — Processing a text chunk</summary>
 
 ```text
-You are an analytical model. Your task is to form a partial report based on the specified user logic and the input text chunk.
+You are an analytical model. Your task is to form a partial report based on the user's specified logic and the input text chunk.
 Input:
-- Processing Logic: {logic}
-- Chunk Text: {text}
+- Processing logic: {logic}
+- Chunk text: {text}
 Output:
 - Partial report.
 ```
@@ -246,7 +246,7 @@ flowchart LR
 ```
 
 <details>
-<summary>Input Request Examples</summary>
+<summary>Example Input Requests</summary>
 
 ```text
 Request 1: "Collect the last 100 tweets with the hashtag #ourProduct"
@@ -281,7 +281,7 @@ flowchart LR
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Example Input Data</summary>
 
 ```text
 User profile:
@@ -331,7 +331,7 @@ Output data:
   ```
 
   <details>
-  <summary>Input Request Examples</summary>
+  <summary>Example Input Requests</summary>
 
   ```text
   Request 1: Pull Request with changes to the app.js file:
@@ -352,16 +352,17 @@ Output data:
 
   ```text
   You are an assistant for automated code review.
-  Your task is to, based on the Pull Request diff:
+  Your task is to:
   - detect syntax or logic errors,
   - note style guide violations,
-  - suggest code improvement recommendations.
+  - suggest code improvement recommendations,
+  based on the Pull Request diff.
   Input data:
-  - Pull Request diff: {diff}
+  - diff Pull Request: {diff}
   Output format (structured output):
   [
     {file: "app.js", line: 1, comment: "It is recommended to explicitly cast parameters to Number for safe string addition."},
-    {file: "utils.js", line: 3, comment: "The 'unused' variable is not used — it should be deleted."}
+    {file: "utils.js", line: 3, comment: "The 'unused' variable is not used - it should be deleted."}
   ]
   ```
   </details>
@@ -379,7 +380,7 @@ Output data:
   ```
 
   <details>
-  <summary>Input Request Examples</summary>
+  <summary>Example Input Requests</summary>
 
   ```text
   Article draft:
@@ -405,10 +406,10 @@ Output data:
 
   ```text
   You are a model for stylistic editing of texts.
-  Your task is to make the text smoother, clearer and more attractive, while preserving the original meaning.
+  Your task is to make the text smoother, clearer and more attractive while preserving the original meaning.
   Input:
   - text after spell checking: {corrected_text}
-  Output is the edited text.
+  Output - edited text.
   ```
   </details>
 
@@ -430,7 +431,7 @@ Output data:
   ```
 
   <details>
-  <summary>Input Request Examples</summary>
+  <summary>Example Input Requests</summary>
 
   ```text
   CRM data 1: {id: 101, name: "Anna", age: 28, last_purchases: ["sneakers","t-shirt"], interests: ["sports","travel"]}
@@ -447,7 +448,7 @@ Output data:
     ```text
     You are a model that segments customers into categories (age, interests, purchase history) based on a list of CRM data.
     Input: list of clients [{id, name, age, last_purchases, interests}, ...]
-    Output — JSON array of segments:
+    Output - JSON array of segments:
     [
       {segment_id: 1, criteria: "athletes 25-35", clients: [101, ...]},
       ...
@@ -459,9 +460,9 @@ Output data:
     <summary>LLM: Message Generation</summary>
 
     ```text
-    You are a copywriter assistant who creates personalized e-mails for each segment.
+    You are a copywriter assistant creating personalized e-mails for each segment.
     Input: segment {segment_id, criteria, clients} and message template.
-    Output — JSON array of messages:
+    Output - JSON array of messages:
     [
       {segment_id: 1, subject: "Special offer for athletes", body: "..."},
       ...
@@ -479,15 +480,15 @@ Output data:
   ```mermaid
   flowchart LR
       Lead[New Lead] --> Qualify[LLM: Qualification]
-      Qualify -->|Ready to Sell| Propose[LLM: Commercial Proposal]
-      Propose --> Send[Send Proposal]
+      Qualify -->|Ready to Sell| Propose[LLM: Commercial Offer]
+      Propose --> Send[Send Offer]
       Send --> Follow[LLM: Response Analysis]
       Follow -->|Positive| Upsell[LLM: Upsale Generation]
-      Upsell --> SendUpsell[Send Additional Proposal]
+      Upsell --> SendUpsell[Send Additional Offer]
   ```
 
   <details>
-  <summary>Input Request Examples</summary>
+  <summary>Example Input Requests</summary>
 
   ```text
   Lead 1: {id: "LID123", company: "Acme Corp", budget: 50000, need: "CRM system"}
@@ -502,19 +503,19 @@ Output data:
     <summary>LLM: Qualification</summary>
 
     ```text
-    You are a model that evaluates leads for readiness to buy.
+    You are a model that assesses leads for readiness to buy.
     Input: lead {id, company, budget, need}
-    Output — {lead_id, status: "ready"/"not ready", score: number}
+    Output - {lead_id, status: "ready"/"not ready", score: number}
     ```
     </details>
 
     <details>
-    <summary>LLM: Commercial Proposal</summary>
+    <summary>LLM: Commercial Offer</summary>
 
     ```text
-    You are a sales assistant who generates commercial proposals.
+    You are a sales assistant generating commercial offers.
     Input: lead {lead_id, company, need, budget} and CP template.
-    Output — {lead_id, proposal: "text of commercial proposal"}
+    Output - {lead_id, proposal: "text of commercial offer"}
     ```
     </details>
 
@@ -524,7 +525,7 @@ Output data:
     ```text
     You are a model for analyzing customer feedback.
     Input: correspondence {lead_id, messages: [...]}
-    Output — {lead_id, sentiment: "positive"/"negative"/"neutral"}
+    Output - {lead_id, sentiment: "positive"/"negative"/"neutral"}
     ```
     </details>
 
@@ -532,9 +533,9 @@ Output data:
     <summary>LLM: Upsale Generation</summary>
 
     ```text
-    You are an upsell assistant who forms an additional offer.
+    You are an upsell assistant forming an additional offer.
     Input: lead {lead_id} and interaction history.
-    Output — {lead_id, upsell_offer: "text of additional offer"}
+    Output - {lead_id, upsell_offer: "text of additional offer"}
     ```
     </details>
 
@@ -558,7 +559,7 @@ flowchart LR
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Example Input Data</summary>
 
 ```json
 {
@@ -615,7 +616,7 @@ flowchart LR
 ```
 
 <details>
-<summary>Input Data Examples</summary>
+<summary>Example Input Data</summary>
 
 ```text
 Document type: lease agreement
@@ -648,7 +649,7 @@ Output: array of objects [{article: number, summary: text}, ...].
 ```text
 You are a model for checking document compliance with specified regulations.
 Input: array of key points and list of rules.
-Task: for each point, determine whether it complies with the rules.
+Task: for each item, determine whether it complies with the rules.
 Output: [{article, compliance: "complies"/"does not comply", comments}, ...].
 ```
 

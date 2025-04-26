@@ -28,7 +28,7 @@ const authorsList = {
       translationId: "homepage.authors.savelko.description"
     },
     {
-      name: "Andrey Karpathy (материалы)",
+      name: "Andrey Karpathy (lectures)",
       imageUrl: "https://storage.yandexcloud.net/david-images/authors/karpathy.jpg",
       website: "https://x.com/karpathy",
       translationId: "homepage.authors.karpathy.description"
@@ -63,11 +63,7 @@ function Author({ name, imageUrl, website, translationId }: AuthorItem) {
           <div className={styles.authorContent}>
             <Heading as="h3" className={styles.authorName}>{name}</Heading>
             <div className={styles.authorDescription}>
-              <Translate id={translationId}>
-                {name === 'David Merkulov' 
-                  ? 'Main Author. CTO at AI-automated VC fund, MSU, Ex-Yandex' 
-                  : 'Anyone who is interested in collaboration'}
-              </Translate>
+              <Translate id={translationId} />
             </div>
           </div>
         </div>

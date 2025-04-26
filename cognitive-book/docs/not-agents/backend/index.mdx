@@ -1,35 +1,35 @@
 ---
 sidebar_position: 1
-sidebar_label: Карта блока
+sidebar_label: Block map
 ---
 
-# О блоке "Легкая бэкенд-разработка"
+# About the "Lightweight Backend Development" Block
 
-## Зачем это нужно?
+## Why is this needed?
 
-В большинстве AI Agents вакансий и проектов, за пределами всего что связано с AI, от вас потребуется уметь:
-- делать деплой вашего AI сервиса
-- интегрировать AI сервис в существующий бекенд
-- писать API-интеграции вашего AI сервиса (инструменты для агента)
+In most AI Agents vacancies and projects, beyond everything related to AI, you will be required to:
+- deploy your AI service
+- integrate the AI service into an existing backend
+- write API integrations for your AI service (tools for the agent)
 
-Пройдя этот блок вы не станете полноценным бекенд-разработчиком, однако:
-- освоете быструю serverless-разработку (нужно для стартапов, MVP, PoC)
-- Разберетесь в основных SWE концепциях (микросервисы, базы данных, API, и т.д.), необходимых для прохождения собеседований на junior и middle Applied AI позиции
-- Научитесь работать с базами данных и ORM
+By completing this block, you will not become a full-fledged backend developer, however:
+- you will master rapid serverless development (necessary for startups, MVPs, PoCs)
+- You will understand the basic SWE concepts (microservices, databases, APIs, etc.) necessary for passing interviews for junior and middle Applied AI positions
+- You will learn how to work with databases and ORMs
 
-## Содержание: Практика
+## Content: Practice
 
-Как вы можете видеть на roadmap, блок разделен на теоретические и практические модули. Рекомендуется идти в изучении модулей сверху вниз, пропуская хорошо знакомые вам темы.
+As you can see on the roadmap, the block is divided into theoretical and practical modules. It is recommended to study the modules from top to bottom, skipping topics you are already familiar with.
 
-К концу практических модулей вы реализуете production-ready бэкенд, который:
-- развернут не на локальной машине
-- состоит из нескольких микросервисов
-- использует serverless технологии
-- имеет тесты, логирование и мониторинг и т.д.
-- частично работает на VM в облаке, контейнеризован
+By the end of the practical modules, you will implement a production-ready backend that:
+- is deployed not on a local machine
+- consists of several microservices
+- uses serverless technologies
+- has tests, logging, and monitoring, etc.
+- partially runs on a VM in the cloud, containerized
 
 <details>
-<summary>Шаг 1: В начале вы разработаете AI workflow для агрегации и фильтрации новостей</summary>
+<summary>Step 1: First, you will develop an AI workflow for aggregating and filtering news</summary>
 
 ```mermaid
 flowchart
@@ -52,7 +52,7 @@ flowchart
 </details>
 
 <details>
-<summary>Шаг 2: Затем вы разработаете бэкенд для этого workflow</summary>
+<summary>Step 2: Then you will develop a backend for this workflow</summary>
 
 ```mermaid
 graph TD
@@ -76,7 +76,7 @@ graph TD
 </details>
 
 <details>
-<summary>Шаг 3: Затем вы напишете телеграм-бота, который будет пользоваться вашим улучшенным бэкендом с AI Агентом</summary>
+<summary>Step 3: Then you will write a Telegram bot that will use your improved backend with an AI Agent</summary>
 
 ```mermaid
 graph LR
@@ -104,83 +104,36 @@ graph LR
 ```
 </details>
 
-В конце вы получите телеграм бота со следующим функционалом:
+In the end, you will get a Telegram bot with the following functionality:
 
-(тут будет картинка)
+(image will be here)
 
-## Содержание: Теория
+## Content: Theory
 
-:::info инструкция
-Перед тем как приступать к следущим практическим модулям, по надобности проходите предшествующие теоретические модули.
+:::info instruction
+Before proceeding to the next practical modules, complete the preceding theoretical modules as needed.
 :::
 
-:::danger про Lite backend development блок
-IMFO: Applied AI engineer не должен быть специалистом по бэкенд разработке, но вы сами должны углубиться с уровнем погружения + пропускайте знакомые темы.
-- **Хотите быстрее перейти к разработке Агентов?** - изучите данные темы поверхностно - возвращаясь к погружению в SWE по ходу промышленной разработки.
-    - Для Full-time learners: тратьте 0.5-1 дня на модуль
-    - Для Part-time learners: тратьте 1-2 дня на модуль
-- **Хотите углубленные знания?** - будет полезно будущим архитекторам
-    - Для Full-time learners: тратьте 1-2 дня на модуль, поверхностно проходите Extra/Silver секции
-    - Для Part-time learners: тратьте 2-4 дня на модуль, поверхностно проходите Extra/Silver секции
+:::danger about the Lite backend development block
+IMFO: An Applied AI engineer does not have to be a backend development specialist, but you yourself must delve into the level of immersion + skip familiar topics.
+- **Want to get to Agent development faster?** - study these topics superficially - returning to immersion in SWE during the course of production development.
+    - For Full-time learners: spend 0.5-1 days per module
+    - For Part-time learners: spend 1-2 days per module
+- **Want in-depth knowledge?** - will be useful for future architects
+    - For Full-time learners: spend 1-2 days per module, superficially go through the Extra/Silver sections
+    - For Part-time learners: spend 2-4 days per module, superficially go through the Extra/Silver sections
 :::
 
-#### 1. Основы Software Engineering  
+### Block Map
 
-#### 2. Основы бэкенд-разработки  
-
-#### 3. Базы данных  
-
-#### 4. Облако и VPS  
-- **Облачные платформы:** обзор провайдеров (AWS, GCP, Azure, DigitalOcean)  
-- **SSH и удалённое управление:** базовые команды, настройка подключения  
-- **Настройка VPS:** установка ОС, безопасность, firewall  
-- **Сетевые основы:** DNS, IP, load balancing  
-- **Мониторинг и бэкапы:** инструменты и лучшие практики
-- **Безопасность в облаке:** IAM роли и политики
-
----
-
-#### 5. Микросервисы и Docker
-- **Основы Docker:** создание Dockerfile, образы, контейнеры  
-- **Docker Compose:** организация многоконтейнерных приложений  
-- **Оркестрация контейнеров (введение):** знакомство с концепциями  
-- **Сетевые настройки и тома:** persistent storage, bridges  
-- **Best practices:** безопасность и оптимизация работы контейнеров  
-- **Принципы микросервисной архитектуры:** разделение ответственности, масштабирование  
-- **Коммуникация между сервисами:** REST, gRPC, message queues  
-- **Service Discovery и API Gateway:** базовые концепты и инструменты  
-- **Транзакции в распределённых системах:** подходы к обеспечению консистентности  
-- **Мониторинг и логирование в микросервисах:** сбор метрик и централизованное логирование
-- **Multi-stage builds:** оптимизация образов
-- **Шаблоны проектирования:** Circuit Breaker, Bulkhead
-- **Saga-паттерн:** реализация распределённых транзакций
-- **Тестирование:** contract testing (Pact)
-- **Service Mesh:** введение в Istio/Linkerd
-
----
-
-#### 7. Serverless и ускорение бэкенд-разработки  
-- **Концепция serverless:** отличие от традиционных моделей деплоя  
-- **FaaS (Function as a Service):** примеры (AWS Lambda, Google Cloud Functions)  
-- **Serverless контейнеры:** работа с платформами для безсерверного деплоя  
-- **Преимущества и ограничения:** анализ кейсов и оптимизация затрат  
-- **Best practices и архитектурные шаблоны:** резкое масштабирование и упрощение инфраструктуры
-- **Кейсы использования:** обработка файлов, cron-задачи
-- **Холодный старт:** стратегии оптимизации
-- **Интеграция с DB:** connection pooling паттерны
-- **Локальная разработка:** serverless-offline инструменты
-
----
-
-#### 8. Extras  
-- **Роль nginx:** базовые принципы реверс-прокси, балансировки нагрузки  
-- **Infrastructure as Code:** введение в Terraform и Ansible  
-- **Мониторинг и логирование:** инструменты для production (Prometheus, Sentry)  
-- **Введение в DevOps:** культура, автоматизация, контейнеризация и процессы релизов
-- **Nginx конфиги:** примеры для кэширования, балансировки
-- **Terraform/Ansible:** базовые сценарии для облака
-- **SLA метрики:** как измерять и улучшать
-
-
-
-
+- That very IT base
+- Practice 1 - workflow
+- FastAPI
+- Databases
+- Practice 2 - backend
+- Clouds and VMs
+- Docker
+- Microservices
+- Rapid development
+- Practice 3 - app
+- Extra ✦

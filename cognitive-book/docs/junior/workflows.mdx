@@ -2,45 +2,41 @@
 sidebar_label: Workflows
 ---
 
-import WorkflowsExamplesP1 from './_workflows-examples-p1.mdx';
-import WorkflowsExamplesP2 from './_workflows-examples-p2.mdx';
-
 # GenAI Workflows
 
-Не все AI приложения - агенты! На инженерном языке Агенты - это системы с большой свободой и автономностью - но низким контролем со стороны человека. Перед тем как перейти к агентам, давайте изучимё более контролируемые применеия LLM - потому что в будущем ваши агенты будут их использовать как подсистемы.
+Not all AI applications are agents! In engineering terms, Agents are systems with high freedom and autonomy but low human control. Before moving on to agents, let's explore more controlled uses of LLMs because, in the future, your agents will use them as subsystems.
 
 ## Questions
 
-- Что не является агентом (в нашем, инженерном мире)?
-- Что такое Направленный ациклический граф (DAG)?
-- Какие подвиды workflows существуют?
+- What is not an agent (in our engineering world)?
+- What is a Directed Acyclic Graph (DAG)?
+- What types of workflows exist?
 
 ## Steps
 
-:::info Инженерное определение
+:::info Engineering Definition
 
-По складывающемуся сейчас в коммьюнити (X, Anthropic, OpenAI) мнениею, агенты - это системы, которые циклично работают до тех пор, пока сами не решают остановиться. Благодаря LLM Агент может сам оценивать, наскольо он хорошо выполнил задачу, и преостанавливать выполенение (например, через вызов `ToolCall: ReturnFinalAnswer`).
+According to the emerging consensus in the community (X, Anthropic, OpenAI), agents are systems that operate cyclically until they decide to stop themselves. Thanks to LLMs, an Agent can assess how well it has performed a task and pause execution (e.g., via a `ToolCall: ReturnFinalAnswer` call).
 
-Большинство продвинутых агентов сейчас, кроме оценки выполнения задачи - еще и самостоятельно планируют *подшаги* для достижения цели, и зацикливаются на каждом шаге - пока его не выполнят - и только потом переходят к следущим шагам.
+Most advanced agents today, in addition to evaluating task completion, also independently plan *sub-steps* to achieve the goal and loop through each step until it is completed, only then moving on to the next steps.
 
-Поэтому всё, что является **DAG - directed acyclic graph** - направленным ациклическим графом - не является агентом. 
+Therefore, anything that is a **DAG - directed acyclic graph** - is not an agent.
 
 <details>
-<summary> Кратко про DAG </summary>
+<summary> Briefly about DAG </summary>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/1Yh5S-S6wsI?si=In2W4txN8bPkCrsy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-or 
+or
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IltIGJOHYgo?si=8ix-lpFUKrIn5fXt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 
 </details>
 
 <details>
-<summary>Исключение</summary>
+<summary>Exception</summary>
 
-**Если зацикленность провоцируется строгой логикой - принято считать это workflow, а не агентом.** 
+**If the looping is triggered by strict logic, it is considered a workflow, not an agent.**
 
-Ниже вы увидете workflow "Суммаризация бесконечного текста", который рекурсивно суммирует текст до тех пор, пока не достигнет текста опредлеленной короткой длины. Это не агент, а workflow, хотя и имеет зацикленность.
+Below you will see the "Summarization of Infinite Text" workflow, which recursively summarizes text until it reaches a text of a certain short length. This is not an agent, but a workflow, even though it has looping.
 
 </details>
 
@@ -48,23 +44,22 @@ or
 
 ### 1. [Read this Anthropic article](https://www.anthropic.com/engineering/building-effective-agents)
 
-### 2. Real-life примеры LLM workflows
+### 2. Real-life examples of LLM workflows
 
 :::tip
 
-Изучите примеры ниже. Это важно для архитектурной насмотренности.
+Study the examples below. This is important for architectural awareness.
 
-Попробуйте "прокомпилировать" некторые пайплайны в голове.
+Try to "compile" some pipelines in your head.
 
-Мы старались писать примеры запросов/промптов - читайте их, если что-то непонятно.
+We tried to write examples of requests/prompts - read them if something is unclear.
 
 :::
 
 <WorkflowsExamplesP1 />
 <WorkflowsExamplesP2 />
 
-В промышленных бизнес-проектах workflows зачастую состоят из 20+ нод, вперемешку с API-интеграциями, строгими логиками, LLM-субворкфлоу и AI Агентами. А иногда могут доходить и до 100 нод.
-
+In business projects in the field of production, workflows often consist of 20+ nodes, interspersed with API integrations, strict logic, LLM sub-workflows, and AI Agents. And sometimes they can reach up to 100 nodes.
 
 ### 2. [Advanced routing in LLM Workflows](https://youtu.be/-EYyrlfoqDU?si=y9g6qB8P9ieN6K0C)
 
@@ -72,11 +67,11 @@ or
 
 ### E1. langchain
 
-LangChain - это библиотека для построения и использования LLM-workflows. Она старая, но хорошо документирована и имеет большое сообщество.
+LangChain is a library for building and using LLM-workflows. It is old but well-documented and has a large community.
 
-Просмотрите, какие сущности есть в LangChain: https://python.langchain.com/docs/concepts/
+Browse what entities are in LangChain: https://python.langchain.com/docs/concepts/
 
-[Пример простейшего langchain кода](https://dev.to/koolkamalkishor/how-to-use-langchain-for-ai-workflow-automation-1i94).
+[Example of the simplest langchain code](https://dev.to/koolkamalkishor/how-to-use-langchain-for-ai-workflow-automation-1i94).
 
 ### E2. Patterns meta-understanding
 
@@ -92,27 +87,22 @@ https://langchain-ai.github.io/langgraph/tutorials/workflows/
 
 ## Now we know...
 
-В этом уроке мы познакомились с основами LLM workflows: разобрали инженерное определение агентов и отличие цикличных систем от DAG‑структур, изучили практические примеры, шаблоны проектирования и погрузились глубже в routing.
+In this lesson, we learned the basics of LLM workflows: we analyzed the engineering definition of agents and the difference between cyclic systems and DAG structures, studied practical examples, design patterns, and delved deeper into routing.
 
 :::danger
-Однако, не стоит быть слишком строгим с другими людьми в определениях. Понимать разницу между агентами, чат-ботами и workflows нужно лишь инженерам, чтобы избегать мисскоммуникации.
+However, you should not be too strict with other people in definitions. Understanding the difference between agents, chatbots, and workflows is only necessary for engineers to avoid miscommunication.
 
-Менеджеры, клиенты и инвесторы понимать эту разницу не должны. Оставляйте им возможность называть всё как им удобнее: AI Агентамы, "нейросети", "искусственный интеллект"".
+Managers, clients, and investors do not need to understand this difference. Leave them the opportunity to call everything as they see fit: AI Agents, "neural networks", "artificial intelligence".
 :::
 
 ## Exercises
 
-1. Если в вавшей системе есть зацикленность - то это агент или workflow?
-2. Какие паттерны ветвления вы помните?
-3. *Для тех, кто проходил модуль по алгоритмам для GenAI:
-    - подумайте, как можно соединять алгоритмические подходы и LLM workflows
-2. **Спроектируйте на бумаге:**
-    - Систему автоматического ответа на запросы в поддержку мобильного приложения по доставке еды
-    - Workflow для автоответов на сообщения в ваш мессенджер с незнакомого контакта
-    - Систему для автоматического создания постов для вашего блога
-    - Систему скоринга кандидата на вакансию, потом систему сравнения нескольких кандидатов сразу
-
-
-
-
-
+1. If there is looping in your system, is it an agent or a workflow?
+2. What branching patterns do you remember?
+3. *For those who have completed the module on algorithms for GenAI:
+    - think about how you can combine algorithmic approaches and LLM workflows
+2. **Design on paper:**
+    - A system for automatically responding to support requests for a mobile food delivery application
+    - A workflow for auto-responding to messages in your messenger from an unknown contact
+    - A system for automatically creating posts for your blog
+    - A system for scoring a candidate for a vacancy, then a system for comparing several candidates at once
