@@ -8,7 +8,7 @@ const ALGOLIA_API_KEY = process.env.ALGOLIA_API_KEY || 'e325bfe930f7ffc60495c079
 
 const config: Config = {
   title: 'Learn AI Agents Handbook',
-  tagline: 'Vastest zero to hero handbook on building AI Agents',
+  tagline: 'The most comprehensive zero-to-hero handbook on building AI Agents',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -233,7 +233,7 @@ const config: Config = {
     },
     announcementBar: {
       id: 'language_notice',
-      content: 'Handbook still in beta, we are activly seeking for feedback and suggestions',
+      content: 'The handbook is still in its beta stage. We eagerly seek your input and recommendations.',
       backgroundColor: '#4CAF50',
       textColor: '#000000',
       isCloseable: true,
