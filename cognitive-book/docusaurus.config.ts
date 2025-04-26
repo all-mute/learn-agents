@@ -233,7 +233,7 @@ const config: Config = {
     },
     announcementBar: {
       id: 'language_notice',
-      content: 'Handbook still in beta, we are activly seeking for feedback and suggestions',
+      content: 'The handbook is still in its beta stage. We eagerly seek your input and recommendations.',
       backgroundColor: '#4CAF50',
       textColor: '#000000',
       isCloseable: true,
