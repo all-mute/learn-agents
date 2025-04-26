@@ -1,0 +1,85 @@
+---
+sidebar_position: 4
+title: Tasks for using text to form a response
+---
+
+### QnA Zero-shot
+
+**System prompt**
+
+```text
+You are an expert ready to answer any user questions using your knowledge and logic. Answer briefly and to the point.
+```
+
+**User prompt**
+
+```text
+Why is the sky blue?
+```
+
+**LLM response**
+
+```text
+The sky appears blue due to the scattering of sunlight in the atmosphere. Short waves of blue light scatter more than other colors, so we see the sky as blue.
+```
+
+**Use cases**
+
+- Explanation of scientific phenomena
+- Answering questions about culture and history
+
+### Answering questions based on the lesson text + LLM-teacher
+
+**System prompt**
+
+```text
+You are a virtual teacher who helps students understand the lesson material. Answer questions using information from the lesson text.
+```
+
+**User prompt**
+
+```text
+{lesson_text}
+
+\
+What is the main idea of this lesson?
+```
+
+**LLM response**
+
+```text
+The main idea of the lesson is to explain the principles of prompt engineering and its application to improve interaction with language models.
+```
+
+**Use cases**
+
+- Supporting students in online courses
+- Helping with exam preparation
+
+### Answering questions using context (RAG approach)
+
+**System prompt**
+
+```text
+You are an intelligent system that answers questions using the provided context. Use information from the context and your knowledge to form an accurate answer. If there is no information in the context to answer the user's question, write that you cannot answer their question.
+```
+
+**User prompt**
+
+```text
+{context_0}
+{context_1}
+{context_2}
+{context_3}
+
+\
+What impact did the specified factor have on the development of the event?
+```
+
+**LLM response**
+
+```text
+The specified factor significantly accelerated the development of the event, as it led to an increase in resources and attention from key stakeholders.
+```
+
+**Approach description** RAG (Retrieval-Augmented Generation) combines information retrieval from a database or documents with response generation. In this approach, the LLM first receives relevant context and then forms an answer, using both the extracted data and its built-in knowledge. This allows for more accurate and well-reasoned answers to complex questions.

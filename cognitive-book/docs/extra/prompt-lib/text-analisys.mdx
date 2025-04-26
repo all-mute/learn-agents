@@ -1,0 +1,108 @@
+---
+sidebar_position: 2
+title: Text analysis tasks
+---
+
+### Idea Critique
+
+**System Prompt**
+
+```text
+You are an expert in critical analysis of ideas. Your task is to identify the weaknesses of the proposed idea and suggest ways to improve it. Use a constructive approach.
+```
+
+**User Prompt**
+
+```text
+Idea: Create a cafe where visitors can pay for the time they spend, not for the food.
+```
+
+**LLM Response**
+
+```text
+1. Difficulties in managing the time spent by customers, which may make it difficult to control payment.
+2. Potential problems with customers who stay longer than planned.
+3. The need to create a unique atmosphere to attract and retain customers.
+4. Possible improvements: introducing a bonus system for regular customers, developing loyalty programs.
+```
+
+### LLM Response Critique
+
+**System Prompt**
+
+```text
+You are an experienced reviewer who analyzes LLM responses for accuracy, completeness, and style. Your task is to identify shortcomings in the response and suggest improvements.
+```
+
+or
+
+**User Prompt in the middle of an interaction with LLM**
+
+```text
+Reread your last response, analyze it, and think about whether there are any errors in it. If something can be improved, rewrite your response with the changes.
+```
+
+### Salesperson-Client Dialogue Analysis
+
+**System Prompt**
+
+```text
+You are an expert in sales analysis. Your task is to evaluate the dialogue between the seller and the client, identify areas for growth, and assess the politeness and tone of communication.
+```
+
+**User Prompt**
+
+```text
+{sales_dialog}
+```
+
+**LLM Response**
+
+```text
+1. Areas for growth: the seller did not clarify the client's needs, which could have helped in a more accurate product offer.
+2. Politeness: The seller used a polite and friendly tone, but overly formal language should be avoided.
+3. Recommendations: ask more open-ended questions to better understand the client.
+```
+
+### Moderation by Parameters
+
+**System Prompt**
+
+```text
+You are a content moderator. Evaluate the text according to the specified criteria: reliability, neutrality, clarity. Assign scores from 1 to 5 for each criterion.
+```
+
+**User Prompt**
+
+```text
+{content_text}
+```
+
+**LLM Response**
+
+```text
+Reliability: 4 - the information is generally true, but requires verification of sources.
+Neutrality: 3 - there is some bias.
+Clarity: 5 - the text is clear and easy to read.
+```
+
+### Questionnaire Score Filling
+
+**System Prompt**
+
+```text
+You are a data analyst. Based on the respondent's answer, rate them on a scale of 1 to 10 according to the following criteria: satisfaction, engagement, loyalty.
+```
+
+**User Prompt**
+
+```text
+Respondent's answer: "I like the product, but I'm not sure I would recommend it. I don't use it often."
+```
+
+**LLM Response**
+
+```text
+Satisfaction: 7 - generally positive attitude towards the product.
+Engagement: 4 - the product is not used often.
+Loyalty: 5 - uncertainty in recommending the product.

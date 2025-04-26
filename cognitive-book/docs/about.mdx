@@ -1,64 +1,106 @@
 ---
-slug: /intro
+slug: Введение
 sidebar_position: 1
+sidebar_label: About the textbook
 ---
 
-# Introduction to AI Agents
+# About the Handbook
 
-:::danger
-Идите на русскоязычную версию сайта!
+## What is the AI Agents Handbook
 
-[Russian version](https://www.learn-agents.diy/ru/intro)
+**AI Agents Handbook** is a <u>self-study</u> guide for developing AI Agents,
+- covering all topics of Applied AI development
+- flexible: you can move quickly, studying only the core material, or delve into additional materials
+- practice-first
+- zero to hero: you don't need any prior knowledge to start
+- the last chapters are dedicated to the cutting edge of science and business.
+
+**Our goal** is to create the world's first end-to-end course on AI Agents development. We are inspired by the legendary resource [d2l.ai](https://d2l.ai/).
+
+Quick links:
+- [What are Agents?](start-here/index.mdx)
+- [Why study AI Agents?](start-here/motivation.mdx)
+- [List of required knowledge](start-here/prerequisites)
+- [Easy-to-view interactive roadmap](https://roadmap.sh/r/ai-agents-2025-roadmap)
+
+Approximate total volume of core material: 126 hours.
+
+## Values
+
+1. **Agile and up-to-date** - we add materials as quickly as possible, adapting to constantly improving technologies
+2. **Practice-First** - practical assignments in each block
+3. **Community-Driven** - students and authors help develop the handbook - [how?](/handbook/contributing)
+4. **Zero to Hero** - the handbook is planned to be a high-level abstraction that can be studied without in-depth CS and DS knowledge
+5. **No empty value** - we create materials ourselves only if we add value to what already exists in the world
+
+## Principles
+
+1. Text format is used to allow for instant changes, as the AI Agents landscape becomes 50% obsolete every 12 months
+2. Modules consist of materials from different teachers, in order not to engage in the "rewriting of other people's materials" that is classic for university courses
+    - it also gives the opportunity to use lectures from the best teachers in the world
+    - and you as a student can at any time deviate from the program and delve into topics that interest you
+3. If you find the current material useless or outdated - let us know!
+
+## Program
+
+The main course material is presented in three blocks: **basics**, **junior**, **senior**. You can register on roadmap.sh and interactively mark completed modules: [AI Agents 2025 Roadmap](https://roadmap.sh/r/ai-agents-2025-roadmap).
+
+The entire program is divided into blocks, each block consists of modules, inside the module one topic is covered (For example, "Basics of LLM").
+
+#### 1. Basics (~6 hours)
+
+In the basics block, you will <u>write your first agent, gain basic knowledge of LLM, how to work with them, and learn how to write prompts</u> - this is all you need to start learning and developing Agents.
+
+In additional modules, you can study <u>lightweight backend development, LLM use cases, and master vibe-coding</u>.
+
+#### 2. Junior (~40 hours)
+
+- The junior block starts with completing the huggingface course on agents.
+- Next, you will learn about the Retrieval Augmented Generation (RAG) architecture, which is important for business.
+- You will go through a workshop on agent and multi-agent architectures
+- You will start mastering one of the industrial frameworks for agent development: LangGraph, Pydantic AI or LlamaIndex
+- And you will implement a large project of your own!
+- The block concludes with modules on AgentOps: infrastructure, agent performance evaluation, accelerated development.
+
+After completing this block, it is recommended to start looking for your first job at a middle-level position. You can continue your education in parallel with your job search.
+
+#### 3. [TBD] Senior (~60 hours)
+
+Mastering agents at a high level is quite easy - therefore, immediately after the junior block comes the senior block. Here we will return to the topics already studied and delve into them: <u>LLM</u>, <u>prompting</u>, <u>backend</u>, <u>RAG</u>, <u>cognitive architectures</u>, <u>benchmarking</u>. New modules for us will be <u>online agent evaluation</u>, <u>feedback-based improvement</u>, <u>meta-agents</u>, <u>Agent2Agent protocols</u>. At the end, you will implement a <u>vertical industrial-grade project</u> with <u>AgentOps infrastructure</u>, <u>memory</u>, and much more.
+
+#### 4. [TBD] TechLead (100 hours +)
+
+Agent developers cannot be characterized as people who completed certain material a long time ago and have since stopped learning. On the contrary - Agents are in the fastest growing part of the industry. Constant learning, FOMO, the search for new technologies - all this is the romance of an AI Agents developer.
+
+This size is planned for already practicing developers to share experience. It will mainly consist of:
+- materials on developing agents on modified models
+- review of scientific articles
+- insights from industry leaders
+- evaluation of the best changes in the global landscape
+- other frontier topics
+
+#### 5. Not AI Agents (~20 hours)
+
+A module with all the additional information that is not directly related to LLM:
+- backend development
+- DevOps
+- AI security
+- ethical aspects
+- vibe-coding
+- meta-learning
+- and other topics
+
+Modules from this block are located along the main material.
+
+:::tip
+All these modules from "Not AI Agents" are not required to complete. However, **if you are a beginner developer** - these modules will help you in developing more production-ready agents and finding a job.
+
+**If you are already an experienced developer**, then you will probably only appreciate the materials on meta-learning, vibe-coding.
 :::
 
-**AI Agents Handbook** is a comprehensive guide to creating and using intelligent AI-based agents. This handbook aims to be a reliable and open source of knowledge in the rapidly evolving field of artificial intelligence agents.
+## What this handbook does not contain
 
-## What are AI Agents?
-
-**AI Agents** are autonomous or semi-autonomous systems that can perceive their environment, make decisions, and act to achieve specific goals. Unlike traditional AI systems that perform specific tasks in response to direct requests, agents can demonstrate:
-
-- **Autonomy** - the ability to act without constant human intervention
-- **Proactivity** - the ability to set goals and work towards achieving them
-- **Reactivity** - the ability to respond to changes in the environment
-- **Sociability** - the ability to interact with other agents or humans
-
-## Who is this handbook for?
-
-This handbook is designed for:
-
-- **Developers** who want to create their own AI agents
-- **Researchers** interested in theoretical foundations and advanced methods in this field
-- **Entrepreneurs** exploring applications of AI agent technologies
-- **Students** who want to learn modern AI techniques
-
-## Handbook Structure
-
-The handbook is organized into the following sections:
-
-1. **Foundations** - Fundamental concepts, history, and types of AI Agents
-2. **Components** - Key technological components needed to create agents
-3. **Architectures** - Various architectural approaches to agent system development
-4. **Case Studies** - Real-world examples of AI Agents in use
-5. **Advanced Topics** - Ethical issues, evaluation methods, optimization, future directions
-
-## How to use this handbook
-
-Each section contains theoretical material, practical examples, and links to additional resources. You can study the handbook sequentially or jump to topics that interest you.
-
-The handbook is available in two languages - English and Russian. You can switch between them using the language selector at the top of the page.
-
-## How to contribute
-
-This handbook is an open project. If you want to contribute, you can:
-
-1. Propose changes through a Pull Request on GitHub
-2. Report issues or suggest improvements through the Issues system
-3. Help with content translation
-
-## Integration with Roadmap.sh
-
-For a more visual representation of AI Agent technology learning paths, we've integrated this handbook with [Roadmap.sh](https://roadmap.sh). The learning map helps visualize logical connections between various concepts and technologies.
-
----
-
-Let's begin our journey into the world of AI Agents! 
+- Training on no-code platforms (but if you want to lead - we will support you)
+- Training in programming, the basics of python, git, working with a computer
+- Training in Data Science, ML, DL, CV, NLP, applied mathematics
+- Methodological materials on writing resumes, job search, passing interviews; support in the learning process, a community of motivated students (but all this is on [merkulov.courses](https://merkulov.courses))

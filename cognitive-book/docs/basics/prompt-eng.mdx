@@ -1,0 +1,84 @@
+---
+sidebar_label: Prompt engineering
+---
+
+import PromptingMeme from './assets/prompting_meme.png';
+
+# Prompt Engineering
+
+<img src={PromptingMeme} alt="prompting meme" style={{ width: '50%', display: 'block', margin: '0 auto 20px' }} />
+
+
+Today we will master prompt engineering - the skill of being a "psychologist for LLM".
+
+Usually, as soon as something doesn't work in a chatbot or agent, we:
+
+1. first of all, try to solve the problem with prompt engineering
+2. change the architecture
+3. improve the LLM itself
+
+As you can see, prompt engineering is at the top. This is because improving the prompt is very easy (compared to reworking the system or LLM), and the increase in the worst case will be zero, in the best case many times over. **Therefore, we are mastering prompt engineering**
+
+## Questions
+
+Questions we will discuss:
+- What is a System Prompt?
+- What is a User Prompt?
+- What is the difference between zero-shot and few-shot requests?
+- What is Chain of Thought?
+
+
+## Steps
+
+### 0. Watching at x2
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/p09yRj47kNM?si=ZAq3fh1Lk6gIFXPp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Next, I offer a choice: just read about the techniques and move on; master them interactively in a jupyter notebook; or pay for a course from Google and watch long and chill lectures with practice in AI Studio.
+
+### 1A. Basics of prompt engineering
+
+1. Go here https://www.promptingguide.ai/ and read all the chapters up to Chain of Thought inclusive, starting with the very first one.
+
+    
+
+### 1B. Interactive course (alternative)
+
+https://github.com/anthropics/prompt-eng-interactive-tutorial + use base_url 
+
+Also, we study only up to Chain of Thought inclusive, further is too much.
+
+### 1B. Course from Google (alternative)
+
+https://www.coursera.org/learn/google-prompting-essentials ($60) - 9 hour course from Google
+
+## Extra Steps
+
+### E1. [Read the official tips](https://platform.openai.com/docs/guides/prompt-engineering)
+
+### E2. [Read the system prompt for Cursor AI](https://github.com/maxfahl/cursor-agent-master-prompt)
+
+### E3. [Read Sutskever's post](https://x.com/ilyasutsk/status/1832211266129293618)
+
+### E4. Services for comparing prompts and running prompts on benchmarks
+
+- https://www.promptlayer.com/?ref=latitude-blog.ghost.io
+- https://github.com/Agenta-AI/agenta?ref=latitude-blog.ghost.io
+
+### E5.
+
+If you don't feel confident yet and you don't have a complete picture of what we are doing here at all - this video explains everything again from the very beginning, in a different language.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LWiMwhDZ9as?si=_PE-sxOD7d_VoL1K" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Now we know...
+We have studied the basics of prompt engineering, including the differences between system and user prompts, zero-shot and few-shot approaches, and the Chain of Thought methodology. Now we understand why prompt engineering is the first and most accessible way to improve the performance of LLM systems, requiring minimal costs with potentially significant improvements in results. This knowledge will allow us to interact more effectively with AI Agents, formulate requests more accurately, and receive higher quality responses from models.
+
+## Exercises
+
+- what happens if you don't write a system message at all?
+- why do we indicate a role in the prompt? "You are a professional lawyer,..."
+- can we few-shot the correct use of toolCall?
+- for what tasks will Chain of Thought not have any effect?
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)

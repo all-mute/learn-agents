@@ -1,0 +1,297 @@
+---
+sidebar_position: 9
+title: Text classification
+---
+
+### Question Classification by Topic
+
+**System Prompt**
+
+```text
+You are an expert in classifying requests. Your task is to determine which topic a question belongs to. Possible topics: cars, food, technology.
+```
+
+**User Prompt**
+
+```text
+What is your mileage on a Tesla Model 3 electric car?
+```
+
+**LLM Classifier Response**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "cars",
+      "confidence": 0.85
+    },
+    {
+      "label": "food",
+      "confidence": 0.05
+    },
+    {
+      "label": "technology",
+      "confidence": 0.10
+    }
+  ]
+}
+```
+
+### Classification for Ethics and Politics
+
+**System Prompt**
+
+```text
+You are a specialist in ethical and political text analysis. Determine whether the text contains ethical or political topics.
+```
+
+**User Prompt**
+
+```text
+Should companies be required to pay their employees more than the minimum wage?
+```
+
+**LLM Classifier Response**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "ethics",
+      "confidence": 0.70
+    },
+    {
+      "label": "politics",
+      "confidence": 0.30
+    }
+  ]
+}
+```
+
+### Classification in RAG (Text Relevance to Question)
+
+**System Prompt**
+
+```text
+You are an expert in assessing the relevance of texts. Determine whether the given text chunk relates to the given question.
+```
+
+**User Prompt**
+
+```text
+Question: What are the advantages of hybrid cars?
+Text: Hybrid cars combine an internal combustion engine and an electric motor, which saves fuel.
+```
+
+**LLM Classifier Response**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "relevant",
+      "confidence": 0.92
+    },
+    {
+      "label": "irrelevant",
+      "confidence": 0.08
+    }
+  ]
+}
+```
+
+### Classification in RAG (Final Answer)
+
+**System Prompt**
+
+```text
+You are a specialist in assessing the completeness of answers. Determine whether the given answer answers the user's question.
+```
+
+**User Prompt**
+
+```text
+Question: What are the advantages of electric cars?
+Answer: Electric cars are environmentally friendly and economical to operate.
+```
+
+**LLM Classifier Response**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "complete answer",
+      "confidence": 0.88
+    },
+    {
+      "label": "incomplete answer",
+      "confidence": 0.12
+    }
+  ]
+}
+```
+
+### Customer Satisfaction Classification
+
+**System Prompt**
+
+```text
+You are an analyst for assessing customer satisfaction. Determine whether the customer was annoyed in the dialogue.
+```
+
+**User Prompt**
+
+```text
+Customer: I waited an hour for a response! This is unacceptable.
+```
+
+**LLM Classifier Response**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "annoyed",
+      "confidence": 0.95
+    },
+    {
+      "label": "not annoyed",
+      "confidence": 0.05
+    }
+  ]
+}
+```
+
+### Tagging: Reviews
+
+**System Prompt**
+
+```text
+You are an expert in classifying reviews. Determine which tags are appropriate for this review. Possible tags: quality, delivery, price, support.
+```
+
+**User Prompt**
+
+```text
+The product arrived quickly, but the quality leaves much to be desired.
+```
+
+**LLM Classifier Response**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "delivery",
+      "confidence": 0.80
+    },
+    {
+      "label": "quality",
+      "confidence": 0.90
+    }
+  ]
+}
+```
+
+### User Intent Detection
+
+**System Prompt**
+
+```text
+You are a specialist in analyzing user intentions. Determine what the user's intent is. Possible intents: purchase, support, information.
+```
+
+**User Prompt**
+
+```text
+Can I learn more about your new product?
+```
+
+**LLM Classifier Response**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "information",
+      "confidence": 0.85
+    },
+    {
+      "label": "purchase",
+      "confidence": 0.10
+    },
+    {
+      "label": "support",
+      "confidence": 0.05
+    }
+  ]
+}
+```
+
+### Task Completion Classification
+
+**System Prompt**
+
+```text
+You are an expert in assessing task completion. Determine whether the task has been completed.
+```
+
+**User Prompt**
+
+```text
+Task: Prepare a sales report for the month.
+Answer: The report has been prepared and sent for review.
+```
+
+**LLM Classifier Response**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "completed",
+      "confidence": 0.95
+    },
+    {
+      "label": "not completed",
+      "confidence": 0.05
+    }
+  ]
+}
+```
+
+### Condition Check
+
+**System Prompt**
+
+```text
+You are an analyst for checking text conditions. Determine whether the text contains personal information, direct speech, or policy violations.
+```
+
+**User Prompt**
+
+```text
+{news_article}
+```
+
+**LLM Classifier Response**
+
+```json
+{
+  "predictions": [
+    {
+      "label": "personal information",
+      "confidence": 0.20
+    },
+    {
+      "label": "direct speech",
+      "confidence": 0.60
+    },
+    {
+      "label": "policy violation",
+      "confidence": 0.10
+    }
+  ]
+}

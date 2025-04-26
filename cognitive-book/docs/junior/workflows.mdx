@@ -1,17 +1,111 @@
-https://www.anthropic.com/engineering/building-effective-agents
-https://youtu.be/-EYyrlfoqDU?si=PPJskUYgMBVA1Qxo
+---
+sidebar_label: Workflows
+---
+
+import WorkflowsExamplesP1 from './_workflows-examples-p1.mdx';
+import WorkflowsExamplesP2 from './_workflows-examples-p2.mdx';
+
+# GenAI Workflows
+
+Not all AI applications are agents! In engineering terms, Agents are systems with high freedom and autonomy but low human control. Before moving on to agents, let's explore more controlled uses of LLMs because, in the future, your agents will use them as subsystems.
+
+## Questions
+
+- What is not an agent (in our engineering world)?
+- What is a Directed Acyclic Graph (DAG)?
+- What types of workflows exist?
+
+## Steps
+
+:::info Engineering Definition
+
+According to the emerging consensus in the community (X, Anthropic, OpenAI), agents are systems that operate cyclically until they decide to stop themselves. Thanks to LLMs, an Agent can assess how well it has performed a task and pause execution (e.g., via a `ToolCall: ReturnFinalAnswer` call).
+
+Most advanced agents today, in addition to evaluating task completion, also independently plan *sub-steps* to achieve the goal and loop through each step until it is completed, only then moving on to the next steps.
+
+Therefore, anything that is a **DAG - directed acyclic graph** - is not an agent.
+
+<details>
+<summary> Briefly about DAG </summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1Yh5S-S6wsI?si=In2W4txN8bPkCrsy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+or
+<iframe width="560" height="315" src="https://www.youtube.com/embed/IltIGJOHYgo?si=8ix-lpFUKrIn5fXt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+<details>
+<summary>Exception</summary>
+
+**If the looping is triggered by strict logic, it is considered a workflow, not an agent.**
+
+Below you will see the "Summarization of Infinite Text" workflow, which recursively summarizes text until it reaches a text of a certain short length. This is not an agent, but a workflow, even though it has looping.
+
+</details>
+
+:::
+
+### 1. [Read this Anthropic article](https://www.anthropic.com/engineering/building-effective-agents)
+
+### 2. Real-life examples of LLM workflows
+
+:::tip
+
+Study the examples below. This is important for architectural awareness.
+
+Try to "compile" some pipelines in your head.
+
+We tried to write examples of requests/prompts - read them if something is unclear.
+
+:::
+
+<WorkflowsExamplesP1 />
+<WorkflowsExamplesP2 />
+
+In business projects in the field of production, workflows often consist of 20+ nodes, interspersed with API integrations, strict logic, LLM sub-workflows, and AI Agents. And sometimes they can reach up to 100 nodes.
+
+### 2. [Advanced routing in LLM Workflows](https://youtu.be/-EYyrlfoqDU?si=y9g6qB8P9ieN6K0C)
+
+## Extra Steps
+
+### E1. langchain
+
+LangChain is a library for building and using LLM-workflows. It is old but well-documented and has a large community.
+
+Browse what entities are in LangChain: https://python.langchain.com/docs/concepts/
+
+[Example of the simplest langchain code](https://dev.to/koolkamalkishor/how-to-use-langchain-for-ai-workflow-automation-1i94).
+
+### E2. Patterns meta-understanding
+
+1. https://refactoring.guru/design-patterns/chain-of-responsibility
+2. https://refactoring.guru/design-patterns/command
+
+<details>
+<summary>Deprecated content</summary>
+
 https://langchain-ai.github.io/langgraph/tutorials/workflows/
-https://dev.to/rutamstwt/langchain-chains-simple-to-advanced-workflows-17n4
-https://python.langchain.com/v0.2/docs/concepts/
 
-https://dev.to/koolkamalkishor/how-to-use-langchain-for-ai-workflow-automation-1i94
+</details>
 
----
+## Now we know...
 
-https://refactoring.guru/design-patterns/command
-https://refactoring.guru/design-patterns/chain-of-responsibility
-https://www.oreilly.com/library/view/learning-javascript-design/9781449334840/ch09s03.html
+In this lesson, we learned the basics of LLM workflows: we analyzed the engineering definition of agents and the difference between cyclic systems and DAG structures, studied practical examples, design patterns, and delved deeper into routing.
 
----
+:::danger
+However, you should not be too strict with other people in definitions. Understanding the difference between agents, chatbots, and workflows is only necessary for engineers to avoid miscommunication.
 
-https://blog.langchain.dev/command-a-new-tool-for-multi-agent-architectures-in-langgraph/
+Managers, clients, and investors do not need to understand this difference. Leave them the opportunity to call everything as they see fit: AI Agents, "neural networks", "artificial intelligence".
+:::
+
+## Exercises
+
+1. If there is looping in your system, is it an agent or a workflow?
+2. What branching patterns do you remember?
+3. *For those who have completed the module on algorithms for GenAI:
+    - think about how you can combine algorithmic approaches and LLM workflows
+2. **Design on paper:**
+    - A system for automatically responding to support requests for a mobile food delivery application
+    - A workflow for auto-responding to messages in your messenger from an unknown contact
+    - A system for automatically creating posts for your blog
+    - A system for scoring a candidate for a vacancy, then a system for comparing several candidates at once

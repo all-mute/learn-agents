@@ -82,6 +82,8 @@ const notAgentsSection = [
         items: [
           'not-agents/vibecoding/index',
           'not-agents/vibecoding/tools-comparison',
+          'not-agents/vibecoding/mcp-comparison',
+          'not-agents/vibecoding/computer-use-comparison',
         ],
       },
 
@@ -240,7 +242,6 @@ const frontierSection = [
   },
 ];
 
-
 const extraSection = [
   {
     type: 'category' as const,
@@ -251,6 +252,23 @@ const extraSection = [
       'extra/index',
       'extra/tool-use-benchmarks',
       'extra/for-robotics',
+      {
+        type: 'category' as const,
+        label: 'LLM Use Cases',
+        collapsed: true,
+        collapsible: true,
+        items: [
+          'extra/prompt-lib/index',
+          'extra/prompt-lib/agent',
+          'extra/prompt-lib/assistant',
+          'extra/prompt-lib/classify',
+          'extra/prompt-lib/dev',
+          'extra/prompt-lib/other',
+          'extra/prompt-lib/qna',
+          'extra/prompt-lib/text-analisys',
+          'extra/prompt-lib/text-rewriting',
+        ],
+      },
     ],
   },
 ];

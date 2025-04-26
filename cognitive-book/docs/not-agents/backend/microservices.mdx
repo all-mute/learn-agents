@@ -1,27 +1,27 @@
 ---
-sidebar_label: Микросервисы
+sidebar_label: Microservices
 ---
 
-# Микросервисы и системная архитектура для Applied AI
+# Microservices and System Architecture for Applied AI
 
-Представьте, что микросервисы - это модульные космические корабли, а Docker - ваш личный космодром для их сборки. Здесь вы научитесь проектировать "орбитальные станции" для AI Агентов: разбивать монолитные системы на автономные сервисы-спутники, настраивать их взаимодействие через межзвёздные протоколы (REST/gRPC) и автоматизировать развёртывание с помощью CI/CD-ракетоносителей. Эти навыки позволят вашим нейросетям масштабироваться как галактическая империя, обновляться без простоев и переживать сбои отдельных компонентов без коллапса всей системы.
+Imagine microservices as modular spacecraft, and Docker as your personal spaceport for assembling them. Here you will learn how to design "orbital stations" for AI Agents: breaking down monolithic systems into autonomous satellite services, configuring their interaction through interstellar protocols (REST/gRPC), and automating deployment with CI/CD launch vehicles. These skills will allow your neural networks to scale like a galactic empire, update without downtime, and survive failures of individual components without collapsing the entire system.
 
 <details>
-<summary>Инструкция к Ask AI</summary>
+<summary>Ask AI Instructions</summary>
 
-:::tip инструкция
-Так как данные темы не меняются со временем, лучше всего вам изучать их с персональным преподавателем - ChatGPT.
+:::tip instruction
+Since these topics do not change over time, it is best to study them with a personal tutor - ChatGPT.
 
-Процесс изучения должен быть следующим:
-- вы составляете системный промпт для ChatGPT ([шаблоны](../metalearning#chatgpt-prompts)), где описываете свой бэкграунд, предпочтения, уровень подробности объяснений и т.д.
-- копируете тему из списка (тройной клик), и просите ChatGPT объяснить вам эту тему
-- при желании углубиться, задаете уточняющие вопросы 
+The learning process should be as follows:
+- you create a system prompt for ChatGPT ([templates](../metalearning#chatgpt-prompts)), where you describe your background, preferences, level of detail of explanations, etc.
+- copy the topic from the list (triple click), and ask ChatGPT to explain this topic to you
+- if you want to delve deeper, ask clarifying questions
 
-На данный момент это самый удобный способ изучения основ. **Кроме концептов, вы можете изучать дополнительные материалы в секциях Gold, Silver, Extra.** 
-1. Gold - стоит обязательно изучить до общения с ChatGPT
-2. Ask AI - задавайте вопросы по каждой малознакомой теме
-3. Silver - второстепенные материалы
-4. Extra - углубленные темы
+At the moment, this is the most convenient way to learn the basics. **In addition to concepts, you can study additional materials in the Gold, Silver, Extra sections.**
+1. Gold - should definitely be studied before communicating with ChatGPT
+2. Ask AI - ask questions on each unfamiliar topic
+3. Silver - secondary materials
+4. Extra - in-depth topics
 :::
 
 </details>
@@ -31,35 +31,18 @@ sidebar_label: Микросервисы
 ### 1. Videos
 
 <details>
-<summary>Merion</summary>
-
-Kuber
-<iframe width="560" height="315" src="https://www.youtube.com/embed/klmpiHLSuXA?si=5h581G2da3DWwfh0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-CICD
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Y-hYifHkjMs?si=bacJsaZNgOdJQgMp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-микросервисы
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rCbdQc42eCw?si=s3QrWX_O-Fjiw2nT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-gh actions
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QMATr0vCsYg?si=Xp0B-nRC4UZ-EOw0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-</details>
-
-<details>
 <summary>sys des: docker</summary>
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QEzbZKtLi-g?si=-AWdHrv8kphS7k4F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </details>
 
-### 2. Архитектуры для GenAI
+### 2. Architectures for GenAI
 
-#### Стандартная архитектура для AI Агента
+#### Standard Architecture for an AI Agent
 
-- прокси к LLM нам нужна для соблюдения rate-limiting
-- прокси к внешнему API нам нужна для соблюдения rate-limiting и кэширования результатов
-- гейтвей перед бэкендом нам нужен для классификации запросов, определения ролей пользователя (paid tier, free tier), установки ограничений на размер контекста и др., установка rate-limiting и др.
+- we need a proxy to the LLM to comply with rate-limiting
+- we need a proxy to the external API to comply with rate-limiting and caching results
+- we need a gateway in front of the backend to classify requests, determine user roles (paid tier, free tier), set limits on context size, etc., set rate-limiting, etc.
 
 ```mermaid
 graph LR
@@ -104,38 +87,39 @@ graph LR
 
 ![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
 
-45. **Основные концепции микросервисной архитектуры (Стартовый гайд)**  
-46. Микросервисы vs Монолит: полное сравнение архитектур  
-47. Domain-Driven Design: базовые принципы для микросервисов  
-48. API Gateway: паттерны для начинающих (Обзорно)  
-49. Docker для AI-сервисов: минимально необходимые практики  
-50. Kubernetes: основы оркестрации для AI-разработчиков  
-51. Балансировка нагрузки GPU-задач: базовые подходы  
-52. Версионирование AI-моделей: семантическое версионирование  
-53. A/B тестирование моделей: production-кейсы (Краткий обзор)  
-54. Безопасность AI-сервисов: OAuth2/JWT на практике  
-55. Rate limiting для AI-операций: основы для начинающих  
-56. CI/CD для AI: минимальный рабочий пайплайн  
-57. GRPC vs REST: сравнение для AI API (Концепт)  
-58. Кэширование результатов ML-моделей: базовые стратегии  
-59. Circuit Breaker: принцип работы и реализация  
-60. Мониторинг нейросетевых сервисов: ключевые метрики  
-61. **Кэширование: TTL vs инвалидация (Сравнительный анализ)**
+45. **Basic Concepts of Microservice Architecture (Starter Guide)**
+46. Microservices vs Monolith: a complete comparison of architectures
+47. Domain-Driven Design: basic principles for microservices
+48. API Gateway: patterns for beginners (Overview)
+49. Docker for AI services: minimally necessary practices
+50. Kubernetes: orchestration basics for AI developers
+51. Load balancing of GPU tasks: basic approaches
+52. Versioning AI models: semantic versioning
+53. A/B testing of models: production use-cases (Brief overview)
+54. Security of AI services: OAuth2/JWT in practice
+55. Rate limiting for AI operations: basics for beginners
+56. CI/CD for AI: minimal working pipeline
+57. GRPC vs REST: comparison for AI API (Concept)
+58. Caching ML model results: basic strategies
+59. Circuit Breaker: operating principle and implementation
+60. Monitoring neural network services: key metrics
+61. **Caching: TTL vs invalidation (Comparative analysis)**
     <details>
-    <summary>Кэширование: стратегии и инвалидация кэша</summary>
+    <summary>Caching: strategies and cache invalidation</summary>
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/a4yX7RUgTxI?si=fZJZ2tg9YYM_Gmvz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
     </details>
 
-62. Message Queue: базовые концепции и use-cases (Обзорно)
+62. Message Queue: basic concepts and use-cases (Overview)
 
 ## Silver
 
+<details>
+<summary>System Design Tutorial, 53 min, fully with animations</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/F2FmTdLtb_4?si=YBQFjHAGU4-tImWM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
 ## Extra
-
-
-
-
-
-

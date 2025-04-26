@@ -1,0 +1,109 @@
+---
+sidebar_label: OpenAI API
+---
+
+# Exploring the OpenAI API
+
+Understanding how to work with the OpenAI API will allow you to easily understand the employment of frameworks that we will go through in the Junior block, and will also be useful when debugging problems and working with all OpenAI-compatible providers.
+
+## Questions
+
+- What does the body of an API request in the OpenAI API look like?
+- What parameters can be configured besides temperature, max_tokens?
+- How does streaming work in the OpenAI API?
+- How to use function calling in chat models?
+- What is structured output?
+
+## Steps
+
+### 1. Read the [OpenAI API](https://platform.openai.com/docs/api-reference) documentation
+
+Read everything about the `chat/completions` endpoint, don't skip anything. All future material will be based on this endpoint and it is important for you to understand in detail how it works, otherwise you will be confused.
+
+<details>
+<summary>What are Temperature, Top P, Frequency penalty, Presence penalty?</summary>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/33kb37NYOTc?si=AllO-NduTUKQAu41" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+### 2. Read pages from the Cookbook
+
+:::tip
+There are three ways to read further:
+    1. Superficially, to understand the landscape and capabilities of the API. (a good option if it's difficult)
+    2. Read carefully, understand exactly what each function does.
+    3. Run these notebooks yourself.
+:::
+
+1. [How to count tokens in text?](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken)
+
+    [Interactive tokenazer! - platform.openai.com/tokenizer](https://platform.openai.com/tokenizer)
+
+2. [What do chunks look like in an OpenAI streaming response? What information is transmitted in the first, intermediate, and last chunk?](https://cookbook.openai.com/examples/how_to_stream_completions)
+
+### 3. Read pages from Cookbook 2
+
+3. [Regarding functions, read entirely [how_to_call_functions_with_chat_models](https://cookbook.openai.com/examples/how_to_call_functions_with_chat_models)
+    
+
+4. [How to use structured outputs?](https://cookbook.openai.com/examples/structured_outputs_intro) or an alternative one-hour course on [deeplearning.ai](https://www.deeplearning.ai/short-courses/getting-structured-llm-output/)
+
+## Extra Steps
+
+### E1. We lay down the principle of divide and conquer.
+
+https://cookbook.openai.com/examples/entity_extraction_for_long_documents
+
+### E2. What parameters do not yet exist in any public API?
+
+*\<EOS> - end of sequence - a token after which we usually stop making predictions of the next tokens*
+
+I want to reveal some interesting points to you that I have not yet encountered with providers. Usually we set the temperature and all other parameters as a constant - but this can also be done **dynamically** - so that the parameters change depending on the conditions, mathematical functions, etc. Examples:
+1. For example, while the LLM is analyzing the task, we keep the temperature at zero; and when it comes to writing creative text, we raise it to 0.6
+2. After the LLM generates \<EOS>, we can continue to generate tokens
+3. We can manually multiply the probability of outputting \<EOS> by any value (even 0) up to a certain number of generated tokens. In addition to multiplication, any logic is available.
+4. Just like with \<EOS>, we can do the same with any tokens - we can come up with any logic that is only born in schizophrenia. We can statically/dynamically/logically influence the probabilities (0-100%) of generating a specific token or set of tokens or sequence of tokens.
+
+What could be added to existing APIs:
+- the ability to prohibit generating \<EOS> when the sequence length is less than a certain number of tokens (MinOutputLen)
+- BannedTokensToGenerate
+- the ability to control the probability of \<EOS> depending on the length of the generated text (BoostEos)
+- NGramPenalty
+- the ability to continue generation for a certain number of steps even after \<EOS> (IncludeLateHypotheses)
+- prohibit generating certain tokens after a certain number of repetitions (MaxRepeats)
+- the ability to select a sampling algorithm via SamplerParams (Sampling, BeamSearch, StochasticBeamSearch), NumHypos & BeamSize
+- the ability to change the temperature during generation - TemperatureScheduler
+
+For reasoning models, you can multiply all these features by two: for the reasoning and generation phases.
+
+##### Of course, all this can be implemented with local model inference on your hardware. Come work at OpenAI/Sber/Yandex/Anthropic - all these parameters are available in the private API!
+
+## Now we know...
+
+We have studied the main components of the OpenAI API and learned how to:
+- Count tokens in texts using tiktoken to optimize requests
+- Work with streaming responses to create more responsive interfaces
+- Use function calling for structured interaction with external tools
+- Receive structured responses in JSON format for convenient processing
+- Apply the "divide and conquer" principle for processing long documents
+
+These skills are fundamental when creating AI Agents, as they allow you to effectively manage communication between the agent and the LLM, and also provide the ability to integrate with external systems.
+
+## Exercises
+
+1. What roles do messages have?
+
+2. You want to send two requests to the LLM while maintaining context:
+    1. "Hello! My name is Alex."
+    2. "What's my name?"
+
+    What will the body of the second request to the model look like?
+
+3. Come up with three examples of using function calls that could significantly improve the capabilities of an AI Agent.
+
+![Ask ChatGPT](https://img.shields.io/badge/Ask%20ChatGPT-8A2BE2?style=for-the-badge)
+
+4. **Practical task:**
+
+Create a simple Python script that will output only the first, second, penultimate, and last chunks of the response from the model to the console.

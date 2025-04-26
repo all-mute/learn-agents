@@ -1,0 +1,201 @@
+---
+sidebar_position: 8
+title: Other tasks
+---
+
+### Icebreakers in a Prompt
+
+**System Prompt**
+
+```text
+You are an assistant that helps users find information. If there is no answer to the question in the text, simply answer: "Sorry, I cannot help with this question."
+```
+
+**User Prompt**
+
+```text
+{user_question}
+```
+
+**LLM Response**
+
+```text
+Sorry, I cannot help with this question.
+```
+
+### Response in JSON Format
+
+**System Prompt**
+
+```text
+You are an assistant that responds to requests in JSON format. Make sure the response matches the specified structure.
+```
+
+**User Prompt**
+
+```text
+{user_request}
+```
+
+**LLM Response**
+
+```json
+{
+  "status": "success",
+  "data": {
+    "message": "Your request has been processed",
+    "details": null
+  }
+}
+```
+
+### Text Generation in a Schema
+
+**System Prompt**
+
+```text
+You are a text generator that creates text in a given schema. Follow the format given in the example.
+```
+
+**User Prompt**
+
+```text
+Create text for an advertisement, following the schema: Headline - Description - Call to action.
+```
+
+**LLM Response**
+
+```text
+Headline: A unique opportunity!
+Description: Only today you can buy our product with a 50% discount. Don't miss the chance to improve your life!
+Call to action: Order now and get free shipping!
+```
+
+### Reasoning in a Schema to Improve Results
+
+**System Prompt**
+
+```text
+You are an analyst who first justifies their conclusions and then gives a rating. Follow the format: Justification - Rating.
+```
+
+**User Prompt**
+
+```text
+Evaluate the quality of the article according to the following criteria: content, structure, style.
+```
+
+**LLM Response**
+
+```text
+Justification: The article is well structured, with a clear presentation of ideas. However, the style of presentation is somewhat dry in places, which may reduce the interest of readers.
+Rating: 7 out of 10
+```
+
+### Function Calling
+
+**Approach Description**
+
+Function calling is the ability to integrate an LLM (Large Language Model) with external APIs or functions to perform specific tasks. This allows the model to request data or perform actions that go beyond its textual capabilities. For example, the model can use a function to get the current weather, perform mathematical calculations, or interact with databases.
+
+**System Prompt**
+
+```text
+You are an assistant that helps with function calling based on a user request. Identify the required function and pass the parameters.
+```
+
+**User Prompt**
+
+```text
+Convert 100 dollars to euros at the current exchange rate.
+```
+
+**LLM Response**
+
+```text
+Function call: convert_currency(amount=100, from_currency="USD", to_currency="EUR")
+```
+
+**Use Cases**
+
+- Getting weather data.
+- Finding nearby locations (restaurants, stores).
+- Checking order status.
+- Managing calendar (adding appointments, reminders).
+
+### Parallel Function Calling
+
+**Approach Description**
+
+Parallel function calling allows you to perform multiple tasks simultaneously, which can be useful for increasing efficiency and speed of processing requests. This is especially important in scenarios where interaction with multiple data sources or execution of multiple independent actions is required.
+
+**System Prompt**
+
+```text
+You are an assistant that can perform multiple tasks simultaneously. Identify functions that can be called in parallel.
+```
+
+**User Prompt**
+
+```text
+Send a report by email and check for new messages.
+```
+
+**LLM Response**
+
+```text
+Function call in parallel:
+1. send_email(report="report.pdf", recipient="example@example.com")
+2. check_new_messages()
+```
+
+Using function calling makes interacting with LLMs more dynamic and functional, allowing you to integrate the model into complex workflows and systems.
+
+### 
+
+Of course! Here is an updated topic on text classification with two approaches:
+
+### Text Classification Using a List of Labels
+
+**System Prompt**
+
+```text
+You are an expert in text classification. You have a list of categories: Politics, Sports, Technology, Entertainment. Determine the category of the text and answer with only one label from the list.
+```
+
+**User Prompt**
+
+```text
+{news_article}
+```
+
+**LLM Response**
+
+```text
+Technology
+```
+
+### Text Classification Using Numeric Labels
+
+**System Prompt**
+
+```text
+You are an expert in text classification. You have categories, indicated by numbers: 1 - Politics, 2 - Sports, 3 - Technology, 4 - Entertainment. Determine the category of the text and answer with only one number.
+```
+
+**User Prompt**
+
+```text
+{news_article}
+```
+
+**LLM Response**
+
+```text
+
+3
+```
+
+**Parameters**
+
+- Set `max_tokens=1` to limit the length of the response.

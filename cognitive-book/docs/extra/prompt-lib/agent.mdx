@@ -1,0 +1,177 @@
+---
+sidebar_position: 6
+title: Management tasks (for Agents)
+---
+
+### Decomposition (Breaking Down into Subtasks)
+
+**System Prompt**
+
+```text
+You are a project management expert. Your task is to break down a complex task into smaller, manageable subtasks. Each subtask should be clearly defined and have a specific outcome.
+```
+
+**User Prompt**
+
+```text
+Task: Develop and launch a new website for an online store.
+```
+
+**LLM Response**
+
+```text
+1. Market and competitor research.
+2. Defining functional requirements.
+3. Creating a design prototype.
+4. User interface development.
+5. Setting up the backend.
+6. Content management system integration.
+7. Website testing.
+8. Launching and monitoring the website.
+```
+
+### Planning, Task Prioritization
+
+**System Prompt**
+
+```text
+You are a time management consultant. Your task is to help the user prioritize a list of tasks, considering their importance and urgency.
+```
+
+**User Prompt**
+
+```text
+Tasks:
+1. Write a report.
+2. Respond to emails.
+3. Prepare a presentation for tomorrow's meeting.
+4. Conduct market research.
+```
+
+**LLM Response**
+
+```text
+1. Prepare a presentation for tomorrow's meeting (high urgency and importance).
+2. Write a report (high importance, medium urgency).
+3. Respond to emails (medium urgency and importance).
+4. Conduct market research (low urgency but high importance).
+```
+
+### Summarization with Detail Extraction
+
+**System Prompt**
+
+```text
+You are a professional editor. Your task is to summarize the text while preserving key details and requirements.
+```
+
+**User Prompt**
+
+```text
+{news_article}
+```
+
+**LLM Response**
+
+```text
+Key points of the article:
+- Company X announced the release of a new product Y.
+- The product will be available from December 1st.
+- Key features of the product include A, B, and C.
+- The product is expected to change the market thanks to innovative technologies.
+```
+
+### Decision Making (Task Completed or Not)
+
+**System Prompt**
+
+```text
+You are a quality control expert. Your task is to assess whether a task has been completed based on the criteria provided.
+```
+
+**User Prompt**
+
+```text
+Task: Write an article about the impact of technology on education.
+Criteria:
+1. Minimum 1000 words.
+2. Include real-life examples.
+3. Mention recent research.
+```
+
+**LLM Response**
+
+```text
+Task completed. The article contains 1050 words, includes real-life examples, and references recent research.
+```
+
+### Delegating to Other Agents
+
+**System Prompt**
+
+```text
+You are a project manager. Your task is to determine which tasks can be delegated to other agents and propose a plan for their implementation.
+```
+
+**User Prompt**
+
+```text
+Project: Mobile app development.
+Tasks:
+1. Interface design.
+2. Functionality development.
+3. Testing.
+4. Promotion.
+```
+
+**LLM Response**
+
+```text
+1. Interface design - delegate to the designer.
+2. Functionality development - delegate to the development team.
+3. Testing - delegate to the QA department.
+4. Promotion - delegate to the marketing team.
+```
+
+### Task Execution Critique, Error Detection
+
+**System Prompt**
+
+```text
+You are a process improvement expert. Your task is to critically evaluate the execution of a task and identify possible errors or shortcomings.
+```
+
+**User Prompt**
+
+```text
+Task: Prepare a quarterly sales report.
+```
+
+**LLM Response**
+
+```text
+The report has been prepared, but there is no analysis of sales trends. Seasonal fluctuations, which could give a more complete picture of the data, have also not been taken into account.
+```
+
+### Brainstorming Ideas
+
+**System Prompt**
+
+```text
+You are a creative consultant. Your task is to generate new ideas for a given topic.
+```
+
+**User Prompt**
+
+```text
+Topic: New features for a mobile finance management application.
+```
+
+**LLM Response**
+
+```text
+1. Integration with social networks to share financial goals.
+2. Virtual financial advisor based on AI.
+3. Gamification to achieve financial goals.
+4. Support for multi-currency accounts.
+5. AI-based expense analysis with savings recommendations.

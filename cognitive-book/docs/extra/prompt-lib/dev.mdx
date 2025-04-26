@@ -1,0 +1,297 @@
+---
+sidebar_position: 5
+title: Programming
+---
+
+### Code Generation
+
+**System Prompt**
+
+```text
+You are an experienced software developer. Your task is to generate Python code that solves the given problem. Follow coding standards and add comments for explanation.
+```
+
+**User Prompt**
+
+```text
+Write a Python function that takes a list of numbers and returns a list of only even numbers.
+```
+
+**LLM Response**
+
+```python
+def filter_even_numbers(numbers):
+    """
+    Filters even numbers from a list.
+
+    :param numbers: List of numbers
+    :return: List of even numbers
+    """
+    return [num for num in numbers if num % 2 == 0]
+
+# Example usage
+numbers = [1, 2, 3, 4, 5, 6]
+even_numbers = filter_even_numbers(numbers)
+print(even_numbers)  # Output: [2, 4, 6]
+```
+
+### Debugging
+
+**System Prompt**
+
+```text
+You are a professional developer who helps find and fix errors in code. Your task is to find the error and suggest a fix.
+```
+
+**User Prompt**
+
+```text
+Here is the code that should return the sum of all numbers in a list, but it is not working correctly:
+
+def sum_numbers(numbers):
+    total = 0
+    for i in range(1, len(numbers)):
+        total += numbers[i]
+    return total
+```
+
+**LLM Response**
+
+```python
+def sum_numbers(numbers):
+    """
+    Returns the sum of all numbers in a list.
+
+    :param numbers: List of numbers
+    :return: Sum of numbers
+    """
+    total = 0
+    for i in range(len(numbers)):  # Fixed: loop should start from 0
+        total += numbers[i]
+    return total
+
+# Example usage
+numbers = [1, 2, 3, 4]
+total_sum = sum_numbers(numbers)
+print(total_sum)  # Output: 10
+```
+
+### Docstrings
+
+**System Prompt**
+
+```text
+You are a Python expert who adds docstrings to functions to improve code readability and understanding. Your task is to write detailed docstrings.
+```
+
+**User Prompt**
+
+```text
+Here is the code of a function without a docstring:
+
+def multiply(a, b):
+    return a * b
+```
+
+**LLM Response**
+
+```python
+def multiply(a, b):
+    """
+    Multiplies two numbers.
+
+    :param a: The first number
+    :param b: The second number
+    :return: The product of a and b
+    """
+    return a * b
+```
+
+### Rewriting Code (Adding Logging)
+
+**System Prompt**
+
+```text
+You are an experienced programmer who adds logging to code to track program execution. Use the standard logging library.
+```
+
+**User Prompt**
+
+```text
+Add logging to the following function:
+
+def divide(a, b):
+    return a / b
+```
+
+**LLM Response**
+
+```python
+import logging
+
+logging.basicConfig(level=logging.INFO)
+
+def divide(a, b):
+    """
+    Divides number a by number b, adding logging.
+
+    :param a: Dividend
+    :param b: Divisor
+    :return: Division result
+    """
+    logging.info(f"Dividing {a} by {b}")
+    if b == 0:
+        logging.error("Attempt to divide by zero")
+        return None
+    return a / b
+
+# Example usage
+result = divide(10, 2)
+print(result)  # Output: 5.0
+```
+
+### Log Analysis
+
+**System Prompt**
+
+```text
+You are a data analysis specialist who analyzes application logs to identify errors and anomalies. Your task is to find and describe problems in the logs.
+```
+
+**User Prompt**
+
+```text
+[INFO] 2024-11-22 12:00:00 - Application started
+[ERROR] 2024-11-22 12:01:00 - Database connection error
+[INFO] 2024-11-22 12:02:00 - Retrying connection
+[ERROR] 2024-11-22 12:03:00 - Database connection error
+[INFO] 2024-11-22 12:04:00 - Successful connection
+```
+
+**LLM Response**
+
+```text
+The logs show repeated database connection errors at 12:01 and 12:03. This may indicate network instability or problems with the database configuration. It is recommended to check the connection settings and network stability.
+```
+
+### Draw a Graph for a Table
+
+**System Prompt**
+
+```text
+You are a data visualization specialist who creates graphs based on provided data. Use the matplotlib library to build graphs.
+```
+
+**User Prompt**
+
+```text
+Build a graph for the following sales data:
+
+Month: ['January', 'February', 'March']
+Sales: [100, 150, 200]
+```
+
+**LLM Response**
+
+```python
+import matplotlib.pyplot as plt
+
+months = ['Январь', 'Февраль', 'Март']
+sales = [100, 150, 200]
+
+plt.plot(months, sales, marker='o')
+plt.title('Продажи по месяцам')
+plt.xlabel('Месяц')
+plt.ylabel('Продажи')
+plt.grid(True)
+plt.show()
+```
+
+This prompt can be more widely applied within Chat with Data applications, which operate according to the following algorithm:
+
+1. study the user's file (for example, by asking the person, or by code)
+2. write code to retrieve the necessary data from the file / build graphs
+3. run this code in the execution environment
+4. interpret the result of the code and return it to the user
+
+### Chat with data
+
+**System Prompt**
+
+```text
+You are a data processing expert who helps extract and interpret data from text files. Your task is to write code to extract information and explain the results.
+```
+
+**User Prompt**
+
+```text
+Write code to extract all unique words from a file and count their frequency.
+```
+
+**LLM Response**
+
+```python
+def extract_unique_words(file_path):
+    """
+    Extracts unique words from a file and counts their frequency.
+
+    :param file_path: Path to the file
+    :return: Dictionary with unique words and their frequency
+    """
+    word_count = {}
+    with open(file_path, 'r', encoding='utf-8') as file:
+        for line in file:
+            words = line.split()
+            for word in words:
+                word = word.lower().strip('.,!?')
+                if word in word_count:
+                    word_count[word] += 1
+                else:
+                    word_count[word] = 1
+    return word_count
+
+# Example usage
+# results = extract_unique_words('example.txt')
+# print(results)
+```
+
+### Generating Code for an API Request Based on API Documentation
+
+**System Prompt**
+
+```text
+You are an experienced developer who creates code to interact with an API based on provided documentation. Use the requests library to perform HTTP requests.
+```
+
+**User Prompt**
+
+```text
+Create code to perform a GET request to the API at the following URL: "https://api.example.com/data" and process the response.
+```
+
+**LLM Response**
+
+```python
+import requests
+
+def fetch_data_from_api():
+    """
+    Performs a GET request to the API and returns the data.
+
+    :return: Data from the API in JSON format
+    """
+    url = "https://api.example.com/data"
+    response = requests.get(url)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error: {response.status_code}")
+        return None
+
+# Example usage
+data = fetch_data_from_api()
+if data:
+    print(data)
+```
+
+In this case, we are making a simple GET, without a request body or headers. Along with the user instruction, we can pass the api-endpoint documentation to generate a request with more complex logic.

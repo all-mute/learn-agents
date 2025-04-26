@@ -1,0 +1,264 @@
+---
+sidebar_label: Contributing
+---
+
+# How to Contribute
+
+We welcome new contributors to our project! This document will help you understand how to contribute to the development of the Learn Agents project - an interactive book about AI Agents.
+
+## What is contributing?
+
+Contributing is the process of making a contribution to an open project. The contribution can be different:
+- Creating new modules or blocks
+- Updating outdated information
+- Translation into other languages
+- Fixing minor errors in the content
+- Improving UI/UX
+
+:::tip
+To make quick changes, you can click the "Edit this page" button at the bottom of each page.
+:::
+
+## Why should I do this?
+
+- Expertise exchange center: you can share your experience and knowledge with others and get feedback
+- Volunteering: for personal branding, resume boosting
+- Learning how to use your product
+
+## [Which pages are needed as soon as possible?](orders)
+
+## I have an insight, but no time to write the material
+
+- Let's have a call.
+   - [telegram](https://t.me/nongilgamesj)
+   - [cal.com](https://cal.com/merkulov)
+
+## How to start
+
+:::danger be proud of what you do
+Imagine that your material is read by thousands of students. Respect their genius, respect their time. I want them to spend time only on what will be useful for creating the future.
+:::
+
+### Philosophy
+
+1. Read the `/intro` page "About the textbook": values, principles
+2. Before writing a module, it is recommended to agree on the topic with the board of teachers. How? [tg](https://t.me/nongilgamesj)
+
+### How to write a module from scratch
+
+[Module template](https://github.com/all-mute/learn-agents/blob/main/template-ru.mdx)
+
+<details>
+<summary>Each module - a page on this site - consists of the following parts:</summary>
+
+#### Introduction
+Start with a brief introduction that explains what will be studied on this page. Add motivation to interest the reader. Good motivation is solving a life problem, an industrial case, a story of failure.
+
+Learning objectives: Define what the reader should be able to do after studying the material. This will help focus on key aspects.
+
+#### Questions
+List the main questions that will be discussed. This will help the reader understand what to pay attention to.
+
+#### Learning steps
+Divide the material into logical steps or stages. This can be a sequence of actions or concepts that need to be learned.
+
+As little material as possible should be included in the main steps - but enough to master the following modules and find an Applied AI job (as a guide)
+
+Additional steps: Include additional steps for a deeper study of the topic, if necessary.
+
+#### Module summary
+
+It is useful to read it so that the brain runs through the material again
+
+#### Exercises
+Difficult questions. While thinking about them, it will be difficult for you, but this is normal. It is at this moment that the brain actively forms new neural connections.
+
+### Telling about your product or topic indirectly related to agents
+
+Selling is helping - but your product can only be indirectly present in the lesson. You will also have to talk about competitors.
+
+- If it directly hits with agents and critical knowledge for work, then it goes into the roadmap
+
+- If it hits with agents but knowledge is not required for work, then it goes into the roadmap with a note of bonus/professional material (green/purple checkmark on the map)
+
+- If it does not hit with agents, it is placed in an extra block, with links to the page from the main program
+Or on the pages of the main program, but in extra steps
+
+</details>
+
+### How to contribute material to the repository
+
+<details>
+<summary>How to contribute material to the textbook</summary>
+
+1. **Fork the repository**
+   Create a fork of our main repository:
+   - [github.com/all-mute/learn-agents](https://github.com/all-mute/learn-agents)
+
+2. Clone your fork to your local machine
+
+3. Enter the commands:
+   ```bash
+   # Install dependencies
+   npm install
+
+   # Start the local version
+   npx docusaurus start --locale ru
+   ```
+
+4. Make changes to the files
+
+5. Create a Pull Request
+
+A video (and chatgpt) may help:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CML6vfKjQss?si=ILGJemXDu8jAF0gH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</details>
+
+## Content creation
+
+<details>
+<summary>Content creation tips</summary>
+
+### [Docusaurus Documentation](https://docusaurus.io/docs)
+
+### [Markdown Features](https://docusaurus.io/docs/2.x/markdown-features)
+
+### Project structure
+
+The content is located in the following directories:
+- English version: `/docs/`
+- Russian version: `/i18n/ru/docusaurus-plugin-content-docs/current/`
+
+### Formatting
+
+- Use Markdown for basic formatting
+- Use MDX for more complex components
+- Store images in `/static/img/`
+
+### Example of adding new material
+
+1. Create a new `.mdx` file in the appropriate directory
+2. Add metadata to the beginning of the file:
+   ```mdx
+   ---
+   sidebar_label: Title for the sidebar
+   ---
+
+   # Page title
+   ```
+3. Write and format your content
+
+### Adding a page to the navigation
+
+To make your new page appear in the sidebar navigation, you need to add it to the `sidebars.ts` file in the project root:
+
+1. Open the `sidebars.ts` file
+2. Find the appropriate category for your page
+3. Add the path to your file to the appropriate section:
+
+```typescript
+// Example of adding a new page to the Handbook category
+{
+  type: 'category',
+  label: 'Handbook',
+  items: [
+    'handbook/introduction',
+    'handbook/contributing', // existing pages
+    'handbook/your-new-page', // your new page
+  ],
+},
+```
+
+Note that the path is specified without the `.mdx` extension and relative to the `docs/` or `i18n/ru/docusaurus-plugin-content-docs/current/` directory.
+
+</details>
+
+## Review process
+
+After creating a Pull Request, your changes will be reviewed by the project team.
+We may ask you to make some adjustments. After a successful review, your changes will be accepted into the project.
+
+It is recommended to interact with the team: [tg](https://t.me/nongilgamesj)
+
+## Gratitude
+
+Thank you very much for your contribution to the project! Together we are making knowledge about AI Agents more accessible to everyone.
+
+## How to specify yourself as the author of the material
+
+<details>
+<summary>How to specify yourself as the author of the material</summary>
+
+To specify yourself as the author of the page, you need to follow two steps:
+
+### 1. Add information about yourself to the author file
+
+Author data is stored in the `blog/authors.json` file. Add your information in JSON format:
+
+```json
+{
+  "your_key": {
+    "name": "Your Name",
+    "title": "Your position or role",
+    "url": "https://github.com/your-account",
+    "image_url": "https://github.com/your-account.png",
+    "socials": {
+      "github": "your-account",
+      "linkedin": "your-linkedin-profile",
+      "email": "your-email@example.com",
+      "x": "your-twitter-account"
+    },
+    "description": "A brief description about you (optional)"
+  }
+}
+```
+
+All fields except `name` are optional, but it is recommended to specify at least one social network.
+
+### 2. Specify yourself as the author in the frontmatter of your page
+
+At the beginning of your `.mdx` file, add the `authors` field to the frontmatter section:
+
+```mdx
+---
+sidebar_label: Title for the sidebar
+authors: your_key
+---
+
+# Page title
+```
+
+You can also specify multiple authors through an array:
+
+```mdx
+---
+sidebar_label: Title for the sidebar
+authors:
+  - your_key
+  - another_author
+---
+```
+
+Or specify author information directly:
+
+```mdx
+---
+sidebar_label: Title for the sidebar
+authors:
+  - name: Your Name
+    title: Your position or role
+    url: https://github.com/your-account
+    image_url: https://github.com/your-account.png
+    socials:
+      github: your-account
+---
+```
+
+After these changes, your author information will be displayed under the page title, including the avatar and links to social networks.
+
+:::note
+Make sure that the author key in `authors` exactly matches the key in the `blog/authors.json` file, otherwise the author information will not be displayed.
+:::
+
+</details>

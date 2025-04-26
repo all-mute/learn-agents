@@ -1,0 +1,1083 @@
+---
+title: MCP vs. Vibe-Coding comparison
+authors: D. Zhechkov
+---
+
+# Overview and Comparison of Platforms for MCP (Model Context Protocol) Servers
+
+## Contents
+- [Introduction to MCP (Model Context Protocol)](#introduction-to-mcp-model-context-protocol)
+- [Categories of Platforms for MCP Servers](#categories-of-platforms-for-mcp-servers)
+- [Overview of Key Platforms for MCP Servers](#overview-of-key-platforms-for-mcp-servers)
+  - [Frameworks for Developing MCP Servers](#1-frameworks-for-developing-mcp-servers)
+  - [Registries and Catalogs of MCP Servers](#2-registries-and-catalogs-of-mcp-servers)
+  - [Hosting Platforms for MCP Servers](#3-hosting-platforms-for-mcp-servers)
+  - [MCP Server Management Tools](#4-mcp-server-management-tools)
+- [Marketplaces and Registries of MCP Servers](#marketplaces-and-registries-of-mcp-servers)
+- [MCP Servers with Authentication Support](#mcp-servers-with-authentication-support)
+- [Comparative Table of Platforms for MCP Servers](#comparative-table-of-platforms-for-mcp-servers)
+- [Popular MCP Servers and Their Comparison](#popular-mcp-servers-and-their-comparison)
+- [Recommendations for Choosing a Platform](#recommendations-for-choosing-a-platform)
+- [Trends in the Development of MCP Platforms](#trends-in-the-development-of-mcp-platforms)
+- [Frequently Asked Questions About MCP Platforms](#frequently-asked-questions-about-mcp-platforms)
+- [Resources for Learning MCP](#resources-for-learning-mcp)
+- [Concluding Recommendations](#concluding-recommendations)
+
+
+## Introduction to MCP (Model Context Protocol)
+
+Model Context Protocol (MCP) is an open protocol that standardizes interaction between applications and language models (LLM), such as Claude from Anthropic. Introduced in late 2024, MCP allows AI assistants to access external data, tools, and APIs through a standardized interface.
+
+Figuratively speaking, MCP can be compared to a USB port for AI applications. It allows AI models to securely interact with local and remote resources – from the file system and databases to external APIs and services.
+
+MCP servers are programs that implement the MCP protocol and provide tools, resources, and prompts for AI clients. They can provide access to various data sources (files, documents, databases) and APIs, expanding the capabilities of AI systems.
+
+
+## Categories of Platforms for MCP Servers
+
+Based on the conducted research, four main categories of platforms related to MCP can be distinguished:
+
+1. **Development Frameworks** - libraries and tools for creating MCP servers
+2. **Registries and Catalogs** - platforms for finding and installing ready-made MCP servers
+3. **Hosting Platforms** - services for hosting and managing MCP servers
+4. **Management Tools** - applications for installing and administering MCP servers
+
+
+## Overview of Key Platforms for MCP Servers
+
+### 1. Frameworks for Developing MCP Servers
+
+#### EasyMCP (TypeScript)
+![GitHub Rating: ~94⭐](https://img.shields.io/badge/GitHub-~94⭐-yellow)
+
+**EasyMCP** offers the simplest possible approach to creating MCP servers with a minimum of code. The developer does not need to worry about the details of the protocol implementation.
+
+**Key Features:**
+- Express-like API for defining tools and resources
+- Automatic parameter definition using decorators
+- Context object for logging
+
+**Pros:**
+- Minimal amount of code to launch the server
+- Simple and understandable for TypeScript developers
+- Good typing for early error detection
+
+**Cons:**
+- As of early 2025, still in beta
+- Lack of support for some advanced MCP features
+- No explicit plugin or middleware system
+
+**Ideal for:** rapid prototyping, hackathons, demos, or integrating quick tools into an AI assistant.
+
+
+#### FastAPI-MCP (Python/FastAPI)
+![GitHub Rating: ~395⭐](https://img.shields.io/badge/GitHub-~395⭐-green)
+
+**FastAPI-MCP** is an extension of the popular FastAPI web framework that automatically exports existing REST API endpoints as MCP tools.
+
+**Key Features:**
+- "Zero configuration" for integration with FastAPI
+- Automatic discovery of all existing API endpoints
+- Reuse of Pydantic schemas for input data validation
+
+**Pros:**
+- Exceptional simplicity for FastAPI users
+- Reuse of FastAPI authentication, middleware, and error handling
+- Good performance thanks to FastAPI/Uvicorn asynchronicity
+
+**Cons:**
+- Only useful if you are already using FastAPI
+- Limited by FastAPI paradigms
+- Automatically exposing all endpoints may be too permissive
+
+**Ideal for:** Python developers who want to quickly integrate an existing API with AI agents without rewriting code.
+
+
+#### FastMCP (TypeScript)
+![GitHub Rating: ~706⭐](https://img.shields.io/badge/GitHub-~706⭐-brightgreen)
+
+**FastMCP** is a full-featured TypeScript framework with a rich set of ready-made functions and a simple API.
+
+**Key Features:**
+- Support for authentication, user sessions, structured logging
+- SSE streaming, progress notifications, sampling support
+- CLI tool for development and testing
+
+**Pros:**
+- Good balance between simplicity and power
+- Declarative API for quickly creating servers
+- Support for advanced MCP features
+
+**Cons:**
+- Higher learning curve due to the large number of functions
+- Inherits Node.js limitations in terms of performance
+- Requires understanding of several transport protocols
+
+**Ideal for:** creating production servers in TypeScript that may require data streaming, multi-step interactions, or user sessions.
+
+
+#### MCP-Framework (TypeScript)
+![GitHub Rating: ~456⭐](https://img.shields.io/badge/GitHub-~456⭐-green)
+
+**MCP-Framework** focuses on rapid development with a CLI for project creation and automatic component discovery.
+
+**Key Features:**
+- CLI for project creation (`mcp create`)
+- Automatic discovery of tools/resources from code
+- Support for multiple transports (stdio, SSE, HTTP stream)
+
+**Pros:**
+- Very quick start thanks to CLI
+- Minimum manual configuration
+- Active community with Discord support
+
+**Cons:**
+- Requires learning framework conventions
+- Additional layer of abstraction over MCP SDK
+- Average performance (based on Node.js)
+
+**Ideal for:** developers who want to get started quickly and create a well-structured project from scratch.
+
+
+#### Foxy Contexts (Golang)
+![GitHub Rating: ~70⭐](https://img.shields.io/badge/GitHub-~70⭐-orange)
+
+**Foxy Contexts** is a Go library with an emphasis on performance and a declarative approach to creating MCP servers.
+
+**Key Features:**
+- Using Uber Fx for dependency injection
+- Support for both STDIO and SSE transports
+- Testing package (foxytest)
+
+**Pros:**
+- High performance and efficiency of Go
+- Clean separation of components thanks to DI
+- Excellent scalability
+
+**Cons:**
+- Higher complexity compared to scripting languages
+- Smaller community and fewer available materials
+- Requires experience with Go and DI patterns
+
+**Ideal for:** applications requiring high performance, teams with Go experience, servers with expected high load.
+
+
+### 2. Registries and Catalogs of MCP Servers
+
+#### Portkey.ai
+[https://portkey.ai/mcp-servers](https://portkey.ai/mcp-servers)
+
+**Portkey.ai** offers a comprehensive map of all available MCP servers, from reference implementations to community contributions.
+
+**Key Features:**
+- Categorization of MCP servers by category
+- Detailed descriptions and links to repositories
+- Regular updates to include new servers
+
+**Pros:**
+- Well-structured and easy-to-navigate interface
+- Comprehensive overview of the MCP ecosystem
+- Inclusion of both official and third-party servers
+
+**Cons:**
+- No direct server installation capability
+- Limited information on compatibility and requirements
+
+**Ideal for:** exploring available MCP server options and choosing the most suitable one for specific needs.
+
+
+#### mcp-get.com
+[https://mcp-get.com/](https://mcp-get.com/)
+
+**mcp-get** is a registry of MCP servers with search capabilities and command-line tools for installation and management.
+
+**Key Features:**
+- Server search with filtering
+- Command-line tool for installing servers
+- Ratings and reviews from the community
+
+**Pros:**
+- Direct integration with the installation tool
+- Usage analytics and statistics
+- Active user community
+
+**Cons:**
+- Not as extensive a catalog as some competitors
+- Limited support for some operating systems
+
+**Ideal for:** developers who want to quickly find and install MCP servers via the command line.
+
+
+#### mcp.so
+[https://mcp.so/](https://mcp.so/)
+
+**mcp.so** is an extensive catalog of MCP servers with detailed documentation and installation instructions.
+
+**Key Features:**
+- Extensive collection of servers (thousands of options)
+- Categorization and tags for easy searching
+- Detailed server pages with usage examples
+
+**Pros:**
+- One of the most complete catalogs of MCP servers
+- Active community and regular updates
+- Detailed documentation for each server
+
+**Cons:**
+- No integrated tools for server management
+- It can be difficult to find what you need due to the large number of options
+
+**Ideal for:** discovering specialized MCP servers for specific tasks, exploring the capabilities of the MCP protocol.
+
+
+#### mcpm.sh
+[https://mcpm.sh/](https://mcpm.sh/)
+
+**mcpm.sh** (MCP Manager) is an open-source service and command-line tool for managing MCP servers in the style of Homebrew.
+
+**Key Features:**
+- Managing server configurations through multiple clients
+- Automatic server updates
+- Router for connecting to multiple servers
+
+**Pros:**
+- Ease of installation and use
+- Dependency and version management
+- Support for both local and remote servers
+
+**Cons:**
+- Smaller catalog compared to some alternatives
+- Primarily aimed at experienced command-line users
+
+**Ideal for:** developers who want to manage multiple MCP servers uniformly in the style of package managers.
+
+
+### 3. Hosting Platforms for MCP Servers
+
+#### mcp.run
+[https://mcp.run/](https://mcp.run/)
+
+**mcp.run** is a hosting platform that provides a registry and control plane for installing and running secure and portable MCP servers.
+
+**Key Features:**
+- Centralized hosting of MCP servers
+- Access and security management
+- Scaling and monitoring
+
+**Pros:**
+- Simplified server deployment
+- Centralized management
+- Ensuring security and isolation
+
+**Cons:**
+- Potential dependence on a third-party service
+- Possible restrictions for server configuration
+
+**Ideal for:** organizations that require centralized and secure deployment of MCP servers without the need for their own infrastructure.
+
+
+#### Composio
+[https://mcp.composio.dev/](https://mcp.composio.dev/)
+
+**Composio** offers over 100 managed MCP servers with built-in authentication and easy connectivity.
+
+**Key Features:**
+- Ready-to-use managed MCP servers
+- Built-in authentication and security
+- Seamless scaling
+
+**Pros:**
+- Eliminating the need to configure servers
+- High availability and performance
+- Professional support
+
+**Cons:**
+- May be more expensive than self-hosting
+- Limited control over infrastructure
+
+**Ideal for:** enterprises and teams that need quick access to reliable MCP infrastructure without technical complexities.
+
+
+#### Cloudflare for MCP
+[https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp/](https://blog.cloudflare.com/remote-model-context-protocol-servers-mcp/)
+
+**Cloudflare** offers the ability to create and deploy remote MCP servers using its infrastructure.
+
+**Key Features:**
+- Integration with Cloudflare Workers
+- Global network with low latency
+- Security and scalability
+
+**Pros:**
+- Using the Cloudflare global network
+- Integration with other Cloudflare services
+- High performance and availability
+
+**Cons:**
+- Binding to the Cloudflare ecosystem
+- Potentially complex setup for beginners
+
+**Ideal for:** developers already using Cloudflare and teams needing globally distributed MCP servers with high performance.
+
+
+#### MCPServer.cloud
+[https://mcpserver.cloud/](https://mcpserver.cloud/)
+
+**MCPServer.cloud** is a hosting platform specializing in hosting and managing MCP servers in the cloud.
+
+**Key Features:**
+- Fast deployment of MCP servers in the cloud
+- Control panel for monitoring and control
+- Highly available infrastructure
+
+**Pros:**
+- Ease of scaling
+- No need to configure your own infrastructure
+- Automatic updates
+
+**Cons:**
+- Limitations on customization options
+- Potential dependence on the provider
+
+**Ideal for:** teams that need to quickly deploy an MCP server without delving into infrastructure details.
+
+
+### 4. MCP Server Management Tools
+
+#### mcp-cli
+[https://github.com/wong2/mcp-cli](https://github.com/wong2/mcp-cli)
+
+**mcp-cli** is a command-line inspector for the MCP protocol, allowing you to explore and debug servers.
+
+**Key Features:**
+- Interactive mode for testing servers
+- Support for various transport protocols
+- Detailed information about available tools and resources
+
+**Pros:**
+- Convenient for development and debugging
+- Easy-to-use command-line interface
+- Support for advanced MCP features
+
+**Cons:**
+- Limited functionality for mass management
+- Primarily aimed at developers
+
+**Ideal for:** MCP server developers who need a tool for testing and debugging.
+
+
+#### MCPHub
+[https://github.com/Jeamee/MCPHub-Desktop](https://github.com/Jeamee/MCPHub-Desktop)
+
+**MCPHub** is an open-source application for macOS and Windows for discovering, installing, and managing MCP servers.
+
+**Key Features:**
+- Graphical interface for managing servers
+- Server discovery and installation
+- Status and log monitoring
+
+**Pros:**
+- Friendly user interface
+- Simplified management of multiple servers
+- Open source
+
+**Cons:**
+- Limited support for some specialized servers
+- Fewer customization options compared to CLI tools
+
+**Ideal for:** users who prefer a graphical interface for managing MCP servers and those new to the MCP ecosystem.
+
+
+#### mcp-guardian
+[https://github.com/eqtylab/mcp-guardian](https://github.com/eqtylab/mcp-guardian)
+
+**mcp-guardian** is a GUI application and tools for proxying and managing MCP servers.
+
+**Key Features:**
+- Centralized access management
+- Proxying requests to servers
+- Monitoring and logging
+
+**Pros:**
+- Improved security and control
+- Easy addition and management of servers
+- Flexible configuration
+
+**Cons:**
+- Additional level of complexity
+- Requires separate configuration
+
+**Ideal for:** organizations with high security requirements and the need for centralized control over MCP servers.
+
+
+## Marketplaces and Registries of MCP Servers
+
+### GitHub (modelcontextprotocol/servers)
+[https://github.com/modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)
+
+**The official MCP server repository** contains reference implementations and links to servers created by the community.
+
+**Key Features:**
+- Reference implementations of servers for various use cases
+- Documentation and implementation guidelines
+- Support from the main developers of the MCP protocol
+
+**Pros:**
+- Official source with high code quality
+- The most up-to-date and specification-compliant servers
+- Detailed documentation and examples
+
+**Cons:**
+- Aimed at developers familiar with GitHub
+- No centralized GUI for management
+
+**Ideal for:** developers who want to study reference implementations and follow best practices.
+
+
+### Glama.ai
+[https://glama.ai/mcp/servers](https://glama.ai/mcp/servers)
+
+**Glama.ai** provides a catalog of ready-to-use and experimental MCP servers with an emphasis on expanding AI capabilities.
+
+**Key Features:**
+- Extensive collection of servers for various tasks
+- Emphasis on innovative applications of MCP
+- Integration with other Glama services
+
+**Pros:**
+- Simple, well-organized interface
+- Detailed descriptions of the capabilities of each server
+- Active developer community
+
+**Cons:**
+- Some servers may be experimental
+- Not all servers have equally detailed documentation
+
+**Ideal for:** innovators exploring new ways to interact AI with external data and tools.
+
+
+### Smithery.ai
+[https://smithery.ai/](https://smithery.ai/)
+
+**Smithery.ai** is a registry of MCP servers that helps you find the right tools for AI agents.
+
+**Key Features:**
+- Intelligent search and recommendations
+- Emphasis on user experience and ease of search
+- Integration with various LLM agents
+
+**Pros:**
+- Intuitive interface for searching and filtering
+- Detailed profiles of each server with usage examples
+- User ratings and reviews
+
+**Cons:**
+- Smaller collection compared to some other catalogs
+- Focused more on end users than developers
+
+**Ideal for:** AI users looking for specific tools to enhance the capabilities of their AI assistants.
+
+
+## MCP Servers with Authentication Support
+
+### Pipedream MCP
+[https://mcp.pipedream.com/](https://mcp.pipedream.com/)
+
+**Pipedream MCP** offers MCP servers with built-in authentication, integrated with the Pipedream platform for automation.
+
+**Key Features:**
+- Secure authentication for accessing MCP servers
+- Integration with the Pipedream ecosystem
+- Automation of workflows via MCP
+
+**Pros:**
+- Enterprise-grade security
+- Easy integration with other services via Pipedream
+- Advanced logging and auditing capabilities
+
+**Cons:**
+- Requires familiarity with the Pipedream platform
+- Potential limitations of the free plan
+
+**Ideal for:** business users who need secure AI integration with existing workflows.
+
+
+### Composio MCP with Authentication
+[https://mcp.composio.dev/](https://mcp.composio.dev/)
+
+**Composio MCP** provides over 100 managed MCP servers with built-in authentication and security.
+
+**Key Features:**
+- Various authentication methods (API keys, OAuth)
+- Access rights management at the server and tool level
+- Specialized MCP servers for enterprise clients
+
+**Pros:**
+- Ready-to-use servers without complex configuration
+- Compliance with corporate security standards
+- Centralized access management
+
+**Cons:**
+- Paid plans for advanced features
+- Binding to the Composio infrastructure
+
+**Ideal for:** organizations requiring secure and managed access to MCP servers with minimal setup effort.
+
+
+## Comparative Table of Platforms for MCP Servers
+
+### Development Frameworks
+
+| Framework | Language | Ease of Use | Functionality | Extensibility | Performance | Community | Features |
+|-----------|------|------------------------|------------------|---------------|-------------------|------------|-------------|
+| EasyMCP | TypeScript | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ | ⭐⭐ | Maximum simplicity, decorators |
+| FastAPI-MCP | Python | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | FastAPI integration, endpoint auto-discovery |
+| FastMCP | TypeScript | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | Full-featured, CLI, sessions |
+| MCP-Framework | TypeScript | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | CLI project creation, auto-discovery |
+| Foxy Contexts | Go | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐ | DI, high performance |
+
+
+### Registries, Marketplaces, and Platforms
+
+| Platform | Type | Number of Servers | Ease of Use | Management | Documentation | Integration | Authentication |
+|-----------|-----|---------------------|------------------------|------------|--------------|------------|----------------|
+| Portkey.ai | Catalog | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| mcp-get.com | Registry+CLI | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ |
+| mcp.so | Catalog | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| mcpm.sh | Package manager | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+| mcp.run | Hosting | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| Composio | Hosting | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Cloudflare | Hosting | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| MCPServer.cloud | Hosting | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+| Glama.ai | Catalog | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| Smithery.ai | Registry | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐ |
+| Pipedream MCP | Hosting | ⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+
+
+## Popular MCP Servers and Their Comparison
+
+Based on the materials studied, here is a comparison of the 10 most popular MCP servers:
+
+| Server | Purpose | Features | Ease of Use | Popularity |
+|--------|------------|-------------|------------------------|--------------|
+| File System MCP | File operations | Access to the local file system | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| GitHub MCP | Code management | Repository management, PRs, issues | ⭐⭐⭐⭐ | ⭐⭐⭐⭐⭐ |
+| Slack MCP | Communications | Automation of messages and channels | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| Google Maps MCP | Geodata | Place search, routes, geocoding | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| Brave Search MCP | Search | Internet search via Brave API | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| PostgreSQL MCP | Databases | Queries to PostgreSQL databases | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+| Cloudflare MCP | Cloud infrastructure | Cloudflare service management | ⭐⭐⭐ | ⭐⭐⭐ |
+| Raygun MCP | Error monitoring | Tracking errors and performance | ⭐⭐⭐ | ⭐⭐⭐ |
+| Vector Search MCP | Semantic search | Search by vector embeddings | ⭐⭐⭐ | ⭐⭐⭐ |
+| Docker MCP | Containerization | Docker container management | ⭐⭐⭐ | ⭐⭐⭐⭐ |
+
+
+## Recommendations for Choosing a Platform
+
+### For Developers and Technical Experts
+
+1. **Developing Your Own MCP Server:**
+   - If you are developing in TypeScript/JavaScript: choose **FastMCP** for a full set of features or **EasyMCP** for maximum simplicity
+   - For Python developers: **FastAPI-MCP** is an ideal choice for integration with existing APIs
+   - For high-load applications: **Foxy Contexts** on Go will provide maximum performance
+
+2. **Finding and Installing Existing Servers:**
+   - For a general overview of the ecosystem: **Portkey.ai**, **mcp.so**, or **Glama.ai**
+   - For installation via the command line: **mcp-get.com** or **mcpm.sh**
+   - For developers who prefer a graphical interface: **MCPHub**
+   - For intelligent tool search: **Smithery.ai**
+
+3. **Hosting and Management:**
+   - For simple managed hosting: **Composio** or **MCPServer.cloud**
+   - For integration with existing Cloudflare infrastructure: **Cloudflare for MCP**
+   - For centralized management of multiple servers: **mcp.run**
+   - For integration with automation and workflows: **Pipedream MCP**
+
+4. **Servers with Enhanced Security:**
+   - For enterprise scenarios: **Composio** with authentication
+   - For automating workflows with secure access: **Pipedream MCP**
+   - For local security control: **mcp-guardian**
+
+
+### For Enterprises and Organizations
+
+1. **Small Teams and Startups:**
+   - Use ready-made MCP servers from catalogs and frameworks for rapid development
+   - **FastMCP** or **MCP-Framework** will provide a balance between simplicity and functionality
+   - **MCPHub** will allow you to quickly start using existing servers
+
+2. **Medium and Large Organizations:**
+   - Consider hosting platforms for centralized management: **Composio** or **mcp.run**
+   - For enterprise scenarios with high security requirements: **mcp-guardian** or **Pipedream MCP**
+   - Frameworks in Java (**Quarkus MCP**) or Go (**Foxy Contexts**) for high-load systems
+
+3. **Corporate Requirements:**
+   - For integration with existing infrastructure: choose frameworks compatible with your stack
+   - For security and access control: hosting platforms with authentication
+   - For scaling: solutions in Go or Java with containerization support
+
+
+## Trends in the Development of MCP Platforms
+
+Analyzing the current MCP ecosystem, several key trends can be identified:
+
+1. **Server Specialization** - the emergence of increasingly specialized MCP servers for specific areas, such as finance, medicine, law, etc.
+
+2. **Security Improvement** - increased attention to security, the emergence of additional authentication and authorization mechanisms for MCP servers.
+
+3. **Integration with Cloud Platforms** - major cloud providers are integrating MCP into their platforms, simplifying deployment and management.
+
+4. **Tools for Non-Technical Users** - the emergence of solutions that allow business users to create and manage MCP servers without deep technical knowledge.
+
+5. **Optimization for Mobile Devices** - development of MCP servers taking into account the limitations of mobile devices and optimization for operation on low-performance equipment.
+
+
+## Frequently Asked Questions About MCP Platforms
+
+### What is MCP and why is it needed?
+MCP (Model Context Protocol) is an open protocol that standardizes interaction between AI models and external tools/data. It allows AI assistants, such as Claude, to securely connect to external data sources and tools, expanding their capabilities.
+
+
+### Which MCP platform is best for beginners?
+For beginners, it is recommended to use EasyMCP (TypeScript) or FastAPI-MCP (Python) if you are familiar with the respective languages. You can also use graphical tools such as MCPHub to manage existing servers without programming.
+
+
+### Can MCP be used with models other than Claude?
+Yes, although the MCP protocol was originally introduced by Anthropic for Claude, it is open and can be used with other LLMs. Many clients, such as Cline and Cursor, already support MCP, and the list of compatible models continues to grow.
+
+
+### Is it safe to use MCP servers?
+MCP servers can have different levels of security. Official servers usually follow recommended security practices, but caution should be exercised when using third-party servers. It is recommended to check the source code, use trusted sources, and limit server access to only the necessary resources.
+
+
+### What alternatives exist for MCP?
+Alternatives to MCP include other frameworks for creating tools for AI, such as LangChain, LlamaIndex, API integrations without a standardized protocol, and proprietary solutions from different LLM providers. However, MCP is distinguished by standardization and ease of integration.
+
+
+### How to ensure security when using MCP servers?
+To ensure security when using MCP servers, it is recommended to:
+- Use servers with authentication support (Composio, Pipedream MCP)
+- Limit server access to only the necessary resources
+- Use control tools such as mcp-guardian
+- Regularly update servers to the latest versions
+- Conduct security audits for critical servers
+
+
+## Resources for Learning MCP
+
+For in-depth study of MCP and work with platforms, we recommend the following resources:
+
+1. **Official Documentation:**
+   - [Model Context Protocol: Introduction](https://modelcontextprotocol.io/introduction)
+   - [Anthropic MCP API Documentation](https://docs.anthropic.com/en/docs/agents-and-tools/mcp)
+
+2. **Repositories on GitHub:**
+   - [modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers) - Reference implementations of MCP servers
+   - [punkpeye/awesome-mcp-servers](https://github.com/punkpeye/awesome-mcp-servers) - Curated list of MCP servers
+
+3. **Communities:**
+   - [Discord server MCP](https://glama.ai/mcp/discord) - Active community of MCP developers
+   - [Reddit r/mcp](https://www.reddit.com/r/mcp) - Discussions and news on MCP
+
+4. **Training Materials:**
+   - [The Model Context Protocol (MCP): A Complete Tutorial](https://medium.com/@nimritakoul01/the-model-context-protocol-mcp-a-complete-tutorial-a3abe8a7f4ef)
+   - [Model Context Protocol (MCP), clearly explained](https://www.youtube.com/watch?v=7j_NE6Pjv-E)
+
+5. **Tools:**
+   - [mcp-cli](https://github.com/wong2/mcp-cli) - Command-line inspector for MCP
+   - [mcpm](https://mcpm.sh/) - Package manager for MCP servers
+   - [MCPHub](https://github.com/Jeamee/MCPHub-Desktop) - Graphical interface for managing MCP servers
+
+
+## Concluding Recommendations
+
+When choosing and using MCP platforms, it is recommended to:
+
+1. **Start Small** - select a few basic MCP servers that meet your needs and gradually add new ones.
+
+2. **Study Examples** - consider open-source examples of platform usage to understand best practices and potential pitfalls.
+
+3. **Participate in the Community** - join discussions, ask questions, and share experiences with other MCP developers.
+
+4. **Follow Updates** - the MCP protocol is actively evolving, so it is important to stay up to date with the latest changes and improvements.
+
+5. **Test Security** - regularly check the security of your MCP integrations, especially when working with sensitive data.
+
+6. **Document Your Implementations** - create documentation for your MCP servers and integrations to facilitate support and knowledge sharing within the team.
+
+MCP opens new horizons for integrating AI into various systems and workflows. With the right platforms and tools, you can maximize the potential of this technology to solve your problems.
+
+
+## Radar Charts for Comparing MCP Platforms
+
+
+### Heatmap comparing the characteristics of various MCP platforms
+https://claude.site/artifacts/9506227e-7e75-48b2-8620-4999fe9282be
+
+
+
+## MCP Ecosystem Diagram
+```mermaid
+flowchart TD
+    MCP[Model Context Protocol] --> Frameworks[Frameworks]
+    MCP --> Registries[Registries]
+    MCP --> Hosting[Hosting]
+    MCP --> Tools[Tools]
+    MCP --> Servers[Servers]
+    
+    Frameworks --> EasyMCP["EasyMCP (TypeScript)"]
+    Frameworks --> FastAPIMCP["FastAPI-MCP (Python)"]
+    Frameworks --> FastMCP["FastMCP (TypeScript)"]
+    Frameworks --> MCPFramework["MCP-Framework (TypeScript)"]
+    Frameworks --> FoxyContexts["Foxy Contexts (Go)"]
+    
+    Registries --> Portkey[Portkey.ai]
+    Registries --> MCPGet[mcp-get.com]
+    Registries --> MCPSO[mcp.so]
+    Registries --> MCPMSH[mcpm.sh]
+    Registries --> Glama[Glama.ai]
+    Registries --> Smithery[Smithery.ai]
+    
+    Hosting --> MCPRun[mcp.run]
+    Hosting --> Composio[Composio]
+    Hosting --> Cloudflare[Cloudflare MCP]
+    Hosting --> MCPServerCloud[MCPServer.cloud]
+    Hosting --> Pipedream[Pipedream MCP]
+    
+    Tools --> MCPCLI[mcp-cli]
+    Tools --> MCPHub[MCPHub]
+    Tools --> MCPGuardian[mcp-guardian]
+    
+    Servers --> FileSystem[File System MCP]
+    Servers --> GitHub[GitHub MCP]
+    Servers --> Slack[Slack MCP]
+    Servers --> GoogleMaps[Google Maps MCP]
+    Servers --> Brave[Brave Search MCP]
+    Servers --> PostgreSQL[PostgreSQL MCP]
+    Servers --> Docker[Docker MCP]
+
+
+## MCP Integration with Various Ecosystems
+
+An important feature of MCP is its ability to integrate with various existing ecosystems and technology stacks. Below are examples of such integrations:
+
+### Integration with Cloud Providers
+
+| Provider | Integration Level | Features | Examples of MCP Servers |
+|-----------|-------------------|-------------|---------------------|
+| AWS | ⭐⭐⭐⭐ | Integration with AWS Lambda, S3, EC2, and other services | AWS S3 MCP, AWS Cost Explorer MCP, AWS Athena MCP |
+| Azure | ⭐⭐⭐ | Support for Azure Functions and Azure DevOps | Azure DevOps MCP, Azure ADX MCP |
+| Google Cloud | ⭐⭐⭐ | Integration with GCP services, including BigQuery and GCS | Google Drive MCP, BigQuery MCP |
+| Cloudflare | ⭐⭐⭐⭐⭐ | Native MCP support via Workers | Cloudflare MCP |
+
+
+### Integration with Databases
+
+| Database Type | MCP Server Availability | Functionality | Popular Servers |
+|-----------------|-------------------------|-----------------|-------------------|
+| SQL | ⭐⭐⭐⭐⭐ | Queries, schemas, management | PostgreSQL MCP, MySQL MCP, MSSQL MCP |
+| NoSQL | ⭐⭐⭐⭐ | CRUD operations, indexing | MongoDB MCP, Redis MCP |
+| Vector | ⭐⭐⭐⭐ | Semantic search, embeddings | Chroma MCP, Pinecone MCP, Qdrant MCP |
+| Graph | ⭐⭐⭐ | Cypher queries, graph analytics | Neo4j MCP |
+| Time Series | ⭐⭐⭐ | Time series queries, aggregation | InfluxDB MCP, TimescaleDB MCP |
+
+
+### Comparison of MCP with Other Protocols and Technologies
+
+| Technology | Similarities to MCP | Differences from MCP | Applicability |
+|------------|----------------|----------------|--------------|
+| LangChain | LLM integration, tools | Library, not a protocol; more difficult to standardize | More flexible software use |
+| LlamaIndex | RAG and data integration | Focus on indexing and search; not a complete protocol | Specialized for RAG |
+| OAIF (OpenAI Function Calling) | Defining tools for LLM | Tied to OpenAI; less versatile | Only for OpenAI models |
+| REST API | Standardized interface | Not optimized for LLM; no contextuality | General system integration |
+| GraphQL | Flexible data querying | Not specific to AI; different approach to queries | When precise query control is required |
+
+
+## Practical Use Cases for MCP Servers
+
+To better understand the practical value of MCP servers, let's consider several real-world use cases:
+
+### Scenario 1: Software Development
+
+**Problem:** A team of developers needs an AI assistant that can analyze code in their GitHub repository, find issues, and suggest fixes.
+
+**Solution with MCP:**
+1. Install a **GitHub MCP** server to access the repository
+2. Connect **Git MCP** for local code work
+3. Integrate with **Raygun MCP** for error analysis
+4. Add **PostgreSQL MCP** for access to the project database
+
+**Result:** Developers can ask the AI assistant questions about the code, which has direct access to the repository, can analyze changes, check commit history, and even test fixes without having to copy the code into the chat.
+
+
+### Scenario 2: Marketing Research
+
+**Problem:** A marketing team needs to analyze data on the market, competitors, and trends.
+
+**Solution with MCP:**
+1. Use **Brave Search MCP** for up-to-date data from the internet
+2. Integrate with **Google Maps MCP** for geographic data
+3. Connect **CSV MCP** to work with local research data
+4. Add **Tavily MCP** for specialized search
+
+**Result:** Marketers get an AI assistant that can combine data from various sources, analyze trends and competitors, and generate reports based on current data.
+
+
+### Scenario 3: Corporate Information Security
+
+**Problem:** An information security team needs a tool to help analyze logs, identify potential threats, and comply with regulatory requirements.
+
+**Solution with MCP:**
+1. Install **Elasticsearch MCP** for access to logs
+2. Integrate with **Semgrep MCP** for code security analysis
+3. Connect **OpenCTI MCP** for cyber threat information
+4. Use **PostgreSQL MCP** for access to the incident database
+
+**Result:** Security specialists can ask the AI assistant questions about potential threats, analyze incidents, and receive recommendations for resolving issues, with all information taken from corporate security systems.
+
+
+## Performance and Scalability of MCP Servers
+
+When choosing a platform for MCP servers, it is important to consider performance and scalability aspects. Below is data on these parameters for various platforms:
+
+### Performance Comparison of MCP Frameworks
+
+| Framework | Language | Throughput (requests/sec) | Latency (ms) | Memory Consumption | Scalability |
+|-----------|------|--------------------------------------|---------------|-------------------|------------------|
+| EasyMCP | TypeScript/Node.js | ~100-300 | 20-50 | Medium | Horizontal via clustering |
+| FastAPI-MCP | Python | ~50-200 | 30-70 | Medium | Horizontal via ASGI servers |
+| FastMCP | TypeScript/Node.js | ~150-350 | 15-40 | Medium | Horizontal via clustering |
+| Foxy Contexts | Go | ~500-1000+ | 5-15 | Low | Excellent native scalability |
+| Quarkus MCP | Java | ~300-800 | 10-30 | High | Good vertical and horizontal |
+
+*Note: The data represents estimated values for typical use cases. Actual performance may vary depending on the specific implementation, load, and infrastructure.*
+
+
+### MCP Server Scaling Strategies
+
+1. **Horizontal Scaling:**
+   - Running multiple instances of the server behind a load balancer
+   - Using Kubernetes to orchestrate containers with MCP servers
+   - Applying service mesh solutions such as Istio to manage traffic
+
+2. **Vertical Scaling:**
+   - Increasing resources (CPU, memory) on existing servers
+   - Optimizing code and improving query efficiency
+   - Applying caching for frequently requested resources
+
+3. **Hybrid Approaches:**
+   - Allocating "hot" MCP servers to more powerful hardware
+   - Distributing load between local and cloud servers
+   - Dynamically allocating resources based on load
+
+
+## The Future of MCP and Development Prospects
+
+Based on current trends and progress, several key directions for the development of MCP and related platforms can be identified:
+
+### Short-Term Prospects (1-2 years)
+
+1. **Protocol Standardization** - the final formation and adoption of the MCP standard by various LLM manufacturers is expected
+2. **Growth of the Server Ecosystem** - an increase in the number and variety of MCP servers for various tasks
+3. **Integration with Popular LLMs** - adding MCP support to most popular language models
+4. **Improvement of Development Tools** - creating more convenient SDKs, frameworks, and tools for developing MCP servers
+
+
+### Medium-Term Prospects (3-5 years)
+
+1. **Federated MCP Networks** - creating networks of interacting MCP servers that exchange data and capabilities
+2. **Integration with the Internet of Things (IoT)** - the emergence of MCP servers for managing and interacting with IoT devices
+3. **Specialized Hardware Solutions** - optimized hardware platforms for running MCP servers with high loads
+4. **Advanced Security Mechanisms** - developing specialized security standards and protocols for MCP
+
+
+### Long-Term Prospects (5+ years)
+
+1. **Autonomous MCP Networks** - self-organizing networks of MCP servers with elements of autonomous control
+2. **Integration with Neural Interfaces** - the ability to connect MCP servers to neural interfaces for direct interaction with the human brain
+3. **Quantum MCP Servers** - using quantum computing to improve the efficiency of MCP servers
+4. **Global MCP Infrastructure** - creating a global distributed MCP infrastructure available as a standard service
+
+
+## Conclusion
+
+Model Context Protocol (MCP) represents an important step in the evolution of interaction between language models and external systems. Standardizing this interaction opens up new opportunities for creating more intelligent, context-dependent, and useful AI assistants.
+
+In this report, we have reviewed various aspects of the MCP ecosystem, from development frameworks and hosting platforms to popular servers and development trends. We also analyzed performance, security, and scalability issues, which should help make informed decisions when choosing and using MCP solutions.
+
+Whether you are a developer looking to create your own MCP server or a user looking for ways to extend the capabilities of your AI assistants, understanding the basic principles and available options in the MCP ecosystem is key to successfully using this technology.
+
+As MCP and related technologies evolve, we will see increasingly close integration between AI and various systems, leading to the creation of more powerful, context-aware, and useful AI solutions. This will open up new opportunities for automation, data analysis, decision-making, and other areas where artificial intelligence can bring significant benefits.
+
+---
+
+*This review is based on information available as of April 2025. Given the rapid development of the MCP ecosystem, it is recommended to regularly consult original sources and official documentation for the most up-to-date information.*
+
+
+## Notes and References
+
+- Diagrams in Mermaid format are displayed automatically on GitHub when viewing markdown files.
+- All MCP servers and platforms mentioned in the report are available as of April 2025, but their functionality and availability may change over time.
+
+
+
+# Best Practices for Developing MCP Servers
+
+When developing MCP servers, it is important to follow certain practices to ensure reliability, security, and ease of use. Below are recommendations gathered from the experience of the MCP developer community:
+
+## Architectural Recommendations
+
+### Modular Design
+- Separate functionality into independent modules
+- Use dependency inversion for flexibility and testability
+- Provide clear interfaces between components
+
+
+### Documenting Tools and Resources
+- Provide a detailed description of each tool and resource
+- Document parameters, their types, and allowed values
+- Include usage examples and expected results
+
+
+### Error Handling
+- Implement detailed logging for debugging
+- Return clear error messages with possible solutions
+- Provide for correct handling of non-standard situations
+
+
+### Integration with Existing Systems
+- Use adapters to interact with external APIs
+- Cache results to improve performance
+- Ensure configurability for different environments
+
+
+## Security and Privacy
+
+### Authentication and Authorization
+- Implement strong authentication for all MCP clients
+- Use the principle of least privilege for access to resources
+- Introduce mechanisms for generating and rotating access tokens
+
+
+### Data Protection
+- Encrypt sensitive data during storage and transmission
+- Implement mechanisms for anonymizing personal data
+- Comply with GDPR, CCPA, and other regulatory requirements
+
+
+### Code Security
+- Regularly update dependencies to eliminate vulnerabilities
+- Use static code analysis to identify security issues
+- Conduct security audits for critical MCP servers
+
+
+### Logging and Monitoring
+- Log all access operations to sensitive data
+- Implement monitoring of anomalies and potential attacks
+- Configure alerts for suspicious activity
+
+
+## Performance and Scalability
+
+### Query Optimization
+- Minimize the number of requests to external systems
+- Use batch processing where possible
+- Optimize the size of transmitted data
+
+
+### Caching
+- Use multi-level caching for frequent requests
+- Configure cache invalidation policies for data relevance
+- Apply distributed caching for high-load systems
+
+
+### Asynchronous Processing
+- Use asynchronous execution for long operations
+- Implement mechanisms for tracking operation progress
+- Use message queues for reliable task processing
+
+
+### Horizontal Scaling
+- Design the server as a stateless application
+- Use replication and sharding to distribute the load
+- Configure automatic scaling based on usage metrics
+
+
+## MCP Integration with Existing AI Platforms
+
+MCP allows you to integrate various AI platforms with external systems and data. Below is information on MCP compatibility with popular AI platforms:
+
+### MCP Support by Various LLM Platforms
+
+| AI Platform | MCP Support Status | Integration Method | Limitations |
+|--------------|----------------------|-------------------|-------------|
+| Claude (Anthropic) | Native support | Built into Claude Desktop | No significant limitations |
+| Cursor | Full support | Built into the editor | Limitations on the number of servers |
+| Cline | Full support | Configuration via configuration file | No significant limitations |
+| Microsoft Copilot | Partial support | Via Copilot Studio | Limited set of tools |
+| OpenAI API | Adapted support | Via MCP-to-Function adapters | Differences in function specification |
+| Gemini (Google) | Experimental support | Via external adapters | Under development |
+| Groq | Initial support | Via Groq Bridge | Limited functionality |
+| Mistral AI | Planned | - | In development |
+
+
+### MCP Integration with AI Application Development Frameworks
+
+| Framework | Integration Level | Features | Usage Examples |
+|-----------|-------------------|-------------|----------------------|
+| LangChain | High | Adapters for MCP servers, tool conversion | AI agent with access to MCP servers |
+| LlamaIndex | Medium | Data providers via MCP | RAG systems using MCP for data extraction |
+| AutoGen | High | Native API for MCP servers | Multi-agent systems with MCP tools |
+| CrewAI | Medium | Integration via adapters | Collaborative agents with MCP capabilities |
+| LiteLLM | Low | Basic MCP support | Unified API for LLM with MCP integration |
+
+
+## MCP Glossary of Terms
+
+For a better understanding of the MCP ecosystem, it is important to know the basic terms and concepts:
+
+**MCP (Model Context Protocol)** - an open protocol that standardizes the interaction between language models and external data and tool systems.
+
+**MCP Server** - a program that implements the MCP protocol and provides tools, resources, and prompts for AI clients.
+
+**MCP Client** - a program that connects to MCP servers and uses their capabilities (often an AI assistant or LLM).
+
+**MCP Tool** - functionality in an MCP server that performs a specific action at the request of a client.
+
+**MCP Resource** - data or information that an MCP server makes available to a client.
+
+**MCP Prompt** - pre-defined instructions or templates that can be used to interact with a language model.
+
+**MCP Host** - a program that provides interaction between an MCP client and MCP servers.
+
+**STDIO Transport** - a transport mechanism for MCP that uses standard input/output streams for local interaction.
+
+**SSE Transport** - a transport mechanism for MCP that uses Server-Sent Events for remote interaction.
+
+**MCP Registry** - a catalog or repository of available MCP servers.
+
+**MCP SDK** - a set of development tools for creating MCP servers in various programming languages.
+
+**MCP Manifest** - a file describing the capabilities of an MCP server, including tools, resources, and prompts.
+
+
+## Conclusion
+
+Model Context Protocol (MCP) represents an important evolution in the way language models interact with external systems and data. This technology opens up a new level of capabilities for AI assistants, allowing them to work safely and efficiently with various sources of information and tools.
+
+In this review, we covered:
+
+- The basic principles and components of the MCP ecosystem
+- Various platforms for developing, hosting, and managing MCP servers
+- Comparative analysis of key parameters
+- Practical use cases
+- Performance, security, and scalability issues
+- Prospects and trends in technology development
+
+As the MCP ecosystem evolves, we expect to see even closer integration between language models and external systems, leading to the creation of more powerful, context-aware, and effective AI solutions.
+
+For organizations and developers looking to harness the potential of modern language models, understanding and using MCP is becoming an important competitive advantage. This technology makes it possible to overcome many of the limitations of existing LLMs and create truly useful AI tools for various business tasks.
+
+We hope that this review will help you make an informed choice of a suitable MCP platform and effectively use this technology for your tasks.
+
+This report was prepared in April 2025 and reflects the current state of the MCP ecosystem. Due to the rapid development of this area, it is recommended to regularly consult current sources of information for updated data.
