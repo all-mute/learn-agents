@@ -8,7 +8,7 @@ const ALGOLIA_API_KEY = process.env.ALGOLIA_API_KEY || 'e325bfe930f7ffc60495c079
 
 const config: Config = {
   title: 'Learn AI Agents Handbook',
-  tagline: 'Vastest zero to hero handbook on building AI Agents',
+  tagline: 'The most comprehensive zero-to-hero handbook on building AI Agents',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
