@@ -4,6 +4,7 @@
 
 import PromptInjection from './assets/prompt-injection.jpg';
 import PromptInjection2 from './assets/prompt-injection-2.jpg';
+import PromptInjectionEng from './assets/prompt-injection-eng.png';
 
 # Понимание LLM
 
@@ -63,14 +64,16 @@ import PromptInjection2 from './assets/prompt-injection-2.jpg';
 
 ### E6. Промпт-инъекции наглядно
 
+<img src={PromptInjectionEng} alt="prompt injection" width="500" />
+
+{/* LOCAL TEXT START */}
 <img src={PromptInjection} alt="prompt injection" width="300" />
 
 <img src={PromptInjection2} alt="prompt injection" width="300" />
+{/* LOCAL TEXT END */}
 
 <details>
-<summary>
-Почему не на все workflow подействовала промпт-инъекция?
-</summary>
+<summary>Почему промпт-инъекция может не сработать?</summary>
 
 Версии:
 - промышленные модели стараются создавать устойчивыми к промпт-инъекциям
