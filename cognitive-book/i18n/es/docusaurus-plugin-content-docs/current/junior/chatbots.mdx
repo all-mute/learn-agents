@@ -1,0 +1,100 @@
+---
+sidebar_label: Chatbots y memoria a corto plazo
+---
+
+# Chatbots y memoria a corto plazo
+
+Repasemos la escalera de la terminología y averigüemos en qué se diferencian un chatbot y un agente de IA entre sí. También estudiaremos cómo se implementa la memoria a corto plazo en los chatbots.
+
+## Questions
+
+Preguntas que vamos a discutir:
+- ¿En qué se diferencian LLM, chatbot, AI workflow, co-pilot, agente y otros entre sí?
+- ¿Qué hacer si un usuario alcanza el límite de tokens durante la conversación?
+- ¿Cómo se implementa la memoria a corto plazo en los chatbots?
+
+# Steps
+
+### 1. Chatbots
+
+[Explore the difference between chatbots and other things](https://excalidraw.com/#json=zjh38Ls_XMRTsUO60aur5,2ieU4682rDovB05fL_KgOw)
+
+### 2. Estudiamos la memoria a corto plazo
+
+¿Qué hacer si un usuario se comunica con tu bot por décima vez?
+    - primero, debido al gran historial de mensajes, la LLM sigue peor las últimas instrucciones
+    - segundo, cada solicitud posterior costará más (si utilizamos una LLM propietaria, todos los tokens de entrada se tarifan)
+
+:::tip
+simplemente lee ambos artículos, mira las imágenes: ¡lo principal es entender los conceptos!
+
+si has estudiado cuidadosamente la API de OpenAI, estos artículos te resultarán sencillos y comprensibles.
+:::
+
+[Cómo gestionamos el historial de mensajes](https://langchain-ai.github.io/langgraph/concepts/memory/#summarizing-past-conversations)
+
+[Comparación de diferentes enfoques](https://www.pinecone.io/learn/series/langchain/langchain-expression-language/)
+
+:::warning минусы
+Al eliminar/resumir mensajes, perdemos información útil.
+
+Por ejemplo, los primeros mensajes que vamos a eliminar pueden contener las especificaciones técnicas del usuario, y al eliminar/resumir se perderán detalles.
+:::
+
+#### Estrategias principales para gestionar el historial de mensajes
+
+1. **Recorte por número de tokens (`max_tokens`)**  
+   Permite limitar el historial de mensajes para que su número total de tokens no exceda un valor dado. Esto es especialmente útil para cumplir con las limitaciones de la ventana de contexto del modelo.
+
+2. **Recorte por número de mensajes (`max_messages`)**  
+   Limita el historial a un cierto número de los últimos mensajes, eliminando los más antiguos.
+
+#### Parámetros adicionales para configurar el recorte
+
+- **`strategy="last"`**  
+  Guarda los últimos mensajes, eliminando los más antiguos. Esta es la estrategia estándar para guardar el contexto actual.
+
+- **`include_system=True`**  
+  Garantiza la conservación de `SystemMessage`, que normalmente contiene instrucciones importantes para el modelo. ([How to trim messages | 🦜️ LangChain](https://python.langchain.com/docs/how_to/trim_messages/?utm_source=chatgpt.com))
+
+- **`start_on="human"` y `ends_on=("human", "tool")`**  
+  Garantizan una estructura correcta del historial de mensajes, comenzando con un mensaje del usuario y terminando con un mensaje del usuario o de la herramienta.
+
+#### Ejemplos de uso
+
+Para recortar el historial de mensajes por número de tokens, guardando el mensaje del sistema y los últimos mensajes del usuario, puedes utilizar el siguiente código:
+
+```python
+from langchain_core.messages import trim_messages
+
+trimmed_history = trim_messages(
+    messages=chat_history,
+    max_tokens=1000,
+    strategy="last",
+    include_system=True,
+    start_on="human",
+    ends_on=("human", "tool")
+)
+```
+
+Puedes encontrar más información sobre las funciones y los parámetros de `trim_messages` en la documentación oficial de LangChain:
+
+- [How to trim messages](https://python.langchain.com/docs/how_to/trim_messages/)
+
+#### Técnicas avanzadas:
+
+- podemos utilizar varias memorias a corto plazo, por ejemplo:
+    - una para almacenar el historial de mensajes: se ubicará en los propios mensajes
+    - una segunda para almacenar información sobre el usuario (por ejemplo, sus preferencias): se ubicará en el mensaje del sistema
+    - una tercera para almacenar la tarea del usuario: se ubicará en el mensaje del sistema
+- podemos hacer retrieve de los mensajes eliminados en caso de necesidad (retrieve lo estudiaremos en el futuro [módulo](./rag/index))
+
+## Now we know...
+
+Ahora sabes cómo gestionar el historial de mensajes en los chatbots. Omitimos la práctica de crear un chatbot, porque es fácil y aburrido.
+
+Sin embargo, te esperan los sistemas multiagente: allí el trabajo con la memoria a corto plazo será muy complejo e interesante.
+
+## Exercises
+
+-

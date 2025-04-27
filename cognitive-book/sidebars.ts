@@ -110,6 +110,7 @@ const juniorSection = [
     collapsible: true,
     items: [
       'junior/index',
+      'junior/chatbots',
       'junior/workflows',
       'junior/hf-agents',
       {
