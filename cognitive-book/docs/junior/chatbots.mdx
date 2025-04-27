@@ -1,8 +1,17 @@
 ---
-sidebar_label: Chatbots and Short-Term Memory
+sidebar_label: Chatbots and short-term memory
 ---
 
 # Chatbots and Short-Term Memory
+
+Let's go through the terminology ladder and figure out how a chatbot and an AI agent differ from each other? And also explore how short-term memory is implemented in chatbots.
+
+## Questions
+
+Questions we will discuss:
+- how do LLM, chatbot, AI workflow, co-pilot, agent, and others differ from each other?
+- what to do if the user reaches the token limit during communication?
+- how is short-term memory implemented in chatbots?
 
 # Steps
 
@@ -12,7 +21,7 @@ sidebar_label: Chatbots and Short-Term Memory
 
 ### 2. Studying short-term memory
 
-What if a user interacts with your bot for the tenth time?
+What if a user is communicating with your bot for the tenth time?
     - firstly, due to the large message history, the LLM follows the latest instructions worse
     - secondly, each subsequent request will cost more (if we use a proprietary LLM, all input-tokens are charged)
 
@@ -29,31 +38,31 @@ if you have carefully studied the OpenAI API, these articles will be simple and 
 :::warning минусы
 When deleting/summarizing messages, we lose useful information.
 
-For example, the initial messages that we are going to delete may contain the user's specifications - and details will be lost when deleting/summarizing.
+For example, the first messages that we are going to delete may contain a technical specification from the user - and details will be lost when deleting/summarizing.
 :::
 
 #### Basic strategies for managing message history
 
-1. **Token count trimming (`max_tokens`)**  
-   Allows you to limit the message history so that their total number of tokens does not exceed a specified value. This is especially useful for complying with the model's context window limitations.
+1. **Truncation by number of tokens (`max_tokens`)**
+   Allows you to limit the message history so that their total number of tokens does not exceed the specified value. This is especially useful for complying with the model's context window limitations.
 
-2. **Message count trimming (`max_messages`)**  
-   Limits the history to a certain number of the latest messages, deleting older ones.
+2. **Truncation by number of messages (`max_messages`)**
+   Limits the history to a certain number of recent messages, deleting older ones.
 
-#### Additional parameters for trimming settings
+#### Additional parameters for truncation settings
 
-- **`strategy="last"`**  
-  Saves the latest messages, deleting older ones. This is the standard strategy for preserving relevant context.
+- **`strategy="last"`**
+  Saves the latest messages, deleting older ones. This is the standard strategy for maintaining relevant context.
 
-- **`include_system=True`**  
-  Ensures the `SystemMessage` is preserved, which usually contains important instructions for the model. ([How to trim messages | 🦜️ LangChain](https://python.langchain.com/docs/how_to/trim_messages/?utm_source=chatgpt.com))
+- **`include_system=True`**
+  Guarantees the preservation of `SystemMessage`, which usually contains important instructions for the model. ([How to trim messages | 🦜️ LangChain](https://python.langchain.com/docs/how_to/trim_messages/?utm_source=chatgpt.com))
 
-- **`start_on="human"` and `ends_on=("human", "tool")`**  
+- **`start_on="human"` and `ends_on=("human", "tool")`**
   Ensure the correct structure of the message history, starting with the user's message and ending with the user's or tool's message.
 
 #### Usage examples
 
-To trim the message history by the number of tokens while preserving the system message and the latest user messages, you can use the following code:
+To truncate the message history by the number of tokens while preserving the system message and the latest user messages, you can use the following code:
 
 ```python
 from langchain_core.messages import trim_messages
@@ -78,4 +87,14 @@ More information about the functions and parameters of `trim_messages` can be fo
     - one for storing message history - will be located in the messages themselves
     - the second for storing information about the user (for example, his preferences) - will be located in the system message
     - the third for storing the user's task - will be located in the system message
-- we can do retrieve on deleted messages if necessary (retrieve we will study in the future [module](./rag/index))
+- we can do retrieve on deleted messages if necessary (we will study retrieve in the future [module](./rag/index))
+
+## Now we know...
+
+Now you know how to manage message history in chatbots. We skip the practice of creating a chatbot - because it's easy and boring.
+
+However, multi-agent systems await you ahead - there, working with short-term memory will be very complex and interesting.
+
+## Exercises
+
+-

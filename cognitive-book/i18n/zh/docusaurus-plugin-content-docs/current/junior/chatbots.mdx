@@ -1,59 +1,68 @@
 ---
-sidebar_label: 聊天机器人和短期记忆
+sidebar_label: 聊天机器人与短期记忆
 ---
 
 # 聊天机器人和短期记忆
 
+让我们逐步了解术语，弄清楚聊天机器人和 AI 代理之间的区别？并研究聊天机器人中如何实现短期记忆。
+
+## Questions
+
+我们将讨论的问题：
+- LLM、聊天机器人、AI 工作流、co-pilot、代理等之间有什么区别？
+- 如果用户在交流过程中达到令牌限制该怎么办？
+- 短期记忆如何在聊天机器人中实现？
+
 # Steps
 
-### 1. 聊天机器人
+### 1. Chatbots
 
-[探索聊天机器人和其他事物之间的区别](https://excalidraw.com/#json=zjh38Ls_XMRTsUO60aur5,2ieU4682rDovB05fL_KgOw)
+[Explore the difference between chatbots and other things](https://excalidraw.com/#json=zjh38Ls_XMRTsUO60aur5,2ieU4682rDovB05fL_KgOw)
 
 ### 2. 学习短期记忆
 
-如果用户已经和你的机器人聊了十次，该怎么办？
-    - 首先，由于大量的消息历史，LLM 更难遵循最新的指令。
-    - 其次，每个后续请求都会更贵（如果我们使用专有的 LLM，所有 input-令牌 都会被收费）。
+如果用户已经与您的机器人交流了十次，该怎么办？
+    - 首先，由于大量的消息历史记录，LLM 难以遵循最新的指令
+    - 其次，每个后续请求都会更昂贵（如果我们使用专有的 LLM，则所有 input-令牌都会被收费）
 
 :::tip
 只需阅读这两篇文章，看看图片 - 主要是理解概念！
 
-如果你仔细研究过 OpenAI API，这些文章对你来说会很简单易懂。
+如果您仔细研究了 OpenAI API，这些文章对您来说将简单易懂。
 :::
 
-[我们如何处理消息历史](https://langchain-ai.github.io/langgraph/concepts/memory/#summarizing-past-conversations)
+[我们如何处理消息历史记录](https://langchain-ai.github.io/langgraph/concepts/memory/#summarizing-past-conversations)
 
 [不同方法的比较](https://www.pinecone.io/learn/series/langchain/langchain-expression-language/)
 
 :::warning 缺点
 删除/总结消息时，我们会丢失有用的信息。
 
-例如，在我们要删除的第一个消息中，可能包含用户的技术规范 - 删除/总结会丢失细节。
+例如，在我们要删除的第一个消息中，可能包含用户的技术规范 - 并且在删除/总结时，细节会丢失。
 :::
 
-#### 管理消息历史的主要策略
+#### 管理消息历史记录的主要策略
 
-1. **按令牌数量裁剪 (`max_tokens`)**  
-   允许限制消息历史，使其总令牌数不超过指定值。 这对于遵守模型的上下文窗口限制尤其有用。
+1. **按令牌数量截断 (`max_tokens`)**
+   允许限制消息历史记录，使其令牌总数不超过指定的值。这对于遵守模型的上下文窗口限制尤其有用。
 
-2. **按消息数量裁剪 (`max_messages`)**  
+2. **按消息数量截断 (`max_messages`)**
    将历史记录限制为一定数量的最新消息，删除较旧的消息。
 
-#### 用于配置裁剪的其他参数
+#### 用于配置截断的其他参数
 
-- **`strategy="last"`**  
-  保留最新的消息，删除较旧的消息。 这是保留最新上下文的标准策略。
+- **`strategy="last"`**
+  保留最新的消息，删除较旧的消息。这是保留当前上下文的标准策略。
 
-- **`include_system=True`**  
-  确保保留 `SystemMessage`，它通常包含模型的重要指令。 ([How to trim messages | 🦜️ LangChain](https://python.langchain.com/docs/how_to/trim_messages/?utm_source=chatgpt.com))
+- **`include_system=True`**
+  确保保留 `SystemMessage`，其中通常包含模型的重要指令。 ([How to trim messages | 🦜️ LangChain](https://python.langchain.com/docs/how_to/trim_messages/?utm_source=chatgpt.com))
 
-- **`start_on="human"` 和 `ends_on=("human", "tool")`**  
-  确保消息历史的正确结构，从用户的消息开始，到用户或工具的消息结束。
+- **`start_on="human"` 和 `ends_on=("human", "tool")`**
+  确保消息历史记录的正确结构，从用户的消息开始，到用户或工具的消息结束。
 
 #### 使用示例
 
-要按令牌数量裁剪消息历史，同时保留系统消息和用户的最新消息，可以使用以下代码：
+要按令牌数量截断消息历史记录，同时保留系统消息和用户的最新消息，可以使用以下代码：
 
 ```python
 from langchain_core.messages import trim_messages
@@ -75,7 +84,17 @@ trimmed_history = trim_messages(
 #### 高级技巧：
 
 - 我们可以使用多个短期记忆，例如：
-    - 一个用于存储消息历史 - 将位于消息本身中
+    - 一个用于存储消息历史记录 - 将位于消息本身中
     - 第二个用于存储有关用户的信息（例如，他的偏好） - 将位于系统消息中
     - 第三个用于存储用户的任务 - 将位于系统消息中
-- 我们可以在需要时检索已删除的消息（我们将在未来的[模块](./rag/index)中学习检索）
+- 我们可以在必要时检索已删除的消息（我们将在未来的[模块](./rag/index)）中学习检索）
+
+## Now we know...
+
+现在您知道如何在聊天机器人中管理消息历史记录。我们跳过创建聊天机器人的实践 - 因为这很容易且无聊。
+
+但是，多代理系统正在等待着您 - 在那里，使用短期记忆将非常复杂和有趣。
+
+## Exercises
+
+-
