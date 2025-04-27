@@ -12,6 +12,7 @@
 - 👥 Community-Driven
 - 🌐 Vast topic coverage
 - ❌🧮 Math-less
+- Best materials all over the internet
 
 ## 🤝 Community
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?logo=telegram)](https://t.me/learnagents)

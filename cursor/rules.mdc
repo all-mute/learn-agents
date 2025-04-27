@@ -33,9 +33,13 @@ cognitive-book/
 ├── sidebars.ts - sidebar navigation configuration
 └── i18n/ru/ - Russian localization
 
+## Local languages docs
+eng: cognitive-book/docs/
+ru: cognitive-book/i18n/ru/docusaurus-plugin-content-docs/current
+zh: cognitive-book/i18n/zh/docusaurus-plugin-content-docs/current
+es: cognitive-book/i18n/es/docusaurus-plugin-content-docs/current
+
 ## Content Formatting Rules
-- Write in Russian in /i18n/ru/
-- Write in English in /docs/
 - Use Markdown for basic formatting
 - Use MDX for complex components
 - Store images in `/static/img/`
