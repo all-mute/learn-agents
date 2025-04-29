@@ -168,7 +168,6 @@ const seniorSection = [
       'senior/voice-robots',
       {
         type: 'category' as const,
-        label: 'Агенты',
         collapsed: true,
         collapsible: true,
         items: [
@@ -177,7 +176,6 @@ const seniorSection = [
       },
       {
         type: 'category' as const,
-        label: 'Оценка AI Агентов',
         collapsed: true,
         collapsible: true,
         items: [
@@ -186,7 +184,6 @@ const seniorSection = [
       },
       {
         type: 'category' as const,
-        label: 'Инфраструктура',
         collapsed: true,
         collapsible: true,
         items: [
@@ -196,7 +193,6 @@ const seniorSection = [
       },
       {
         type: 'category' as const,
-        label: 'Разработка моделей',
         collapsed: true,
         collapsible: true,
         items: [
