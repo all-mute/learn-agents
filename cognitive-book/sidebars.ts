@@ -168,6 +168,7 @@ const seniorSection = [
       'senior/voice-robots',
       {
         type: 'category' as const,
+        label: 'Agents',
         collapsed: true,
         collapsible: true,
         items: [
@@ -176,6 +177,7 @@ const seniorSection = [
       },
       {
         type: 'category' as const,
+        label: 'AI Agents Evaluation',
         collapsed: true,
         collapsible: true,
         items: [
@@ -184,6 +186,7 @@ const seniorSection = [
       },
       {
         type: 'category' as const,
+        label: 'Infrastructure',
         collapsed: true,
         collapsible: true,
         items: [
@@ -193,6 +196,7 @@ const seniorSection = [
       },
       {
         type: 'category' as const,
+        label: 'Model Development',
         collapsed: true,
         collapsible: true,
         items: [
@@ -211,7 +215,7 @@ const seniorSection = [
       },
       {
         type: 'category' as const,
-        label: 'Рабочие процессы',
+        label: 'Workflows',
         collapsed: true,
         collapsible: true,
         items: [
